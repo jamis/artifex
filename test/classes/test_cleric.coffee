@@ -1,5 +1,10 @@
 {Classes, NPC} = require '../..'
 
+hasClassFeature = (npc, name) ->
+  for feature in npc.features.class
+    return true if name is feature[0]
+  false
+  
 module.exports =
   "should be from PHB": (test) ->
     test.equal Classes.Cleric.source, "phb"
@@ -87,4 +92,13 @@ module.exports =
     for skill in Classes.Cleric.skills
       count += 1 if npc.skills[skill].trained
     test.equal count, 4
+    test.done()
+
+  "should add class features": (test) ->
+    npc = new NPC
+    cleric = new Classes.Cleric npc
+    test.ok npc.hasFeature("class", "Channel Divinity"), "missing Channel Divinity feature"
+    test.ok npc.hasFeature("class", "Healer's Lore"), "missing Healer's Lore feature"
+    test.ok npc.hasFeature("class", "Healing Word"), "missing Healing Word feature"
+    test.ok npc.hasFeature("class", "Ritual Casting"), "missing Ritual Casting feature"
     test.done()

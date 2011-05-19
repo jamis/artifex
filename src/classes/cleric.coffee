@@ -28,6 +28,11 @@ module.exports = class Cleric
         count += 1
         break if count >= 3
 
+    npc.feature "class", "Channel Divinity"
+    npc.feature "class", "Healer's Lore", "add WIS modifier to `heal' powers"
+    npc.feature "class", "Healing Word"
+    npc.feature "class", "Ritual Casting"
+
 Cleric.source = "phb"
 Cleric.powerSource = "divine"
 Cleric.skills = [ "arcana", "diplomacy", "heal", "history", "insight", "religion" ]

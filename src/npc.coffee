@@ -24,6 +24,11 @@ module.exports = class NPC
   feature: (collection, name, description) ->
     @features[collection].push [name, description]
 
+  hasFeature: (collection, name) ->
+    for feature in @features[collection]
+      return true if feature[0] is name
+    false
+
   initializeAbilities: ->
     @abilities =
       str: new Ability 10

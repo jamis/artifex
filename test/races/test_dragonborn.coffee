@@ -1,10 +1,5 @@
 {NPC, Powers, Races} = require '../..'
 
-hasRacialFeature = (npc, name) ->
-  for feature in npc.features.racial
-    return true if name is feature[0]
-  false
-  
 module.exports =
   "should be from PHB": (test) ->
     test.equal Races.Dragonborn.source, "phb"
@@ -62,9 +57,9 @@ module.exports =
   "should add racial features": (test) ->
     npc = new NPC
     dborn = new Races.Dragonborn(npc)
-    test.ok hasRacialFeature(npc, "Dragonborn fury"), "missing Dragonborn fury feature"
-    test.ok hasRacialFeature(npc, "Draconic heritage"), "missing Draconic heritage feature"
-    test.ok hasRacialFeature(npc, "Dragon breath (#{dborn.descriptor})"), "missing Dragon breath (#{dborn.descriptor}) feature"
+    test.ok npc.hasFeature("racial", "Dragonborn fury"), "missing Dragonborn fury feature"
+    test.ok npc.hasFeature("racial", "Draconic heritage"), "missing Draconic heritage feature"
+    test.ok npc.hasFeature("racial", "Dragon breath (#{dborn.descriptor})"), "missing Dragon breath (#{dborn.descriptor}) feature"
     test.done()
 
   "should grant CON bonus to healingSurge.value": (test) ->
