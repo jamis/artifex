@@ -88,6 +88,10 @@ module.exports = class NPC
     # FIXME: only apply dex modifier if armor is light, or none
     @defenses.ac.adjust => @abilities.dex.modifier()
 
+    @defenses.fort.adjust =>
+      [str, con] = [@abilities.str.modifier(), @abilities.con.modifier()]
+      if str > con then str else con
+
     halfLevel = => Math.floor(@level/2)
 
     @defenses.ac.adjust halfLevel

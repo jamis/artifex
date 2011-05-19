@@ -88,6 +88,14 @@ module.exports =
     console.log "IMPLEMENT ME PLEASE"
     test.done()
 
+  "fortitude should depend on greater of str or con": (test) ->
+    npc = new NPC
+    npc.abilities.str.baseValue = 14
+    test.equal npc.defenses.fort.score(), 12
+    npc.abilities.con.baseValue = 16
+    test.equal npc.defenses.fort.score(), 13
+    test.done()
+
   "#feature should add item to the appropriate collection": (test) ->
     npc = new NPC
     npc.feature "racial", "Dragonborn fury", "+1 to attack when bloodied"
