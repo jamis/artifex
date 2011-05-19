@@ -19,5 +19,15 @@ module.exports = class Cleric
     npc.hitPointsPerLevel = 5
     npc.healingSurge.count.adjust "class", 7
 
+    npc.skills.religion.trained = true
+
+    count = 0
+    for skill in npc.random.shuffle(Cleric.skills...)
+      unless npc.skills[skill].trained
+        npc.skills[skill].trained = true
+        count += 1
+        break if count >= 3
+
 Cleric.source = "phb"
 Cleric.powerSource = "divine"
+Cleric.skills = [ "arcana", "diplomacy", "heal", "history", "insight", "religion" ]

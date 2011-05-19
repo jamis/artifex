@@ -64,3 +64,27 @@ module.exports =
     cleric = new Classes.Cleric npc
     test.ok npc.healingSurge.count.has(7, "class"), "missing +5 class bonus to healingSurge.count"
     test.done()
+
+  "should choose religion as a trained skill": (test) ->
+    npc = new NPC
+    cleric = new Classes.Cleric npc
+    test.ok npc.skills.religion.trained
+    test.done()
+
+  "should include appropriate skills as class skills": (test) ->
+    test.ok "arcana" in Classes.Cleric.skills
+    test.ok "diplomacy" in Classes.Cleric.skills
+    test.ok "heal" in Classes.Cleric.skills
+    test.ok "history" in Classes.Cleric.skills
+    test.ok "insight" in Classes.Cleric.skills
+    test.ok "religion" in Classes.Cleric.skills
+    test.done()
+
+  "should include four trained class skills": (test) ->
+    npc = new NPC
+    cleric = new Classes.Cleric npc
+    count = 0
+    for skill in Classes.Cleric.skills
+      count += 1 if npc.skills[skill].trained
+    test.equal count, 4
+    test.done()

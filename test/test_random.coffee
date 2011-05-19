@@ -32,3 +32,13 @@ module.exports =
 
     test.ok true
     test.done()
+
+  "#shuffle should reorder arguments in random order": (test) ->
+    random = new Random
+    list = [0..10]
+    shuffled = random.shuffle(list...)
+    changed = 0
+    for x in [0...list.length]
+      changed += 1 if shuffled[x] isnt list[x]
+    test.ok changed > 0
+    test.done()
