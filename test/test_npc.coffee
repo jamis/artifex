@@ -104,6 +104,14 @@ module.exports =
     test.equal npc.defenses.ref.score(), 13
     test.done()
 
+  "will should depend on greater of wis or cha": (test) ->
+    npc = new NPC
+    npc.abilities.wis.baseValue = 14
+    test.equal npc.defenses.will.score(), 12
+    npc.abilities.cha.baseValue = 16
+    test.equal npc.defenses.will.score(), 13
+    test.done()
+
   "#feature should add item to the appropriate collection": (test) ->
     npc = new NPC
     npc.feature "racial", "Dragonborn fury", "+1 to attack when bloodied"

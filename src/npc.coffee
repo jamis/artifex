@@ -96,6 +96,10 @@ module.exports = class NPC
       [dex, int] = [@abilities.dex.modifier(), @abilities.int.modifier()]
       if dex > int then dex else int
 
+    @defenses.will.adjust =>
+      [wis, cha] = [@abilities.wis.modifier(), @abilities.cha.modifier()]
+      if wis > cha then wis else cha
+
     halfLevel = => Math.floor(@level/2)
 
     @defenses.ac.adjust halfLevel
