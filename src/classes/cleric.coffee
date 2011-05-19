@@ -1,4 +1,5 @@
 Generic = require '../powers/generic'
+Rituals = require '../rituals'
 
 module.exports = class Cleric
   constructor: (npc) ->
@@ -23,6 +24,7 @@ module.exports = class Cleric
 
     npc.skills.religion.trained = true
 
+    # TODO: smarter selection of skills
     count = 0
     for skill in npc.random.shuffle(Cleric.skills...)
       unless npc.skills[skill].trained
@@ -47,7 +49,12 @@ module.exports = class Cleric
     npc.feats.push "Ritual Casting"
 
     npc.learnRitual 1, "Gentle Repose"
-    # TODO: add one other 1st level ritual
+
+    # TODO: smarter ritual selection
+    for ritual in npc.random.shuffle(Rituals.all(1))
+      unless ritual in npc.rituals[1]
+        npc.learnRitual 1, ritual
+        break
 
 Cleric.source = "phb"
 Cleric.powerSource = "divine"

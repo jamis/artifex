@@ -152,8 +152,9 @@ module.exports =
     test.ok "Ritual Casting" in npc.feats, "missing Ritual Casting feat"
     test.done()
 
-  "should have Gentle Repose ritual": (test) ->
+  "should have two L1 rituals including Gentle Repose": (test) ->
     new Classes.Cleric(npc = new NPC)
     test.ok npc.rituals[1]?
     test.ok "Gentle Repose" in npc.rituals[1]
+    test.equal npc.rituals[1].length, 2
     test.done()
