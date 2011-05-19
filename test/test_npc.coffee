@@ -58,6 +58,20 @@ module.exports =
     test.equal npc.defenses.will.score(), 10
     test.done()
 
+  "defenses should depend on level": (test) ->
+    npc = new NPC
+    npc.level = 2
+    test.equal npc.defenses.ac.score(), 11
+    test.equal npc.defenses.fort.score(), 11
+    test.equal npc.defenses.ref.score(), 11
+    test.equal npc.defenses.will.score(), 11
+    npc.level = 7
+    test.equal npc.defenses.ac.score(), 13
+    test.equal npc.defenses.fort.score(), 13
+    test.equal npc.defenses.ref.score(), 13
+    test.equal npc.defenses.will.score(), 13
+    test.done()
+
   "#feature should add item to the appropriate collection": (test) ->
     npc = new NPC
     npc.feature "racial", "Dragonborn fury", "+1 to attack when bloodied"
