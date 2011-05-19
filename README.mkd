@@ -1,0 +1,25 @@
+Artifex
+=======
+
+Artifex is a non-player character (NPC) generator for the 4th edition of
+the Dungeons & Dragons game.
+
+Eventually it will support automated creation of NPC's that employ all of
+the races, classes, powers, feats, and equipment from the core rules.
+
+Contributing
+------------
+
+One of the goals behind Artifex is a test is written for every feature,
+before the feature is implemented in code. If you wish to contribute an
+implementation of a class, race, power, feat, or anything else, please
+ensure that it is properly tested, or your contribution will not be
+accepted.
+
+License
+-------
+
+The code and algorithms of Artifex are released into the public domain by
+the author, Jamis Buck. The data used by Artifex, however, is the property
+of Wizards of the Coast, and is thus encumbered by more ambiguous terms.
+Please consult Wizards of the Coast before any commercial use of this data.
