@@ -1,4 +1,4 @@
-Generic = require '../powers/generic'
+Powers  = require '../powers'
 Rituals = require '../rituals'
 
 module.exports = class Cleric
@@ -37,15 +37,14 @@ module.exports = class Cleric
     npc.feature "class", "Healing Word"
     npc.feature "class", "Ritual Casting"
 
-    healingWord = new Generic (p) ->
-      p.name = "Healing Word"
-      p.range = ->
-        size = if npc.level < 11 then 5 else if npc.level < 21 then 10 else 15
-        "Close burst #{size}"
-      p.frequency = -> if npc.level < 16 then 2 else 3
-      p.effect = -> "+#{Math.ceil(npc.level/5)}d6"
+    divineFortune = new Powers.Generic (p) -> p.name = "Channel Divinity: Divine Fortune"
+    turnUndead    = new Powers.TurnUndead npc
+    healingWord   = new Powers.HealingWord npc
 
+    npc.powers.encounter.push divineFortune
+    npc.powers.encounter.push turnUndead
     npc.powers.encounter.push healingWord
+
     npc.feats.push "Ritual Casting"
 
     npc.learnRitual 1, "Gentle Repose"

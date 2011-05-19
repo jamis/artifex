@@ -72,6 +72,11 @@ module.exports = class NPC
       daily    : []
       utility  : []
 
+      find     : (category, name) ->
+        for power in this[category]
+          return power if power.name is name
+        null
+
   initializeFeatures: ->
     @features =
       racial: []

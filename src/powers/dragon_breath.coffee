@@ -9,7 +9,7 @@ module.exports = class DragonBreath
     total = @npc.abilities[@npc.breath.ability].modifier() + bonus
     "#{@npc.breath.ability}+#{bonus} (+#{total}) vs. Reflex"
 
-  damage: ->
+  hit: ->
     dice = Math.ceil(@npc.level / 10)
     damage = "#{dice}d6"
     con = @npc.abilities.con.modifier()

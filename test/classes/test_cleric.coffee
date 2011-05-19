@@ -95,56 +95,26 @@ module.exports =
     test.done()
 
   "should add class features": (test) ->
-    npc = new NPC
-    cleric = new Classes.Cleric npc
+    new Classes.Cleric(npc = new NPC)
     test.ok npc.hasFeature("class", "Channel Divinity"), "missing Channel Divinity feature"
     test.ok npc.hasFeature("class", "Healer's Lore"), "missing Healer's Lore feature"
     test.ok npc.hasFeature("class", "Healing Word"), "missing Healing Word feature"
     test.ok npc.hasFeature("class", "Ritual Casting"), "missing Ritual Casting feature"
     test.done()
 
+  "should have Channel Divinity: Divine Fortune encounter power": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.ok npc.powers.find("encounter", "Channel Divinity: Divine Fortune")
+    test.done()
+
+  "should have Channel Divinity: Turn Undead encounter power": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.ok npc.powers.find("encounter", "Channel Divinity: Turn Undead")
+    test.done()
+
   "should have Healing Word encounter power": (test) ->
-    npc = new NPC
-    test.equal npc.powers.encounter.length, 0
-    cleric = new Classes.Cleric npc
-    test.equal npc.powers.encounter.length, 1
-    test.equal npc.powers.encounter[0].name, "Healing Word"
-    test.done()
-
-  "Healing Word frequency should depend on NPC level": (test) ->
     new Classes.Cleric(npc = new NPC)
-    power = npc.powers.encounter[0]
-    test.equal power.frequency(), 2
-    npc.level = 15
-    test.equal power.frequency(), 2
-    npc.level = 16
-    test.equal power.frequency(), 3
-    test.done()
-
-  "Healing Word effect should depend on NPC level": (test) ->
-    new Classes.Cleric(npc = new NPC)
-    power = npc.powers.encounter[0]
-    test.equal power.effect(), "+1d6"
-    npc.level = 6
-    test.equal power.effect(), "+2d6"
-    npc.level = 11
-    test.equal power.effect(), "+3d6"
-    npc.level = 16
-    test.equal power.effect(), "+4d6"
-    npc.level = 21
-    test.equal power.effect(), "+5d6"
-    npc.level = 26
-    test.equal power.effect(), "+6d6"
-    test.done()
-
-  "Healing Word range should depend on NPC level": (test) ->
-    new Classes.Cleric(npc = new NPC)
-    power = npc.powers.encounter[0]
-    test.equal power.range(), "Close burst 5"
-    npc.level = 11
-    test.equal power.range(), "Close burst 10"
-    npc.level = 21
-    test.equal power.range(), "Close burst 15"
+    test.ok npc.powers.find("encounter", "Healing Word")
     test.done()
 
   "should have Ritual Casting feat": (test) ->

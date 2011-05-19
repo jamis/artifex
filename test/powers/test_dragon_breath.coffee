@@ -26,12 +26,12 @@ module.exports =
     test.equal power.attack(), "dex+4 (+8) vs. Reflex"
     test.done()
 
-  "damage should be dependent on npc level and CON": (test) ->
+  "hit should be dependent on npc level and CON": (test) ->
     npc = new NPC
     power = new Powers.DragonBreath(npc, "poison")
-    test.equal power.damage(), "1d6"
+    test.equal power.hit(), "1d6"
     npc.level = 11
-    test.equal power.damage(), "2d6"
+    test.equal power.hit(), "2d6"
     npc.abilities.con.baseValue = 18
-    test.equal power.damage(), "2d6+4"
+    test.equal power.hit(), "2d6+4"
     test.done()
