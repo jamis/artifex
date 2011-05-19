@@ -13,6 +13,18 @@ checkRitual = (test, level, name, skills, category, source) ->
   test.equal ritual.source, source, "expected ritual source to be `#{source}', was `#{ritual.source}'"
   
 module.exports =
+  "#each should iterate over each ritual of the given level": (test) ->
+    test.expect 8
+    Rituals.each 1, (name, data) ->
+      test.ok true if data.source is "phb"
+    test.done()
+
+  "#all should return the names of all rituals of the given level": (test) ->
+    levelOne = Rituals.all(1)
+    test.equal levelOne.length, 8
+    test.ok "Gentle Repose" in levelOne
+    test.done()
+      
   "Animal Messenger should be present": (test) ->
     checkRitual test, 1, "Animal Messenger", ["nature"], "exploration", "phb"
     test.done()

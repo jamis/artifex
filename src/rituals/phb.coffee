@@ -40,3 +40,13 @@ module.exports =
       keySkills: [ "arcana" ]
       category : "exploration"
       source   : "phb"
+
+  each: (level, callback) ->
+    if this[level]?
+      for key, value of this[level]
+        callback key, value
+
+  all: (level) ->
+    list = []
+    @each level, (name, data) -> list.push name
+    list
