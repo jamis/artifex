@@ -1,3 +1,5 @@
+Generic = require '../powers/generic'
+
 module.exports = class Cleric
   constructor: (npc) ->
     @name = "cleric"
@@ -32,6 +34,19 @@ module.exports = class Cleric
     npc.feature "class", "Healer's Lore", "add WIS modifier to `heal' powers"
     npc.feature "class", "Healing Word"
     npc.feature "class", "Ritual Casting"
+
+    healingWord = new Generic (p) ->
+      p.name = "Healing Word"
+      p.range = ->
+        size = if npc.level < 11 then 5 else if npc.level < 21 then 10 else 15
+        "Close burst #{size}"
+      p.frequency = -> if npc.level < 16 then 2 else 3
+      p.effect = -> "+#{Math.ceil(npc.level/5)}d6"
+
+    npc.powers.encounter.push healingWord
+    npc.feats.push "Ritual Casting"
+
+    # TODO: add "Gentle Repose" ritual and one other 1st level ritual
 
 Cleric.source = "phb"
 Cleric.powerSource = "divine"

@@ -102,3 +102,52 @@ module.exports =
     test.ok npc.hasFeature("class", "Healing Word"), "missing Healing Word feature"
     test.ok npc.hasFeature("class", "Ritual Casting"), "missing Ritual Casting feature"
     test.done()
+
+  "should have Healing Word encounter power": (test) ->
+    npc = new NPC
+    test.equal npc.powers.encounter.length, 0
+    cleric = new Classes.Cleric npc
+    test.equal npc.powers.encounter.length, 1
+    test.equal npc.powers.encounter[0].name, "Healing Word"
+    test.done()
+
+  "Healing Word frequency should depend on NPC level": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    power = npc.powers.encounter[0]
+    test.equal power.frequency(), 2
+    npc.level = 15
+    test.equal power.frequency(), 2
+    npc.level = 16
+    test.equal power.frequency(), 3
+    test.done()
+
+  "Healing Word effect should depend on NPC level": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    power = npc.powers.encounter[0]
+    test.equal power.effect(), "+1d6"
+    npc.level = 6
+    test.equal power.effect(), "+2d6"
+    npc.level = 11
+    test.equal power.effect(), "+3d6"
+    npc.level = 16
+    test.equal power.effect(), "+4d6"
+    npc.level = 21
+    test.equal power.effect(), "+5d6"
+    npc.level = 26
+    test.equal power.effect(), "+6d6"
+    test.done()
+
+  "Healing Word range should depend on NPC level": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    power = npc.powers.encounter[0]
+    test.equal power.range(), "Close burst 5"
+    npc.level = 11
+    test.equal power.range(), "Close burst 10"
+    npc.level = 21
+    test.equal power.range(), "Close burst 15"
+    test.done()
+
+  "should have Ritual Casting feat": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.ok "Ritual Casting" in npc.feats, "missing Ritual Casting feat"
+    test.done()

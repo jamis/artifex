@@ -11,6 +11,7 @@ module.exports = class NPC
     @descriptors = []
     @languages = []
     @implements = []
+    @feats = []
 
     @initializeAbilities()
     @initializeSkills()

@@ -58,6 +58,12 @@ module.exports =
     test.equal npc.defenses.will.score(), 10
     test.done()
 
+  "should initialize feat collection": (test) ->
+    npc = new NPC
+    test.ok npc.feats?
+    test.equal npc.feats.length, 0
+    test.done()
+
   "defenses should depend on level": (test) ->
     npc = new NPC
     npc.level = 2
