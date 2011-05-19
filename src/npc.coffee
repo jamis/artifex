@@ -13,6 +13,7 @@ module.exports = class NPC
     @implements = []
     @feats = []
     @rituals = {}
+    @alignment = "unaligned"
 
     @initializeAbilities()
     @initializeSkills()

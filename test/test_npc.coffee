@@ -69,6 +69,11 @@ module.exports =
     test.ok npc.rituals?
     test.done()
 
+  "should initialize alignment": (test) ->
+    npc = new NPC
+    test.equal npc.alignment, "unaligned"
+    test.done()
+
   "defenses should depend on level": (test) ->
     npc = new NPC
     npc.level = 2
