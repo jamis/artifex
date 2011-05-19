@@ -96,6 +96,14 @@ module.exports =
     test.equal npc.defenses.fort.score(), 13
     test.done()
 
+  "reflex should depend on greater of dex or int": (test) ->
+    npc = new NPC
+    npc.abilities.dex.baseValue = 14
+    test.equal npc.defenses.ref.score(), 12
+    npc.abilities.int.baseValue = 16
+    test.equal npc.defenses.ref.score(), 13
+    test.done()
+
   "#feature should add item to the appropriate collection": (test) ->
     npc = new NPC
     npc.feature "racial", "Dragonborn fury", "+1 to attack when bloodied"
