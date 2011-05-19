@@ -18,4 +18,4 @@ task 'build', 'Compile CoffeeScript source files', ->
 task 'test', 'Run the test suite', ->
   build ->
     {reporters} = require 'nodeunit'
-    reporters.default.run ['test', 'test/classes', 'test/powers', 'test/races']
+    reporters.default.run ['test', 'test/classes', 'test/powers', 'test/races', 'test/rituals']

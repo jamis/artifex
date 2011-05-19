@@ -6,4 +6,5 @@ module.exports =
   Powers   : require './powers'
   Races    : require './races'
   Random   : require './random'
+  Rituals  : require './rituals'
   Skill    : require './skill'
