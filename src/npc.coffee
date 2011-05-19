@@ -12,6 +12,7 @@ module.exports = class NPC
     @languages = []
     @implements = []
     @feats = []
+    @rituals = {}
 
     @initializeAbilities()
     @initializeSkills()
@@ -29,6 +30,10 @@ module.exports = class NPC
     for feature in @features[collection]
       return true if feature[0] is name
     false
+
+  learnRitual: (level, name) ->
+    @rituals[level] ||= []
+    @rituals[level].push name
 
   initializeAbilities: ->
     @abilities =

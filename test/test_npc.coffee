@@ -64,6 +64,11 @@ module.exports =
     test.equal npc.feats.length, 0
     test.done()
 
+  "should initialize ritual collection": (test) ->
+    npc = new NPC
+    test.ok npc.rituals?
+    test.done()
+
   "defenses should depend on level": (test) ->
     npc = new NPC
     npc.level = 2
@@ -144,4 +149,10 @@ module.exports =
     test.equal npc.healingSurge.count.score(), 0
     npc.abilities.con.adjust 4
     test.equal npc.healingSurge.count.score(), 2
+    test.done()
+
+  "#learnRitual should add the given ritual to the given level": (test) ->
+    npc = new NPC
+    npc.learnRitual 1, "Animal Messenger"
+    test.deepEqual npc.rituals[1], [ "Animal Messenger" ]
     test.done()

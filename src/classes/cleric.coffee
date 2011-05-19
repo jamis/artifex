@@ -46,7 +46,8 @@ module.exports = class Cleric
     npc.powers.encounter.push healingWord
     npc.feats.push "Ritual Casting"
 
-    # TODO: add "Gentle Repose" ritual and one other 1st level ritual
+    npc.learnRitual 1, "Gentle Repose"
+    # TODO: add one other 1st level ritual
 
 Cleric.source = "phb"
 Cleric.powerSource = "divine"

@@ -151,3 +151,9 @@ module.exports =
     new Classes.Cleric(npc = new NPC)
     test.ok "Ritual Casting" in npc.feats, "missing Ritual Casting feat"
     test.done()
+
+  "should have Gentle Repose ritual": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.ok npc.rituals[1]?
+    test.ok "Gentle Repose" in npc.rituals[1]
+    test.done()
