@@ -72,6 +72,22 @@ module.exports =
     test.equal npc.defenses.will.score(), 13
     test.done()
 
+  "ac should depend on dexterity when no armor is worn": (test) ->
+    npc = new NPC
+    npc.abilities.dex.baseValue = 14
+    test.equal npc.defenses.ac.score(), 12
+    test.done()
+
+  "ac should depend on dexterity when light armor is worn": (test) ->
+    # FIXME FIXME FIXME
+    console.log "IMPLEMENT ME PLEASE"
+    test.done()
+
+  "ac should not depend on dexterity when heavy armor is worn": (test) ->
+    # FIXME FIXME FIXME
+    console.log "IMPLEMENT ME PLEASE"
+    test.done()
+
   "#feature should add item to the appropriate collection": (test) ->
     npc = new NPC
     npc.feature "racial", "Dragonborn fury", "+1 to attack when bloodied"
