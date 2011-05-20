@@ -2,6 +2,7 @@ module.exports =
   Ability  : require './ability'
   Attribute: require './attribute'
   Classes  : require './classes'
+  Deities  : require './deities'
   NPC      : require './npc'
   Powers   : require './powers'
   Races    : require './races'

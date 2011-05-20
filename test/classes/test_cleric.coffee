@@ -1,4 +1,4 @@
-{Classes, NPC} = require '../..'
+{Classes, Deities, NPC} = require '../..'
 
 hasClassFeature = (npc, name) ->
   for feature in npc.features.class
@@ -127,4 +127,32 @@ module.exports =
     test.ok npc.rituals[1]?
     test.ok "Gentle Repose" in npc.rituals[1]
     test.equal npc.rituals[1].length, 2
+    test.done()
+
+  "test unaligned clerics may choose a deity at random from the entire list": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.ok npc.deity?
+    test.done()
+
+  "test clerics of other alignments must have a compatible deity": (test) ->
+    for n in [1..10]
+      npc = new NPC
+      npc.alignment = "lawful good"
+      new Classes.Cleric npc
+      test.ok npc.deity in Deities["lawful good"] or npc.deity in Deities["unaligned"]
+
+      npc = new NPC
+      npc.alignment = "good"
+      new Classes.Cleric npc
+      test.ok npc.deity in Deities["good"] or npc.deity in Deities["unaligned"]
+
+      npc = new NPC
+      npc.alignment = "evil"
+      new Classes.Cleric npc
+      test.ok npc.deity in Deities["evil"] or npc.deity in Deities["unaligned"]
+
+      npc = new NPC
+      npc.alignment = "chaotic evil"
+      new Classes.Cleric npc
+      test.ok npc.deity in Deities["chaotic evil"] or npc.deity in Deities["unaligned"]
     test.done()

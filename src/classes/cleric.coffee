@@ -1,3 +1,4 @@
+Deities = require '../deities'
 Powers  = require '../powers'
 Rituals = require '../rituals'
 
@@ -54,6 +55,14 @@ module.exports = class Cleric
       unless ritual in npc.rituals[1]
         npc.learnRitual 1, ritual
         break
+
+    if npc.alignment == "unaligned"
+      alignment = npc.random.pick "lawful good", "good", "unaligned", "evil", "chaotic evil"
+      collection = Deities[alignment]
+    else
+      collection = Deities[npc.alignment].concat(Deities["unaligned"])
+
+    npc.deity = npc.random.pick collection...
 
 Cleric.source = "phb"
 Cleric.powerSource = "divine"
