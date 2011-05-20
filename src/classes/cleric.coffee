@@ -6,6 +6,7 @@ module.exports = class Cleric
   constructor: (npc) ->
     @name = "cleric"
     @powerSource = Cleric.powerSource
+    @powerName = "prayer"
     @keyAttributes = [ "wis", "str", "cha" ]
 
     npc.proficiencies.armor.push "cloth"

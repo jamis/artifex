@@ -156,3 +156,8 @@ module.exports =
       new Classes.Cleric npc
       test.ok npc.deity in Deities["chaotic evil"] or npc.deity in Deities["unaligned"]
     test.done()
+
+  "test cleric powers are called prayers": (test) ->
+    cleric = new Classes.Cleric(new NPC)
+    test.equal cleric.powerName, "prayer"
+    test.done()
