@@ -5,7 +5,7 @@ powerGetter = (key, initializers...) ->
   if typeof Powers[key] is "function"
     new Powers[key](initializers...)
   else
-    new Generic Powers[key], initializers...
+    new Generic Powers[key], { id: key }, initializers...
 
 module.exports = Powers =
   get: powerGetter

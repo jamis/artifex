@@ -65,12 +65,15 @@ module.exports = class Cleric
 
     npc.deity = npc.random.pick collection...
 
+    for power in npc.random.shuffle(Cleric.powers.atWill[1]...).slice(0, 2)
+      power = Powers.get power, npc: npc
+      npc.powers.atWill.push power
+
 Cleric.source = "phb"
 Cleric.powerSource = "divine"
 Cleric.skills = [ "arcana", "diplomacy", "heal", "history", "insight", "religion" ]
 
 Cleric.powers =
   atWill:
-    1: [ Powers["LanceOfFaith"], Powers["PriestsShield"], Powers["RighteousBrand"],
-         Powers["SacredFlame"] ]
+    1: [ "LanceOfFaith", "PriestsShield", "RighteousBrand", "SacredFlame" ]
 

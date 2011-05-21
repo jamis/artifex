@@ -129,12 +129,12 @@ module.exports =
     test.equal npc.rituals[1].length, 2
     test.done()
 
-  "test unaligned clerics may choose a deity at random from the entire list": (test) ->
+  "unaligned clerics may choose a deity at random from the entire list": (test) ->
     new Classes.Cleric(npc = new NPC)
     test.ok npc.deity?
     test.done()
 
-  "test clerics of other alignments must have a compatible deity": (test) ->
+  "clerics of other alignments must have a compatible deity": (test) ->
     for n in [1..10]
       npc = new NPC
       npc.alignment = "lawful good"
@@ -157,14 +157,21 @@ module.exports =
       test.ok npc.deity in Deities["chaotic evil"] or npc.deity in Deities["unaligned"]
     test.done()
 
-  "test cleric powers are called prayers": (test) ->
+  "cleric powers are called prayers": (test) ->
     cleric = new Classes.Cleric(new NPC)
     test.equal cleric.powerName, "prayer"
     test.done()
 
-  "test level-1 at-will prayers are accounted for": (test) ->
+  "level-1 at-will prayers are accounted for": (test) ->
     for power in [ "LanceOfFaith", "PriestsShield", "RighteousBrand", "SacredFlame" ]
       test.ok Powers[power], "`#{power}' is not defined"
       if Powers[power]
-        test.ok Powers[power] in Classes.Cleric.powers.atWill[1]
+        test.ok power in Classes.Cleric.powers.atWill[1]
+    test.done()
+
+  "should have two L1 atWill powers": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.expect 2
+    for power in npc.powers.atWill
+      test.ok power.id in Classes.Cleric.powers.atWill[1]
     test.done()
