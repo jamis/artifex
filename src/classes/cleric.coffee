@@ -69,6 +69,12 @@ module.exports = class Cleric
       power = Powers.get power, npc: npc
       npc.powers.atWill.push power
 
+    power = npc.random.shuffle(Cleric.powers.encounter[1]...)[0]
+    npc.powers.encounter.push(Powers.get power, npc: npc)
+
+    power = npc.random.shuffle(Cleric.powers.daily[1]...)[0]
+    npc.powers.daily.push(Powers.get power, npc: npc)
+
 Cleric.source = "phb"
 Cleric.powerSource = "divine"
 Cleric.skills = [ "arcana", "diplomacy", "heal", "history", "insight", "religion" ]
@@ -77,3 +83,8 @@ Cleric.powers =
   atWill:
     1: [ "LanceOfFaith", "PriestsShield", "RighteousBrand", "SacredFlame" ]
 
+  encounter:
+    1: [ "CauseFear", "DivineGlow", "HealingStrike", "WrathfulThunder" ]
+
+  daily:
+    1: [ "AvengingFlame", "BeaconOfHope", "CascadeOfLight", "GuardianOfFaith" ]

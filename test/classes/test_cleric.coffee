@@ -162,11 +162,21 @@ module.exports =
     test.equal cleric.powerName, "prayer"
     test.done()
 
-  "level-1 at-will prayers are accounted for": (test) ->
+  "level-1 prayers are accounted for": (test) ->
     for power in [ "LanceOfFaith", "PriestsShield", "RighteousBrand", "SacredFlame" ]
       test.ok Powers[power], "`#{power}' is not defined"
       if Powers[power]
         test.ok power in Classes.Cleric.powers.atWill[1]
+
+    for power in [ "CauseFear", "DivineGlow", "HealingStrike", "WrathfulThunder" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Cleric.powers.encounter[1]
+
+    for power in [ "AvengingFlame", "BeaconOfHope", "CascadeOfLight", "GuardianOfFaith" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Cleric.powers.daily[1]
     test.done()
 
   "should have two L1 atWill powers": (test) ->
@@ -174,4 +184,18 @@ module.exports =
     test.expect 2
     for power in npc.powers.atWill
       test.ok power.id in Classes.Cleric.powers.atWill[1]
+    test.done()
+
+  "should have one L1 encounter power": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.expect 1
+    for power in npc.powers.encounter
+      test.ok true if power.id in Classes.Cleric.powers.encounter[1]
+    test.done()
+
+  "should have one L1 daily power": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.expect 1
+    for power in npc.powers.daily
+      test.ok true if power.id in Classes.Cleric.powers.daily[1]
     test.done()
