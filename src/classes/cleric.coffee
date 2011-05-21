@@ -39,9 +39,9 @@ module.exports = class Cleric
     npc.feature "class", "Healing Word"
     npc.feature "class", "Ritual Casting"
 
-    divineFortune = new Powers.Generic (p) -> p.name = "Channel Divinity: Divine Fortune"
-    turnUndead    = new Powers.TurnUndead npc
-    healingWord   = new Powers.HealingWord npc
+    divineFortune = new Powers.get "DivineFortune", npc: npc
+    turnUndead    = new Powers.get "TurnUndead", npc: npc
+    healingWord   = new Powers.get "HealingWord", npc: npc
 
     npc.powers.encounter.push divineFortune
     npc.powers.encounter.push turnUndead
@@ -68,3 +68,9 @@ module.exports = class Cleric
 Cleric.source = "phb"
 Cleric.powerSource = "divine"
 Cleric.skills = [ "arcana", "diplomacy", "heal", "history", "insight", "religion" ]
+
+Cleric.powers =
+  atWill:
+    1: [ Powers["LanceOfFaith"], Powers["PriestsShield"], Powers["RighteousBrand"],
+         Powers["SacredFlame"] ]
+

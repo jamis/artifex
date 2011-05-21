@@ -1,4 +1,4 @@
-{Classes, Deities, NPC} = require '../..'
+{Classes, Deities, NPC, Powers} = require '../..'
 
 hasClassFeature = (npc, name) ->
   for feature in npc.features.class
@@ -160,4 +160,11 @@ module.exports =
   "test cleric powers are called prayers": (test) ->
     cleric = new Classes.Cleric(new NPC)
     test.equal cleric.powerName, "prayer"
+    test.done()
+
+  "test level-1 at-will prayers are accounted for": (test) ->
+    for power in [ "LanceOfFaith", "PriestsShield", "RighteousBrand", "SacredFlame" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok Powers[power] in Classes.Cleric.powers.atWill[1]
     test.done()
