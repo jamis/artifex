@@ -54,11 +54,11 @@ module.exports = Powers =
   HealingStrike:
     name        : "Healing Strike"
     attack      : "{str} vs. AC"
-    damage      : "2[W]{+str} (special)"
+    hit         : "2[W]{+str} (special)"
   WrathfulThunder:
     name        : "Wrathful Thunder"
     attack      : "{str} vs. AC"
-    damage      : "1[W]{+str} (special)"
+    hit         : "1[W]{+str} (special)"
 
   AvengingFlame:
     name        : "Avenging Flame"
@@ -75,4 +75,4 @@ module.exports = Powers =
   GuardianOfFaith:
     name        : "Guardian of Faith"
     attack      : "{wis} vs. Fort (special)"
-    hit         : "1d8{+wis} (special)"
+    hit         : "1d8{+wis}"
