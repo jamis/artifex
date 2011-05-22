@@ -64,6 +64,11 @@ module.exports =
     test.equal npc.feats.length, 0
     test.done()
 
+  "should initialize pendingFeats": (test) ->
+    npc = new NPC
+    test.deepEqual npc.pendingFeats, [count: 1]
+    test.done()
+
   "should initialize ritual collection": (test) ->
     npc = new NPC
     test.ok npc.rituals?
@@ -72,6 +77,11 @@ module.exports =
   "should initialize alignment": (test) ->
     npc = new NPC
     test.equal npc.alignment, "unaligned"
+    test.done()
+
+  "should initialize pendingSkills": (test) ->
+    npc = new NPC
+    test.deepEqual npc.pendingSkills, []
     test.done()
 
   "defenses should depend on level": (test) ->
@@ -160,4 +170,10 @@ module.exports =
     npc = new NPC
     npc.learnRitual 1, "Animal Messenger"
     test.deepEqual npc.rituals[1], [ "Animal Messenger" ]
+    test.done()
+
+  "#generate on level 1 npc should assign race": (test) ->
+    npc = new NPC
+    npc.generate()
+    test.ok npc.race?, "expected race to be set"
     test.done()

@@ -85,13 +85,10 @@ module.exports =
     test.ok "religion" in Classes.Cleric.skills
     test.done()
 
-  "should include four trained class skills": (test) ->
-    npc = new NPC
-    cleric = new Classes.Cleric npc
-    count = 0
-    for skill in Classes.Cleric.skills
-      count += 1 if npc.skills[skill].trained
-    test.equal count, 4
+  "should add 3 pending skills": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.equal npc.pendingSkills[0].count, 3
+    test.deepEqual npc.pendingSkills[0].list, Classes.Cleric.skills
     test.done()
 
   "should add class features": (test) ->

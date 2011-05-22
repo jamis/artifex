@@ -25,14 +25,7 @@ module.exports = class Cleric
     npc.healingSurge.count.adjust "class", 7
 
     npc.skills.religion.trained = true
-
-    # TODO: smarter selection of skills
-    count = 0
-    for skill in npc.random.shuffle(Cleric.skills...)
-      unless npc.skills[skill].trained
-        npc.skills[skill].trained = true
-        count += 1
-        break if count >= 3
+    npc.pendingSkills.push count: 3, list: Cleric.skills
 
     npc.feature "class", "Channel Divinity"
     npc.feature "class", "Healer's Lore", "add WIS modifier to `heal' powers"
