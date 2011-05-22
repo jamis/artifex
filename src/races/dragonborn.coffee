@@ -13,7 +13,7 @@ module.exports = class Dragonborn
     npc.skills.intimidate.adjust "racial", 2
 
     npc.size = "medium"
-    npc.speed.base = 6
+    npc.speed.baseValue = 6
 
     @descriptor = npc.random.pick "acid", "cold", "fire", "lightning", "poison"
     npc.descriptors.push @descriptor

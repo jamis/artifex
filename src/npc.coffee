@@ -1,8 +1,9 @@
 Attribute = require './attribute'
 Ability   = require './ability'
+Classes   = require './classes'
+Races     = require './races'
 Random    = require './random'
 Skill     = require './skill'
-Races     = require './races'
 
 module.exports = class NPC
   constructor: ->
@@ -40,8 +41,15 @@ module.exports = class NPC
     @rituals[level].push name
 
   generate: ->
-    race = @random.shuffle(Races.All...)[0]
-    @race = new race(this)
+    @alignment = @random.pick "lawful good", "good", "unaligned", "evil", "chaotic evil"
+
+    race = @random.pick Races.All...
+    @race = new race this
+
+    klass = @random.pick Classes.All...
+    @class = new klass this
+
+    this
 
   initializeAbilities: ->
     @abilities =

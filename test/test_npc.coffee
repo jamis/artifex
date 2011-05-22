@@ -172,8 +172,27 @@ module.exports =
     test.deepEqual npc.rituals[1], [ "Animal Messenger" ]
     test.done()
 
+  "#generate should return the npc": (test) ->
+    npc = new NPC
+    test.equal npc.generate(), npc
+    test.done()
+
   "#generate on level 1 npc should assign race": (test) ->
     npc = new NPC
     npc.generate()
     test.ok npc.race?, "expected race to be set"
+    test.done()
+
+  "#generate on level 1 npc should select alignment": (test) ->
+    npc = new NPC
+    npc.alignment = undefined
+    npc.generate()
+    test.ok npc.alignment?, "expected alignment to be set"
+    test.done()
+
+  "#generate on level 1 npc should assign class": (test) ->
+    npc = new NPC
+    npc.generate()
+    console.log(npc)
+    test.ok npc.class?, "expected class to be set"
     test.done()

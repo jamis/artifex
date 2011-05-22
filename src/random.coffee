@@ -16,6 +16,8 @@ module.exports = class Random
     low + @number(hi - low)
 
   shuffle: (list...) ->
+    return list unless list.length > 1
+
     for i in [list.length-1..1]
       j = @number(i+1)
       [list[i], list[j]] = [list[j], list[i]]

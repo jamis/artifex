@@ -39,7 +39,7 @@ module.exports =
   "should set base speed": (test) ->
     npc = new NPC
     dborn = new Races.Dragonborn(npc)
-    test.equal npc.speed.base, 6
+    test.equal npc.speed.baseValue, 6
     test.done()
 
   "should choose a descriptor": (test) ->
