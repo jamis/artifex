@@ -22,3 +22,5 @@ module.exports = class Random
       j = @number(i+1)
       [list[i], list[j]] = [list[j], list[i]]
     list
+
+  d: (n) -> @number(n) + 1

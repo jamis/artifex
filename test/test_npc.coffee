@@ -177,6 +177,10 @@ module.exports =
     test.equal npc.generate(), npc
     test.done()
 
+  "#generate on level 1 npc should select gender": (test) ->
+    test.ok (new NPC).generate().gender in ["male", "female"]
+    test.done()
+
   "#generate on level 1 npc should assign race": (test) ->
     npc = new NPC
     npc.generate()
@@ -193,6 +197,16 @@ module.exports =
   "#generate on level 1 npc should assign class": (test) ->
     npc = new NPC
     npc.generate()
-    console.log(npc)
     test.ok npc.class?, "expected class to be set"
+    test.done()
+
+  "#generate on level 1 npc should determine ability scores": (test) ->
+    npc = new NPC
+    for ability in [ "str", "con", "dex", "int", "wis", "cha" ]
+      npc.abilities[ability].baseValue = 0
+
+    npc.generate()
+    for ability in [ "str", "con", "dex", "int", "wis", "cha" ]
+      test.ok npc.abilities[ability].baseValue > 0
+
     test.done()

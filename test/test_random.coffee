@@ -42,3 +42,9 @@ module.exports =
       changed += 1 if shuffled[x] isnt list[x]
     test.ok changed > 0
     test.done()
+
+  "#d should return a value from 1..n": (test) ->
+    random = new Random
+    for i in [1..20]
+      test.ok 1 <= random.d(10) <= 10
+    test.done()

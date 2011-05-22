@@ -41,6 +41,7 @@ module.exports = class NPC
     @rituals[level].push name
 
   generate: ->
+    @gender = @random.pick "male", "female"
     @alignment = @random.pick "lawful good", "good", "unaligned", "evil", "chaotic evil"
 
     race = @random.pick Races.All...
@@ -48,6 +49,8 @@ module.exports = class NPC
 
     klass = @random.pick Classes.All...
     @class = new klass this
+
+    @generateAbilityScores()
 
     this
 
@@ -138,3 +141,23 @@ module.exports = class NPC
     @defenses.fort.adjust halfLevel
     @defenses.ref.adjust halfLevel
     @defenses.will.adjust halfLevel
+
+  generateAbilityScores: ->
+    reverseSort = (a, b) -> if a < b then 1 else if a > b then -1 else 0
+
+    best3of4 = =>
+      result = 0
+      for die in (@random.d(6) for i in [1..4]).sort(reverseSort).slice(0, 3)
+        result += die
+      result
+
+    scores = (best3of4() for i in [1..6]).sort(reverseSort)
+    nonKeyAttributes = []
+    for ability in ["str", "con", "dex", "int", "wis", "cha"]
+      unless ability in @class.keyAttributes
+        nonKeyAttributes.push ability
+    nonKeyAttributes = @random.shuffle(nonKeyAttributes...)
+    attributes = @class.keyAttributes.concat(nonKeyAttributes)
+
+    for index in [0..5]
+      @abilities[attributes[index]].baseValue = scores[index]
