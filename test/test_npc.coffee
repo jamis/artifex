@@ -182,8 +182,7 @@ module.exports =
     test.done()
 
   "#generate on level 1 npc should assign race": (test) ->
-    npc = new NPC
-    npc.generate()
+    npc = (new NPC).generate()
     test.ok npc.race?, "expected race to be set"
     test.done()
 
@@ -195,8 +194,7 @@ module.exports =
     test.done()
 
   "#generate on level 1 npc should assign class": (test) ->
-    npc = new NPC
-    npc.generate()
+    npc = (new NPC).generate()
     test.ok npc.class?, "expected class to be set"
     test.done()
 
@@ -208,5 +206,16 @@ module.exports =
     npc.generate()
     for ability in [ "str", "con", "dex", "int", "wis", "cha" ]
       test.ok npc.abilities[ability].baseValue > 0
+
+    test.done()
+
+  "#generate should assign pending skills": (test) ->
+    npc = (new NPC).generate()
+    test.equal npc.pendingSkills.length, 0
+
+    count = 0
+    for name, skill of npc.skills
+      count += 1 if skill.trained
+    test.ok count >= 3, "expected at least 3 trained skills"
 
     test.done()

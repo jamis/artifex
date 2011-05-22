@@ -51,6 +51,7 @@ module.exports = class NPC
     @class = new klass this
 
     @generateAbilityScores()
+    @selectTrainedSkills()
 
     this
 
@@ -161,3 +162,22 @@ module.exports = class NPC
 
     for index in [0..5]
       @abilities[attributes[index]].baseValue = scores[index]
+
+  selectTrainedSkills: ->
+    skills = name for name, skill in @skills
+
+    for request in @pendingSkills
+      list = request.list || skills
+      
+      # select only untrained skills
+      untrained = []
+      for skill in list
+        untrained.push(skill) unless @skills[skill].trained
+
+      untrained = @random.shuffle(untrained...)
+      for n in [1..request.count]
+        skill = untrained.pop()
+        break unless skill?
+        @skills[skill].trained = true
+
+    @pendingSkills = []
