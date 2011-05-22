@@ -62,10 +62,10 @@ module.exports = class Cleric
       power = Powers.get power, npc: npc
       npc.powers.atWill.push power
 
-    power = npc.random.shuffle(Cleric.powers.encounter[1]...)[0]
+    power = npc.random.pick(Cleric.powers.encounter[1]...)
     npc.powers.encounter.push(Powers.get power, npc: npc)
 
-    power = npc.random.shuffle(Cleric.powers.daily[1]...)[0]
+    power = npc.random.pick(Cleric.powers.daily[1]...)
     npc.powers.daily.push(Powers.get power, npc: npc)
 
 Cleric.source = "phb"
