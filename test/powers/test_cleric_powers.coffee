@@ -18,6 +18,9 @@ verifyProperty = (id, property, tests...) ->
     test.done()
 
 module.exports =
+  "[ArmorOfBahamut] name should be set":
+    verifyProperty "ArmorOfBahamut", "name", expect: "Channel Divinity: Armor of Bahamut"
+
   "[HealingWord] should have correct name":
     verifyProperty "HealingWord", "name", expect: "Healing Word"
     

@@ -25,6 +25,8 @@ module.exports = Powers =
     range       : "Close burst {=level<11:2,21:5,*:8}"
     attack      : "{wis} vs. Will"
     hit         : "{=level<5:1,11:2,15:3,21:4,25:5,*:6}d10{+wis}, push 3{+cha} (special)"
+  ArmorOfBahamut:
+    name        : "Channel Divinity: Armor of Bahamut"
 
   LanceOfFaith:
     name        : "Lance of Faith"

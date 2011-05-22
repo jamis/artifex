@@ -219,3 +219,9 @@ module.exports =
     test.ok count >= 3, "expected at least 3 trained skills"
 
     test.done()
+
+#  "#generate should assign pending feats": (test) ->
+#    npc = (new NPC).generate()
+#    test.equal npc.pendingFeats.length, 0
+#    test.ok npc.feats.length > 0
+#    test.done()
