@@ -57,6 +57,9 @@ class Feat
           when "proficiencies"
             for category, item of value
               npc.proficiencies[category].push item
+          when "property"
+            for name, value of value
+              npc[name] = value
           else throw new Error "unsupported attribute: `#{attribute}'"
 
 module.exports = Feats =
@@ -151,3 +154,25 @@ module.exports = Feats =
     grants:
       proficiencies:
         armor: "scale"
+
+  AstralFire: new Feat(name: "Astral Fire", requires: { dex: 13, cha: 13 })
+
+  AvandrasRescue: new Feat
+    name: "Avandra's Rescue"
+    requires:
+      deity: "avandra"
+      feature: { class: [ "Channel Divinity" ] }
+    grants:
+      power:
+        encounter: [ "AvandrasRescue" ]
+
+  Backstabber: new Feat
+    name: "Backstabber"
+    requires:
+      class: "rogue"
+      feature: { class: [ "Sneak Attack" ] }
+    grants:
+      property:
+        sneakAttackDamageDie: 8
+
+  BladeOpportunist: new Feat(name: "Blade Opportunist", requires: { str: 13, dex: 13 })

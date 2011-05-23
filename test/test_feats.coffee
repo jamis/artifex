@@ -54,6 +54,9 @@ featDefined = (id, expectations) ->
                 for category, list of adjustment
                   for item in list
                     test.ok item in npc.proficiencies[category], "should have #{category} proficiency with `#{item}'"
+              when "property"
+                for name, value of adjustment
+                  test.equal npc[name], value
               else throw new Error "unsupported grant: `#{grant}'"
     test.done()
             
@@ -94,7 +97,7 @@ module.exports =
 
   "[ChainmailProficiency] should be defined":
     featDefined "ChainmailProficiency",
-      name: "Armor Proficiency (Chainmail)",
+      name: "Armor Proficiency (Chainmail)"
       allows: [
         { str: 13, con: 13, proficiencies: { armor: [ "leather" ] } },
         { str: 13, con: 13, proficiencies: { armor: [ "hide" ] } } ]
@@ -109,7 +112,7 @@ module.exports =
 
   "[HideProficiency] should be defined":
     featDefined "HideProficiency",
-      name: "Armor Proficiency (Hide)",
+      name: "Armor Proficiency (Hide)"
       allows: [ { str: 13, con: 13, proficiencies: { armor: [ "leather" ] } } ]
       disallows: [
         { str: 12, con: 13, proficiencies: { armor: [ "leather" ] } },
@@ -121,7 +124,7 @@ module.exports =
 
   "[LeatherProficiency] should be defined":
     featDefined "LeatherProficiency",
-      name: "Armor Proficiency (Leather)",
+      name: "Armor Proficiency (Leather)"
       disallows: [ { proficiencies: { armor: [ "leather" ] } } ]
       grants:
         proficiencies:
@@ -129,7 +132,7 @@ module.exports =
 
   "[PlateProficiency] should be defined":
     featDefined "PlateProficiency",
-      name: "Armor Proficiency (Plate)",
+      name: "Armor Proficiency (Plate)"
       allows: [ { str: 15, con: 15, proficiencies: { armor: [ "scale" ] } } ]
       disallows: [
         { str: 14, con: 15, proficiencies: { armor: [ "scale" ] } },
@@ -142,7 +145,7 @@ module.exports =
 
   "[ScaleProficiency] should be defined":
     featDefined "ScaleProficiency",
-      name: "Armor Proficiency (Scale)",
+      name: "Armor Proficiency (Scale)"
       allows: [ { str: 13, con: 13, proficiencies: { armor: [ "chainmail" ] } } ]
       disallows: [
         { str: 12, con: 13, proficiencies: { armor: [ "chainmail" ] } },
@@ -152,3 +155,35 @@ module.exports =
         proficiencies:
           armor: [ "scale" ]
 
+  "[AstralFire] should be defined":
+    featDefined "AstralFire",
+      name: "Astral Fire"
+      allows: [ { dex: 13, cha: 13 } ]
+      disallows: [ { dex: 12, cha: 13 }, { dex: 13, cha: 12 } ]
+
+  "[AvandrasRescue] should be defined":
+    featDefined "AvandrasRescue",
+      name: "Avandra's Rescue"
+      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "avandra" } ]
+      disallows: [
+        { feature: { class: ["Channel Divinity"] }, deity: "pelor" },
+        { feature: { class: ["Hunter's Quarry"] }, deity: "avandra" } ]
+      grants:
+        power:
+          encounter: [ "Channel Divinity: Avandra's Rescue" ]
+
+  "[Backstabber] should be defined":
+    featDefined "Backstabber",
+      name: "Backstabber"
+      allows: [ { class: "rogue", feature: { class: ["Sneak Attack"] } } ]
+      disallows: [
+        { class: "wizard", feature: { class: ["Sneak Attack"] } },
+        { class: "rogue" } ]
+      grants:
+        property: { sneakAttackDamageDie: 8 }
+
+  "[BladeOpportunist] should be defined":
+    featDefined "BladeOpportunist",
+      name: "Blade Opportunist"
+      allows: [ { str: 13, dex: 13 } ]
+      disallows: [ { str: 12, dex: 13 }, { str: 13, dex: 12 } ]

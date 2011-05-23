@@ -21,6 +21,9 @@ module.exports =
   "[ArmorOfBahamut] name should be set":
     verifyProperty "ArmorOfBahamut", "name", expect: "Channel Divinity: Armor of Bahamut"
 
+  "[AvandrasRescue] name should be set":
+    verifyProperty "AvandrasRescue", "name", expect: "Channel Divinity: Avandra's Rescue"
+
   "[HealingWord] should have correct name":
     verifyProperty "HealingWord", "name", expect: "Healing Word"
     

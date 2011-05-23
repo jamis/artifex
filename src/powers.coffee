@@ -27,6 +27,8 @@ module.exports = Powers =
     hit         : "{=level<5:1,11:2,15:3,21:4,25:5,*:6}d10{+wis}, push 3{+cha} (special)"
   ArmorOfBahamut:
     name        : "Channel Divinity: Armor of Bahamut"
+  AvandrasRescue:
+    name        : "Channel Divinity: Avandra's Rescue"
 
   LanceOfFaith:
     name        : "Lance of Faith"
