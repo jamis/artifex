@@ -43,7 +43,7 @@ module.exports =
   "should add holy symbol as an implement": (test) ->
     npc = new NPC
     cleric = new Classes.Cleric npc
-    test.ok "holy symbol" in npc.implements
+    test.ok "holy symbol" in npc.supportedImplements
     test.done()
 
   "should have +2 bonus to will": (test) ->

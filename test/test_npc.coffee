@@ -44,9 +44,9 @@ module.exports =
     test.deepEqual npc.proficiencies.weapons, []
     test.done()
 
-  "should initialize implements collection": (test) ->
+  "should initialize supportedImplements collection": (test) ->
     npc = new NPC
-    test.deepEqual npc.implements, []
+    test.deepEqual npc.supportedImplements, []
     test.done()
 
   "should initialize defenses": (test) ->

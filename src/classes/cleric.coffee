@@ -17,7 +17,7 @@ module.exports = class Cleric
     npc.proficiencies.weapons.push "simple melee"
     npc.proficiencies.weapons.push "simple ranged"
 
-    npc.implements.push "holy symbol"
+    npc.supportedImplements.push "holy symbol"
 
     npc.defenses.will.adjust "class", 2
     npc.hitPoints.adjust "class", 12
