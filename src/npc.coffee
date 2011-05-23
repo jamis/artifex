@@ -57,29 +57,30 @@ module.exports = class NPC
 
   initializeAbilities: ->
     @abilities =
-      str: new Ability 10
-      con: new Ability 10
-      dex: new Ability 10
-      int: new Ability 10
-      wis: new Ability 10
-      cha: new Ability 10
+      "str": new Ability 10
+      "con": new Ability 10
+      "dex": new Ability 10
+      "int": new Ability 10
+      "wis": new Ability 10
+      "cha": new Ability 10
+    @abilities.int_ = @abilities["int"]
 
   initializeSkills: ->
     @skills =
       acrobatics   : new Skill @abilities.dex
-      arcana       : new Skill @abilities.int
+      arcana       : new Skill @abilities.int_
       athletics    : new Skill @abilities.str
       bluff        : new Skill @abilities.cha
       diplomacy    : new Skill @abilities.cha
       dungeoneering: new Skill @abilities.wis
       endurance    : new Skill @abilities.con
       heal         : new Skill @abilities.wis
-      history      : new Skill @abilities.int
+      history      : new Skill @abilities.int_
       insight      : new Skill @abilities.wis
       intimidate   : new Skill @abilities.cha
       nature       : new Skill @abilities.wis
       perception   : new Skill @abilities.wis
-      religion     : new Skill @abilities.int
+      religion     : new Skill @abilities.int_
       stealth      : new Skill @abilities.dex
       streetwise   : new Skill @abilities.cha
       thievery     : new Skill @abilities.dex
@@ -129,8 +130,8 @@ module.exports = class NPC
       if str > con then str else con
 
     @defenses.ref.adjust =>
-      [dex, int] = [@abilities.dex.modifier(), @abilities.int.modifier()]
-      if dex > int then dex else int
+      [dex, int_] = [@abilities.dex.modifier(), @abilities.int_.modifier()]
+      if dex > int_ then dex else int_
 
     @defenses.will.adjust =>
       [wis, cha] = [@abilities.wis.modifier(), @abilities.cha.modifier()]

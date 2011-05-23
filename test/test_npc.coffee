@@ -23,6 +23,13 @@ module.exports =
     test.equal npc.features.class.length, 0
     test.done()
 
+  "should initialize abilities": (test) ->
+    npc = new NPC
+    for ability in ["str", "con", "dex", "int", "wis", "cha"]
+      test.ok npc.abilities[ability], "`#{ability}' was not defined"
+    test.equal npc.abilities["int"], npc.abilities["int_"], "`int_' should be an alias for `int'"
+    test.done()
+
   "should initialize powers collections": (test) ->
     npc = new NPC
     test.ok npc.powers?
@@ -126,7 +133,7 @@ module.exports =
     npc = new NPC
     npc.abilities.dex.baseValue = 14
     test.equal npc.defenses.ref.score(), 12
-    npc.abilities.int.baseValue = 16
+    npc.abilities.int_.baseValue = 16
     test.equal npc.defenses.ref.score(), 13
     test.done()
 
