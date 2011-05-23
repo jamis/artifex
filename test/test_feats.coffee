@@ -20,6 +20,10 @@ featDefined = (id, expectations) ->
             for category, features of value
               for feature in features
                 npc.feature category, feature
+          when "proficiencies"
+            for category, list of value
+              for item in list
+                npc.proficiencies[category].push(item)
           else throw new Error "unsupported configure attribute: `#{attribute}'"
       npc
 
@@ -46,6 +50,10 @@ featDefined = (id, expectations) ->
                 for category, list of adjustment
                   for power in list
                     test.ok npc.powers.find(category, power), "should have `#{power}' as #{category} power"
+              when "proficiencies"
+                for category, list of adjustment
+                  for item in list
+                    test.ok item in npc.proficiencies[category], "should have #{category} proficiency with `#{item}'"
               else throw new Error "unsupported grant: `#{grant}'"
     test.done()
             
@@ -76,11 +84,71 @@ module.exports =
   "[ArmorOfBahamut] should be defined":
     featDefined "ArmorOfBahamut",
       name: "Armor of Bahamut"
-      allows: [
-        { feature: { class: ["Channel Divinity"] }, deity: "bahamut" } ]
+      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "bahamut" } ]
       disallows: [
         { feature: { class: ["Channel Divinity"] }, deity: "pelor" },
         { feature: { class: ["Hunter's Quarry"] }, deity: "bahamut" } ]
       grants:
         power:
           encounter: [ "Channel Divinity: Armor of Bahamut" ]
+
+  "[ChainmailProficiency] should be defined":
+    featDefined "ChainmailProficiency",
+      name: "Armor Proficiency (Chainmail)",
+      allows: [
+        { str: 13, con: 13, proficiencies: { armor: [ "leather" ] } },
+        { str: 13, con: 13, proficiencies: { armor: [ "hide" ] } } ]
+      disallows: [
+        { str: 12, con: 13, proficiencies: { armor: [ "leather" ] } },
+        { str: 13, con: 12, proficiencies: { armor: [ "hide" ] } },
+        { str: 13, con: 13, proficiencies: { armor: [ "cloth" ] } },
+        { str: 13, con: 13, proficiencies: { armor: [ "leather", "chainmail" ] } } ],
+      grants:
+        proficiencies:
+          armor: [ "chainmail" ]
+
+  "[HideProficiency] should be defined":
+    featDefined "HideProficiency",
+      name: "Armor Proficiency (Hide)",
+      allows: [ { str: 13, con: 13, proficiencies: { armor: [ "leather" ] } } ]
+      disallows: [
+        { str: 12, con: 13, proficiencies: { armor: [ "leather" ] } },
+        { str: 13, con: 13 },
+        { str: 13, con: 13, proficiencies: { armor: [ "hide" } ] } ]
+      grants:
+        proficiencies:
+          armor: [ "hide" ]
+
+  "[LeatherProficiency] should be defined":
+    featDefined "LeatherProficiency",
+      name: "Armor Proficiency (Leather)",
+      disallows: [ { proficiencies: { armor: [ "leather" ] } } ]
+      grants:
+        proficiencies:
+          armor: [ "leather" ]
+
+  "[PlateProficiency] should be defined":
+    featDefined "PlateProficiency",
+      name: "Armor Proficiency (Plate)",
+      allows: [ { str: 15, con: 15, proficiencies: { armor: [ "scale" ] } } ]
+      disallows: [
+        { str: 14, con: 15, proficiencies: { armor: [ "scale" ] } },
+        { str: 15, con: 14, proficiencies: { armor: [ "scale" ] } },
+        { str: 15, con: 15, proficiencies: { armor: [ "chainmail" ] } },
+        { str: 15, con: 15, proficiencies: { armor: [ "plate" ] } } ]
+      grants:
+        proficiencies:
+          armor: [ "plate" ]
+
+  "[ScaleProficiency] should be defined":
+    featDefined "ScaleProficiency",
+      name: "Armor Proficiency (Scale)",
+      allows: [ { str: 13, con: 13, proficiencies: { armor: [ "chainmail" ] } } ]
+      disallows: [
+        { str: 12, con: 13, proficiencies: { armor: [ "chainmail" ] } },
+        { str: 13, con: 12, proficiencies: { armor: [ "chainmail" ] } },
+        { str: 13, con: 13, proficiencies: { armor: [ "scale" ] } } ]
+      grants:
+        proficiencies:
+          armor: [ "scale" ]
+
