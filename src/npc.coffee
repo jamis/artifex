@@ -1,6 +1,7 @@
 Attribute = require './attribute'
 Ability   = require './ability'
 Classes   = require './classes'
+Feats     = require './feats'
 Races     = require './races'
 Random    = require './random'
 Skill     = require './skill'
@@ -52,6 +53,7 @@ module.exports = class NPC
 
     @generateAbilityScores()
     @selectTrainedSkills()
+    @selectPendingFeats()
 
     this
 
@@ -182,3 +184,16 @@ module.exports = class NPC
         @skills[skill].trained = true
 
     @pendingSkills = []
+
+  selectPendingFeats: ->
+    for pendingItems in @pendingFeats
+      feats = []
+
+      for name, feat of Feats
+        feats.push(feat) if feat.allows(this)
+
+      feats = @random.shuffle(feats...)
+      for feat in feats.slice(0, pendingItems.count)
+        feat.applyTo this
+
+    @pendingFeats = []

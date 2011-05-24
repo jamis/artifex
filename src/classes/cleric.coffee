@@ -46,7 +46,7 @@ module.exports = class Cleric
     npc.learnRitual 1, "Gentle Repose"
 
     # TODO: smarter ritual selection
-    for ritual in npc.random.shuffle(Rituals.all(1))
+    for ritual in npc.random.shuffle(Rituals.all(1)...)
       unless ritual in npc.rituals[1]
         npc.learnRitual 1, ritual
         break

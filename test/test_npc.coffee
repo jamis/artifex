@@ -227,8 +227,8 @@ module.exports =
 
     test.done()
 
-#  "#generate should assign pending feats": (test) ->
-#    npc = (new NPC).generate()
-#    test.equal npc.pendingFeats.length, 0
-#    test.ok npc.feats.length > 0
-#    test.done()
+  "#generate should assign pending feats": (test) ->
+    npc = (new NPC).generate()
+    test.equal npc.pendingFeats.length, 0
+    test.ok npc.feats.length > 0
+    test.done()

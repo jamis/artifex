@@ -1,4 +1,4 @@
-{Classes, Deities, NPC, Powers} = require '../..'
+{Classes, Deities, NPC, Powers, Rituals} = require '../..'
 
 hasClassFeature = (npc, name) ->
   for feature in npc.features.class
@@ -124,6 +124,11 @@ module.exports =
     test.ok npc.rituals[1]?
     test.ok "Gentle Repose" in npc.rituals[1]
     test.equal npc.rituals[1].length, 2
+
+    all = Rituals.all(1)
+    for ritual in npc.rituals[1]
+      test.ok ritual in all, "expected `#{ritual}' to be a first level ritual"
+
     test.done()
 
   "unaligned clerics may choose a deity at random from the entire list": (test) ->

@@ -6,6 +6,9 @@ class Feat
       this[name] = value
 
   allows: (npc) ->
+    if !@multiple && @name in npc.feats
+      return false
+
     for property, value of @forbids
       return false if @match npc, property, value
 
