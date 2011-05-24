@@ -16,6 +16,9 @@ featDefined = (id, expectations) ->
             npc.class = name: value
           when "deity"
             npc.deity = value
+          when "trained"
+            for skill in value
+              npc.skills[skill].trained = true
           when "feature"
             for category, features of value
               for feature in features
@@ -187,3 +190,10 @@ module.exports =
       name: "Blade Opportunist"
       allows: [ { str: 13, dex: 13 } ]
       disallows: [ { str: 12, dex: 13 }, { str: 13, dex: 12 } ]
+
+
+  "[RitualCaster] should be defined":
+    featDefined "RitualCaster",
+      name: "Ritual Caster"
+      allows: [ { trained: [ "arcana" ] }, { trained: [ "religion" ] } ]
+      disallows: [ {} ]

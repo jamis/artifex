@@ -114,9 +114,9 @@ module.exports =
     test.ok npc.powers.find("encounter", "Healing Word")
     test.done()
 
-  "should have Ritual Casting feat": (test) ->
+  "should have Ritual Caster feat": (test) ->
     new Classes.Cleric(npc = new NPC)
-    test.ok "Ritual Casting" in npc.feats, "missing Ritual Casting feat"
+    test.ok "Ritual Caster" in npc.feats, "missing Ritual Caster feat"
     test.done()
 
   "should have two L1 rituals including Gentle Repose": (test) ->

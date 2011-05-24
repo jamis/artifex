@@ -13,6 +13,17 @@ class Feat
       return false unless @match npc, property, value
     true
 
+  processCombination: (combination, callback) ->
+    disjuncts = combination.split("|")
+    any = false
+    for item in disjuncts
+      conjuncts = item.split("&")
+      all = true
+      for item in conjuncts
+        all &&= callback item
+      any ||= all
+    return any
+
   match: (npc, property, value) ->
     switch property
       when "race" then return true if npc.race.name is value
@@ -20,6 +31,8 @@ class Feat
       when "deity" then return true if npc.deity is value
       when "str", "con", "dex", "int", "wis", "cha"
         return true if npc.abilities[property].score() >= value
+      when "trained"
+        return @processCombination(value, (skill) -> npc.skills[skill].trained)
       when "feature"
         all = true
         for category, features of value
@@ -29,15 +42,7 @@ class Feat
       when "proficiencies"
         result = true
         for category, items of value
-          disjuncts = items.split("|")
-          any = false
-          for item in disjuncts
-            conjuncts = item.split("&")
-            all = true
-            for item in conjuncts
-              all &&= item in npc.proficiencies[category]
-            any ||= all
-          result &&= any
+          result &&= @processCombination items, (item) -> item in npc.proficiencies[category]
         return true if result
       else throw new Error "unsupported property: `#{property}'"
 
@@ -176,3 +181,8 @@ module.exports = Feats =
         sneakAttackDamageDie: 8
 
   BladeOpportunist: new Feat(name: "Blade Opportunist", requires: { str: 13, dex: 13 })
+
+  RitualCaster: new Feat
+    name: "Ritual Caster"
+    requires:
+      trained: "religion|arcana"

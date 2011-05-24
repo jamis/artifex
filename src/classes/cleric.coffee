@@ -1,4 +1,5 @@
 Deities = require '../deities'
+Feats   = require '../feats'
 Powers  = require '../powers'
 Rituals = require '../rituals'
 
@@ -40,7 +41,7 @@ module.exports = class Cleric
     npc.powers.encounter.push turnUndead
     npc.powers.encounter.push healingWord
 
-    npc.feats.push "Ritual Casting"
+    Feats.RitualCaster.applyTo npc
 
     npc.learnRitual 1, "Gentle Repose"
 
