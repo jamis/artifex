@@ -128,7 +128,11 @@ module.exports = class NPC
       will: new Attribute 10
 
     # FIXME: only apply dex modifier if armor is light, or none
-    @defenses.ac.adjust => @abilities.dex.modifier()
+    @defenses.ac.adjust =>
+      if !@armor? || Armor[@armor].category == "light"
+        @abilities.dex.modifier()
+      else
+        0
 
     @defenses.fort.adjust =>
       [str, con] = [@abilities.str.modifier(), @abilities.con.modifier()]

@@ -112,13 +112,17 @@ module.exports =
     test.done()
 
   "ac should depend on dexterity when light armor is worn": (test) ->
-    # FIXME FIXME FIXME
-    console.log "IMPLEMENT ME PLEASE"
+    npc = new NPC
+    npc.abilities.dex.baseValue = 14
+    Armor.applyTo(npc, "leather")
+    test.equal npc.defenses.ac.score(), 14
     test.done()
 
   "ac should not depend on dexterity when heavy armor is worn": (test) ->
-    # FIXME FIXME FIXME
-    console.log "IMPLEMENT ME PLEASE"
+    npc = new NPC
+    npc.abilities.dex.baseValue = 14
+    Armor.applyTo(npc, "plate")
+    test.equal npc.defenses.ac.score(), 18
     test.done()
 
   "fortitude should depend on greater of str or con": (test) ->
