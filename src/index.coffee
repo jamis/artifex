@@ -1,5 +1,6 @@
 module.exports =
   Ability  : require './ability'
+  Armor    : require './armor'
   Attribute: require './attribute'
   Classes  : require './classes'
   Deities  : require './deities'

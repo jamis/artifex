@@ -1,5 +1,6 @@
-Attribute = require './attribute'
 Ability   = require './ability'
+Attribute = require './attribute'
+Armor     = require './armor'
 Classes   = require './classes'
 Feats     = require './feats'
 Races     = require './races'
@@ -54,6 +55,8 @@ module.exports = class NPC
     @generateAbilityScores()
     @selectTrainedSkills()
     @selectPendingFeats()
+
+    @selectArmor()
 
     this
 
@@ -197,3 +200,12 @@ module.exports = class NPC
         feat.applyTo this
 
     @pendingFeats = []
+
+  selectArmor: ->
+    best = undefined
+
+    for armor in Armor.Categories.armors
+      if Armor.allows(this, armor) && (!best? || (Armor[best].bonus < Armor[armor].bonus))
+        best = armor
+
+    Armor.applyTo(this, best) if best

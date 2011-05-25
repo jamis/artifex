@@ -1,4 +1,4 @@
-{NPC} = require '..'
+{Armor, NPC} = require '..'
 
 module.exports =
   "should be level 1": (test) ->
@@ -231,4 +231,13 @@ module.exports =
     npc = (new NPC).generate()
     test.equal npc.pendingFeats.length, 0
     test.ok npc.feats.length > 0
+    test.done()
+
+  "#generate should select and apply an appropriate armor": (test) ->
+    npc = (new NPC).generate()
+    test.ok npc.armor?, "expected armor to be set"
+    armor = Armor[npc.armor]
+    test.ok armor?, "expected a valid armor to be selected"
+    test.ok Armor.allows(npc, npc.armor), "expected selected armor to match proficiency"
+    test.ok npc.defenses.ac.has(armor.bonus, "armor") if armor.bonus != 0
     test.done()
