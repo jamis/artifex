@@ -11,3 +11,4 @@ module.exports =
   Random   : require './random'
   Rituals  : require './rituals'
   Skill    : require './skill'
+  Weapons  : require './weapons'
