@@ -272,3 +272,43 @@ module.exports = Weapons =
     groups     : ["hammer"]
     category   : "military melee"
     properties : []
+
+  bastardSword:
+    name       : "bastard sword"
+    proficiency: +3
+    damageCount:  1
+    damageDie  :  10
+    hands      :  1
+    groups     : ["heavy blade"]
+    category   : "superior melee"
+    properties : ["versatile"]
+
+  katar:
+    name       : "katar"
+    proficiency: +3
+    damageCount:  1
+    damageDie  :  6
+    hands      :  1
+    groups     : ["light blade"]
+    category   : "superior melee"
+    properties : ["off-hand", "high crit"]
+
+  rapier:
+    name       : "rapier"
+    proficiency: +3
+    damageCount:  1
+    damageDie  :  8
+    hands      :  1
+    groups     : ["light blade"]
+    category   : "superior melee"
+    properties : []
+
+  spikedChain:
+    name       : "spiked chain"
+    proficiency: +3
+    damageCount:  2
+    damageDie  :  4
+    hands      :  2
+    groups     : ["flail"]
+    category   : "superior melee"
+    properties : ["reach"]

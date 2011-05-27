@@ -324,3 +324,51 @@ module.exports =
     test.deepEqual Weapons.maul.groups,     ["hammer"]
     test.deepEqual Weapons.maul.properties, []
     test.done()
+
+  "bastard sword should be defined": (test) ->
+    test.equal Weapons.bastardSword.name,        "bastard sword"
+    test.equal Weapons.bastardSword.proficiency, +3
+    test.equal Weapons.bastardSword.damageCount,  1
+    test.equal Weapons.bastardSword.damageDie,    10
+    test.equal Weapons.bastardSword.hands,        1
+    test.equal Weapons.bastardSword.category,     "superior melee"
+    test.equal Weapons.bastardSword.range,        undefined
+    test.deepEqual Weapons.bastardSword.groups,     ["heavy blade"]
+    test.deepEqual Weapons.bastardSword.properties, ["versatile"]
+    test.done()
+
+  "katar should be defined": (test) ->
+    test.equal Weapons.katar.name,        "katar"
+    test.equal Weapons.katar.proficiency, +3
+    test.equal Weapons.katar.damageCount,  1
+    test.equal Weapons.katar.damageDie,    6
+    test.equal Weapons.katar.hands,        1
+    test.equal Weapons.katar.category,     "superior melee"
+    test.equal Weapons.katar.range,        undefined
+    test.deepEqual Weapons.katar.groups,     ["light blade"]
+    test.deepEqual Weapons.katar.properties, ["off-hand", "high crit"]
+    test.done()
+
+  "rapier should be defined": (test) ->
+    test.equal Weapons.rapier.name,        "rapier"
+    test.equal Weapons.rapier.proficiency, +3
+    test.equal Weapons.rapier.damageCount,  1
+    test.equal Weapons.rapier.damageDie,    8
+    test.equal Weapons.rapier.hands,        1
+    test.equal Weapons.rapier.category,     "superior melee"
+    test.equal Weapons.rapier.range,        undefined
+    test.deepEqual Weapons.rapier.groups,     ["light blade"]
+    test.deepEqual Weapons.rapier.properties, []
+    test.done()
+
+  "spiked chain should be defined": (test) ->
+    test.equal Weapons.spikedChain.name,        "spiked chain"
+    test.equal Weapons.spikedChain.proficiency, +3
+    test.equal Weapons.spikedChain.damageCount,  2
+    test.equal Weapons.spikedChain.damageDie,    4
+    test.equal Weapons.spikedChain.hands,        2
+    test.equal Weapons.spikedChain.category,     "superior melee"
+    test.equal Weapons.spikedChain.range,        undefined
+    test.deepEqual Weapons.spikedChain.groups,     ["flail"]
+    test.deepEqual Weapons.spikedChain.properties, ["reach"]
+    test.done()
