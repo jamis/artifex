@@ -1,4 +1,7 @@
 {spawn, exec} = require 'child_process'
+fs            = require 'fs'
+
+option "-t", "--tests [PATH*]", 'one or more directories or files containing tests to run'
 
 build = (watch, callback) ->
   if typeof watch is 'function'
@@ -14,7 +17,6 @@ build = (watch, callback) ->
 
 compile = (callback) ->
   stitch = require 'stitch'
-  fs     = require 'fs'
 
   package = stitch.createPackage paths: ["#{__dirname}/lib"]
   package.compile (err, source) ->
@@ -41,7 +43,20 @@ task 'compile', 'Stitch all the files together for use in a browser', ->
 task 'compress', 'Compress the stitched output', ->
   build -> compile -> compress()
 
-task 'test', 'Run the test suite', ->
+task 'test', 'Run the test suite', (options) ->
   build ->
     {reporters} = require 'nodeunit'
-    reporters.default.run ['test', 'test/classes', 'test/powers', 'test/races', 'test/rituals']
+    tests = options.tests || ['test', 'test/classes', 'test/powers', 'test/races', 'test/rituals']
+    expanded = []
+    for test in tests
+      try
+        fs.statSync test
+        expanded.push test
+      catch error
+        try
+          name = "#{test}.coffee"
+          fs.statSync name
+          expanded.push name
+        catch error
+          throw "cannot find anything like `#{test}' to test"
+    reporters.default.run expanded

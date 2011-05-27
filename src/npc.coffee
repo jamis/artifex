@@ -6,6 +6,7 @@ Feats     = require './feats'
 Races     = require './races'
 Random    = require './random'
 Skill     = require './skill'
+Weapons   = require './weapons'
 
 module.exports = class NPC
   constructor: ->
@@ -29,6 +30,7 @@ module.exports = class NPC
     @initializeHealingSurges()
     @initializeProficiencies()
     @initializeDefenses()
+    @initializeEquipment()
 
   feature: (collection, name, description) ->
     @features[collection].push [name, description]
@@ -57,6 +59,7 @@ module.exports = class NPC
     @selectPendingFeats()
 
     @selectArmor()
+    @selectWeapons()
 
     this
 
@@ -153,6 +156,14 @@ module.exports = class NPC
     @defenses.ref.adjust halfLevel
     @defenses.will.adjust halfLevel
 
+  initializeEquipment: ->
+    @equipment = []
+    @equipment.weapons = ->
+      weapons = []
+      for item in this
+        weapons.push(item) if Weapons.all[item]?
+      weapons
+      
   generateAbilityScores: ->
     reverseSort = (a, b) -> if a < b then 1 else if a > b then -1 else 0
 
@@ -213,3 +224,11 @@ module.exports = class NPC
         best = armor
 
     Armor.applyTo(this, best) if best
+
+  selectWeapons: ->
+    proficient = []
+
+    for weapon, data of Weapons.all
+      proficient.push weapon if Weapons.proficient(this, weapon)
+
+    @equipment.push @random.pick(proficient...)

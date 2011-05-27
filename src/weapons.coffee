@@ -1,380 +1,390 @@
 module.exports = Weapons =
-  club:
-    name       : "club"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  6
-    hands      :  1
-    groups     : ["mace"]
-    category   : "simple melee"
-    properties : []
+  proficient: (npc, weapon) ->
+    data = Weapons.all[weapon]
 
-  dagger:
-    name       : "dagger"
-    proficiency: +3
-    damageCount:  1
-    damageDie  :  4
-    hands      :  1
-    range      : [5, 10]
-    groups     : ["light blade"]
-    category   : "simple melee"
-    properties : ["off-hand", "light thrown"]
+    return false unless data?
+    return true if weapon in npc.proficiencies.weapons
+    return true if data.category in npc.proficiencies.weapons
 
-  javelin:
-    name       : "javelin"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  6
-    hands      :  1
-    range      : [10, 20]
-    groups     : ["spear"]
-    category   : "simple melee"
-    properties : ["heavy thrown"]
+    false
 
-  mace:
-    name       : "mace"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  8
-    hands      :  1
-    groups     : ["mace"]
-    category   : "simple melee"
-    properties : ["versatile"]
+  all:
+    club:
+      name       : "club"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  6
+      hands      :  1
+      groups     : ["mace"]
+      category   : "simple melee"
+      properties : []
 
-  sickle:
-    name       : "sickle"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  6
-    hands      :  1
-    groups     : ["light blade"]
-    category   : "simple melee"
-    properties : ["off-hand"]
+    dagger:
+      name       : "dagger"
+      proficiency: +3
+      damageCount:  1
+      damageDie  :  4
+      hands      :  1
+      range      : [5, 10]
+      groups     : ["light blade"]
+      category   : "simple melee"
+      properties : ["off-hand", "light thrown"]
 
-  spear:
-    name       : "spear"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  8
-    hands      :  1
-    groups     : ["spear"]
-    category   : "simple melee"
-    properties : ["versatile"]
+    javelin:
+      name       : "javelin"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  6
+      hands      :  1
+      range      : [10, 20]
+      groups     : ["spear"]
+      category   : "simple melee"
+      properties : ["heavy thrown"]
 
-  greatclub:
-    name       : "greatclub"
-    proficiency: +2
-    damageCount:  2
-    damageDie  :  4
-    hands      :  2
-    groups     : ["mace"]
-    category   : "simple melee"
-    properties : []
+    mace:
+      name       : "mace"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  8
+      hands      :  1
+      groups     : ["mace"]
+      category   : "simple melee"
+      properties : ["versatile"]
 
-  morningstar:
-    name       : "morningstar"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  10
-    hands      :  2
-    groups     : ["mace"]
-    category   : "simple melee"
-    properties : []
+    sickle:
+      name       : "sickle"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  6
+      hands      :  1
+      groups     : ["light blade"]
+      category   : "simple melee"
+      properties : ["off-hand"]
 
-  quarterstaff:
-    name       : "quarterstaff"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  8
-    hands      :  2
-    groups     : ["staff"]
-    category   : "simple melee"
-    properties : []
+    spear:
+      name       : "spear"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  8
+      hands      :  1
+      groups     : ["spear"]
+      category   : "simple melee"
+      properties : ["versatile"]
 
-  scythe:
-    name       : "scythe"
-    proficiency: +2
-    damageCount:  2
-    damageDie  :  4
-    hands      :  2
-    groups     : ["heavy blade"]
-    category   : "simple melee"
-    properties : []
+    greatclub:
+      name       : "greatclub"
+      proficiency: +2
+      damageCount:  2
+      damageDie  :  4
+      hands      :  2
+      groups     : ["mace"]
+      category   : "simple melee"
+      properties : []
 
-  battleaxe:
-    name       : "battleaxe"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  10
-    hands      :  1
-    groups     : ["axe"]
-    category   : "military melee"
-    properties : ["versatile"]
+    morningstar:
+      name       : "morningstar"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  10
+      hands      :  2
+      groups     : ["mace"]
+      category   : "simple melee"
+      properties : []
 
-  flail:
-    name       : "flail"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  10
-    hands      :  1
-    groups     : ["flail"]
-    category   : "military melee"
-    properties : ["versatile"]
+    quarterstaff:
+      name       : "quarterstaff"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  8
+      hands      :  2
+      groups     : ["staff"]
+      category   : "simple melee"
+      properties : []
 
-  handaxe:
-    name       : "handaxe"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  6
-    hands      :  1
-    groups     : ["axe"]
-    category   : "military melee"
-    range      : [5, 10]
-    properties : ["off-hand", "heavy thrown"]
+    scythe:
+      name       : "scythe"
+      proficiency: +2
+      damageCount:  2
+      damageDie  :  4
+      hands      :  2
+      groups     : ["heavy blade"]
+      category   : "simple melee"
+      properties : []
 
-  longsword:
-    name       : "longsword"
-    proficiency: +3
-    damageCount:  1
-    damageDie  :  8
-    hands      :  1
-    groups     : ["heavy blade"]
-    category   : "military melee"
-    properties : ["versatile"]
+    battleaxe:
+      name       : "battleaxe"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  10
+      hands      :  1
+      groups     : ["axe"]
+      category   : "military melee"
+      properties : ["versatile"]
 
-  scimitar:
-    name       : "scimitar"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  8
-    hands      :  1
-    groups     : ["heavy blade"]
-    category   : "military melee"
-    properties : ["high crit"]
+    flail:
+      name       : "flail"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  10
+      hands      :  1
+      groups     : ["flail"]
+      category   : "military melee"
+      properties : ["versatile"]
 
-  shortSword:
-    name       : "short sword"
-    proficiency: +3
-    damageCount:  1
-    damageDie  :  6
-    hands      :  1
-    groups     : ["light blade"]
-    category   : "military melee"
-    properties : ["off-hand"]
+    handaxe:
+      name       : "handaxe"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  6
+      hands      :  1
+      groups     : ["axe"]
+      category   : "military melee"
+      range      : [5, 10]
+      properties : ["off-hand", "heavy thrown"]
 
-  throwingHammer:
-    name       : "throwing hammer"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  6
-    hands      :  1
-    groups     : ["hammer"]
-    category   : "military melee"
-    range      : [5, 10]
-    properties : ["off-hand", "heavy thrown"]
+    longsword:
+      name       : "longsword"
+      proficiency: +3
+      damageCount:  1
+      damageDie  :  8
+      hands      :  1
+      groups     : ["heavy blade"]
+      category   : "military melee"
+      properties : ["versatile"]
 
-  warhammer:
-    name       : "warhammer"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  10
-    hands      :  1
-    groups     : ["hammer"]
-    category   : "military melee"
-    properties : ["versatile"]
+    scimitar:
+      name       : "scimitar"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  8
+      hands      :  1
+      groups     : ["heavy blade"]
+      category   : "military melee"
+      properties : ["high crit"]
 
-  warPick:
-    name       : "war pick"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  8
-    hands      :  1
-    groups     : ["pick"]
-    category   : "military melee"
-    properties : ["high crit", "versatile"]
+    shortSword:
+      name       : "short sword"
+      proficiency: +3
+      damageCount:  1
+      damageDie  :  6
+      hands      :  1
+      groups     : ["light blade"]
+      category   : "military melee"
+      properties : ["off-hand"]
 
-  falchion:
-    name       : "falchion"
-    proficiency: +3
-    damageCount:  2
-    damageDie  :  4
-    hands      :  2
-    groups     : ["heavy blade"]
-    category   : "military melee"
-    properties : ["high crit"]
+    throwingHammer:
+      name       : "throwing hammer"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  6
+      hands      :  1
+      groups     : ["hammer"]
+      category   : "military melee"
+      range      : [5, 10]
+      properties : ["off-hand", "heavy thrown"]
 
-  glaive:
-    name       : "glaive"
-    proficiency: +2
-    damageCount:  2
-    damageDie  :  4
-    hands      :  2
-    groups     : ["heavy blade", "polearm"]
-    category   : "military melee"
-    properties : ["reach"]
+    warhammer:
+      name       : "warhammer"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  10
+      hands      :  1
+      groups     : ["hammer"]
+      category   : "military melee"
+      properties : ["versatile"]
 
-  greataxe:
-    name       : "greataxe"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  12
-    hands      :  2
-    groups     : ["axe"]
-    category   : "military melee"
-    properties : ["high crit"]
+    warPick:
+      name       : "war pick"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  8
+      hands      :  1
+      groups     : ["pick"]
+      category   : "military melee"
+      properties : ["high crit", "versatile"]
 
-  greatsword:
-    name       : "greatsword"
-    proficiency: +3
-    damageCount:  1
-    damageDie  :  10
-    hands      :  2
-    groups     : ["heavy blade"]
-    category   : "military melee"
-    properties : []
+    falchion:
+      name       : "falchion"
+      proficiency: +3
+      damageCount:  2
+      damageDie  :  4
+      hands      :  2
+      groups     : ["heavy blade"]
+      category   : "military melee"
+      properties : ["high crit"]
 
-  halberd:
-    name       : "halberd"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  10
-    hands      :  2
-    groups     : ["axe", "polearm"]
-    category   : "military melee"
-    properties : ["reach"]
+    glaive:
+      name       : "glaive"
+      proficiency: +2
+      damageCount:  2
+      damageDie  :  4
+      hands      :  2
+      groups     : ["heavy blade", "polearm"]
+      category   : "military melee"
+      properties : ["reach"]
 
-  heavyFlail:
-    name       : "heavy flail"
-    proficiency: +2
-    damageCount:  2
-    damageDie  :  6
-    hands      :  2
-    groups     : ["flail"]
-    category   : "military melee"
-    properties : []
+    greataxe:
+      name       : "greataxe"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  12
+      hands      :  2
+      groups     : ["axe"]
+      category   : "military melee"
+      properties : ["high crit"]
 
-  longspear:
-    name       : "longspear"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  10
-    hands      :  2
-    groups     : ["polearm", "spear"]
-    category   : "military melee"
-    properties : ["reach"]
+    greatsword:
+      name       : "greatsword"
+      proficiency: +3
+      damageCount:  1
+      damageDie  :  10
+      hands      :  2
+      groups     : ["heavy blade"]
+      category   : "military melee"
+      properties : []
 
-  maul:
-    name       : "maul"
-    proficiency: +2
-    damageCount:  2
-    damageDie  :  6
-    hands      :  2
-    groups     : ["hammer"]
-    category   : "military melee"
-    properties : []
+    halberd:
+      name       : "halberd"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  10
+      hands      :  2
+      groups     : ["axe", "polearm"]
+      category   : "military melee"
+      properties : ["reach"]
 
-  bastardSword:
-    name       : "bastard sword"
-    proficiency: +3
-    damageCount:  1
-    damageDie  :  10
-    hands      :  1
-    groups     : ["heavy blade"]
-    category   : "superior melee"
-    properties : ["versatile"]
+    heavyFlail:
+      name       : "heavy flail"
+      proficiency: +2
+      damageCount:  2
+      damageDie  :  6
+      hands      :  2
+      groups     : ["flail"]
+      category   : "military melee"
+      properties : []
 
-  katar:
-    name       : "katar"
-    proficiency: +3
-    damageCount:  1
-    damageDie  :  6
-    hands      :  1
-    groups     : ["light blade"]
-    category   : "superior melee"
-    properties : ["off-hand", "high crit"]
+    longspear:
+      name       : "longspear"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  10
+      hands      :  2
+      groups     : ["polearm", "spear"]
+      category   : "military melee"
+      properties : ["reach"]
 
-  rapier:
-    name       : "rapier"
-    proficiency: +3
-    damageCount:  1
-    damageDie  :  8
-    hands      :  1
-    groups     : ["light blade"]
-    category   : "superior melee"
-    properties : []
+    maul:
+      name       : "maul"
+      proficiency: +2
+      damageCount:  2
+      damageDie  :  6
+      hands      :  2
+      groups     : ["hammer"]
+      category   : "military melee"
+      properties : []
 
-  spikedChain:
-    name       : "spiked chain"
-    proficiency: +3
-    damageCount:  2
-    damageDie  :  4
-    hands      :  2
-    groups     : ["flail"]
-    category   : "superior melee"
-    properties : ["reach"]
+    bastardSword:
+      name       : "bastard sword"
+      proficiency: +3
+      damageCount:  1
+      damageDie  :  10
+      hands      :  1
+      groups     : ["heavy blade"]
+      category   : "superior melee"
+      properties : ["versatile"]
 
-  handCrossbow:
-    name       : "hand crossbow"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  6
-    hands      :  1
-    range      : [10, 20]
-    groups     : ["crossbow"]
-    category   : "simple ranged"
-    properties : ["load free"]
+    katar:
+      name       : "katar"
+      proficiency: +3
+      damageCount:  1
+      damageDie  :  6
+      hands      :  1
+      groups     : ["light blade"]
+      category   : "superior melee"
+      properties : ["off-hand", "high crit"]
 
-  sling:
-    name       : "sling"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  6
-    hands      :  1
-    range      : [10, 20]
-    groups     : ["sling"]
-    category   : "simple ranged"
-    properties : ["load free"]
+    rapier:
+      name       : "rapier"
+      proficiency: +3
+      damageCount:  1
+      damageDie  :  8
+      hands      :  1
+      groups     : ["light blade"]
+      category   : "superior melee"
+      properties : []
 
-  crossbow:
-    name       : "crossbow"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  8
-    hands      :  2
-    range      : [15, 30]
-    groups     : ["crossbow"]
-    category   : "simple ranged"
-    properties : ["load minor"]
+    spikedChain:
+      name       : "spiked chain"
+      proficiency: +3
+      damageCount:  2
+      damageDie  :  4
+      hands      :  2
+      groups     : ["flail"]
+      category   : "superior melee"
+      properties : ["reach"]
 
-  longbow:
-    name       : "longbow"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  10
-    hands      :  2
-    range      : [20, 40]
-    groups     : ["bow"]
-    category   : "military ranged"
-    properties : ["load free"]
+    handCrossbow:
+      name       : "hand crossbow"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  6
+      hands      :  1
+      range      : [10, 20]
+      groups     : ["crossbow"]
+      category   : "simple ranged"
+      properties : ["load free"]
 
-  shortbow:
-    name       : "shortbow"
-    proficiency: +2
-    damageCount:  1
-    damageDie  :  8
-    hands      :  2
-    range      : [15, 30]
-    groups     : ["bow"]
-    category   : "military ranged"
-    properties : ["load free", "small"]
+    sling:
+      name       : "sling"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  6
+      hands      :  1
+      range      : [10, 20]
+      groups     : ["sling"]
+      category   : "simple ranged"
+      properties : ["load free"]
 
-  shuriken:
-    name       : "shuriken"
-    proficiency: +3
-    damageCount:  1
-    damageDie  :  4
-    hands      :  1
-    range      : [6, 12]
-    groups     : ["light blade"]
-    category   : "superior ranged"
-    properties : ["light thrown"]
+    crossbow:
+      name       : "crossbow"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  8
+      hands      :  2
+      range      : [15, 30]
+      groups     : ["crossbow"]
+      category   : "simple ranged"
+      properties : ["load minor"]
+
+    longbow:
+      name       : "longbow"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  10
+      hands      :  2
+      range      : [20, 40]
+      groups     : ["bow"]
+      category   : "military ranged"
+      properties : ["load free"]
+
+    shortbow:
+      name       : "shortbow"
+      proficiency: +2
+      damageCount:  1
+      damageDie  :  8
+      hands      :  2
+      range      : [15, 30]
+      groups     : ["bow"]
+      category   : "military ranged"
+      properties : ["load free", "small"]
+
+    shuriken:
+      name       : "shuriken"
+      proficiency: +3
+      damageCount:  1
+      damageDie  :  4
+      hands      :  1
+      range      : [6, 12]
+      groups     : ["light blade"]
+      category   : "superior ranged"
+      properties : ["light thrown"]

@@ -1,4 +1,4 @@
-{Armor, NPC} = require '..'
+{Armor, NPC, Weapons} = require '..'
 
 module.exports =
   "should be level 1": (test) ->
@@ -49,6 +49,22 @@ module.exports =
     test.ok npc.proficiencies?
     test.deepEqual npc.proficiencies.armor, []
     test.deepEqual npc.proficiencies.weapons, []
+    test.done()
+
+  "should initialize equipment collection": (test) ->
+    npc = new NPC
+    test.ok npc.equipment?
+    test.equal npc.equipment.length, 0
+    test.done()
+
+  "equipment collection should be able to query weapons": (test) ->
+    npc = new NPC
+    npc.equipment.push "rope"
+    npc.equipment.push "shortSword"
+    npc.equipment.push "lamp"
+    npc.equipment.push "spikedChain"
+
+    test.deepEqual npc.equipment.weapons().sort(), ["shortSword", "spikedChain"]
     test.done()
 
   "should initialize supportedImplements collection": (test) ->
@@ -244,4 +260,11 @@ module.exports =
     test.ok armor?, "expected a valid armor to be selected"
     test.ok Armor.allows(npc, npc.armor), "expected selected armor to match proficiency"
     test.ok npc.defenses.ac.has(armor.bonus, "armor") if armor.bonus != 0
+    test.done()
+
+  "#generate should select an appropriate weapon": (test) ->
+    npc = (new NPC).generate()
+    test.ok npc.equipment.weapons().length > 0, "expected weapons to be assigned"
+    for weapon in npc.equipment.weapons()
+      test.ok Weapons.proficient(npc, weapon), "expected NPC to be proficient in assigned weapon `#{weapon}'"
     test.done()
