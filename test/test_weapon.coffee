@@ -372,3 +372,75 @@ module.exports =
     test.deepEqual Weapons.spikedChain.groups,     ["flail"]
     test.deepEqual Weapons.spikedChain.properties, ["reach"]
     test.done()
+
+  "hand crossbow should be defined": (test) ->
+    test.equal Weapons.handCrossbow.name,        "hand crossbow"
+    test.equal Weapons.handCrossbow.proficiency, +2
+    test.equal Weapons.handCrossbow.damageCount,  1
+    test.equal Weapons.handCrossbow.damageDie,    6
+    test.equal Weapons.handCrossbow.hands,        1
+    test.equal Weapons.handCrossbow.category,     "simple ranged"
+    test.deepEqual Weapons.handCrossbow.range,      [10, 20]
+    test.deepEqual Weapons.handCrossbow.groups,     ["crossbow"]
+    test.deepEqual Weapons.handCrossbow.properties, ["load free"]
+    test.done()
+
+  "sling should be defined": (test) ->
+    test.equal Weapons.sling.name,        "sling"
+    test.equal Weapons.sling.proficiency, +2
+    test.equal Weapons.sling.damageCount,  1
+    test.equal Weapons.sling.damageDie,    6
+    test.equal Weapons.sling.hands,        1
+    test.equal Weapons.sling.category,     "simple ranged"
+    test.deepEqual Weapons.sling.range,      [10, 20]
+    test.deepEqual Weapons.sling.groups,     ["sling"]
+    test.deepEqual Weapons.sling.properties, ["load free"]
+    test.done()
+
+  "crossbow should be defined": (test) ->
+    test.equal Weapons.crossbow.name,        "crossbow"
+    test.equal Weapons.crossbow.proficiency, +2
+    test.equal Weapons.crossbow.damageCount,  1
+    test.equal Weapons.crossbow.damageDie,    8
+    test.equal Weapons.crossbow.hands,        2
+    test.equal Weapons.crossbow.category,     "simple ranged"
+    test.deepEqual Weapons.crossbow.range,      [15, 30]
+    test.deepEqual Weapons.crossbow.groups,     ["crossbow"]
+    test.deepEqual Weapons.crossbow.properties, ["load minor"]
+    test.done()
+
+  "longbow should be defined": (test) ->
+    test.equal Weapons.longbow.name,        "longbow"
+    test.equal Weapons.longbow.proficiency, +2
+    test.equal Weapons.longbow.damageCount,  1
+    test.equal Weapons.longbow.damageDie,    10
+    test.equal Weapons.longbow.hands,        2
+    test.equal Weapons.longbow.category,     "military ranged"
+    test.deepEqual Weapons.longbow.range,      [20, 40]
+    test.deepEqual Weapons.longbow.groups,     ["bow"]
+    test.deepEqual Weapons.longbow.properties, ["load free"]
+    test.done()
+
+  "shortbow should be defined": (test) ->
+    test.equal Weapons.shortbow.name,        "shortbow"
+    test.equal Weapons.shortbow.proficiency, +2
+    test.equal Weapons.shortbow.damageCount,  1
+    test.equal Weapons.shortbow.damageDie,    8
+    test.equal Weapons.shortbow.hands,        2
+    test.equal Weapons.shortbow.category,     "military ranged"
+    test.deepEqual Weapons.shortbow.range,      [15, 30]
+    test.deepEqual Weapons.shortbow.groups,     ["bow"]
+    test.deepEqual Weapons.shortbow.properties, ["load free", "small"]
+    test.done()
+
+  "shuriken should be defined": (test) ->
+    test.equal Weapons.shuriken.name,        "shuriken"
+    test.equal Weapons.shuriken.proficiency, +3
+    test.equal Weapons.shuriken.damageCount,  1
+    test.equal Weapons.shuriken.damageDie,    4
+    test.equal Weapons.shuriken.hands,        1
+    test.equal Weapons.shuriken.category,     "superior ranged"
+    test.deepEqual Weapons.shuriken.range,      [6, 12]
+    test.deepEqual Weapons.shuriken.groups,     ["light blade"]
+    test.deepEqual Weapons.shuriken.properties, ["light thrown"]
+    test.done()

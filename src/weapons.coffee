@@ -312,3 +312,69 @@ module.exports = Weapons =
     groups     : ["flail"]
     category   : "superior melee"
     properties : ["reach"]
+
+  handCrossbow:
+    name       : "hand crossbow"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  6
+    hands      :  1
+    range      : [10, 20]
+    groups     : ["crossbow"]
+    category   : "simple ranged"
+    properties : ["load free"]
+
+  sling:
+    name       : "sling"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  6
+    hands      :  1
+    range      : [10, 20]
+    groups     : ["sling"]
+    category   : "simple ranged"
+    properties : ["load free"]
+
+  crossbow:
+    name       : "crossbow"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  8
+    hands      :  2
+    range      : [15, 30]
+    groups     : ["crossbow"]
+    category   : "simple ranged"
+    properties : ["load minor"]
+
+  longbow:
+    name       : "longbow"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  10
+    hands      :  2
+    range      : [20, 40]
+    groups     : ["bow"]
+    category   : "military ranged"
+    properties : ["load free"]
+
+  shortbow:
+    name       : "shortbow"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  8
+    hands      :  2
+    range      : [15, 30]
+    groups     : ["bow"]
+    category   : "military ranged"
+    properties : ["load free", "small"]
+
+  shuriken:
+    name       : "shuriken"
+    proficiency: +3
+    damageCount:  1
+    damageDie  :  4
+    hands      :  1
+    range      : [6, 12]
+    groups     : ["light blade"]
+    category   : "superior ranged"
+    properties : ["light thrown"]
