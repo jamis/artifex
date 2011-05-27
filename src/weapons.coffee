@@ -5,7 +5,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  6
     hands      :  1
-    group      : "mace"
+    groups     : ["mace"]
     category   : "simple melee"
     properties : []
 
@@ -16,7 +16,7 @@ module.exports = Weapons =
     damageDie  :  4
     hands      :  1
     range      : [5, 10]
-    group      : "light blade"
+    groups     : ["light blade"]
     category   : "simple melee"
     properties : ["off-hand", "light thrown"]
 
@@ -27,7 +27,7 @@ module.exports = Weapons =
     damageDie  :  6
     hands      :  1
     range      : [10, 20]
-    group      : "spear"
+    groups     : ["spear"]
     category   : "simple melee"
     properties : ["heavy thrown"]
 
@@ -37,7 +37,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  8
     hands      :  1
-    group      : "mace"
+    groups     : ["mace"]
     category   : "simple melee"
     properties : ["versatile"]
 
@@ -47,7 +47,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  6
     hands      :  1
-    group      : "light blade"
+    groups     : ["light blade"]
     category   : "simple melee"
     properties : ["off-hand"]
 
@@ -57,7 +57,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  8
     hands      :  1
-    group      : "spear"
+    groups     : ["spear"]
     category   : "simple melee"
     properties : ["versatile"]
 
@@ -67,7 +67,7 @@ module.exports = Weapons =
     damageCount:  2
     damageDie  :  4
     hands      :  2
-    group      : "mace"
+    groups     : ["mace"]
     category   : "simple melee"
     properties : []
 
@@ -77,7 +77,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  10
     hands      :  2
-    group      : "mace"
+    groups     : ["mace"]
     category   : "simple melee"
     properties : []
 
@@ -87,7 +87,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  8
     hands      :  2
-    group      : "staff"
+    groups     : ["staff"]
     category   : "simple melee"
     properties : []
 
@@ -97,7 +97,7 @@ module.exports = Weapons =
     damageCount:  2
     damageDie  :  4
     hands      :  2
-    group      : "heavy blade"
+    groups     : ["heavy blade"]
     category   : "simple melee"
     properties : []
 
@@ -107,7 +107,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  10
     hands      :  1
-    group      : "axe"
+    groups     : ["axe"]
     category   : "military melee"
     properties : ["versatile"]
 
@@ -117,7 +117,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  10
     hands      :  1
-    group      : "flail"
+    groups     : ["flail"]
     category   : "military melee"
     properties : ["versatile"]
 
@@ -127,7 +127,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  6
     hands      :  1
-    group      : "axe"
+    groups     : ["axe"]
     category   : "military melee"
     range      : [5, 10]
     properties : ["off-hand", "heavy thrown"]
@@ -138,7 +138,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  8
     hands      :  1
-    group      : "heavy blade"
+    groups     : ["heavy blade"]
     category   : "military melee"
     properties : ["versatile"]
 
@@ -148,7 +148,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  8
     hands      :  1
-    group      : "heavy blade"
+    groups     : ["heavy blade"]
     category   : "military melee"
     properties : ["high crit"]
 
@@ -158,7 +158,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  6
     hands      :  1
-    group      : "light blade"
+    groups     : ["light blade"]
     category   : "military melee"
     properties : ["off-hand"]
 
@@ -168,7 +168,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  6
     hands      :  1
-    group      : "hammer"
+    groups     : ["hammer"]
     category   : "military melee"
     range      : [5, 10]
     properties : ["off-hand", "heavy thrown"]
@@ -179,7 +179,7 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  10
     hands      :  1
-    group      : "hammer"
+    groups     : ["hammer"]
     category   : "military melee"
     properties : ["versatile"]
 
@@ -189,6 +189,86 @@ module.exports = Weapons =
     damageCount:  1
     damageDie  :  8
     hands      :  1
-    group      : "pick"
+    groups     : ["pick"]
     category   : "military melee"
     properties : ["high crit", "versatile"]
+
+  falchion:
+    name       : "falchion"
+    proficiency: +3
+    damageCount:  2
+    damageDie  :  4
+    hands      :  2
+    groups     : ["heavy blade"]
+    category   : "military melee"
+    properties : ["high crit"]
+
+  glaive:
+    name       : "glaive"
+    proficiency: +2
+    damageCount:  2
+    damageDie  :  4
+    hands      :  2
+    groups     : ["heavy blade", "polearm"]
+    category   : "military melee"
+    properties : ["reach"]
+
+  greataxe:
+    name       : "greataxe"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  12
+    hands      :  2
+    groups     : ["axe"]
+    category   : "military melee"
+    properties : ["high crit"]
+
+  greatsword:
+    name       : "greatsword"
+    proficiency: +3
+    damageCount:  1
+    damageDie  :  10
+    hands      :  2
+    groups     : ["heavy blade"]
+    category   : "military melee"
+    properties : []
+
+  halberd:
+    name       : "halberd"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  10
+    hands      :  2
+    groups     : ["axe", "polearm"]
+    category   : "military melee"
+    properties : ["reach"]
+
+  heavyFlail:
+    name       : "heavy flail"
+    proficiency: +2
+    damageCount:  2
+    damageDie  :  6
+    hands      :  2
+    groups     : ["flail"]
+    category   : "military melee"
+    properties : []
+
+  longspear:
+    name       : "longspear"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  10
+    hands      :  2
+    groups     : ["polearm", "spear"]
+    category   : "military melee"
+    properties : ["reach"]
+
+  maul:
+    name       : "maul"
+    proficiency: +2
+    damageCount:  2
+    damageDie  :  6
+    hands      :  2
+    groups     : ["hammer"]
+    category   : "military melee"
+    properties : []
