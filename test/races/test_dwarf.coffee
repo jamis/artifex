@@ -78,13 +78,13 @@ module.exports =
   "should choose male name if male": (test) ->
     npc = new NPC
     npc.gender = "male"
-    dborn = new Races.Dragonborn(npc)
-    test.ok npc.name in Races.Dragonborn.names.male
+    dborn = new Races.Dwarf(npc)
+    test.ok npc.name in Races.Dwarf.names.male
     test.done()
 
   "should choose female name if female": (test) ->
     npc = new NPC
     npc.gender = "female"
-    dborn = new Races.Dragonborn(npc)
-    test.ok npc.name in Races.Dragonborn.names.female
+    dborn = new Races.Dwarf(npc)
+    test.ok npc.name in Races.Dwarf.names.female
     test.done()

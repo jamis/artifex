@@ -185,7 +185,7 @@ module.exports = class NPC
       @abilities[attributes[index]].baseValue = scores[index]
 
   selectTrainedSkills: ->
-    skills = name for name, skill in @skills
+    skills = (name for name, skill of @skills)
 
     for request in @pendingSkills
       list = request.list || skills
