@@ -60,3 +60,43 @@ module.exports = Weapons =
     group      : "spear"
     category   : "simple melee"
     properties : ["versatile"]
+
+  greatclub:
+    name       : "greatclub"
+    proficiency: +2
+    damageCount:  2
+    damageDie  :  4
+    hands      :  2
+    group      : "mace"
+    category   : "simple melee"
+    properties : []
+
+  morningstar:
+    name       : "morningstar"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  10
+    hands      :  2
+    group      : "mace"
+    category   : "simple melee"
+    properties : []
+
+  quarterstaff:
+    name       : "quarterstaff"
+    proficiency: +2
+    damageCount:  1
+    damageDie  :  8
+    hands      :  2
+    group      : "staff"
+    category   : "simple melee"
+    properties : []
+
+  scythe:
+    name       : "scythe"
+    proficiency: +2
+    damageCount:  2
+    damageDie  :  4
+    hands      :  2
+    group      : "heavy blade"
+    category   : "simple melee"
+    properties : []
