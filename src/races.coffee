@@ -1,6 +1,8 @@
 Dragonborn = require './races/dragonborn'
+Dwarf      = require './races/dwarf'
 
 module.exports =
   Dragonborn: Dragonborn
+  Dwarf     : Dwarf
 
-  All: [ Dragonborn ]
+  All: [ Dragonborn, Dwarf ]

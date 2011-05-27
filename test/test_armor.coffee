@@ -15,6 +15,13 @@ module.exports =
     test.ok npc.defenses.ac.has(+8, "armor")
     test.done()
 
+  "donning armor should not apply speed adjustment when Encumbered Speed feature is present": (test) ->
+    npc = new NPC
+    npc.feature "racial", "Encumbered Speed"
+    Armor.applyTo npc, "plate"
+    test.ok !npc.speed.has(-1, "armor")
+    test.done()
+    
   "#allows should return true if the npc may use the armor": (test) ->
     npc = new NPC
     npc.proficiencies.armor = ["light"]

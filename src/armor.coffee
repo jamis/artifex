@@ -10,7 +10,8 @@ module.exports = Armor =
         if skill.ability in [npc.abilities.str, npc.abilities.con, npc.abilities.dex]
           skill.adjust "armor", armor.check
 
-    npc.speed.adjust "armor", armor.speed if armor.speed != 0
+    if armor.speed != 0 && !npc.hasFeature("racial", "Encumbered Speed")
+      npc.speed.adjust "armor", armor.speed
 
   allows: (npc, armorName) ->
     return true if armorName in npc.proficiencies.armor
