@@ -45,7 +45,8 @@ module.exports = class Dragonborn
 
 Dragonborn.source = "phb"
 
-# FIXME: use names from PHB
 Dragonborn.names =
-  male  : [ "alf", "golf" ]
-  female: [ "elf", "gilf" ]
+  male  : [ "arjhan", "balasar", "bharash", "donaar", "ghesh", "heskan", "kriv",
+            "medrash", "nadarr", "patrin", "rhogar", "shamash", "shedinn", "torinn" ]
+  female: [ "akra", "biri", "daar", "harann", "kava", "korinn", "mishann", "nala",
+            "perra", "raiann", "sora", "surina", "thava" ]
