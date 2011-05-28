@@ -3,6 +3,8 @@ module.exports = Weapons =
     data = Weapons.all[weapon]
 
     return false unless data?
+    return false if npc.size == "small" && data.hands > 1
+
     return true if weapon in npc.proficiencies.weapons
     return true if data.category in npc.proficiencies.weapons
 

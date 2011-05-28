@@ -30,12 +30,7 @@ module.exports = class HalfElf
 
     npc.languages.push "common"
     npc.languages.push "elven"
-
-    availableLangs = []
-    for lang in Languages.list
-      availableLangs.push lang if Languages.available(npc, lang)
-
-    npc.languages.push npc.random.pick(availableLangs...)
+    npc.languages.push npc.random.pick(Languages.possible(npc)...)
 
     npc.height = npc.random.fuzz(65, 74, 10)
     npc.weight = npc.random.fuzz(130, 190, 5)

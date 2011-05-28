@@ -250,7 +250,10 @@ module.exports = class NPC
     proficient = []
 
     for weapon, data of Weapons.all
-      if Weapons.proficient(this, weapon) and data.hands is (@preferredWeaponHandCount ? data.hands)
-        proficient.push weapon
+      if Weapons.proficient(this, weapon)
+        if @preferredWeaponHandCount is 2 and @size is "small" and "versatile" in data.properties
+          proficient.push weapon
+        else if data.hands is (@preferredWeaponHandCount ? data.hands)
+          proficient.push weapon
 
     @equipment.push @random.pick(proficient...)

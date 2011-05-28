@@ -276,11 +276,25 @@ module.exports =
 
   "weapon selection should honor preferredWeaponHandCount": (test) ->
     for hands in [1, 2]
-      npc = new NPC
-      npc.preferredWeaponHandCount = hands
-      npc.generate()
+      while true
+        npc = new NPC
+        npc.preferredWeaponHandCount = hands
+        npc.generate()
+        break if npc.size != "small"
       for weapon in npc.equipment.weapons()
         test.equal npc.preferredWeaponHandCount, Weapons.all[weapon].hands
+    test.done()
+
+  "weapon selection should honor preferredWeaponHandCount of 2 for small characters": (test) ->
+    npc = new NPC
+    npc.size = "small"
+    npc.preferredWeaponHandCount = 2
+    npc.proficiencies.weapons.push "simple melee"
+    npc.selectWeapons()
+    test.ok npc.equipment.weapons().length > 0
+    for weapon in npc.equipment.weapons()
+      test.equal Weapons.all[weapon].hands, 1
+      test.ok "versatile" in Weapons.all[weapon].properties
     test.done()
 
   "should have two L1 atWill class powers": (test) ->

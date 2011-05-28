@@ -18,6 +18,15 @@ module.exports =
     test.ok !Weapons.proficient(npc, "longsword")
     test.done()
 
+  "proficient should return false for two-handed weapons and small creatures": (test) ->
+    npc = new NPC
+    npc.size = "small"
+    npc.proficiencies.weapons.push "simple melee"
+
+    test.ok Weapons.proficient(npc, "dagger")
+    test.ok !Weapons.proficient(npc, "quarterstaff")
+    test.done()
+
   "club should be defined": (test) ->
     test.equal Weapons.all.club.name,        "club"
     test.equal Weapons.all.club.proficiency, +2

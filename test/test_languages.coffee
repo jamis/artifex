@@ -19,6 +19,10 @@ module.exports =
     test.ok !Languages.available(npc, "supernal")
     test.ok !Languages.available(npc, "abyssal")
     test.ok Languages.available(npc, "common")
+
+    npc.level = 2
+    test.ok Languages.available(npc, "supernal")
+    test.ok Languages.available(npc, "abyssal")
     test.done()
 
   "languages currently known by characters are unavailable": (test) ->
@@ -26,4 +30,14 @@ module.exports =
     test.ok Languages.available(npc, "common")
     npc.languages.push "common"
     test.ok !Languages.available(npc, "common")
+    test.done()
+
+  "possible returns list of all languages available to the given npc": (test) ->
+    npc = new NPC
+    npc.level = 1
+    npc.languages.push "common"
+    possible = Languages.possible(npc)
+    test.ok "common" not in possible
+    test.ok "supernal" not in possible
+    test.ok "abyssal" not in possible
     test.done()
