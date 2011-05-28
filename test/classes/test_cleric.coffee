@@ -1,10 +1,5 @@
 {Classes, Deities, NPC, Powers, Rituals} = require '../..'
 
-hasClassFeature = (npc, name) ->
-  for feature in npc.features.class
-    return true if name is feature[0]
-  false
-  
 module.exports =
   "should be from PHB": (test) ->
     test.equal Classes.Cleric.source, "phb"

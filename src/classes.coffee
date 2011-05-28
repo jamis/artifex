@@ -1,6 +1,8 @@
-Cleric = require './classes/cleric'
+Cleric  = require './classes/cleric'
+Fighter = require './classes/fighter'
 
 module.exports =
-  Cleric: Cleric
+  Cleric : Cleric
+  Fighter: Fighter
 
-  All: [ Cleric ]
+  All: [ Cleric, Fighter ]
