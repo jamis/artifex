@@ -268,3 +268,12 @@ module.exports =
     for weapon in npc.equipment.weapons()
       test.ok Weapons.proficient(npc, weapon), "expected NPC to be proficient in assigned weapon `#{weapon}'"
     test.done()
+
+  "weapon selection should honor preferredWeaponHandCount": (test) ->
+    for hands in [1, 2]
+      npc = new NPC
+      npc.preferredWeaponHandCount = hands
+      npc.generate()
+      for weapon in npc.equipment.weapons()
+        test.equal npc.preferredWeaponHandCount, Weapons.all[weapon].hands
+    test.done()
