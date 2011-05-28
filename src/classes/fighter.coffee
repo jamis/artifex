@@ -1,10 +1,9 @@
-Powers = require '../powers'
-
 module.exports = class Fighter
   constructor: (npc) ->
     @name = "fighter"
     @powerSource = Fighter.powerSource
     @powerName = "exploit"
+    @powers = Fighter.powers
     @keyAttributes = [ "str", "dex", "wis", "con" ]
 
     npc.proficiencies.armor.push "cloth"
@@ -32,16 +31,6 @@ module.exports = class Fighter
 
     npc.preferredWeaponHandCount = npc.random.pick 1, 2
     npc.feature "class", "Fighter Weapon Talent", "prefer #{npc.preferredWeaponHandCount}-handed weapons"
-
-    for power in npc.random.shuffle(Fighter.powers.atWill[1]...).slice(0, 2)
-      power = Powers.get power, npc: npc
-      npc.powers.atWill.push power
-
-    power = npc.random.pick(Fighter.powers.encounter[1]...)
-    npc.powers.encounter.push(Powers.get power, npc: npc)
-
-    power = npc.random.pick(Fighter.powers.daily[1]...)
-    npc.powers.daily.push(Powers.get power, npc: npc)
 
 Fighter.source = "phb"
 Fighter.powerSource = "martial"

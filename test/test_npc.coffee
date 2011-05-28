@@ -1,4 +1,4 @@
-{Armor, NPC, Weapons} = require '..'
+{Armor, Classes, NPC, Powers, Weapons} = require '..'
 
 module.exports =
   "should be level 1": (test) ->
@@ -90,6 +90,11 @@ module.exports =
   "should initialize pendingFeats": (test) ->
     npc = new NPC
     test.deepEqual npc.pendingFeats, [count: 1]
+    test.done()
+
+  "should initialize pendingPowers": (test) ->
+    npc = new NPC
+    test.equal npc.pendingPowers.length, 0
     test.done()
 
   "should initialize ritual collection": (test) ->
@@ -276,4 +281,36 @@ module.exports =
       npc.generate()
       for weapon in npc.equipment.weapons()
         test.equal npc.preferredWeaponHandCount, Weapons.all[weapon].hands
+    test.done()
+
+  "should have two L1 atWill class powers": (test) ->
+    npc = (new NPC).generate()
+    test.expect 2
+    for power in npc.powers.atWill
+      test.ok true if power.id in npc.class.powers.atWill[1]
+    test.done()
+
+  "should have one L1 encounter class power": (test) ->
+    npc = (new NPC).generate()
+    test.expect 1
+    for power in npc.powers.encounter
+      test.ok true if power.id in npc.class.powers.encounter[1]
+    test.done()
+
+  "should have one L1 daily class power": (test) ->
+    npc = (new NPC).generate()
+    test.expect 1
+    for power in npc.powers.daily
+      test.ok true if power.id in npc.class.powers.daily[1]
+    test.done()
+
+  "#generate should apply additional pending powers": (test) ->
+    npc = new NPC
+    npc.pendingPowers.push count: 1, category: "atWill", list: Classes.Cleric.powers.daily[1]
+    npc.generate()
+
+    test.expect 1
+    for power in npc.powers.atWill
+      test.ok true if power.id in Classes.Cleric.powers.daily[1]
+    test.equal npc.pendingPowers.length, 0, "expected pendingPowers to be cleared"
     test.done()

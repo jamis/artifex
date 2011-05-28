@@ -3,6 +3,7 @@ Attribute = require './attribute'
 Armor     = require './armor'
 Classes   = require './classes'
 Feats     = require './feats'
+Powers    = require './powers'
 Races     = require './races'
 Random    = require './random'
 Skill     = require './skill'
@@ -18,6 +19,7 @@ module.exports = class NPC
     @supportedImplements = []
     @feats = []
     @pendingFeats = [count: 1]
+    @pendingPowers = []
     @rituals = {}
     @alignment = "unaligned"
     @pendingSkills = []
@@ -57,6 +59,7 @@ module.exports = class NPC
     @generateAbilityScores()
     @selectTrainedSkills()
     @selectPendingFeats()
+    @selectPowers()
 
     @selectArmor()
     @selectWeapons()
@@ -215,6 +218,23 @@ module.exports = class NPC
         feat.applyTo this
 
     @pendingFeats = []
+
+  selectPowers: ->
+    for power in @random.shuffle(@class.powers.atWill[1]...).slice(0, 2)
+      power = Powers.get power, npc: this
+      @powers.atWill.push power
+
+    power = @random.pick(@class.powers.encounter[1]...)
+    @powers.encounter.push(Powers.get power, npc: this)
+
+    power = @random.pick(@class.powers.daily[1]...)
+    @powers.daily.push(Powers.get power, npc: this)
+
+    for pending in @pendingPowers
+      for power in @random.shuffle(pending.list).slice(0, pending.count)
+        @powers[pending.category].push(Powers.get power, npc: this)
+
+    @pendingPowers = []
 
   selectArmor: ->
     best = undefined

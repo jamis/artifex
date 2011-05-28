@@ -8,6 +8,7 @@ module.exports = class Cleric
     @name = "cleric"
     @powerSource = Cleric.powerSource
     @powerName = "prayer"
+    @powers = Cleric.powers
     @keyAttributes = [ "wis", "str", "cha" ]
 
     npc.proficiencies.armor.push "cloth"
@@ -58,16 +59,6 @@ module.exports = class Cleric
       collection = Deities[npc.alignment].concat(Deities["unaligned"])
 
     npc.deity = npc.random.pick collection...
-
-    for power in npc.random.shuffle(Cleric.powers.atWill[1]...).slice(0, 2)
-      power = Powers.get power, npc: npc
-      npc.powers.atWill.push power
-
-    power = npc.random.pick(Cleric.powers.encounter[1]...)
-    npc.powers.encounter.push(Powers.get power, npc: npc)
-
-    power = npc.random.pick(Cleric.powers.daily[1]...)
-    npc.powers.daily.push(Powers.get power, npc: npc)
 
 Cleric.source = "phb"
 Cleric.powerSource = "divine"

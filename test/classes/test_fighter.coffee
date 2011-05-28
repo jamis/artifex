@@ -99,25 +99,7 @@ module.exports =
       test.ok Powers[power], "`#{power}' is not defined"
       if Powers[power]
         test.ok power in Classes.Fighter.powers.daily[1]
-    test.done()
 
-  "should have two L1 atWill powers": (test) ->
-    new Classes.Fighter(npc = new NPC)
-    test.expect 2
-    for power in npc.powers.atWill
-      test.ok power.id in Classes.Fighter.powers.atWill[1]
-    test.done()
-
-  "should have one L1 encounter power": (test) ->
-    new Classes.Fighter(npc = new NPC)
-    test.expect 1
-    for power in npc.powers.encounter
-      test.ok true if power.id in Classes.Fighter.powers.encounter[1]
-    test.done()
-
-  "should have one L1 daily power": (test) ->
-    new Classes.Fighter(npc = new NPC)
-    test.expect 1
-    for power in npc.powers.daily
-      test.ok true if power.id in Classes.Fighter.powers.daily[1]
+    klass = new Classes.Fighter(new NPC)
+    test.equal Classes.Fighter.powers, klass.powers
     test.done()
