@@ -11,7 +11,7 @@ featDefined = (id, expectations) ->
           when "str", "con", "dex", "int", "wis", "cha"
             npc.abilities[attribute].baseValue = value
           when "race"
-            npc.race = name: value
+            npc.race = { name: value, is: (name) -> name is value }
           when "class"
             npc.class = name: value
           when "deity"

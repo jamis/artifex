@@ -36,6 +36,8 @@ module.exports = class Elf
 
     npc.name = npc.random.pick(Elf.names[npc.gender]...) if npc.gender?
 
+  is: (name) -> @name is name
+
 Elf.source = "phb"
 
 Elf.names =

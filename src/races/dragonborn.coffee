@@ -43,6 +43,8 @@ module.exports = class Dragonborn
 
     npc.name = npc.random.pick(Dragonborn.names[npc.gender]...) if npc.gender?
 
+  is: (name) -> @name is name
+    
 Dragonborn.source = "phb"
 
 Dragonborn.names =

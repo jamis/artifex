@@ -29,7 +29,7 @@ class Feat
 
   match: (npc, property, value) ->
     switch property
-      when "race" then return true if npc.race.name is value
+      when "race" then return true if npc.race.is value
       when "class" then return true if npc.class.name is value
       when "deity" then return true if npc.deity is value
       when "str", "con", "dex", "int", "wis", "cha"

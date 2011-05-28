@@ -308,9 +308,22 @@ module.exports =
     npc = new NPC
     npc.pendingPowers.push count: 1, category: "atWill", list: Classes.Cleric.powers.daily[1]
     npc.generate()
-
-    test.expect 1
-    for power in npc.powers.atWill
-      test.ok true if power.id in Classes.Cleric.powers.daily[1]
     test.equal npc.pendingPowers.length, 0, "expected pendingPowers to be cleared"
+
+    count = 0
+    for power in npc.powers.atWill
+      count += 1 if power.id in Classes.Cleric.powers.daily[1]
+    test.equal count, 1, "expected exactly one atWill power from the Cleric daily list"
+    test.done()
+
+  "#generate should call the pendingPowers list attribute if it is a function": (test) ->
+    npc = new NPC
+    npc.pendingPowers.push count: 1, category: "atWill", list: (npc) -> Classes.Cleric.powers.daily[1]
+    npc.generate()
+    test.equal npc.pendingPowers.length, 0, "expected pendingPowers to be cleared"
+
+    count = 0
+    for power in npc.powers.atWill
+      count += 1 if power.id in Classes.Cleric.powers.daily[1]
+    test.equal count, 1, "expected exactly one atWill power from the Cleric daily list"
     test.done()

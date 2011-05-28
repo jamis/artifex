@@ -10,6 +10,13 @@ module.exports =
     test.equal race.name, "eladrin"
     test.done()
 
+  "should only match eladrin": (test) ->
+    race = new Races.Eladrin(new NPC)
+    test.ok race.is("eladrin")
+    test.ok !race.is("human")
+    test.ok !race.is("elf")
+    test.done()
+    
   "should apply racial ability bonuses": (test) ->
     new Races.Eladrin(npc = new NPC)
     test.ok npc.abilities.dex.has(2, "racial"), "+2 dex adjustment missing"

@@ -1,6 +1,6 @@
 module.exports = class Fighter
   constructor: (npc) ->
-    @name = "fighter"
+    @name = Fighter.simpleName
     @powerSource = Fighter.powerSource
     @powerName = "exploit"
     @powers = Fighter.powers
@@ -32,6 +32,7 @@ module.exports = class Fighter
     npc.preferredWeaponHandCount = npc.random.pick 1, 2
     npc.feature "class", "Fighter Weapon Talent", "prefer #{npc.preferredWeaponHandCount}-handed weapons"
 
+Fighter.simpleName = "fighter"
 Fighter.source = "phb"
 Fighter.powerSource = "martial"
 Fighter.skills = [ "athletics", "endurance", "heal", "intimidate", "streetwise" ]

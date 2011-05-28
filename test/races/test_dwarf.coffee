@@ -10,6 +10,13 @@ module.exports =
     test.equal race.name, "dwarf"
     test.done()
 
+  "should only match dwarf": (test) ->
+    race = new Races.Dwarf(new NPC)
+    test.ok race.is("dwarf")
+    test.ok !race.is("human")
+    test.ok !race.is("elf")
+    test.done()
+    
   "should apply racial ability bonuses": (test) ->
     new Races.Dwarf(npc = new NPC)
     test.ok npc.abilities.con.has(2, "racial"), "+2 con adjustment missing"

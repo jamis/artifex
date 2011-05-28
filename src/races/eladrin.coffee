@@ -39,6 +39,8 @@ module.exports = class Eladrin
 
     npc.name = npc.random.pick(Eladrin.names[npc.gender]...) if npc.gender?
 
+  is: (name) -> @name is name
+
 Eladrin.source = "phb"
 
 Eladrin.names =

@@ -5,7 +5,7 @@ Rituals = require '../rituals'
 
 module.exports = class Cleric
   constructor: (npc) ->
-    @name = "cleric"
+    @name = Cleric.simpleName
     @powerSource = Cleric.powerSource
     @powerName = "prayer"
     @powers = Cleric.powers
@@ -60,6 +60,7 @@ module.exports = class Cleric
 
     npc.deity = npc.random.pick collection...
 
+Cleric.simpleName = "cleric"
 Cleric.source = "phb"
 Cleric.powerSource = "divine"
 Cleric.skills = [ "arcana", "diplomacy", "heal", "history", "insight", "religion" ]

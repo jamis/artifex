@@ -31,6 +31,8 @@ module.exports = class Dwarf
 
     npc.name = npc.random.pick(Dwarf.names[npc.gender]...) if npc.gender?
 
+  is: (name) -> @name is name
+
 Dwarf.source = "phb"
 
 Dwarf.names =

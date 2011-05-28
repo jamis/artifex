@@ -231,7 +231,8 @@ module.exports = class NPC
     @powers.daily.push(Powers.get power, npc: this)
 
     for pending in @pendingPowers
-      for power in @random.shuffle(pending.list).slice(0, pending.count)
+      list = if typeof pending.list is "function" then pending.list(this) else pending.list
+      for power in @random.shuffle(list...).slice(0, pending.count)
         @powers[pending.category].push(Powers.get power, npc: this)
 
     @pendingPowers = []

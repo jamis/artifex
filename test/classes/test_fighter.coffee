@@ -12,6 +12,7 @@ module.exports =
     test.done()
 
   "should set name": (test) ->
+    test.equal Classes.Fighter.simpleName, "fighter"
     klass = new Classes.Fighter new NPC
     test.equal klass.name, "fighter"
     test.done()

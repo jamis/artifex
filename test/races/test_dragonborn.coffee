@@ -10,6 +10,13 @@ module.exports =
     test.equal dborn.name, "dragonborn"
     test.done()
 
+  "should only match dragonborn": (test) ->
+    dborn = new Races.Dragonborn(new NPC)
+    test.ok dborn.is("dragonborn")
+    test.ok !dborn.is("human")
+    test.ok !dborn.is("elf")
+    test.done()
+    
   "should apply racial ability bonuses": (test) ->
     npc = new NPC
     dborn = new Races.Dragonborn(npc)
