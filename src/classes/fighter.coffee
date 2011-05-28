@@ -30,8 +30,8 @@ module.exports = class Fighter
     npc.feature "class", "Combat Challenge"
     npc.feature "class", "Combat Superiority", "opportunity attacks at +wis"
 
-    npc.feature "class", "Fighter Weapon Talent"
     npc.preferredWeaponHandCount = npc.random.pick 1, 2
+    npc.feature "class", "Fighter Weapon Talent", "prefer #{npc.preferredWeaponHandCount}-handed weapons"
 
     for power in npc.random.shuffle(Fighter.powers.atWill[1]...).slice(0, 2)
       power = Powers.get power, npc: npc
