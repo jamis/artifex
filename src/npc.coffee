@@ -32,6 +32,7 @@ module.exports = class NPC
     @initializeHealingSurges()
     @initializeProficiencies()
     @initializeDefenses()
+    @initializeResistance()
     @initializeEquipment()
 
   feature: (collection, name, description) ->
@@ -158,6 +159,10 @@ module.exports = class NPC
     @defenses.fort.adjust halfLevel
     @defenses.ref.adjust halfLevel
     @defenses.will.adjust halfLevel
+
+  initializeResistance: ->
+    @resistance =
+      fire: new Attribute 0
 
   initializeEquipment: ->
     @equipment = []

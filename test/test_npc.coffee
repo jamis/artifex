@@ -81,6 +81,13 @@ module.exports =
     test.equal npc.defenses.will.score(), 10
     test.done()
 
+  "should initialize resistance": (test) ->
+    npc = new NPC
+    test.ok npc.resistance?
+    test.ok npc.resistance.fire?
+    test.equal npc.resistance.fire.score(), 0
+    test.done()
+
   "should initialize feat collection": (test) ->
     npc = new NPC
     test.ok npc.feats?
