@@ -252,6 +252,19 @@ module.exports =
 
     test.done()
 
+  "#generate should call list on pendingSkills when list is a func": (test) ->
+    npc = new NPC
+    npc.pendingSkills.push count: 1, list: (npc) -> npc.class.skills
+    npc.generate()
+    test.equal npc.pendingSkills.length, 0
+
+    count = 0
+    for name, skill of npc.skills
+      count += 1 if skill.trained
+    test.ok count >= 4, "expected at least 4 trained skills"
+
+    test.done()
+
   "#generate should assign pending feats": (test) ->
     npc = (new NPC).generate()
     test.equal npc.pendingFeats.length, 0

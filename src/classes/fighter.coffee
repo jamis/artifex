@@ -4,6 +4,7 @@ module.exports = class Fighter
     @powerSource = Fighter.powerSource
     @powerName = "exploit"
     @powers = Fighter.powers
+    @skills = Fighter.skills
     @keyAttributes = [ "str", "dex", "wis", "con" ]
 
     npc.proficiencies.armor.push "cloth"

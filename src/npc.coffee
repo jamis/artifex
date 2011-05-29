@@ -105,7 +105,7 @@ module.exports = class NPC
 
       find     : (category, name) ->
         for power in this[category]
-          return power if power.name is name
+          return power if power.name is name or power.id is name
         null
 
   initializeFeatures: ->
@@ -192,6 +192,7 @@ module.exports = class NPC
 
     for request in @pendingSkills
       list = request.list || skills
+      list = list(this) if typeof list is "function"
       
       # select only untrained skills
       untrained = []
@@ -232,7 +233,13 @@ module.exports = class NPC
 
     for pending in @pendingPowers
       list = if typeof pending.list is "function" then pending.list(this) else pending.list
-      for power in @random.shuffle(list...).slice(0, pending.count)
+
+      # disallow selection of powers that have already been selected
+      available = []
+      for power in list
+        available.push power unless @powers.find(pending.category, power)?
+
+      for power in @random.shuffle(available...).slice(0, pending.count)
         @powers[pending.category].push(Powers.get power, npc: this)
 
     @pendingPowers = []

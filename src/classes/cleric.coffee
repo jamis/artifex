@@ -9,6 +9,7 @@ module.exports = class Cleric
     @powerSource = Cleric.powerSource
     @powerName = "prayer"
     @powers = Cleric.powers
+    @skills = Cleric.skills
     @keyAttributes = [ "wis", "str", "cha" ]
 
     npc.proficiencies.armor.push "cloth"
