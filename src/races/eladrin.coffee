@@ -7,7 +7,7 @@ module.exports = class Eladrin
     npc.vision = "low-light"
 
     npc.abilities.dex.adjust "racial", 2
-    npc.abilities.int.adjust "racial", 2
+    npc.abilities.int_.adjust "racial", 2
 
     npc.skills.arcana.adjust "racial", 2
     npc.skills.history.adjust "racial", 2

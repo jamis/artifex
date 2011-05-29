@@ -7,7 +7,7 @@ module.exports = class Tiefling
 
     npc.vision = "low-light"
 
-    npc.abilities.int.adjust "racial", 2
+    npc.abilities.int_.adjust "racial", 2
     npc.abilities.cha.adjust "racial", 2
 
     npc.skills.bluff.adjust "racial", 2
