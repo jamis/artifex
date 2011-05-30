@@ -185,6 +185,7 @@ module.exports = Feats =
 
   BladeOpportunist: new Feat(name: "Blade Opportunist", requires: { str: 13, dex: 13 })
 
+  # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat
     name: "Ritual Caster"
     requires:
