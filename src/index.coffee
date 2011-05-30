@@ -7,6 +7,7 @@ module.exports =
   Feats    : require './feats'
   Languages: require './languages'
   NPC      : require './npc'
+  Power    : require './power'
   Powers   : require './powers'
   Races    : require './races'
   Random   : require './random'

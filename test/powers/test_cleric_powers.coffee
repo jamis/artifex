@@ -13,7 +13,9 @@ module.exports =
     
   "[HealingWord] frequency should depend on NPC level":
     Verify.testProperty "HealingWord", "frequency",
-      { level: 1, expect: 2 }, { level: 15, expect: 2 }, { level: 16, expect: 3 }
+      { level: 1, expect: "2/encounter" },
+      { level: 15, expect: "2/encounter" },
+      { level: 16, expect: "3/encounter" }
 
   "[HealingWord] effect should depend on NPC level":
     Verify.testProperty "HealingWord", "effect",
@@ -48,12 +50,12 @@ module.exports =
     Verify.testProperty "TurnUndead", "hit",
       { wis: 10, cha: 10, level:  1, expect: "1d10, push 3 (special)"     },
       { wis: 16, cha: 10, level:  1, expect: "1d10+3, push 3 (special)"   },
-      { wis: 16, cha: 16, level:  1, expect: "1d10+3, push 3+3 (special)" },
-      { wis: 16, cha: 16, level:  5, expect: "2d10+3, push 3+3 (special)" },
-      { wis: 16, cha: 16, level: 11, expect: "3d10+3, push 3+3 (special)" },
-      { wis: 16, cha: 16, level: 15, expect: "4d10+3, push 3+3 (special)" },
-      { wis: 16, cha: 16, level: 21, expect: "5d10+3, push 3+3 (special)" },
-      { wis: 16, cha: 16, level: 25, expect: "6d10+3, push 3+3 (special)" }
+      { wis: 16, cha: 16, level:  1, expect: "1d10+3, push 6 (special)" },
+      { wis: 16, cha: 16, level:  5, expect: "2d10+3, push 6 (special)" },
+      { wis: 16, cha: 16, level: 11, expect: "3d10+3, push 6 (special)" },
+      { wis: 16, cha: 16, level: 15, expect: "4d10+3, push 6 (special)" },
+      { wis: 16, cha: 16, level: 21, expect: "5d10+3, push 6 (special)" },
+      { wis: 16, cha: 16, level: 25, expect: "6d10+3, push 6 (special)" }
 
   "[LanceOfFaith] name should be set":
     Verify.testProperty "LanceOfFaith", "name", expect: "Lance of Faith"

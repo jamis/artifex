@@ -1,4 +1,4 @@
-Generic = require '../powers/generic'
+Power = require '../power'
 
 module.exports = class Elf
   constructor: (npc) ->
@@ -26,7 +26,7 @@ module.exports = class Elf
     npc.feature "racial", "Wild Step", "ignore difficult terrain while shifting"
 
     npc.feature "racial", "Elven Accuracy"
-    npc.powers.encounter.push new Generic name: "Elven Accuracy"
+    npc.powers.encounter.push new Power name: "Elven Accuracy"
 
     npc.languages.push "common"
     npc.languages.push "elven"

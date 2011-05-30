@@ -1,4 +1,4 @@
-Generic   = require '../powers/generic'
+Power     = require '../power'
 Languages = require '../languages'
 
 module.exports = class Halfling
@@ -19,7 +19,7 @@ module.exports = class Halfling
     npc.feature "racial", "Bold", "+5 to saves vs. fear"
     npc.feature "racial", "Nimble Reaction", "+2 to AC vs. opportunity attacks"
     npc.feature "racial", "Second Chance"
-    npc.powers.encounter.push new Generic name: "Second Chance"
+    npc.powers.encounter.push new Power name: "Second Chance"
 
     npc.languages.push "common"
     npc.languages.push npc.random.pick(Languages.possible(npc)...)

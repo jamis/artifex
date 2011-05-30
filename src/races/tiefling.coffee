@@ -1,4 +1,4 @@
-Generic   = require '../powers/generic'
+Power     = require '../power'
 Languages = require '../languages'
 
 module.exports = class Tiefling
@@ -23,7 +23,7 @@ module.exports = class Tiefling
     npc.resistance.fire.baseValue = 5
     npc.resistance.fire.adjust "racial", -> Math.floor(npc.level/2)
 
-    infernalWrath = new Generic name: "Infernal Wrath", npc: npc, hit: "{cha} (special)"
+    infernalWrath = new Power name: "Infernal Wrath", npc: npc, hit: "{±cha} (special)"
     npc.powers.encounter.push infernalWrath
 
     npc.languages.push "common"

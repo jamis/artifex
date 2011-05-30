@@ -1,17 +1,16 @@
-DragonBreath   = require './powers/dragon_breath'
-Generic        = require './powers/generic'
+DragonBreath = require './powers/dragon_breath'
+Power        = require './power'
 
 powerGetter = (key, initializers...) ->
   if typeof Powers[key] is "function"
     new Powers[key](initializers...)
   else
-    new Generic Powers[key], { id: key }, initializers...
+    new Power Powers[key], { id: key }, initializers...
 
 module.exports = Powers =
   get: powerGetter
     
-  DragonBreath  : DragonBreath
-  Generic       : Generic
+  DragonBreath: DragonBreath
 
 for group in [ "cleric", "fighter", "paladin" ]
   powers = require "./powers/#{group}"
