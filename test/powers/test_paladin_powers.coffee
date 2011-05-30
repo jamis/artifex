@@ -2,6 +2,37 @@
 {Verify}      = require '../helpers'
 
 module.exports =
+  "[DivineMettle] should be defined":
+    Verify.testProperties "DivineMettle",
+      name: [ expect: "Channel Divinity: Divine Mettle" ]
+      effect: [
+        { cha:  6, expect: "target makes a save with +0 bonus" },
+        { cha: 10, expect: "target makes a save with +0 bonus" },
+        { cha: 18, expect: "target makes a save with +4 bonus" } ]
+    
+  "[DivineStrength] should be defined":
+    Verify.testProperties "DivineStrength",
+      name: [ expect: "Channel Divinity: Divine Strength" ]
+      effect: [
+        { str: 10, expect: "apply +0 extra damage on next attack" },
+        { str: 18, expect: "apply +4 extra damage on next attack" } ]
+    
+  "[DivineChallenge] should be defined":
+    Verify.testProperties "DivineChallenge",
+      name: [ expect: "Divine Challenge" ]
+      effect: [
+        { level: 1, cha: 10, expect: "target takes 3 damage on first attack that excludes you (special)" },
+        { level: 1, cha: 16, expect: "target takes 6 damage on first attack that excludes you (special)" },
+        { level: 10, cha: 16, expect: "target takes 6 damage on first attack that excludes you (special)" },
+        { level: 11, cha: 16, expect: "target takes 9 damage on first attack that excludes you (special)" },
+        { level: 20, cha: 16, expect: "target takes 9 damage on first attack that excludes you (special)" },
+        { level: 21, cha: 16, expect: "target takes 12 damage on first attack that excludes you (special)" } ]
+
+  "[LayOnHands] should be defined":
+    Verify.testProperties "LayOnHands",
+      name: [ expect: "Lay on Hands" ]
+      frequency: [ { wis: 10, expect: "1/day" }, { wis: 16, expect: "3/day" } ]
+
   "[BolsteringStrike] should be defined":
     Verify.testProperties "BolsteringStrike",
       name: [ expect: "Bolstering Strike" ]
