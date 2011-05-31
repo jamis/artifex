@@ -10,7 +10,8 @@ Skill     = require './skill'
 Weapons   = require './weapons'
 
 module.exports = class NPC
-  constructor: ->
+  constructor: (@options) ->
+    @options ?= {}
     @level = 1
     @speed = new Attribute
     @random = new Random
@@ -23,6 +24,7 @@ module.exports = class NPC
     @rituals = {}
     @alignment = "unaligned"
     @pendingSkills = []
+    @gender = @options.gender
 
     @initializeAbilities()
     @initializeSkills()
@@ -48,13 +50,13 @@ module.exports = class NPC
     @rituals[level].push name
 
   generate: ->
-    @gender = @random.pick "male", "female"
-    @alignment = @random.pick "lawful good", "good", "unaligned", "evil", "chaotic evil"
+    @gender ?= @random.pick "male", "female"
+    @alignment = @options.alignment ? @random.pick "lawful good", "good", "unaligned", "evil", "chaotic evil"
 
-    race = @random.pick Races.All...
+    race = @options.race ? @random.pick Races.All...
     @race = new race this
 
-    klass = @random.pick Classes.All...
+    klass = @options.class ? @random.pick Classes.All...
     @class = new klass this
 
     @generateAbilityScores()

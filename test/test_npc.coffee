@@ -1,4 +1,14 @@
-{Armor, Classes, NPC, Powers, Weapons} = require '..'
+{Armor, Classes, NPC, Powers, Races, Weapons} = require '..'
+
+class TestRace extends Races.Human
+  constructor: (npc) ->
+    super
+    @name = "test"
+
+class TestClass extends Classes.Cleric
+  constructor: (npc) ->
+    super
+    @name = "test"
 
 module.exports =
   "should be level 1": (test) ->
@@ -119,6 +129,12 @@ module.exports =
     test.deepEqual npc.pendingSkills, []
     test.done()
 
+  "constructor parameters should be stored as options": (test) ->
+    npc = new NPC gender: "male"
+    test.ok npc.options?
+    test.equal npc.options.gender, "male"
+    test.done()
+
   "defenses should depend on level": (test) ->
     npc = new NPC
     npc.level = 2
@@ -220,9 +236,18 @@ module.exports =
     test.ok (new NPC).generate().gender in ["male", "female"]
     test.done()
 
+  "#generate should prefer the gender set in options": (test) ->
+    test.equal (new NPC gender: "ambiguous").generate().gender, "ambiguous"
+    test.done()
+
   "#generate on level 1 npc should assign race": (test) ->
     npc = (new NPC).generate()
     test.ok npc.race?, "expected race to be set"
+    test.done()
+
+  "#generate should prefer the race set in options": (test) ->
+    npc = (new NPC race: TestRace).generate()
+    test.equal npc.race.name, "test"
     test.done()
 
   "#generate on level 1 npc should select alignment": (test) ->
@@ -232,9 +257,19 @@ module.exports =
     test.ok npc.alignment?, "expected alignment to be set"
     test.done()
 
+  "#generate should prefer the alignment set in options": (test) ->
+    npc = (new NPC alignment: "chaotic good").generate()
+    test.equal npc.alignment, "chaotic good"
+    test.done()
+
   "#generate on level 1 npc should assign class": (test) ->
     npc = (new NPC).generate()
     test.ok npc.class?, "expected class to be set"
+    test.done()
+
+  "#generate should prefer the class set in options": (test) ->
+    npc = (new NPC class: TestClass).generate()
+    test.equal npc.class.name, "test"
     test.done()
 
   "#generate on level 1 npc should determine ability scores": (test) ->
