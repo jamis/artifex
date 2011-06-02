@@ -17,6 +17,7 @@ module.exports = class NPC
     @random = new Random
     @descriptors = []
     @languages = []
+    @weaponPreferences = []
     @supportedImplements = []
     @feats = []
     @pendingFeats = [count: 1]
@@ -261,13 +262,25 @@ module.exports = class NPC
     Armor.applyTo(this, best) if best
 
   selectWeapons: ->
-    proficient = []
+    if @weaponPreferences.length is 0
+      @weaponPreferences.push count: 1
 
-    for weapon, data of Weapons.all
-      if Weapons.proficient(this, weapon)
-        if @preferredWeaponHandCount is 2 and @size is "small" and "versatile" in data.properties
-          proficient.push weapon
-        else if data.hands is (@preferredWeaponHandCount ? data.hands)
-          proficient.push weapon
+    for pref in @weaponPreferences
+      for count in [1..pref.count]
+        proficient = []
 
-    @equipment.push @random.pick(proficient...)
+        for weapon, data of Weapons.all
+          continue if weapon in @equipment
+
+          isProficient = Weapons.proficient(this, weapon)
+          isPreferred = !pref.type? or Weapons.category(weapon, pref.type)
+
+          if isProficient and isPreferred
+            if @preferredWeaponHandCount is 2 and @size is "small" and "versatile" in data.properties
+              proficient.push weapon
+            else if data.hands is (@preferredWeaponHandCount ? data.hands)
+              proficient.push weapon
+
+        @equipment.push @random.pick(proficient...)
+
+    @weaponPreferences = []

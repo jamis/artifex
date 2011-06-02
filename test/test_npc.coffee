@@ -77,6 +77,11 @@ module.exports =
     test.deepEqual npc.equipment.weapons().sort(), ["shortSword", "spikedChain"]
     test.done()
 
+  "should initialize weaponPreferences collection": (test) ->
+    npc = new NPC
+    test.deepEqual npc.weaponPreferences, []
+    test.done()
+
   "should initialize supportedImplements collection": (test) ->
     npc = new NPC
     test.deepEqual npc.supportedImplements, []
@@ -350,6 +355,41 @@ module.exports =
     for weapon in npc.equipment.weapons()
       test.equal Weapons.all[weapon].hands, 1
       test.ok "versatile" in Weapons.all[weapon].properties
+    test.done()
+
+  "weapon selection should honor 'ranged' weaponPreferences": (test) ->
+    npc = new NPC
+    npc.weaponPreferences.push type: "ranged", count: 2
+    npc.proficiencies.weapons.push "simple melee"
+    npc.proficiencies.weapons.push "military ranged"
+    npc.selectWeapons()
+    weapons = npc.equipment.weapons()
+    test.equal 2, weapons.length
+    test.equal Weapons.all[weapons[0]].category, "military ranged"
+    test.equal Weapons.all[weapons[1]].category, "military ranged"
+    test.done()
+
+  "weapon selection should honor 'melee' weaponPreferences": (test) ->
+    npc = new NPC
+    npc.weaponPreferences.push type: "melee", count: 2
+    npc.proficiencies.weapons.push "simple ranged"
+    npc.proficiencies.weapons.push "military melee"
+    npc.proficiencies.weapons.push "military ranged"
+    npc.selectWeapons()
+    weapons = npc.equipment.weapons()
+    test.equal 2, weapons.length
+    test.equal Weapons.all[weapons[0]].category, "military melee"
+    test.equal Weapons.all[weapons[1]].category, "military melee"
+    test.done()
+
+  "weapon selection should clear weaponPreferences": (test) ->
+    npc = new NPC
+    npc.weaponPreferences.push count: 2
+    npc.proficiencies.weapons.push "simple melee"
+    npc.proficiencies.weapons.push "simple ranged"
+    npc.selectWeapons()
+    test.equal npc.equipment.weapons().length, 2
+    test.equal npc.weaponPreferences.length, 0
     test.done()
 
   "should have two L1 atWill class powers": (test) ->
