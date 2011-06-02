@@ -10,6 +10,9 @@ module.exports = Weapons =
 
     false
 
+  category: (weapon, category) ->
+    Weapons.all[weapon].category.indexOf(category) >= 0
+
   all:
     club:
       name       : "club"

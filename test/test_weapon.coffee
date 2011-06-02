@@ -27,6 +27,15 @@ module.exports =
     test.ok !Weapons.proficient(npc, "quarterstaff")
     test.done()
 
+  "category should return true/false if parameter matches weapon category": (test) ->
+    test.ok Weapons.category("club", "melee")
+    test.ok Weapons.category("club", "simple melee")
+    test.ok !Weapons.category("club", "military melee")
+    test.ok Weapons.category("longbow", "ranged")
+    test.ok Weapons.category("longbow", "military ranged")
+    test.ok !Weapons.category("longbow", "simple ranged")
+    test.done()
+
   "club should be defined": (test) ->
     test.equal Weapons.all.club.name,        "club"
     test.equal Weapons.all.club.proficiency, +2
