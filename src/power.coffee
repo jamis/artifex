@@ -49,10 +49,10 @@ module.exports = class Power
           when "±str.nz", "±con.nz", "±dex.nz", "±int.nz", "±wis.nz", "±cha.nz"
             value = @npc.abilities[value.slice 1, 4].modifier()
             if value != 0 then @prependSign value else ""
-          when "#level"
-            @npc.level
           else
-            if @_formulae[value]?
+            if (result = value.match /^\.(.*)/)
+              @npc[result[1]]
+            else if @_formulae[value]?
               @evaluate @_formulae[value]
             else
               throw new Error "unknown formula `#{value}'"

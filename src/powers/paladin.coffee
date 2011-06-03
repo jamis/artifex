@@ -11,7 +11,7 @@ module.exports =
   DivineChallenge:
     name        : "Divine Challenge"
     effect      : "target takes {damage} damage on first attack that excludes you (special)"
-    _formulae   : { damage: ["+", ["case", ["<", "#level", 11], 3, ["<", "#level", 21], 6, true, 9], "#cha"] }
+    _formulae   : { damage: ["+", ["case", ["<", ".level", 11], 3, ["<", ".level", 21], 6, true, 9], "#cha"] }
 
   LayOnHands:
     name        : "Lay on Hands"
@@ -22,27 +22,27 @@ module.exports =
     name        : "Bolstering Strike"
     attack      : "{±cha} vs. AC"
     hit         : "{hitDice}[W]{±cha.nz} damage, {±wis} temp HP"
-    _formulae   : { hitDice: ["if", ["<", "#level", 21], 1, 2] }
+    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
 
   EnfeeblingStrike:
     name        : "Enfeebling Strike"
     attack      : "{±cha} vs. AC"
     hit         : "{hitDice}[W]{±cha.nz} damage (special)"
-    _formulae   : { hitDice: ["if", ["<", "#level", 21], 1, 2] }
+    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
 
   HolyStrike:
     name        : "Holy Strike"
     attack      : "{±str} vs. AC"
     hit         : "{hitDice}[W]{±str.nz} damage ({marked} if marked)"
     _formulae   :
-      hitDice: ["if", ["<", "#level", 21], 1, 2]
+      hitDice: ["if", ["<", ".level", 21], 1, 2]
       marked:  ["±", ["+", "#str", "#wis"]]
 
   ValiantStrike:
     name        : "Valiant Strike"
     attack      : "{±str} + 1/adjacent enemy vs. AC"
     hit         : "{hitDice}[W]{±str.nz} damage"
-    _formulae   : { hitDice: ["if", ["<", "#level", 21], 1, 2] }
+    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
 
   FearsomeSmite:
     name        : "Fearsome Smite"

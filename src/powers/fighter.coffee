@@ -3,7 +3,7 @@ module.exports =
     name        : "Cleave"
     attack      : "{±str} vs. AC"
     hit         : "{hitDice}[W]{±str.nz} (special)"
-    _formulae   : { hitDice: ["if", ["<", "#level", 21], 1, 2] }
+    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
 
   ReapingStrike:
     name        : "Reaping Strike"
@@ -12,7 +12,7 @@ module.exports =
     miss        : "{halfStr} damage ({#str} w/2h weapon)"
     _formulae   :
       halfStr: ["floor", ["/", "#str", 2]]
-      hitDice: ["if", ["<", "#level", 21], 1, 2]
+      hitDice: ["if", ["<", ".level", 21], 1, 2]
 
   SureStrike:
     name        : "Sure Strike"
@@ -20,13 +20,13 @@ module.exports =
     hit         : "{hitDice}[W] damage"
     _formulae   :
       attack : ["±", ["+", "#str", 2]]
-      hitDice: ["if", ["<", "#level", 21], 1, 2]
+      hitDice: ["if", ["<", ".level", 21], 1, 2]
 
   TideOfIron:
     name        : "Tide of Iron"
     attack      : "{±str} vs. AC"
     hit         : "{hitDice}[W]{±str.nz} damage (special)"
-    _formulae   : { hitDice: ["if", ["<", "#level", 21], 1, 2] }
+    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
 
   CoveringAttack:
     name        : "Covering Attack"

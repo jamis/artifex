@@ -49,13 +49,6 @@ module.exports =
     test.equal power.evaluate("#wis"), 3
     test.done()
 
-  "evaluate() should understand #level built-in formula": (test) ->
-    power = new Power npc: new NPC
-    test.equal power.evaluate("#level"), 1
-    power.npc.level = 15
-    test.equal power.evaluate("#level"), 15
-    test.done()
-    
   "evaluate() should understand #cha built-in formula": (test) ->
     power = new Power npc: new NPC
     power.npc.abilities.cha.baseValue = 16
@@ -223,8 +216,8 @@ module.exports =
   "evaluate() should understand case condition": (test) ->
     power = new Power npc: new NPC, _formulae:
       case: ["case",
-        ["<", "#level", 11], 1,
-        ["<", "#level", 21], 2,
+        ["<", ".level", 11], 1,
+        ["<", ".level", 21], 2,
         true, 3]
 
     power.npc.level = 1
@@ -246,6 +239,18 @@ module.exports =
     test.equal power.evaluate("half"), 1
     power.npc.abilities.str.baseValue = 18
     test.equal power.evaluate("half"), 2
+    test.done()
+
+  "evaluate() should understand direct references of the npc object": (test) ->
+    power = new Power npc: new NPC, _formulae:
+      level: ["±", ["+", ".level", 2]]
+      frop : ".frop"
+
+    power.npc.level = 5
+    power.npc.frop = "gimme"
+
+    test.equal power.evaluate("level"), 7
+    test.equal power.evaluate("frop"), "gimme"
     test.done()
 
   "get() should evaluate bracketed substrings before returning": (test) ->
