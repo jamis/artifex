@@ -12,7 +12,7 @@ module.exports = Powers =
     
   DragonBreath: DragonBreath
 
-for group in [ "cleric", "fighter", "paladin" ]
+for group in [ "cleric", "fighter", "paladin", "ranger" ]
   powers = require "./powers/#{group}"
   for label, data of powers
     throw "power `#{label}' is already defined outside of `#{group}'" if Powers[label]
