@@ -9,4 +9,4 @@ module.exports =
   Paladin: Paladin
   Ranger : Ranger
 
-  All: [ Cleric, Fighter, Paladin ]
+  All: [ Cleric, Fighter, Paladin, Ranger ]
