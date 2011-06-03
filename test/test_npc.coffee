@@ -263,7 +263,7 @@ module.exports =
     test.done()
 
   "#generate should prefer the alignment set in options": (test) ->
-    npc = (new NPC alignment: "chaotic good").generate()
+    npc = (new NPC class: Classes.Fighter, alignment: "chaotic good").generate()
     test.equal npc.alignment, "chaotic good"
     test.done()
 
