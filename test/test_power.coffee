@@ -259,3 +259,15 @@ module.exports =
     power.npc.abilities.cha.baseValue = 16
     test.equal power.get("attack"), "+3 vs. AC"
     test.done()
+
+  "get() returning an array should evaluate each element of the array": (test) ->
+    power = new Power npc: new NPC, attackTypes: [ "Close burst {burst}", "Melee {melee}" ],
+      _formulae:
+        burst: ["if", ["<", ".level", 21], 5, 10]
+        melee: ["if", ["<", ".level", 21], 1, 2]
+
+    power.npc.level = 1
+    test.deepEqual power.get("attackTypes"), [ "Close burst 5", "Melee 1" ]
+    power.npc.level = 21
+    test.deepEqual power.get("attackTypes"), [ "Close burst 10", "Melee 2" ]
+    test.done()

@@ -8,8 +8,17 @@ module.exports = class Power
 
   get: (name) ->
     value = this[name]
-    return value unless typeof value is "string"
 
+    if typeof value is "object" and value.length?
+      @parse item for item in value
+
+    else if typeof value is "string"
+      @parse value
+
+    else
+      value
+
+  parse: (value) ->
     result = ""
     start = 0
 
