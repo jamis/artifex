@@ -80,6 +80,13 @@ module.exports =
     test.ok npc.preferredWeaponHandCount in [1, 2]
     test.done()
 
+  "should prefer melee weapons": (test) ->
+    new Classes.Fighter(npc = new NPC)
+    test.equal npc.weaponPreferences.length, 1
+    test.equal npc.weaponPreferences[0].count, 1
+    test.equal npc.weaponPreferences[0].type, "melee"
+    test.done()
+
   "fighter powers are called exploits": (test) ->
     klass = new Classes.Fighter(new NPC)
     test.equal klass.powerName, "exploit"

@@ -392,11 +392,12 @@ module.exports =
     test.equal npc.weaponPreferences.length, 0
     test.done()
 
-  "should have two L1 atWill class powers": (test) ->
+  "should have (at least) two L1 atWill class powers": (test) ->
     npc = (new NPC).generate()
-    test.expect 2
+    count = 0
     for power in npc.powers.atWill
-      test.ok true if power.id in npc.class.powers.atWill[1]
+      count += 1 if power.id in npc.class.powers.atWill[1]
+    test.ok count >= 2, "expected at least 2 powers, got #{count}"
     test.done()
 
   "should have one L1 encounter class power": (test) ->
@@ -435,4 +436,15 @@ module.exports =
     for power in npc.powers.atWill
       count += 1 if power.id in Classes.Cleric.powers.daily[1]
     test.equal count, 1, "expected exactly one atWill power from the Cleric daily list"
+    test.done()
+
+  "#generate should select powers appropriate for selected weapons": (test) ->
+    npc = new NPC class: Classes.Ranger, ranger: { style: "Archer" }
+    npc.generate()
+
+    count = 0
+    for power in npc.powers.atWill
+      types = power.get("attackTypes") ? []
+      test.ok "melee weapon" not in types
+
     test.done()

@@ -6,6 +6,7 @@ module.exports =
     Verify.testProperties "Cleave",
       name: [ expect: "Cleave" ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       hit: [
         { level:  1, str: 10, expect: "1[W] (special)" },
         { level:  1, str: 16, expect: "1[W]+3 (special)" },
@@ -16,6 +17,7 @@ module.exports =
     Verify.testProperties "ReapingStrike",
       name: [ expect: "Reaping Strike" ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       hit: [
         { level:  1, str: 10, expect: "1[W] (special)" },
         { level:  1, str: 16, expect: "1[W]+3 (special)" },
@@ -29,6 +31,7 @@ module.exports =
   "[SureStrike] should be defined":
     Verify.testProperties "SureStrike",
       name: [ expect: "Sure Strike" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
         { str:  4, expect: "-1 vs. AC" },
         { str: 10, expect: "+2 vs. AC" },
@@ -41,6 +44,7 @@ module.exports =
   "[TideOfIron] should be defined":
     Verify.testProperties "TideOfIron",
       name: [ expect: "Tide of Iron" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, str: 10, expect: "1[W] damage (special)" },
@@ -51,6 +55,7 @@ module.exports =
   "[CoveringAttack] should be defined":
     Verify.testProperties "CoveringAttack",
       name: [ expect: "Covering Attack" ],
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { str: 10, expect: "2[W] damage (special)" },
@@ -59,6 +64,7 @@ module.exports =
   "[PassingAttack] should be defined":
     Verify.testProperties "PassingAttack",
       name: [ expect: "Passing Attack" ],
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
         { str: 10, expect: "+0 vs. AC (2nd target: +2 vs. AC)" },
         { str: 16, expect: "+3 vs. AC (2nd target: +5 vs. AC)" } ]
@@ -69,6 +75,7 @@ module.exports =
   "[SpinningSweep] should be defined":
     Verify.testProperties "SpinningSweep",
       name: [ expect: "Spinning Sweep" ],
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { str: 10, expect: "1[W] damage (special)" },
@@ -77,6 +84,7 @@ module.exports =
   "[SteelSerpentStrike] should be defined":
     Verify.testProperties "SteelSerpentStrike",
       name: [ expect: "Steel Serpent Strike" ],
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { str: 10, expect: "2[W] damage (special)" },
@@ -85,6 +93,7 @@ module.exports =
   "[BruteStrike] should be defined":
     Verify.testProperties "BruteStrike",
       name: [ expect: "Brute Strike" ],
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { str: 10, expect: "3[W] damage" },
@@ -93,6 +102,7 @@ module.exports =
   "[ComebackStrike] should be defined":
     Verify.testProperties "ComebackStrike",
       name: [ expect: "Comeback Strike" ],
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { str: 10, expect: "2[W] damage (special)" },
@@ -101,6 +111,7 @@ module.exports =
   "[VillainsMenace] should be defined":
     Verify.testProperties "VillainsMenace",
       name: [ expect: "Villain's Menace" ],
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { str: 10, expect: "2[W] damage (special)" },

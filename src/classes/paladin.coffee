@@ -23,6 +23,8 @@ module.exports = class Paladin
     npc.proficiencies.weapons.push "military melee"
     npc.proficiencies.weapons.push "simple ranged"
 
+    npc.weaponPreferences.push count: 1, type: "melee"
+
     npc.supportedImplements.push "holy symbol"
 
     npc.defenses.fort.adjust "class", 1

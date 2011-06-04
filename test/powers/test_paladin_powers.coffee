@@ -36,6 +36,7 @@ module.exports =
   "[BolsteringStrike] should be defined":
     Verify.testProperties "BolsteringStrike",
       name: [ expect: "Bolstering Strike" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { cha: 10, expect: "+0 vs. AC" }, { cha: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, cha: 10, wis: 10, expect: "1[W] damage, +0 temp HP" },
@@ -47,6 +48,7 @@ module.exports =
   "[EnfeeblingStrike] should be defined":
     Verify.testProperties "EnfeeblingStrike",
       name: [ expect: "Enfeebling Strike" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { cha: 10, expect: "+0 vs. AC" }, { cha: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, cha: 10, expect: "1[W] damage (special)" },
@@ -57,6 +59,7 @@ module.exports =
   "[HolyStrike] should be defined":
     Verify.testProperties "HolyStrike",
       name: [ expect: "Holy Strike" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, str: 10, wis: 10, expect: "1[W] damage (+0 if marked)" },
@@ -68,6 +71,7 @@ module.exports =
   "[ValiantStrike] should be defined":
     Verify.testProperties "ValiantStrike",
       name: [ expect: "Valiant Strike" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
         { str: 10, expect: "+0 + 1/adjacent enemy vs. AC" },
         { str: 16, expect: "+3 + 1/adjacent enemy vs. AC" } ]
@@ -80,6 +84,7 @@ module.exports =
   "[FearsomeSmite] should be defined":
     Verify.testProperties "FearsomeSmite",
       name: [ expect: "Fearsome Smite" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { cha: 10, expect: "+0 vs. AC" }, { cha: 16, expect: "+3 vs. AC" } ]
       hit: [
         { cha: 10, expect: "2[W] damage (special)" },
@@ -88,6 +93,7 @@ module.exports =
   "[PiercingSmite] should be defined":
     Verify.testProperties "PiercingSmite",
       name: [ expect: "Piercing Smite" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. Reflex" }, { str: 16, expect: "+3 vs. Reflex" } ]
       hit: [
         { str: 10, wis: 10, expect: "2[W] damage, mark target and 0 adjacent enemies" },
@@ -97,6 +103,7 @@ module.exports =
   "[RadiantSmite] should be defined":
     Verify.testProperties "RadiantSmite",
       name: [ expect: "Radiant Smite" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { str: 10, wis: 10, expect: "2[W]+0 damage" },
@@ -106,6 +113,7 @@ module.exports =
   "[ShieldingSmite] should be defined":
     Verify.testProperties "ShieldingSmite",
       name: [ expect: "Shielding Smite" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { cha: 10, expect: "+0 vs. AC" }, { cha: 16, expect: "+3 vs. AC" } ]
       hit: [
         { cha: 10, expect: "2[W] damage" },
@@ -125,6 +133,7 @@ module.exports =
   "[PaladinsJudgement] should be defined":
     Verify.testProperties "PaladinsJudgement",
       name: [ expect: "Paladin's Judgement" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { str: 10, expect: "3[W] damage (special)" },

@@ -34,6 +34,13 @@ module.exports =
       test.ok weapon in npc.proficiencies.weapons, "expected to find #{weapon} in weapon proficiencies"
     test.done()
 
+  "should prefer melee weapons": (test) ->
+    new Classes.Paladin(npc = new NPC)
+    test.equal npc.weaponPreferences.length, 1
+    test.equal npc.weaponPreferences[0].count, 1
+    test.equal npc.weaponPreferences[0].type, "melee"
+    test.done()
+
   "should add holy symbol as an implement": (test) ->
     paladin = new Classes.Paladin(npc = new NPC)
     test.ok "holy symbol" in npc.supportedImplements

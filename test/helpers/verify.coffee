@@ -14,7 +14,7 @@ module.exports = Verify =
           else
             power.npc[attribute] = value
       actual = power.get(property)
-      test.equal actual, expect, "expected `#{property}' to be `#{expect}', was `#{actual}'"
+      test.deepEqual actual, expect, "expected `#{property}' to be `#{expect}', was `#{actual}'"
 
   testProperty: (id, property, tests...) ->
     (test) ->

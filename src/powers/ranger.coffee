@@ -17,12 +17,14 @@ module.exports =
 
   HitAndRun:
     name        : "Hit and Run"
+    attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "{times}[W]{±str.nz} damage"
     _formulae   : { times : ["if", ["<", ".level", 21], 1, 2] }
 
   NimbleStrike:
     name        : "Nimble Strike"
+    attackTypes : [ "ranged weapon" ]
     attack      : "{±dex} vs. AC"
     hit         : "{times}[W]{±dex.nz} damage"
     _formulae   : { times : ["if", ["<", ".level", 21], 1, 2] }
@@ -35,6 +37,7 @@ module.exports =
 
   DireWolverineStrike:
     name        : "Dire Wolverine Strike"
+    attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "1[W]{±str.nz} damage"
 
@@ -63,15 +66,18 @@ module.exports =
 
   JawsOfTheWolf:
     name        : "Jaws of the Wolf"
+    attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC, two attacks"
     hit         : "2[W]{±str.nz} damage per attack"
 
   SplitTheTree:
     name        : "Split the Tree"
+    attackTypes : [ "ranged weapon" ]
     attack      : "{±dex} vs. AC (special)"
     hit         : "2[W]{±dex.nz} damage"
 
   SuddenStrike:
     name        : "Sudden Strike"
+    attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC (special)"
     hit         : "1[W] damage (off-hand) (special, 2[W]{±str.nz} damage w/ main weapon)"

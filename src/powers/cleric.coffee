@@ -1,7 +1,7 @@
 module.exports =
   HealingWord:
     name        : "Healing Word"
-    range       : "Close burst {burstSize}"
+    attackTypes : [ "Close burst {burstSize}" ]
     frequency   : "{frequency}/encounter"
     effect      : "surge+{surgeDice}d6"
     _formulae   :
@@ -14,7 +14,7 @@ module.exports =
 
   TurnUndead:
     name        : "Channel Divinity: Turn Undead"
-    range       : "Close burst {burstSize}"
+    attackTypes : [ "Close burst {burstSize}" ]
     attack      : "{±wis} vs. Will"
     hit         : "{hitDice}d10{±wis.nz}, push {push} (special)"
     _formulae   :

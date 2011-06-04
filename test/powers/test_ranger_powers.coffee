@@ -27,6 +27,7 @@ module.exports =
   "[HitAndRun] should be defined":
     Verify.testProperties "HitAndRun",
       name: [ expect: "Hit and Run" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, str: 10, expect: "1[W] damage" },
@@ -37,6 +38,7 @@ module.exports =
   "[NimbleStrike] should be defined":
     Verify.testProperties "NimbleStrike",
       name: [ expect: "Nimble Strike" ]
+      attackTypes: [ expect: [ "ranged weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, dex: 10, expect: "1[W] damage" },
@@ -60,6 +62,7 @@ module.exports =
   "[DireWolverineStrike] should be defined":
     Verify.testProperties "DireWolverineStrike",
       name: [ expect: "Dire Wolverine Strike" ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [ { str: 10, expect: "1[W] damage" }, { str: 16, expect: "1[W]+3 damage" } ]
 
@@ -115,6 +118,7 @@ module.exports =
   "[JawsOfTheWolf] should be defined":
     Verify.testProperties "JawsOfTheWolf",
       name: [ expect: "Jaws of the Wolf" ],
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
         { str: 10, expect: "+0 vs. AC, two attacks" },
         { str: 16, expect: "+3 vs. AC, two attacks" } ]
@@ -125,6 +129,7 @@ module.exports =
   "[SplitTheTree] should be defined":
     Verify.testProperties "SplitTheTree",
       name: [ expect: "Split the Tree" ],
+      attackTypes: [ expect: [ "ranged weapon" ] ]
       attack: [
         { dex: 10, expect: "+0 vs. AC (special)" },
         { dex: 16, expect: "+3 vs. AC (special)" } ]
@@ -135,6 +140,7 @@ module.exports =
   "[SuddenStrike] should be defined":
     Verify.testProperties "SuddenStrike",
       name: [ expect: "Sudden Strike" ],
+      attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
         { str: 10, expect: "+0 vs. AC (special)" },
         { str: 16, expect: "+3 vs. AC (special)" } ]

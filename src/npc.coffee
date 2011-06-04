@@ -63,10 +63,11 @@ module.exports = class NPC
     @generateAbilityScores()
     @selectTrainedSkills()
     @selectPendingFeats()
-    @selectPowers()
 
     @selectArmor()
     @selectWeapons()
+
+    @selectPowers()
 
     this
 
@@ -228,15 +229,46 @@ module.exports = class NPC
 
     @pendingFeats = []
 
+  isSuitablePower: (id) ->
+    power = Powers.get id, npc: this
+
+    types = power.get "attackTypes"
+    return true unless types?
+
+    hasRanged = hasMelee = false
+    for weapon in @equipment.weapons()
+      if Weapons.category(weapon, "ranged")
+        hasRanged = true
+      else if Weapons.category(weapon, "melee")
+        hasMelee = true
+
+    valid = false
+    for type in types
+      switch type
+        when "ranged weapon" then valid |= hasRanged
+        when "melee weapon" then valid |= hasMelee
+        else valid = true
+
+    valid
+
+  suitablePowersIn: (list) ->
+    suitable = []
+    for power in list
+      suitable.push power if @isSuitablePower(power)
+    suitable
+    
   selectPowers: ->
-    for power in @random.shuffle(@class.powers.atWill[1]...).slice(0, 2)
+    atWill = @suitablePowersIn @class.powers.atWill[1]
+    for power in @random.shuffle(atWill...).slice(0, 2)
       power = Powers.get power, npc: this
       @powers.atWill.push power
 
-    power = @random.pick(@class.powers.encounter[1]...)
+    encounter = @suitablePowersIn @class.powers.encounter[1]
+    power = @random.pick(encounter...)
     @powers.encounter.push(Powers.get power, npc: this)
 
-    power = @random.pick(@class.powers.daily[1]...)
+    daily = @suitablePowersIn @class.powers.daily[1]
+    power = @random.pick(daily...)
     @powers.daily.push(Powers.get power, npc: this)
 
     for pending in @pendingPowers
@@ -245,7 +277,7 @@ module.exports = class NPC
       # disallow selection of powers that have already been selected
       available = []
       for power in list
-        available.push power unless @powers.find(pending.category, power)?
+        available.push power if !@powers.find(pending.category, power)? && @isSuitablePower(power)
 
       for power in @random.shuffle(available...).slice(0, pending.count)
         @powers[pending.category].push(Powers.get power, npc: this)
