@@ -253,6 +253,15 @@ module.exports =
     test.equal power.evaluate("frop"), "gimme"
     test.done()
 
+  "evaluate() should invoke functions": (test) ->
+    power = new Power npc: new NPC, _formulae:
+      will: (power) -> power.npc.defenses.will.score()
+
+    test.equal power.evaluate("will"), 10
+    power.npc.abilities.wis.baseValue = 16
+    test.equal power.evaluate("will"), 13
+    test.done()
+
   "get() should evaluate bracketed substrings before returning": (test) ->
     power = new Power npc: new NPC, attack: "{±cha} vs. AC"
     test.equal power.get("attack"), "+0 vs. AC"

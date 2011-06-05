@@ -38,6 +38,8 @@ module.exports = class Power
     switch typeof value
       when "number", "boolean"
         value
+      when "function"
+        value(this)
       when "object"
         [operation, operands...] = value
         switch operation
