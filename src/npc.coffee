@@ -137,6 +137,7 @@ module.exports = class NPC
       fort: new Attribute 10
       ref : new Attribute 10
       will: new Attribute 10
+      save: new Attribute  0
 
     # FIXME: only apply dex modifier if armor is light, or none
     @defenses.ac.adjust =>

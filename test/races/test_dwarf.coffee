@@ -53,6 +53,11 @@ module.exports =
     test.ok npc.hasFeature("racial", "Stand Your Ground"), "missing Stand Your Ground feature"
     test.done()
 
+  "should have racial bonus to saves vs poison (via Cast-Iron Stomach)": (test) ->
+    new Races.Dwarf(npc = new NPC)
+    test.ok npc.defenses.save.has(5, "racial", "vs poison"), "expected racial bonus to saves vs. poison"
+    test.done()
+    
   "should have proficiency with warhammer and throwing hammer": (test) ->
     new Races.Dwarf(npc = new NPC)
     test.ok "warhammer" in npc.proficiencies.weapons

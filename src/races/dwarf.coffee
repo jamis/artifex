@@ -14,14 +14,15 @@ module.exports = class Dwarf
     npc.speed.baseValue = 5
 
     npc.feature "racial", "Cast-Iron Stomach", "+5 racial bonus to save vs. poison"
-    npc.feature "racial", "Dwarven Resilience", "second wind is a minor action"
-    npc.feature "racial", "Dwarven Weapon Proficiency"
-    npc.feature "racial", "Encumbered Speed"
-    npc.feature "racial", "Stand Your Ground"
+    npc.defenses.save.adjustWhen "vs poison", "racial", 5
 
-    # gained from Dwarven Weapon Proficiency feature
+    npc.feature "racial", "Dwarven Weapon Proficiency"
     npc.proficiencies.weapons.push "throwingHammer"
     npc.proficiencies.weapons.push "warhammer"
+
+    npc.feature "racial", "Dwarven Resilience", "second wind is a minor action"
+    npc.feature "racial", "Encumbered Speed"
+    npc.feature "racial", "Stand Your Ground"
 
     npc.languages.push "common"
     npc.languages.push "dwarven"

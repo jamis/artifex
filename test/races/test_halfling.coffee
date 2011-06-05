@@ -52,6 +52,16 @@ module.exports =
     test.ok npc.hasFeature("racial", "Second Chance"), "missing Second Chance feature"
     test.done()
 
+  "should have racial bonus to saves vs fear (via Bold)": (test) ->
+    new Races.Halfling(npc = new NPC)
+    test.ok npc.defenses.save.has(5, "racial", "vs fear"), "expected racial bonus to saves vs. fear"
+    test.done()
+    
+  "should have racial bonus to AC vs. opportunity attacks (via Nimble Reaction)": (test) ->
+    new Races.Halfling(npc = new NPC)
+    test.ok npc.defenses.ac.has(2, "racial", "vs opportunity attack"), "expected racial bonus to AC vs. opportunity attack"
+    test.done()
+
   "should have second chance encounter power (via Second Chance)": (test) ->
     new Races.Halfling(npc = new NPC)
     test.equal npc.powers.encounter.length, 1

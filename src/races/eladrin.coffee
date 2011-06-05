@@ -23,6 +23,7 @@ module.exports = class Eladrin
 
     npc.feature "racial", "Eladrin Will", "+1 to Will, +5 vs. saves against charm"
     npc.defenses.will.adjust "racial", 1
+    npc.defenses.save.adjustWhen "vs charm", "racial", 5
 
     npc.feature "racial", "Fey Origin"
     npc.descriptors.push "fey"

@@ -69,6 +69,11 @@ module.exports =
     test.ok npc.defenses.will.has(1, "racial"), "expected +1 racial bonus to Will"
     test.done()
 
+  "should have racial bonus to saves vs charm (via Eladrin Will)": (test) ->
+    new Races.Eladrin(npc = new NPC)
+    test.ok npc.defenses.save.has(5, "racial", "vs charm"), "expected racial bonus to saves vs. charm"
+    test.done()
+    
   "should add fey descriptor to npc (via Fey Origin)": (test) ->
     new Races.Eladrin(npc = new NPC)
     test.ok "fey" in npc.descriptors, "expected fey to be added to descriptors"

@@ -94,6 +94,7 @@ module.exports =
     test.equal npc.defenses.fort.score(), 10
     test.equal npc.defenses.ref.score(), 10
     test.equal npc.defenses.will.score(), 10
+    test.equal npc.defenses.save.adjustment(), 0
     test.done()
 
   "should initialize resistance": (test) ->

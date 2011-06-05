@@ -17,7 +17,11 @@ module.exports = class Halfling
     npc.speed.baseValue = 6
 
     npc.feature "racial", "Bold", "+5 to saves vs. fear"
+    npc.defenses.save.adjustWhen "vs fear", "racial", 5
+
     npc.feature "racial", "Nimble Reaction", "+2 to AC vs. opportunity attacks"
+    npc.defenses.ac.adjustWhen "vs opportunity attack", "racial", 2
+
     npc.feature "racial", "Second Chance"
     npc.powers.encounter.push new Power name: "Second Chance"
 

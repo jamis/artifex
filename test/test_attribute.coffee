@@ -8,7 +8,7 @@ module.exports =
 
   "created attribute begins with empty adjustments": (test) ->
     attr = new Attribute
-    test.equal attr.adjustments.length, 0
+    test.equal attr.adjustments().length, 0
     test.done()
 
   "created attribute with parameter sets base to parameter": (test) ->
@@ -27,15 +27,44 @@ module.exports =
   "#adjust adds value and type to adjustments": (test) ->
     attr = new Attribute
     attr.adjust "racial", 2
-    test.equal attr.adjustments.length, 1
-    test.deepEqual attr.adjustments[0], [2, "racial"]
+    test.equal attr.adjustments().length, 1
+    test.deepEqual attr.adjustments()[0], [2, "racial"]
     test.done()
 
   "#adjust uses undefined type when type is omitted": (test) ->
     attr = new Attribute
     attr.adjust 2
-    test.equal attr.adjustments.length, 1
-    test.deepEqual attr.adjustments[0], [2, undefined]
+    test.equal attr.adjustments().length, 1
+    test.deepEqual attr.adjustments()[0], [2, undefined]
+    test.done()
+
+  "#adjustWhen does not add value to score": (test) ->
+    attr = new Attribute 0
+    attr.adjustWhen "vs poison", "racial", 2
+    test.equal attr.score(), 0
+    test.done()
+
+  "#adjustWhen adds value and type to conditions": (test) ->
+    attr = new Attribute 0
+    attr.adjustWhen "vs poison", "racial", 2
+    test.equal attr.adjustments("vs poison").length, 1
+    test.deepEqual attr.adjustments("vs poison")[0], [2, "racial"]
+    test.done()
+
+  "#adjustWhen uses undefined type when type is omitted": (test) ->
+    attr = new Attribute
+    attr.adjustWhen "vs poison", 2
+    test.equal attr.adjustments("vs poison").length, 1
+    test.deepEqual attr.adjustments("vs poison")[0], [2, undefined]
+    test.done()
+
+  "#adjustWhen should combine similar conditions": (test) ->
+    attr = new Attribute
+    attr.adjustWhen "vs poison", "class", 1
+    attr.adjustWhen "vs poison", "racial", 2
+    attr.adjustWhen "vs charm", "racial", 2
+    test.equal attr.adjustments("vs poison").length, 2
+    test.equal attr.adjustment("vs poison"), 3
     test.done()
 
   "#score without base raises exception": (test) ->
