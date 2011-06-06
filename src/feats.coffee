@@ -1,4 +1,5 @@
-Powers = require './powers'
+Attribute = require './attribute'
+Powers    = require './powers'
 
 class Feat
   constructor: (properties) ->
@@ -68,6 +69,8 @@ class Feat
           when "property"
             for name, value of value
               npc[name] = value
+          when "apply"
+            value(npc)
           else throw new Error "unsupported attribute: `#{attribute}'"
 
 module.exports = Feats =
@@ -180,8 +183,9 @@ module.exports = Feats =
       class: "rogue"
       feature: { class: [ "Sneak Attack" ] }
     grants:
-      property:
-        sneakAttackDamageDie: 8
+      apply: (npc) ->
+        npc.attacks.sneakAttack ||= new Attribute 0
+        npc.attacks.sneakAttack.damageDie = 8
 
   BladeOpportunist: new Feat(name: "Blade Opportunist", requires: { str: 13, dex: 13 })
 

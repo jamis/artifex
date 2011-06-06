@@ -60,6 +60,9 @@ featDefined = (id, expectations) ->
               when "property"
                 for name, value of adjustment
                   test.equal npc[name], value
+              when "tests"
+                for name, fn of adjustment
+                  test.ok fn(npc), "expected test `#{name}' to be true"
               else throw new Error "unsupported grant: `#{grant}'"
     test.done()
             
@@ -183,7 +186,8 @@ module.exports =
         { class: "wizard", feature: { class: ["Sneak Attack"] } },
         { class: "rogue" } ]
       grants:
-        property: { sneakAttackDamageDie: 8 }
+        tests:
+          damageDie: (npc) -> npc.attacks.sneakAttack.damageDie is 8
 
   "[BladeOpportunist] should be defined":
     featDefined "BladeOpportunist",
