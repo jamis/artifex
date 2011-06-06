@@ -22,7 +22,7 @@ module.exports =
     hit         : "{count}d{die}{±bonus.nz} damage"
     _formulae   :
       count: ["±", ["case", ["<", ".level", 11], 2, ["<", ".level", 21], 3, true, 5]]
-      die  : (power) -> if power.npc.attacks.sneakAttack? then power.npc.attacks.sneakAttack.damageDie else 6
+      die  : (power) -> if power.npc.attacks.sneakAttack? then power.npc.attacks.sneakAttack.damageDie ? 6 else 6
       bonus: (power) -> if power.npc.attacks.sneakAttack? then power.npc.attacks.sneakAttack.score() else 0
       "±bonus.nz": ["if", ["=", "bonus", 0], ["~", ""], ["±", "bonus"]]
 

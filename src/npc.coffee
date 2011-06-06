@@ -34,6 +34,7 @@ module.exports = class NPC
     @initializeHitPoints()
     @initializeHealingSurges()
     @initializeProficiencies()
+    @initializeAttacks()
     @initializeDefenses()
     @initializeResistance()
     @initializeEquipment()
@@ -130,6 +131,10 @@ module.exports = class NPC
     @proficiencies =
       armor: []
       weapons: []
+
+  initializeAttacks: ->
+    @attacks =
+      general: new Attribute 0
 
   initializeDefenses: ->
     @defenses =

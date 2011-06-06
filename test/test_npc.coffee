@@ -97,6 +97,13 @@ module.exports =
     test.equal npc.defenses.save.adjustment(), 0
     test.done()
 
+  "should initialize attacks": (test) ->
+    npc = new NPC
+    test.ok npc.attacks?
+    test.ok npc.attacks.general?
+    test.equal npc.attacks.general.score(), 0
+    test.done()
+
   "should initialize resistance": (test) ->
     npc = new NPC
     test.ok npc.resistance?
