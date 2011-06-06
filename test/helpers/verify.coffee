@@ -2,8 +2,8 @@
 
 module.exports = Verify =
   property: (test, id, property, tests...) ->
-    power = Powers.get id, npc: new NPC
     for conditions in tests
+      power = Powers.get id, npc: new NPC
       expect = undefined
       for attribute, value of conditions
         switch attribute
@@ -11,6 +11,8 @@ module.exports = Verify =
             power.npc.abilities[attribute].baseValue = value
           when "expect"
             expect = value
+          when "when"
+            value(power.npc)
           else
             power.npc[attribute] = value
       actual = power.get(property)
