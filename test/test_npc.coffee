@@ -422,6 +422,27 @@ module.exports =
       test.ok true if power.id in npc.class.powers.daily[1]
     test.done()
 
+  "should have default preferences for how many initial powers to select": (test) ->
+    npc = new NPC
+    test.equal npc.powersToSelect.atWill.count, 2
+    test.equal npc.powersToSelect.encounter.count, 1
+    test.equal npc.powersToSelect.daily.count, 1
+    test.equal npc.powersToSelect.utility.count, 0
+    test.done()
+
+  "should honor preferences for how many initial powers to select": (test) ->
+    npc = new NPC
+    npc.powersToSelect.atWill.count = 0
+    npc.powersToSelect.encounter.count = 0
+    npc.powersToSelect.daily.count = 0
+    npc.powersToSelect.utility.count = 0
+    npc.selectPowers()
+    test.equal npc.powers.atWill.length, 0
+    test.equal npc.powers.encounter.length, 0
+    test.equal npc.powers.daily.length, 0
+    test.equal npc.powers.utility.length, 0
+    test.done()
+
   "#generate should apply additional pending powers": (test) ->
     npc = new NPC
     npc.pendingPowers.push count: 1, category: "atWill", list: Classes.Cleric.powers.daily[1]

@@ -114,6 +114,12 @@ module.exports = class NPC
           return power if power.name is name or power.id is name
         null
 
+    @powersToSelect =
+      atWill   : { count: 2 }
+      encounter: { count: 1 }
+      daily    : { count: 1 }
+      utility  : { count: 0 }
+
   initializeFeatures: ->
     @features =
       racial: []
@@ -262,20 +268,19 @@ module.exports = class NPC
     for power in list
       suitable.push power if @isSuitablePower(power)
     suitable
-    
+
+  selectPowersFor: (category) ->
+    if @powersToSelect[category].count > 0
+      list = @suitablePowersIn @class.powers[category][1]
+      for power in @random.shuffle(list...).slice(0, @powersToSelect[category].count)
+        power = Powers.get power, npc: this
+        @powers[category].push power
+
   selectPowers: ->
-    atWill = @suitablePowersIn @class.powers.atWill[1]
-    for power in @random.shuffle(atWill...).slice(0, 2)
-      power = Powers.get power, npc: this
-      @powers.atWill.push power
-
-    encounter = @suitablePowersIn @class.powers.encounter[1]
-    power = @random.pick(encounter...)
-    @powers.encounter.push(Powers.get power, npc: this)
-
-    daily = @suitablePowersIn @class.powers.daily[1]
-    power = @random.pick(daily...)
-    @powers.daily.push(Powers.get power, npc: this)
+    @selectPowersFor "atWill"
+    @selectPowersFor "encounter"
+    @selectPowersFor "daily"
+    @selectPowersFor "utility"
 
     for pending in @pendingPowers
       list = if typeof pending.list is "function" then pending.list(this) else pending.list
