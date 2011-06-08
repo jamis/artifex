@@ -12,7 +12,7 @@ module.exports = Verify =
           when "expect"
             expect = value
           when "when"
-            value(power.npc)
+            value(power)
           else
             power.npc[attribute] = value
       actual = power.get(property)

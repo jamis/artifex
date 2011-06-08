@@ -2,13 +2,13 @@
 {Verify} = require '../helpers'
 
 sneakAttack = (die, adjust) ->
-  (npc) =>
-    npc.attacks.sneakAttack ||= new Attribute 0
-    npc.attacks.sneakAttack.damageDie = die
-    npc.attacks.sneakAttack.adjust adjust
+  (power) =>
+    power.npc.attacks.sneakAttack ||= new Attribute 0
+    power.npc.attacks.sneakAttack.damageDie = die
+    power.npc.attacks.sneakAttack.adjust adjust
 
-artfulDodger = (npc) -> npc.feature "class", "Artful Dodger"
-brutalScoundrel = (npc) -> npc.feature "class", "Brutal Scoundrel"
+artfulDodger = (power) -> power.npc.feature "class", "Artful Dodger"
+brutalScoundrel = (power) -> power.npc.feature "class", "Brutal Scoundrel"
   
 module.exports =
   "[SneakAttack] should be defined":
