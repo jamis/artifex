@@ -477,3 +477,11 @@ module.exports =
       test.ok "melee weapon" not in types
 
     test.done()
+
+  "scoresAssigned callbacks should be invoked after ability scores are generated": (test) ->
+    test.expect 1
+
+    npc = new NPC class: Classes.Cleric
+    npc.when "scoresAssigned", => test.ok true
+    npc.generate()
+    test.done()

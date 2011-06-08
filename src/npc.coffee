@@ -26,6 +26,7 @@ module.exports = class NPC
     @alignment = "unaligned"
     @pendingSkills = []
     @gender = @options.gender
+    @callbacks = {}
 
     @initializeAbilities()
     @initializeSkills()
@@ -38,6 +39,14 @@ module.exports = class NPC
     @initializeDefenses()
     @initializeResistance()
     @initializeEquipment()
+
+  when: (event, callback) ->
+    @callbacks[event] ?= []
+    @callbacks[event].push callback
+
+  fire: (event) ->
+    for callback in (@callbacks[event] ? [])
+      callback(this)
 
   feature: (collection, name, description) ->
     @features[collection].push [name, description]
@@ -207,6 +216,8 @@ module.exports = class NPC
 
     for index in [0..5]
       @abilities[attributes[index]].baseValue = scores[index]
+
+    @fire "scoresAssigned"
 
   selectTrainedSkills: ->
     skills = (name for name, skill of @skills)
