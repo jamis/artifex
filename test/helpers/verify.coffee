@@ -7,7 +7,7 @@ module.exports = Verify =
       expect = undefined
       for attribute, value of conditions
         switch attribute
-          when "str", "con", "dex", "int", "wis", "cha"
+          when "str", "con", "dex", "int", "int_", "wis", "cha"
             power.npc.abilities[attribute].baseValue = value
           when "expect"
             expect = value
