@@ -4,6 +4,7 @@ Paladin = require './classes/paladin'
 Ranger  = require './classes/ranger'
 Rogue   = require './classes/rogue'
 Warlock = require './classes/warlock'
+Warlord = require './classes/warlord'
 
 module.exports =
   Cleric : Cleric
@@ -12,5 +13,6 @@ module.exports =
   Ranger : Ranger
   Rogue  : Rogue
   Warlock: Warlock
+  Warlord: Warlord
 
-  All: [ Cleric, Fighter, Paladin, Ranger, Rogue, Warlock ]
+  All: [ Cleric, Fighter, Paladin, Ranger, Rogue, Warlock, Warlord ]
