@@ -1,10 +1,9 @@
 {NPC, Powers} = require '../..'
 
 module.exports =
-  "should include descriptor": (test) ->
-    npc = new NPC
-    power = new Powers.DragonBreath(npc, "poison")
-    test.equal power.descriptor, "poison"
+  "should include keywords": (test) ->
+    power = new Powers.DragonBreath(npc = new NPC, "poison")
+    test.deepEqual power.keywords, [ "poison" ]
     test.equal power.name, "Dragon breath (poison)"
     test.done()
 
@@ -29,12 +28,16 @@ module.exports =
     test.done()
 
   "hit should be dependent on npc level and CON": (test) ->
-    npc = new NPC
-    power = new Powers.DragonBreath(npc, "poison")
+    power = new Powers.DragonBreath(npc = new NPC, "poison")
     test.ok power.hit?
     test.equal power.get("hit"), "1d6"
     npc.level = 11
     test.equal power.get("hit"), "2d6"
     npc.abilities.con.baseValue = 18
     test.equal power.get("hit"), "2d6+4"
+    test.done()
+
+  "get should return any named attribute": (test) ->
+    power = new Powers.DragonBreath(npc = new NPC, "poison")
+    test.deepEqual power.get("keywords"), [ "poison" ]
     test.done()

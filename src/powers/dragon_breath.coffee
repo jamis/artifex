@@ -1,9 +1,10 @@
 module.exports = class DragonBreath
-  constructor: (@npc, @descriptor) ->
-    @name = "Dragon breath (#{@descriptor})"
+  constructor: (@npc, descriptor) ->
+    @name = "Dragon breath (#{descriptor})"
     @range = true
     @attack = true
     @hit = true
+    @keywords = [ descriptor ]
 
   get: (name) ->
     switch name
@@ -19,3 +20,5 @@ module.exports = class DragonBreath
         con = @npc.abilities.con.modifier()
         damage += "+#{con}" if con != 0
         damage
+      else
+        this[name]
