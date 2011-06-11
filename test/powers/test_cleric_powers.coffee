@@ -5,14 +5,17 @@ module.exports =
   "[ArmorOfBahamut] should be defined":
     Verify.testProperties "ArmorOfBahamut",
       name: [ expect: "Channel Divinity: Armor of Bahamut" ]
+      keywords: [ expect: [ "divine" ] ]
 
   "[AvandrasRescue] should be defined":
     Verify.testProperties "AvandrasRescue",
       name: [ expect: "Channel Divinity: Avandra's Rescue" ]
+      keywords: [ expect: [ "divine" ] ]
 
   "[HealingWord] should be defined":
     Verify.testProperties "HealingWord",
       name: [ expect: "Healing Word" ]
+      keywords: [ expect: [ "divine", "healing" ] ]
       frequency: [
         { level: 1, expect: "2/encounter" },
         { level: 15, expect: "2/encounter" },
@@ -29,9 +32,15 @@ module.exports =
         { level: 11, expect: [ "Close burst 10" ] },
         { level: 21, expect: [ "Close burst 15" ] } ]
 
+  "[DivineFortune] should be defined":
+    Verify.testProperties "DivineFortune",
+      name: [ expect: "Channel Divinity: Divine Fortune" ],
+      keywords: [ expect: [ "divine" ] ]
+
   "[TurnUndead] should be defined":
     Verify.testProperties "TurnUndead",
       name: [ expect: "Channel Divinity: Turn Undead" ]
+      keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attackTypes: [
         { level:  1, expect: [ "Close burst 2" ] },
         { level: 11, expect: [ "Close burst 5" ] },
@@ -52,6 +61,7 @@ module.exports =
   "[LanceOfFaith] should be defined":
     Verify.testProperties "LanceOfFaith",
       name: [ expect: "Lance of Faith" ]
+      keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [ { wis: 10, expect: "+0 vs. Reflex" }, { wis: 16, expect: "+3 vs. Reflex" } ]
       hit: [
         { level:  1, wis: 10, expect: "1d8 (special)" },
@@ -62,6 +72,7 @@ module.exports =
   "[PriestsShield] should be defined":
     Verify.testProperties "PriestsShield",
       name: [ expect: "Priest's Shield" ]
+      keywords: [ expect: [ "divine", "weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, str: 10, expect: "1[W] (special)" },
@@ -72,6 +83,7 @@ module.exports =
   "[RighteousBrand] should be defined":
     Verify.testProperties "RighteousBrand",
       name: [ expect: "Righteous Brand" ]
+      keywords: [ expect: [ "divine", "weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, str: 10, expect: "1[W] (special)" },
@@ -82,6 +94,7 @@ module.exports =
   "[SacredFlame] should be defined":
     Verify.testProperties "SacredFlame",
       name: [ expect: "Sacred Flame" ]
+      keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [ { wis: 10, expect: "+0 vs. Reflex" }, { wis: 16, expect: "+3 vs. Reflex" } ]
       hit: [
         { level:  1, wis: 10, expect: "1d6 (special)" },
@@ -92,6 +105,7 @@ module.exports =
   "[CauseFear] should be defined":
     Verify.testProperties "CauseFear",
       name: [ expect: "Cause Fear" ]
+      keywords: [ expect: [ "divine", "fear", "implement" ] ]
       attack: [ { wis: 10, expect: "+0 vs. Will" }, { wis: 16, expect: "+3 vs. Will" } ]
       hit: [
         { cha: 10, expect: "target moves speed away from you" },
@@ -100,41 +114,48 @@ module.exports =
   "[DivineGlow] should be defined":
     Verify.testProperties "DivineGlow",
       name: [ expect: "Divine Glow" ]
+      keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [ { wis: 10, expect: "+0 vs. Reflex" }, { wis: 16, expect: "+3 vs. Reflex" } ]
       hit: [ { wis: 10, expect: "1d8 (special)" }, { wis: 16, expect: "1d8+3 (special)" } ]
 
   "[HealingStrike] should be defined":
     Verify.testProperties "HealingStrike",
       name: [ expect: "Healing Strike" ]
+      keywords: [ expect: [ "divine", "healing", "radiant", "weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [ { str: 10, expect: "2[W] (special)" }, { str: 16, expect: "2[W]+3 (special)" } ]
 
   "[WrathfulThunder] should be defined":
     Verify.testProperties "WrathfulThunder",
       name: [ expect: "Wrathful Thunder" ]
+      keywords: [ expect: [ "divine", "thunder", "weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [ { str: 10, expect: "1[W] (special)" }, { str: 16, expect: "1[W]+3 (special)" } ]
 
   "[AvengingFlame] should be defined":
     Verify.testProperties "AvengingFlame",
       name: [ expect: "Avenging Flame" ]
+      keywords: [ expect: [ "divine", "fire", "weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [ { str: 10, expect: "2[W] (special)" }, { str: 16, expect: "2[W]+3 (special)" } ]
 
   "[BeaconOfHope] should be defined":
     Verify.testProperties "BeaconOfHope",
       name: [ expect: "Beacon of Hope" ]
+      keywords: [ expect: [ "divine", "healing", "implement" ] ]
       attack: [ { wis: 10, expect: "+0 vs. Will" }, { wis: 16, expect: "+3 vs. Will" } ]
 
   "[CascadeOfLight] should be defined":
     Verify.testProperties "CascadeOfLight",
       name: [ expect: "Cascade of Light" ]
+      keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [ { wis: 10, expect: "+0 vs. Will" }, { wis: 16, expect: "+3 vs. Will" } ]
       hit: [ { wis: 10, expect: "3d8 (special)" }, { wis: 16, expect: "3d8+3 (special)" } ]
 
   "[GuardianOfFaith] should be defined":
     Verify.testProperties "GuardianOfFaith",
       name: [ expect: "Guardian of Faith" ]
+      keywords: [ expect: [ "conjuration", "divine", "implement", "radiant" ] ]
       attack: [
         { wis: 10, expect: "+0 vs. Fort (special)" },
         { wis: 16, expect: "+3 vs. Fort (special)" } ]
