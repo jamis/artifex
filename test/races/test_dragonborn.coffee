@@ -66,7 +66,7 @@ module.exports =
     dborn = new Races.Dragonborn(npc)
     test.ok npc.hasFeature("racial", "Dragonborn fury"), "missing Dragonborn fury feature"
     test.ok npc.hasFeature("racial", "Draconic heritage"), "missing Draconic heritage feature"
-    test.ok npc.hasFeature("racial", "Dragon breath (#{dborn.descriptor})"), "missing Dragon breath (#{dborn.descriptor}) feature"
+    test.ok npc.hasFeature("racial", "Dragon Breath (#{dborn.descriptor})"), "missing Dragon Breath (#{dborn.descriptor}) feature"
     test.done()
 
   "should grant CON bonus to healingSurge.value": (test) ->
@@ -82,7 +82,7 @@ module.exports =
     test.equal npc.powers.encounter.length, 0
     dborn = new Races.Dragonborn(npc)
     test.equal npc.powers.encounter.length, 1
-    test.equal "Dragon breath (#{dborn.descriptor})", npc.powers.encounter[0].name
+    test.equal "Dragon Breath (#{dborn.descriptor})", npc.powers.encounter[0].get('name')
     test.done()
 
   "should set npc breath range and ability": (test) ->

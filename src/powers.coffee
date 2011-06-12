@@ -1,5 +1,4 @@
-DragonBreath = require './powers/dragon_breath'
-Power        = require './power'
+Power = require './power'
 
 powerGetter = (key, initializers...) ->
   if typeof Powers[key] is "function"
@@ -10,8 +9,6 @@ powerGetter = (key, initializers...) ->
 module.exports = Powers =
   get: powerGetter
     
-  DragonBreath: DragonBreath
-
 for group in [ "racial", "cleric", "fighter", "paladin", "ranger", "rogue", "warlock", "warlord", "wizard" ]
   powers = require "./powers/#{group}"
   for label, data of powers

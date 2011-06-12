@@ -1,4 +1,4 @@
-DragonBreath = require '../powers/dragon_breath'
+Powers = require '../powers'
 
 module.exports = class Dragonborn
   constructor: (npc) ->
@@ -23,15 +23,16 @@ module.exports = class Dragonborn
     # wait until after the ability scores have been generated and assigned.
 
     npc.breath =
+      type: @descriptor
       range: 3
       ability: npc.random.pick "dex", "str", "con"
 
-    dragonBreath = new DragonBreath npc, @descriptor
+    dragonBreath = Powers.get "DragonBreath", npc: npc
     npc.powers.encounter.push dragonBreath
 
     npc.feature "racial", "Dragonborn fury", "+1 to attack when bloodied"
     npc.feature "racial", "Draconic heritage", "add CON modifier to surge value"
-    npc.feature "racial", dragonBreath.name
+    npc.feature "racial", dragonBreath.get("name")
 
     npc.healingSurge.value.adjust "racial", => npc.abilities.con.modifier()
 
