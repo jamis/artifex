@@ -108,7 +108,7 @@ module.exports =
     npc = new NPC
     test.ok npc.damage?
     test.ok npc.damage.general?
-    test.ok npc.damage.general.score(), 0
+    test.equal npc.damage.general.score(), 0
     test.done()
 
   "should initialize resistance": (test) ->
