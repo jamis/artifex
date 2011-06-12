@@ -48,6 +48,8 @@ class Feat
         for category, items of value
           result &&= @processCombination items, (item) -> item in npc.proficiencies[category]
         return true if result
+      when "with"
+        value(npc)
       else throw new Error "unsupported property: `#{property}'"
 
   applyTo: (npc) ->
@@ -72,6 +74,13 @@ class Feat
           when "apply"
             value(npc)
           else throw new Error "unsupported attribute: `#{attribute}'"
+
+powersWithKeywords = (keywords...) ->
+  (npc) ->
+    for keyword in keywords
+      if npc.powers.firstThat((whence, power) -> keyword in power.keywords)
+        return true
+    false
 
 module.exports = Feats =
   ActionSurge: new Feat
@@ -188,6 +197,17 @@ module.exports = Feats =
         npc.attacks.sneakAttack.damageDie = 8
 
   BladeOpportunist: new Feat(name: "Blade Opportunist", requires: { str: 13, dex: 13 })
+
+  BurningBlizzard: new Feat
+    name: "Burning Blizzard"
+    requires:
+      int: 13
+      wis: 13
+      with: powersWithKeywords("acid", "cold")
+    grants:
+      apply: (npc) ->
+        npc.attacks.general.adjustWhen "acid", "feat", -> Math.ceil(npc.level/10)
+        npc.attacks.general.adjustWhen "cold", "feat", -> Math.ceil(npc.level/10)
 
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat

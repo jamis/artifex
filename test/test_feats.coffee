@@ -1,4 +1,9 @@
-{NPC, Feats} = require '..'
+{NPC, Feats, Powers} = require '..'
+
+hasPower = (id, category) ->
+  (npc) ->
+    category ||= "atWill"
+    npc.powers[category].push Powers.get(id, npc: npc)
 
 featDefined = (id, expectations) ->
   (test) ->
@@ -8,7 +13,7 @@ featDefined = (id, expectations) ->
       npc = new NPC
       for attribute, value of conditions
         switch attribute
-          when "str", "con", "dex", "int", "wis", "cha"
+          when "str", "con", "dex", "int", "int_", "wis", "cha"
             npc.abilities[attribute].baseValue = value
           when "race"
             npc.race = { name: value, is: (name) -> name is value }
@@ -27,6 +32,8 @@ featDefined = (id, expectations) ->
             for category, list of value
               for item in list
                 npc.proficiencies[category].push(item)
+          when "when"
+            value(npc)
           else throw new Error "unsupported configure attribute: `#{attribute}'"
       npc
 
@@ -195,6 +202,30 @@ module.exports =
       allows: [ { str: 13, dex: 13 } ]
       disallows: [ { str: 12, dex: 13 }, { str: 13, dex: 12 } ]
 
+
+  "[BurningBlizzard] should be defined":
+    featDefined "BurningBlizzard",
+      name: "Burning Blizzard"
+      allows: [
+        { int_: 13, wis: 13, when: hasPower("AcidArrow") },
+        { int_: 13, wis: 13, when: hasPower("ArmorOfAgathys") } ]
+      disallows: [
+        { int_: 13, wis: 13, when: hasPower("BurningHands") },
+        { int_: 12, wis: 13, when: hasPower("AcidArrow") },
+        { int_: 13, wis: 12, when: hasPower("AcidArrow") } ]
+      grants:
+        tests:
+          conditionalBonus: (npc) ->
+            npc.attacks.general.adjustment("acid") is 1 and
+              npc.attacks.general.adjustment("cold") is 1
+          paragonLevelDependentBonus: (npc) ->
+            npc.level = 11
+            npc.attacks.general.adjustment("acid") is 2 and
+              npc.attacks.general.adjustment("cold") is 2
+          epicLevelDependentBonus: (npc) ->
+            npc.level = 21
+            npc.attacks.general.adjustment("acid") is 3 and
+              npc.attacks.general.adjustment("cold") is 3
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",

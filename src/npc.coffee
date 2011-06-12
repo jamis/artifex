@@ -118,10 +118,17 @@ module.exports = class NPC
       daily    : []
       utility  : []
 
-      find     : (category, name) ->
+      find: (category, name) ->
         for power in this[category]
           return power if power.name is name or power.id is name
         null
+
+      firstThat: (callback) ->
+        for category in [ "atWill", "encounter", "daily", "utility" ]
+          for power in this[category]
+            if callback(category, power)
+              return power
+        undefined
 
     @powersToSelect =
       atWill   : { count: 2 }
