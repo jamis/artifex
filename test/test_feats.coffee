@@ -5,6 +5,9 @@ hasPower = (id, category) ->
     category ||= "atWill"
     npc.powers[category].push Powers.get(id, npc: npc)
 
+equippedWith = (item) ->
+  (npc) -> npc.equipment.push(item)
+
 featDefined = (id, expectations) ->
   (test) ->
     feat = Feats[id]
@@ -100,10 +103,10 @@ module.exports =
   "[ArmorOfBahamut] should be defined":
     featDefined "ArmorOfBahamut",
       name: "Armor of Bahamut"
-      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "bahamut" } ]
+      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "Bahamut" } ]
       disallows: [
-        { feature: { class: ["Channel Divinity"] }, deity: "pelor" },
-        { feature: { class: ["Hunter's Quarry"] }, deity: "bahamut" } ]
+        { feature: { class: ["Channel Divinity"] }, deity: "Pelor" },
+        { feature: { class: ["Hunter's Quarry"] }, deity: "Bahamut" } ]
       grants:
         power:
           encounter: [ "Channel Divinity: Armor of Bahamut" ]
@@ -177,10 +180,10 @@ module.exports =
   "[AvandrasRescue] should be defined":
     featDefined "AvandrasRescue",
       name: "Avandra's Rescue"
-      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "avandra" } ]
+      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "Avandra" } ]
       disallows: [
-        { feature: { class: ["Channel Divinity"] }, deity: "pelor" },
-        { feature: { class: ["Hunter's Quarry"] }, deity: "avandra" } ]
+        { feature: { class: ["Channel Divinity"] }, deity: "Pelor" },
+        { feature: { class: ["Hunter's Quarry"] }, deity: "Avandra" } ]
       grants:
         power:
           encounter: [ "Channel Divinity: Avandra's Rescue" ]
@@ -226,6 +229,103 @@ module.exports =
             npc.level = 21
             npc.attacks.general.adjustment("acid") is 3 and
               npc.attacks.general.adjustment("cold") is 3
+
+  "[CombatReflexes] should be defined":
+    featDefined "CombatReflexes",
+      name: "Combat Reflexes"
+      allows: [ dex: 13 ]
+      disallows: [ dex: 12 ]
+      grants:
+        tests:
+          conditionalBonus: (npc) ->
+            npc.attacks.general.has 1, "feat", "opportunity attack"
+
+  "[CorellonsGrace] should be defined":
+    featDefined "CorellonsGrace",
+      name: "Corellon's Grace"
+      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "Corellon" } ]
+      disallows: [
+        { feature: { class: ["Channel Divinity"] }, deity: "Pelor" },
+        { feature: { class: ["Hunter's Quarry"] }, deity: "Corellon" } ]
+      grants:
+        power:
+          encounter: [ "Channel Divinity: Corellon's Grace" ]
+
+  "[DarkFury] should be defined":
+    featDefined "DarkFury",
+      name: "Dark Fury"
+      allows: [
+        { con: 13, wis: 13, when: hasPower("VampiricEmbrace") },
+        { con: 13, wis: 13, when: hasPower("Eyebite") } ]
+      disallows: [
+        { con: 13, wis: 13, when: hasPower("BurningHands") },
+        { con: 12, wis: 13, when: hasPower("Eyebite") },
+        { con: 13, wis: 12, when: hasPower("Eyebite") } ]
+      grants:
+        tests:
+          conditionalBonus: (npc) ->
+            npc.attacks.general.adjustment("necrotic") is 1 and
+              npc.attacks.general.adjustment("psychic") is 1
+          paragonLevelDependentBonus: (npc) ->
+            npc.level = 11
+            npc.attacks.general.adjustment("necrotic") is 2 and
+              npc.attacks.general.adjustment("psychic") is 2
+          epicLevelDependentBonus: (npc) ->
+            npc.level = 21
+            npc.attacks.general.adjustment("necrotic") is 3 and
+              npc.attacks.general.adjustment("psychic") is 3
+
+  "[DefensiveMobility] should be defined":
+    featDefined "DefensiveMobility",
+      name: "Defensive Mobility"
+      allows: [ {} ]
+      grants:
+        tests:
+          conditionalBonus: (npc) ->
+            npc.defenses.ac.has 2, "feat", "vs opportunity attack"
+
+  "[DistractingShield] should be defined":
+    featDefined "DistractingShield",
+      name: "Distracting Shield"
+      allows: [
+        { wis: 15, class: "fighter", feature: { class: ["Combat Challenge"] }, when: equippedWith("light shield") },
+        { wis: 15, class: "fighter", feature: { class: ["Combat Challenge"] }, when: equippedWith("heavy shield") } ]
+      disallows: [
+        { wis: 14, class: "fighter", feature: { class: ["Combat Challenge"] }, when: equippedWith("light shield") },
+        { wis: 15, class: "rogue", feature: { class: ["Combat Challenge"] }, when: equippedWith("light shield") },
+        { wis: 15, class: "fighter", feature: { class: ["Ballet-a-thon"] }, when: equippedWith("light shield") },
+        { wis: 15, class: "fighter", feature: { class: ["Combat Challenge"] } } ]
+
+  "[DodgeGiants] should be defined":
+    featDefined "DodgeGiants",
+      name: "Dodge Giants"
+      allows: [ race: "dwarf" ]
+      disallows: [ race: "human" ]
+      grants:
+        tests:
+          conditionalBonus: (npc) ->
+            npc.defenses.ac.has(1, "feat", "vs large") and
+              npc.defenses.ref.has(1, "feat", "vs large")
+
+  "[DragonbornFrenzy] should be defined":
+    featDefined "DragonbornFrenzy",
+      name: "Dragonborn Frenzy"
+      allows: [ race: "dragonborn" ]
+      disallows: [ race: "human" ]
+      grants:
+        tests:
+          conditionalBonus: (npc) ->
+            npc.damage.general.has(2, "feat", "bloodied")
+
+  "[DragonbornSenses] should be defined":
+    featDefined "DragonbornSenses",
+      name: "Dragonborn Senses"
+      allows: [ race: "dragonborn" ]
+      disallows: [ race: "human" ]
+      grants:
+        tests:
+          lowLightVision: (npc) ->
+            npc.vision is "low-light"
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",

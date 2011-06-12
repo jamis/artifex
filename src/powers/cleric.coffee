@@ -33,6 +33,10 @@ module.exports =
     name        : "Channel Divinity: Avandra's Rescue"
     keywords    : [ "divine" ]
 
+  CorellonsGrace:
+    name        : "Channel Divinity: Corellon's Grace"
+    keywords    : [ "divine" ]
+
   LanceOfFaith:
     name        : "Lance of Faith"
     keywords    : [ "divine", "implement", "radiant" ]

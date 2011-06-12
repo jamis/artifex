@@ -1,3 +1,4 @@
+Armor     = require './armor'
 Attribute = require './attribute'
 Powers    = require './powers'
 
@@ -82,6 +83,11 @@ powersWithKeywords = (keywords...) ->
         return true
     false
 
+equippedShield = (npc) ->
+  for item in npc.equipment
+    return true if item in Armor.Categories['shield']
+  false
+
 module.exports = Feats =
   ActionSurge: new Feat
     name: "Action Surge"
@@ -104,7 +110,7 @@ module.exports = Feats =
   ArmorOfBahamut: new Feat
     name: "Armor of Bahamut"
     requires:
-      deity: "bahamut"
+      deity: "Bahamut"
       feature: { class: [ "Channel Divinity" ] }
     grants:
       power:
@@ -180,7 +186,7 @@ module.exports = Feats =
   AvandrasRescue: new Feat
     name: "Avandra's Rescue"
     requires:
-      deity: "avandra"
+      deity: "Avandra"
       feature: { class: [ "Channel Divinity" ] }
     grants:
       power:
@@ -208,6 +214,73 @@ module.exports = Feats =
       apply: (npc) ->
         npc.attacks.general.adjustWhen "acid", "feat", -> Math.ceil(npc.level/10)
         npc.attacks.general.adjustWhen "cold", "feat", -> Math.ceil(npc.level/10)
+
+  CombatReflexes: new Feat
+    name: "Combat Reflexes"
+    requires:
+      dex: 13
+    grants:
+      apply: (npc) ->
+        npc.attacks.general.adjustWhen "opportunity attack", "feat", 1
+
+  CorellonsGrace: new Feat
+    name: "Corellon's Grace"
+    requires:
+      deity: "Corellon"
+      feature: { class: [ "Channel Divinity" ] }
+    grants:
+      power:
+        encounter: [ "CorellonsGrace" ]
+
+  DarkFury: new Feat
+    name: "Dark Fury"
+    requires:
+      con: 13
+      wis: 13
+      with: powersWithKeywords("necrotic", "psychic")
+    grants:
+      apply: (npc) ->
+        npc.attacks.general.adjustWhen "necrotic", "feat", -> Math.ceil(npc.level/10)
+        npc.attacks.general.adjustWhen "psychic", "feat", -> Math.ceil(npc.level/10)
+
+  DefensiveMobility: new Feat
+    name: "Defensive Mobility"
+    grants:
+      apply: (npc) ->
+        npc.defenses.ac.adjustWhen "vs opportunity attack", "feat", 2
+
+  DistractingShield: new Feat
+    name: "Distracting Shield"
+    requires:
+      wis: 15
+      class: "fighter"
+      feature: { class: [ "Combat Challenge" ] }
+      with: equippedShield
+
+  DodgeGiants: new Feat
+    name: "Dodge Giants"
+    requires:
+      race: "dwarf"
+    grants:
+      apply: (npc) ->
+        npc.defenses.ac.adjustWhen "vs large", "feat", 1
+        npc.defenses.ref.adjustWhen "vs large", "feat", 1
+
+  DragonbornFrenzy: new Feat
+    name: "Dragonborn Frenzy"
+    requires:
+      race: "dragonborn"
+    grants:
+      apply: (npc) ->
+        npc.damage.general.adjustWhen "bloodied", "feat", 2
+
+  DragonbornSenses: new Feat
+    name: "Dragonborn Senses"
+    requires:
+      race: "dragonborn"
+    grants:
+      apply: (npc) ->
+        npc.vision = "low-light"
 
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat
