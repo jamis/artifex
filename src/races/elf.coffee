@@ -1,4 +1,4 @@
-Power = require '../power'
+Powers = require '../powers'
 
 module.exports = class Elf
   constructor: (npc) ->
@@ -26,7 +26,7 @@ module.exports = class Elf
     npc.feature "racial", "Wild Step", "ignore difficult terrain while shifting"
 
     npc.feature "racial", "Elven Accuracy"
-    npc.powers.encounter.push new Power name: "Elven Accuracy"
+    npc.powers.encounter.push Powers.get("ElvenAccuracy", npc: npc)
 
     npc.languages.push "common"
     npc.languages.push "elven"
