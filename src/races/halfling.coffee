@@ -1,4 +1,4 @@
-Power     = require '../power'
+Powers    = require '../powers'
 Languages = require '../languages'
 
 module.exports = class Halfling
@@ -23,7 +23,7 @@ module.exports = class Halfling
     npc.defenses.ac.adjustWhen "vs opportunity attack", "racial", 2
 
     npc.feature "racial", "Second Chance"
-    npc.powers.encounter.push new Power name: "Second Chance"
+    npc.powers.encounter.push Powers.get("SecondChance", npc: npc)
 
     npc.languages.push "common"
     npc.languages.push npc.random.pick(Languages.possible(npc)...)

@@ -42,3 +42,21 @@ module.exports =
       effect: [
         { expect: "reroll attack at +0" }
         { when: attrBonusIs("bonus", 2), expect: "reroll attack at +2" } ]
+
+  "[FeyStep] should be defined":
+    Verify.testProperties "FeyStep",
+      name: [ expect: "Fey Step" ]
+      keywords: [ expect: [ "teleportation" ] ]
+
+  "[InfernalWrath] should be defined":
+    Verify.testProperties "InfernalWrath",
+      name: [ expect: "Infernal Wrath" ]
+      keywords: [ expect: [] ]
+      effect: [
+        { cha: 10, expect: "+0 extra damage (special)" },
+        { cha: 16, expect: "+3 extra damage (special)" } ]
+    
+  "[SecondChance] should be defined":
+    Verify.testProperties "SecondChance",
+      name: [ expect: "Second Chance" ]
+      keywords: [ expect: [] ]

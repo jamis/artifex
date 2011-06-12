@@ -64,8 +64,7 @@ module.exports =
 
   "should have second chance encounter power (via Second Chance)": (test) ->
     new Races.Halfling(npc = new NPC)
-    test.equal npc.powers.encounter.length, 1
-    test.equal npc.powers.encounter[0].name, "Second Chance"
+    test.ok npc.powers.find("encounter", "SecondChance")
     test.done()
     
   "should add common and one other as languages": (test) ->

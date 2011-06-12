@@ -20,7 +20,20 @@ module.exports =
   ElvenAccuracy:
     name        : "Elven Accuracy"
     keywords    : []
-    bonus       : new Attribute 0
+    bonus       : -> new Attribute 0
     effect      : "reroll attack at {±bonus}"
     _formulae   :
       "±bonus": ["±", (power) -> power.bonus.score()]
+
+  FeyStep:
+    name        : "Fey Step"
+    keywords    : [ "teleportation" ]
+
+  InfernalWrath:
+    name        : "Infernal Wrath"
+    keywords    : []
+    effect      : "{±cha} extra damage (special)"
+
+  SecondChance:
+    name        : "Second Chance"
+    keywords    : []

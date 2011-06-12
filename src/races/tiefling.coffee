@@ -1,4 +1,4 @@
-Power     = require '../power'
+Powers    = require '../powers'
 Languages = require '../languages'
 
 module.exports = class Tiefling
@@ -23,8 +23,7 @@ module.exports = class Tiefling
     npc.resistance.fire.baseValue = 5
     npc.resistance.fire.adjust "racial", -> Math.floor(npc.level/2)
 
-    infernalWrath = new Power name: "Infernal Wrath", npc: npc, hit: "{±cha} (special)"
-    npc.powers.encounter.push infernalWrath
+    npc.powers.encounter.push Powers.get("InfernalWrath", npc: npc)
 
     npc.languages.push "common"
     npc.languages.push npc.random.pick(Languages.possible(npc)...)

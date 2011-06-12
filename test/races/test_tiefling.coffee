@@ -61,12 +61,7 @@ module.exports =
     
   "should have infernal wrath encounter power (via Infernal Wrath)": (test) ->
     new Races.Tiefling(npc = new NPC)
-    test.equal npc.powers.encounter.length, 1
-    test.equal npc.powers.encounter[0].name, "Infernal Wrath"
-    npc.abilities.cha.baseValue = 10
-    test.equal npc.powers.encounter[0].get("hit"), "+1 (special)" # includes racial +2 to cha
-    npc.abilities.cha.baseValue = 16
-    test.equal npc.powers.encounter[0].get("hit"), "+4 (special)" # includes racial +2 to cha
+    test.ok npc.powers.find("encounter", "InfernalWrath")
     test.done()
     
   "should add common and one other as languages": (test) ->

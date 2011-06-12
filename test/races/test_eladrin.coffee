@@ -81,8 +81,7 @@ module.exports =
 
   "should have fey step encounter power (via Fey Step)": (test) ->
     new Races.Eladrin(npc = new NPC)
-    test.equal npc.powers.encounter.length, 1
-    test.equal npc.powers.encounter[0].name, "Fey Step"
+    test.ok npc.powers.find("encounter", "FeyStep")
     test.done()
     
   "should add common and elven as languages": (test) ->

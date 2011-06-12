@@ -67,8 +67,7 @@ module.exports =
 
   "should have elven accuracy encounter power (via Elven Accuracy)": (test) ->
     new Races.Elf(npc = new NPC)
-    test.equal npc.powers.encounter.length, 1
-    test.equal npc.powers.encounter[0].name, "Elven Accuracy"
+    test.ok npc.powers.find("encounter", "ElvenAccuracy")
     test.done()
     
   "should add common and elven as languages": (test) ->
