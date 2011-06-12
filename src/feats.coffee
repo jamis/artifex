@@ -1,6 +1,7 @@
 Armor     = require './armor'
 Attribute = require './attribute'
 Powers    = require './powers'
+Weapons   = require './weapons'
 
 class Feat
   constructor: (properties) ->
@@ -49,6 +50,9 @@ class Feat
         for category, items of value
           result &&= @processCombination items, (item) -> item in npc.proficiencies[category]
         return true if result
+      when "power"
+        return @processCombination(value, (id) ->
+          npc.powers.firstThat (whence, power) -> power.id is id)
       when "with"
         value(npc)
       else throw new Error "unsupported property: `#{property}'"
@@ -67,8 +71,9 @@ class Feat
                 power = Powers.get power, npc: npc
                 npc.powers[category].push power
           when "proficiencies"
-            for category, item of value
-              npc.proficiencies[category].push item
+            for category, list of value
+              for item in list
+                npc.proficiencies[category].push item
           when "property"
             for name, value of value
               npc[name] = value
@@ -87,6 +92,12 @@ equippedShield = (npc) ->
   for item in npc.equipment
     return true if item in Armor.Categories['shield']
   false
+
+proficientWithAll = (weapons...) ->
+  (npc) ->
+    for weapon in weapons
+      return false if weapon not in npc.proficiencies.weapons
+    true
 
 module.exports = Feats =
   ActionSurge: new Feat
@@ -128,7 +139,7 @@ module.exports = Feats =
         armor: "chainmail"
     grants:
       proficiencies:
-        armor: "chainmail"
+        armor: [ "chainmail" ]
 
   HideProficiency: new Feat
     name: "Armor Proficiency (Hide)"
@@ -142,7 +153,7 @@ module.exports = Feats =
         armor: "hide"
     grants:
       proficiencies:
-        armor: "hide"
+        armor: [ "hide" ]
 
   LeatherProficiency: new Feat
     name: "Armor Proficiency (Leather)"
@@ -151,7 +162,7 @@ module.exports = Feats =
         armor: "leather"
     grants:
       proficiencies:
-        armor: "leather"
+        armor: [ "leather" ]
 
   PlateProficiency: new Feat
     name: "Armor Proficiency (Plate)"
@@ -165,7 +176,7 @@ module.exports = Feats =
         armor: "plate"
     grants:
       proficiencies:
-        armor: "plate"
+        armor: [ "plate" ]
 
   ScaleProficiency: new Feat
     name: "Armor Proficiency (Scale)"
@@ -179,7 +190,7 @@ module.exports = Feats =
         armor: "scale"
     grants:
       proficiencies:
-        armor: "scale"
+        armor: [ "scale" ]
 
   AstralFire: new Feat(name: "Astral Fire", requires: { dex: 13, cha: 13 })
 
@@ -281,6 +292,44 @@ module.exports = Feats =
     grants:
       apply: (npc) ->
         npc.vision = "low-light"
+
+  Durable: new Feat
+    name: "Durable"
+    grants:
+      apply: (npc) ->
+        npc.healingSurge.count.adjust "feat", 2
+
+  DwarvenWeaponTraining: new Feat
+    name: "Dwarven Weapon Training"
+    requires:
+      race: "dwarf"
+    grants:
+      proficiencies:
+        weapons: [ "axe", "hammer" ]
+      apply: (npc) ->
+        npc.damage.general.adjustWhen "axe", "feat", 2
+        npc.damage.general.adjustWhen "hammer", "feat", 2
+
+  EladrinSoldier: new Feat
+    name: "Eladrin Soldier"
+    requires:
+      race: "eladrin"
+    grants:
+      proficiencies:
+        weapons: [ "spear" ]
+      apply: (npc) ->
+        npc.damage.general.adjustWhen "longsword", "feat", 2
+        npc.damage.general.adjustWhen "spear", "feat", 2
+
+  ElvenPrecision: new Feat
+    name: "Elven Precision"
+    requires:
+      race: "elf"
+      power: "ElvenAccuracy"
+    grants:
+      apply: (npc) ->
+        power = npc.powers.firstThat (whence, p) -> p.id is "ElvenAccuracy"
+        power.bonus.adjust "feat", 2
 
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat

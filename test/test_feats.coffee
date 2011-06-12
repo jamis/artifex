@@ -19,7 +19,7 @@ featDefined = (id, expectations) ->
           when "str", "con", "dex", "int", "int_", "wis", "cha"
             npc.abilities[attribute].baseValue = value
           when "race"
-            npc.race = { name: value, is: (name) -> name is value }
+            npc.race = { name: value, is: (name) -> name is @name }
           when "class"
             npc.class = name: value
           when "deity"
@@ -51,11 +51,12 @@ featDefined = (id, expectations) ->
           for conditions in value
             test.ok !feat.allows(configureNPC(conditions)), "`#{id}' should disallow #{conditions}"
         when "grants"
-          npc = new NPC
+          npc = configureNPC(value.setup ? {})
           feat.applyTo npc
 
           for grant, adjustment of value
             switch grant
+              when "setup" then # ignore, this was handled when the NPC was configured
               when "skill"
                 for skill, bonus of adjustment
                   test.ok npc.skills[skill].has(bonus...), "`#{id}' should grant #{bonus} to `#{skill}'"
@@ -205,7 +206,6 @@ module.exports =
       allows: [ { str: 13, dex: 13 } ]
       disallows: [ { str: 12, dex: 13 }, { str: 13, dex: 12 } ]
 
-
   "[BurningBlizzard] should be defined":
     featDefined "BurningBlizzard",
       name: "Burning Blizzard"
@@ -326,6 +326,56 @@ module.exports =
         tests:
           lowLightVision: (npc) ->
             npc.vision is "low-light"
+
+  "[Durable] should be defined":
+    featDefined "Durable",
+      name: "Durable"
+      allows: [ {} ]
+      grants:
+        tests:
+          moreHealingSurges: (npc) ->
+            npc.healingSurge.count.has 2, "feat"
+
+  "[DwarvenWeaponTraining] should be defined":
+    featDefined "DwarvenWeaponTraining",
+      name: "Dwarven Weapon Training"
+      allows: [ race: "dwarf" ]
+      disallows: [ race: "human" ]
+      grants:
+        proficiencies:
+          weapons: [ "axe", "hammer" ]
+        tests:
+          conditionalBonus: (npc) ->
+            npc.damage.general.has(2, "feat", "axe") and
+              npc.damage.general.has(2, "feat", "hammer")
+
+  "[EladrinSoldier] should be defined":
+    featDefined "EladrinSoldier",
+      name: "Eladrin Soldier"
+      allows: [ race: "eladrin" ]
+      disallows: [ race: "human" ]
+      grants:
+        proficiencies:
+          weapons: [ "spear" ]
+        tests:
+          conditionalBonus: (npc) ->
+            npc.damage.general.has(2, "feat", "longsword") and
+              npc.damage.general.has(2, "feat", "spear")
+
+  "[ElvenPrecision] should be defined":
+    featDefined "ElvenPrecision",
+      name: "Elven Precision"
+      allows: [ race: "elf", when: hasPower("ElvenAccuracy", "encounter") ]
+      forbids: [
+        { race: "human", when: hasPower("ElvenAccuracy", "encounter") },
+        { race: "elf" } ]
+      grants:
+        setup:
+          when: hasPower "ElvenAccuracy", "encounter"
+        tests:
+          attackBonus: (npc) ->
+            power = npc.powers.firstThat (whence, p) -> p.id is "ElvenAccuracy"
+            power.bonus.has(2, "feat")
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",
