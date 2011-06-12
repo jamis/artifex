@@ -24,6 +24,7 @@ module.exports =
   "[DeftStrike] should be defined":
     Verify.testProperties "DeftStrike",
       name: [ expect: "Deft Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, dex: 10, expect: "1[W] damage" },
@@ -33,6 +34,7 @@ module.exports =
   "[PiercingStrike] should be defined":
     Verify.testProperties "PiercingStrike",
       name: [ expect: "Piercing Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. Reflex" }, { dex: 16, expect: "+3 vs. Reflex" } ]
       hit: [
@@ -43,6 +45,7 @@ module.exports =
   "[RiposteStrike] should be defined":
     Verify.testProperties "RiposteStrike",
       name: [ expect: "Riposte Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
         { dex: 10, str: 10, expect: "+0 vs. AC (special, riposte +0 vs. AC)" },
@@ -59,6 +62,7 @@ module.exports =
   "[SlyFlourish] should be defined":
     Verify.testProperties "SlyFlourish",
       name: [ expect: "Sly Flourish" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
       hit: [
         { level:  1, dex: 10, cha: 10, expect: "1[W] damage" },
@@ -70,6 +74,7 @@ module.exports =
   "[DazingStrike] should be defined":
     Verify.testProperties "DazingStrike",
       name: [ expect: "Dazing Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -79,6 +84,7 @@ module.exports =
   "[KingsCastle] should be defined":
     Verify.testProperties "KingsCastle",
       name: [ expect: "King's Castle" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. Reflex" }, { dex: 16, expect: "+3 vs. Reflex" } ]
       hit: [
         { dex: 10, expect: "2[W] damage (special)" },
@@ -87,6 +93,7 @@ module.exports =
   "[PositioningStrike] should be defined":
     Verify.testProperties "PositioningStrike",
       name: [ expect: "Positioning Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. Will" }, { dex: 16, expect: "+3 vs. Will" } ]
       hit: [
@@ -99,6 +106,7 @@ module.exports =
   "[TorturousStrike] should be defined":
     Verify.testProperties "TorturousStrike",
       name: [ expect: "Torturous Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -111,6 +119,7 @@ module.exports =
   "[BlindingBarrage] should be defined":
     Verify.testProperties "BlindingBarrage",
       name: [ expect: "Blinding Barrage" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
       hit: [
         { dex: 10, expect: "2[W] damage (special)" },
@@ -119,6 +128,7 @@ module.exports =
   "[EasyTarget] should be defined":
     Verify.testProperties "EasyTarget",
       name: [ expect: "Easy Target" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
       hit: [
         { dex: 10, expect: "2[W] damage (special)" },
@@ -127,6 +137,7 @@ module.exports =
   "[TrickStrike] should be defined":
     Verify.testProperties "TrickStrike",
       name: [ expect: "Trick Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
       hit: [
         { dex: 10, expect: "3[W] damage (special)" },

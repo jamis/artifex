@@ -14,6 +14,7 @@ module.exports =
   "[CarefulAttack] should be defined":
     Verify.testProperties "CarefulAttack",
       name: [ expect: "Careful Attack" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
         { str: 10, dex: 10, expect: "+2 vs. AC (melee) or +2 vs. AC (ranged)" },
         { str: 16, dex: 10, expect: "+5 vs. AC (melee) or +2 vs. AC (ranged)" },
@@ -27,6 +28,7 @@ module.exports =
   "[HitAndRun] should be defined":
     Verify.testProperties "HitAndRun",
       name: [ expect: "Hit and Run" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -38,6 +40,7 @@ module.exports =
   "[NimbleStrike] should be defined":
     Verify.testProperties "NimbleStrike",
       name: [ expect: "Nimble Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "ranged weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -49,6 +52,7 @@ module.exports =
   "[TwinStrike] should be defined":
     Verify.testProperties "TwinStrike",
       name: [ expect: "Twin Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
         { str: 10, dex: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged), two attacks" },
         { str: 16, dex: 10, expect: "+3 vs. AC (melee) or +0 vs. AC (ranged), two attacks" },
@@ -62,6 +66,7 @@ module.exports =
   "[DireWolverineStrike] should be defined":
     Verify.testProperties "DireWolverineStrike",
       name: [ expect: "Dire Wolverine Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [ { str: 10, expect: "1[W] damage" }, { str: 16, expect: "1[W]+3 damage" } ]
@@ -69,6 +74,7 @@ module.exports =
   "[EvasiveStrike] should be defined":
     Verify.testProperties "EvasiveStrike",
       name: [ expect: "Evasive Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       special: [ { wis: 10, expect: "shift 1 square" }, { wis: 16, expect: "shift 4 squares" } ]
       attack: [
         { str: 10, dex: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged)" },
@@ -84,11 +90,13 @@ module.exports =
   "[FoxsCunning] should be defined":
     Verify.testProperties "FoxsCunning",
       name: [ expect: "Fox's Cunning" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { wis: 10, expect: "basic attack +0" }, { wis: 16, expect: "basic attack +3" } ]
 
   "[TwoFangedStrike] should be defined":
     Verify.testProperties "TwoFangedStrike",
       name: [ expect: "Two-Fanged Strike" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
         { str: 10, dex: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged), two attacks" },
         { str: 16, dex: 10, expect: "+3 vs. AC (melee) or +0 vs. AC (ranged), two attacks" },
@@ -104,6 +112,7 @@ module.exports =
   "[HuntersBearTrap] should be defined":
     Verify.testProperties "HuntersBearTrap",
       name: [ expect: "Hunter's Bear Trap" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
         { str: 10, dex: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged)" },
         { str: 16, dex: 10, expect: "+3 vs. AC (melee) or +0 vs. AC (ranged)" },
@@ -118,6 +127,7 @@ module.exports =
   "[JawsOfTheWolf] should be defined":
     Verify.testProperties "JawsOfTheWolf",
       name: [ expect: "Jaws of the Wolf" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
         { str: 10, expect: "+0 vs. AC, two attacks" },
@@ -129,6 +139,7 @@ module.exports =
   "[SplitTheTree] should be defined":
     Verify.testProperties "SplitTheTree",
       name: [ expect: "Split the Tree" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "ranged weapon" ] ]
       attack: [
         { dex: 10, expect: "+0 vs. AC (special)" },
@@ -140,6 +151,7 @@ module.exports =
   "[SuddenStrike] should be defined":
     Verify.testProperties "SuddenStrike",
       name: [ expect: "Sudden Strike" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
         { str: 10, expect: "+0 vs. AC (special)" },

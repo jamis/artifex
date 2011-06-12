@@ -20,6 +20,7 @@ module.exports =
   "[DireRadiance] should be defined":
     Verify.testProperties "DireRadiance",
       name: [ expect: "Dire Radiance" ]
+      keywords: [ expect: [ "arcane", "fear", "implement", "radiant" ] ]
       attack: [
         { con: 10, expect: "+0 vs. Fortitude" },
         { con: 16, expect: "+3 vs. Fortitude" } ]
@@ -32,6 +33,7 @@ module.exports =
   "[EldritchBlast] should be defined":
     Verify.testProperties "EldritchBlast",
       name: [ expect: "Eldritch Blast" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
       attack: [
         { con: 10, cha: 16, when: uses("con"), expect: "+0 vs. Reflex" },
         { con: 16, cha: 10, when: uses("cha"), expect: "+0 vs. Reflex" },
@@ -47,6 +49,7 @@ module.exports =
   "[Eyebite] should be defined":
     Verify.testProperties "Eyebite",
       name: [ expect: "Eyebite" ]
+      keywords: [ expect: [ "arcane", "charm", "implement", "psychic" ] ]
       attack: [
         { cha: 10, expect: "+0 vs. Will" },
         { cha: 16, expect: "+3 vs. Will" } ]
@@ -59,6 +62,7 @@ module.exports =
   "[HellishRebuke] should be defined":
     Verify.testProperties "HellishRebuke",
       name: [ expect: "Hellish Rebuke" ]
+      keywords: [ expect: [ "arcane", "fire", "implement" ] ]
       attack: [
         { con: 10, expect: "+0 vs. Reflex" },
         { con: 16, expect: "+3 vs. Reflex" } ]
@@ -71,6 +75,7 @@ module.exports =
   "[DiabolicGrasp] should be defined":
     Verify.testProperties "DiabolicGrasp",
       name: [ expect: "Diabolic Grasp" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
       attack: [
         { con: 10, expect: "+0 vs. Fortitude" },
         { con: 16, expect: "+3 vs. Fortitude" } ]
@@ -86,6 +91,7 @@ module.exports =
   "[DreadfulWord] should be defined":
     Verify.testProperties "DreadfulWord",
       name: [ expect: "Dreadful Word" ]
+      keywords: [ expect: [ "arcane", "fear", "implement", "psychic" ] ]
       attack: [
         { cha: 10, expect: "+0 vs. Will" },
         { cha: 16, expect: "+3 vs. Will" } ]
@@ -101,6 +107,7 @@ module.exports =
   "[VampiricEmbrace] should be defined":
     Verify.testProperties "VampiricEmbrace",
       name: [ expect: "Vampiric Embrace" ]
+      keywords: [ expect: [ "arcane", "implement", "necrotic" ] ]
       attack: [
         { con: 10, expect: "+0 vs. Will" },
         { con: 16, expect: "+3 vs. Will" } ]
@@ -116,6 +123,7 @@ module.exports =
   "[Witchfire] should be defined":
     Verify.testProperties "Witchfire",
       name: [ expect: "Witchfire" ]
+      keywords: [ expect: [ "arcane", "fire", "implement" ] ]
       attack: [
         { cha: 10, expect: "+0 vs. Reflex" },
         { cha: 16, expect: "+3 vs. Reflex" } ]
@@ -131,6 +139,7 @@ module.exports =
   "[ArmorOfAgathys] should be defined":
     Verify.testProperties "ArmorOfAgathys",
       name: [ expect: "Armor of Agathys" ]
+      keywords: [ expect: [ "arcane", "cold" ] ]
       effect: [
         { int_: 10, con: 10, expect: "+10 temporary HP, adjacent enemies take 1d6 damage" },
         { int_: 16, con: 10, expect: "+13 temporary HP, adjacent enemies take 1d6 damage" },
@@ -140,6 +149,7 @@ module.exports =
   "[CurseOfTheDarkDream] should be defined":
     Verify.testProperties "CurseOfTheDarkDream",
       name: [ expect: "Curse of the Dark Dream" ]
+      keywords: [ expect: [ "arcane", "charm", "implement", "psychic" ] ]
       attack: [
         { cha: 10, expect: "+0 vs. Will" },
         { cha: 16, expect: "+3 vs. Will" } ]
@@ -150,6 +160,7 @@ module.exports =
   "[DreadStar] should be defined":
     Verify.testProperties "DreadStar",
       name: [ expect: "Dread Star" ]
+      keywords: [ expect: [ "arcane", "fear", "implement", "radiant" ] ]
       attack: [
         { cha: 10, expect: "+0 vs. Will" },
         { cha: 16, expect: "+3 vs. Will" } ]
@@ -160,6 +171,7 @@ module.exports =
   "[FlamesOfPhlegethos] should be defined":
     Verify.testProperties "FlamesOfPhlegethos",
       name: [ expect: "Flames of Phlegethos" ]
+      keywords: [ expect: [ "arcane", "fire", "implement" ] ]
       attack: [
         { con: 10, expect: "+0 vs. Reflex" },
         { con: 16, expect: "+3 vs. Reflex" } ]

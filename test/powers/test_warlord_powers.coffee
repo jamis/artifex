@@ -24,6 +24,7 @@ module.exports =
   "[InspiringWord] should be defined":
     Verify.testProperties "InspiringWord",
       name: [ expect: "Inspiring Word" ]
+      keywords: [ expect: [ "martial", "healing" ] ]
       frequency: [
         { level:  1, expect: "2/encounter" },
         { level: 15, expect: "2/encounter" },
@@ -45,6 +46,7 @@ module.exports =
   "[CommandersStrike] should be defined":
     Verify.testProperties "CommandersStrike",
       name: [ expect: "Commander's Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       hit: [
         { int_: 10, expect: "ally's basic attack damage" },
         { int_: 16, expect: "ally's basic attack damage+3" } ]
@@ -52,6 +54,7 @@ module.exports =
   "[FuriousSmash] should be defined":
     Verify.testProperties "FuriousSmash",
       name: [ expect: "Furious Smash" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
         { str: 10, expect: "+0 vs. Fortitude" },
@@ -64,6 +67,7 @@ module.exports =
   "[VipersStrike] should be defined":
     Verify.testProperties "VipersStrike",
       name: [ expect: "Viper's Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -74,6 +78,7 @@ module.exports =
   "[WolfPackTactics] should be defined":
     Verify.testProperties "WolfPackTactics",
       name: [ expect: "Wolf Pack Tactics" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -84,6 +89,7 @@ module.exports =
   "[GuardingAttack] should be defined":
     Verify.testProperties "GuardingAttack",
       name: [ expect: "Guarding Attack" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -96,6 +102,7 @@ module.exports =
   "[HammerAndAnvil] should be defined":
     Verify.testProperties "HammerAndAnvil",
       name: [ expect: "Hammer and Anvil" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. Reflex" }, { str: 16, expect: "+3 vs. Reflex" } ]
       hit: [
@@ -106,6 +113,7 @@ module.exports =
   "[LeafOnTheWind] should be defined":
     Verify.testProperties "LeafOnTheWind",
       name: [ expect: "Leaf on the Wind" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -115,6 +123,7 @@ module.exports =
   "[WarlordsFavor] should be defined":
     Verify.testProperties "WarlordsFavor",
       name: [ expect: "Warlord's Favor" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -126,6 +135,7 @@ module.exports =
   "[BastionOfDefense] should be defined":
     Verify.testProperties "BastionOfDefense",
       name: [ expect: "Bastion of Defense" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -138,6 +148,7 @@ module.exports =
   "[LeadTheAttack] should be defined":
     Verify.testProperties "LeadTheAttack",
       name: [ expect: "Lead the Attack" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -148,6 +159,7 @@ module.exports =
   "[PinTheFoe] should be defined":
     Verify.testProperties "PinTheFoe",
       name: [ expect: "Pin the Foe" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [
@@ -157,6 +169,7 @@ module.exports =
   "[WhiteRavenOnslaught] should be defined":
     Verify.testProperties "WhiteRavenOnslaught",
       name: [ expect: "White Raven Onslaught" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
       hit: [

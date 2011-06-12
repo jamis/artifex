@@ -8,6 +8,7 @@ module.exports =
 
   CarefulAttack:
     name        : "Careful Attack"
+    keywords    : [ "martial", "weapon" ]
     attack      : "{str+2} vs. AC (melee) or {dex+2} vs. AC (ranged)"
     hit         : "{times}[W] damage"
     _formulae   :
@@ -17,6 +18,7 @@ module.exports =
 
   HitAndRun:
     name        : "Hit and Run"
+    keywords    : [ "martial", "weapon" ]
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "{times}[W]{±str.nz} damage"
@@ -24,6 +26,7 @@ module.exports =
 
   NimbleStrike:
     name        : "Nimble Strike"
+    keywords    : [ "martial", "weapon" ]
     attackTypes : [ "ranged weapon" ]
     attack      : "{±dex} vs. AC"
     hit         : "{times}[W]{±dex.nz} damage"
@@ -31,18 +34,21 @@ module.exports =
 
   TwinStrike:
     name        : "Twin Strike"
+    keywords    : [ "martial", "weapon" ]
     attack      : "{±str} vs. AC (melee) or {±dex} vs. AC (ranged), two attacks"
     hit         : "{times}[W] damage per attack"
     _formulae   : { times : ["if", ["<", ".level", 21], 1, 2] }
 
   DireWolverineStrike:
     name        : "Dire Wolverine Strike"
+    keywords    : [ "martial", "weapon" ]
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "1[W]{±str.nz} damage"
 
   EvasiveStrike:
     name        : "Evasive Strike"
+    keywords    : [ "martial", "weapon" ]
     special     : "shift {count} {squares}"
     attack      : "{±str} vs. AC (melee) or {±dex} vs. AC (ranged)"
     hit         : "2[W]{±str.nz} damage (melee) or 2[W]{±dex.nz} damage (ranged)"
@@ -52,32 +58,38 @@ module.exports =
 
   FoxsCunning:
     name        : "Fox's Cunning"
+    keywords    : [ "martial", "weapon" ]
     attack      : "basic attack {±wis}"
 
   TwoFangedStrike:
     name        : "Two-Fanged Strike"
+    keywords    : [ "martial", "weapon" ]
     attack      : "{±str} vs. AC (melee) or {±dex} vs. AC (ranged), two attacks"
     hit         : "1[W]{±str.nz} damage (melee) or 1[W]{±dex.nz} damage (ranged) per attack, {±wis} if both attacks hit"
 
   HuntersBearTrap:
     name        : "Hunter's Bear Trap"
+    keywords    : [ "martial", "weapon" ]
     attack      : "{±str} vs. AC (melee) or {±dex} vs. AC (ranged)"
     hit         : "2[W]{±str.nz} damage (melee) or 2[W]{±dex.nz} damage (ranged) (special)"
 
   JawsOfTheWolf:
     name        : "Jaws of the Wolf"
+    keywords    : [ "martial", "weapon" ]
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC, two attacks"
     hit         : "2[W]{±str.nz} damage per attack"
 
   SplitTheTree:
     name        : "Split the Tree"
+    keywords    : [ "martial", "weapon" ]
     attackTypes : [ "ranged weapon" ]
     attack      : "{±dex} vs. AC (special)"
     hit         : "2[W]{±dex.nz} damage"
 
   SuddenStrike:
     name        : "Sudden Strike"
+    keywords    : [ "martial", "weapon" ]
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC (special)"
     hit         : "1[W] damage (off-hand) (special, 2[W]{±str.nz} damage w/ main weapon)"
