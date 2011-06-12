@@ -27,6 +27,14 @@ module.exports =
     test.equal power.get("attack"), "dex+4 (+8) vs. Reflex"
     test.done()
 
+  "attack should include general bonuses that match the power's keyword": (test) ->
+    npc = new NPC
+    npc.breath = ability: "dex"
+    power = new Powers.DragonBreath(npc, "poison")
+    npc.attacks.general.adjustWhen "poison", "test", 5
+    test.equal power.get("attack"), "dex+7 (+7) vs. Reflex"
+    test.done()
+
   "hit should be dependent on npc level and CON": (test) ->
     power = new Powers.DragonBreath(npc = new NPC, "poison")
     test.ok power.hit?

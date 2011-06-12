@@ -12,6 +12,7 @@ module.exports = class DragonBreath
         "Close burst #{@npc.breath.range}"
       when "attack"
         bonus = Math.ceil(@npc.level / 10) * 2
+        bonus += @npc.attacks.general.adjustment(@keywords[0])
         total = @npc.abilities[@npc.breath.ability].modifier() + bonus
         "#{@npc.breath.ability}+#{bonus} (+#{total}) vs. Reflex"
       when "hit"
