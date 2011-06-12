@@ -2,7 +2,10 @@ module.exports = class Power
   constructor: (initializers...) ->
     for initializer in initializers
       for key, value of initializer
-        this[key] = value
+        if typeof value is "function"
+          this[key] = value(this)
+        else
+          this[key] = value
 
     @_formulae ?= {}
 

@@ -8,6 +8,14 @@ module.exports =
     test.equal power.five, "six"
     test.done()
 
+  "properties that are functions should be invoked and their return values cached": (test) ->
+    n = 0
+    power = new Power cached: (power) -> n++
+    test.equal power.cached, 0
+    test.equal power.cached, 0
+    test.equal n, 1
+    test.done()
+
   "get() should return named property": (test) ->
     power = new Power one: "two"
     test.equal power.get("one"), "two"
