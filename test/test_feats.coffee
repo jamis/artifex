@@ -366,7 +366,7 @@ module.exports =
     featDefined "ElvenPrecision",
       name: "Elven Precision"
       allows: [ race: "elf", when: hasPower("ElvenAccuracy", "encounter") ]
-      forbids: [
+      disallows: [
         { race: "human", when: hasPower("ElvenAccuracy", "encounter") },
         { race: "elf" } ]
       grants:
@@ -376,6 +376,28 @@ module.exports =
           attackBonus: (npc) ->
             power = npc.powers.firstThat (whence, p) -> p.id is "ElvenAccuracy"
             power.bonus.has(2, "feat")
+
+  "[EnlargedDragonBreath] should be defined":
+    featDefined "EnlargedDragonBreath",
+      name: "Enlarged Dragon Breath",
+      allows: [ race: "dragonborn", when: hasPower("DragonBreath", "encounter") ],
+      disallows: [
+        { race: "human" },
+        { race: "dragonborn" },
+        { race: "human", when: hasPower("DragonBreath", "encounter") } ]
+      grants:
+        setup:
+          when: (npc) -> npc.breath = {}
+        tests:
+          increasedRange: (npc) -> npc.breath.range is 5
+
+  "[EscapeArtist] should be defined":
+    featDefined "EscapeArtist",
+      name: "Escape Artist"
+      allows: [ trained: [ "acrobatics" ] ]
+      disallows: [ trained: [ "athletics" ] ]
+      grants:
+        skill: { acrobatics: [2, "feat"] }
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",

@@ -331,6 +331,22 @@ module.exports = Feats =
         power = npc.powers.firstThat (whence, p) -> p.id is "ElvenAccuracy"
         power.bonus.adjust "feat", 2
 
+  EnlargedDragonBreath: new Feat
+    name: "Enlarged Dragon Breath"
+    requires:
+      race: "dragonborn"
+      power: "DragonBreath"
+    grants:
+      apply: (npc) -> npc.breath.range = 5
+
+  EscapeArtist: new Feat
+    name: "Escape Artist"
+    requires:
+      trained: "acrobatics"
+    grants:
+      skill:
+        acrobatics: [2, "feat"]
+
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat
     name: "Ritual Caster"
