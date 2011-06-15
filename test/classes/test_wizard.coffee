@@ -182,3 +182,45 @@ module.exports =
     klass = new Classes.Wizard(new NPC)
     test.equal Classes.Wizard.powers, klass.powers
     test.done()
+
+  "level-2 spells are accounted for": (test) ->
+    for power in [ "ExpeditiousRetreat", "FeatherFall", "Jump", "Shield" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Wizard.powers.utility[2]
+    test.done()
+
+  "level-3 spells are accounted for": (test) ->
+    for power in [ "ColorSpray", "FireShroud", "IcyRays", "ShockSphere" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Wizard.powers.encounter[3]
+    test.done()
+
+  "level-5 spells are accounted for": (test) ->
+    for power in [ "BigbysIcyGrasp", "Fireball", "StinkingCloud", "Web" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Wizard.powers.daily[5]
+    test.done()
+
+  "level-6 spells are accounted for": (test) ->
+    for power in [ "DimensionDoor", "DisguiseSelf", "DispelMagic", "Invisibility", "Levitate", "WallOfFog" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Wizard.powers.utility[6]
+    test.done()
+
+  "level-7 spells are accounted for": (test) ->
+    for power in [ "FireBurst", "LightningBolt", "SpectralRam", "WintersWrath" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Wizard.powers.encounter[7]
+    test.done()
+
+  "level-9 spells are accounted for": (test) ->
+    for power in [ "IceStorm", "LightningSerpent", "MordenkainensSword", "WallOfFire" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Wizard.powers.daily[9]
+    test.done()

@@ -106,3 +106,148 @@ module.exports =
     name        : "Sleep"
     keywords    : [ "arcane", "implement", "sleep" ]
     attack      : "{±int} vs. Will"
+
+  ExpeditiousRetreat:
+    name        : "Expeditious Retreat"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+
+  FeatherFall:
+    name        : "Feather Fall"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+
+  Jump:
+    name        : "Jump"
+    type        : "encounter"
+    keywords    : [ "arcane" ]
+
+  Shield:
+    name        : "Shield"
+    type        : "encounter"
+    keywords    : [ "arcane", "force" ]
+
+  ColorSpray:
+    name        : "Color Spray"
+    keywords    : [ "arcane", "implement", "radiant" ]
+    attack      : "{±int} vs. Will"
+    hit         : "1d6{±int.nz} damage (special)"
+
+  FireShroud:
+    name        : "Fire Shroud"
+    keywords    : [ "arcane", "fire", "implement" ]
+    attack      : "{±int} vs. Fortitude"
+    hit         : "1d8{±int.nz} damage (special)"
+
+  IcyRays:
+    name        : "Icy Rays"
+    keywords    : [ "arcane", "cold", "implement" ]
+    attack      : "{±int} vs. Reflex"
+    hit         : "1d10{±int.nz} damage (special)"
+
+  ShockSphere:
+    name        : "Shock Sphere"
+    keywords    : [ "arcane", "implement", "lightning" ]
+    attack      : "{±int} vs. Reflex"
+    hit         : "2d6{±int.nz} damage"
+
+  BigbysIcyGrasp:
+    name        : "Bigby's Icy Grasp"
+    keywords    : [ "arcane", "cold", "conjuration", "implement" ]
+    attack      : "{±int} vs. Reflex"
+    hit         : "2d8{±int.nz} damage (special)"
+
+  Fireball:
+    name        : "Fireball"
+    keywords    : [ "arcane", "fire", "implement" ]
+    attack      : "{±int} vs. Reflex"
+    hit         : "3d6{±int.nz} damage"
+
+  StinkingCloud:
+    name        : "Stinking Cloud"
+    keywords    : [ "arcane", "implement", "poison", "zone" ]
+    attack      : "{±int} vs. Fortitude"
+    hit         : "1d10{±int.nz} damage (special)"
+
+  Web:
+    name        : "Web"
+    keywords    : [ "arcane", "implement", "zone" ]
+    attack      : "{±int} vs. Reflex"
+
+  DimensionDoor:
+    name        : "Dimension Door"
+    type        : "daily"
+    keywords    : [ "arcane", "teleportation" ]
+
+  DisguiseSelf:
+    name        : "Disguise Self"
+    type        : "daily"
+    keywords    : [ "arcane", "illusion" ]
+
+  DispelMagic:
+    name        : "Dispel Magic"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+    attack      : "{±int} vs. Will (special)"
+
+  Invisibility:
+    name        : "Invisibility"
+    type        : "daily"
+    keywords    : [ "arcane", "illusion" ]
+
+  Levitate:
+    name        : "Levitate"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+
+  WallOfFog:
+    name        : "Wall of Fog"
+    type        : "daily"
+    keywords    : [ "arcane", "conjuration" ]
+
+  FireBurst:
+    name        : "Fire Burst"
+    keywords    : [ "arcane", "fire", "implement" ]
+    attack      : "{±int} vs. Reflex"
+    hit         : "3d6{±int.nz} damage"
+
+  LightningBolt:
+    name        : "Lightning Bolt"
+    keywords    : [ "arcane", "implement", "lightning" ]
+    attack      : "{±int} vs. Reflex"
+    hit         : "2d6{±int.nz} damage, secondary 1d6{±int.nz} (special)"
+
+  SpectralRam:
+    name        : "Spectral Ram"
+    keywords    : [ "arcane", "force", "implement" ]
+    attack      : "{±int} vs. Fortitude"
+    hit         : "2d10{±int.nz} damage (special)"
+
+  WintersWrath:
+    name        : "Winter's Wrath"
+    keywords    : [ "arcane", "cold", "implement" ]
+    attack      : "{±int} vs. Fortitude"
+    hit         : "2d8{±int.nz} damage (special)"
+
+  IceStorm:
+    name        : "Ice Storm"
+    keywords    : [ "arcane", "cold", "implement", "zone" ]
+    attack      : "{±int} vs. Fortitude"
+    hit         : "2d8{±int.nz} damage (special)"
+
+  LightningSerpent:
+    name        : "Lightning Serpent"
+    keywords    : [ "arcane", "implement", "lightning", "poison" ]
+    attack      : "{±int} vs. Reflex"
+    hit         : "2d12{±int.nz} damage (special)"
+
+  MordenkainensSword:
+    name        : "Mordenkainen's Sword"
+    keywords    : [ "arcane", "conjuration", "force", "implement" ]
+    attack      : "{±int} vs. Reflex"
+    hit         : "1d10{±int.nz} damage (special)"
+
+  WallOfFire:
+    name        : "Wall of Fire"
+    keywords    : [ "arcane", "conjuration", "fire", "implement" ]
+    effect      : "1d6{±int.nz} damage (adjacent), 3d6{±int.nz} damage (inside) (special)"

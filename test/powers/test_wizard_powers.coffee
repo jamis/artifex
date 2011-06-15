@@ -169,3 +169,234 @@ module.exports =
       name: [ expect: "Sleep" ]
       keywords: [ expect: [ "arcane", "implement", "sleep" ] ]
       attack: [ { int_: 10, expect: "+0 vs. Will" }, { int_: 16, expect: "+3 vs. Will" } ]
+
+  "[ExpeditiousRetreat] should be defined":
+    Verify.testProperties "ExpeditiousRetreat",
+      name: [ expect: "Expeditious Retreat" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[FeatherFall] should be defined":
+    Verify.testProperties "FeatherFall",
+      name: [ expect: "Feather Fall" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[Jump] should be defined":
+    Verify.testProperties "Jump",
+      name: [ expect: "Jump" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[Shield] should be defined":
+    Verify.testProperties "Shield",
+      name: [ expect: "Shield" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane", "force" ] ]
+
+  "[ColorSpray] should be defined":
+    Verify.testProperties "ColorSpray",
+      name: [ expect: "Color Spray" ]
+      keywords: [ expect: [ "arcane", "implement", "radiant" ] ]
+      attack: [ { int_: 10, expect: "+0 vs. Will" }, { int_: 16, expect: "+3 vs. Will" } ]
+      hit: [
+        { int_: 10, expect: "1d6 damage (special)" },
+        { int_: 16, expect: "1d6+3 damage (special)" } ]
+
+  "[FireShroud] should be defined":
+    Verify.testProperties "FireShroud",
+      name: [ expect: "Fire Shroud" ]
+      keywords: [ expect: [ "arcane", "fire", "implement" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Fortitude" },
+        { int_: 16, expect: "+3 vs. Fortitude" } ]
+      hit: [
+        { int_: 10, expect: "1d8 damage (special)" },
+        { int_: 16, expect: "1d8+3 damage (special)" } ]
+
+  "[IcyRays] should be defined":
+    Verify.testProperties "IcyRays",
+      name: [ expect: "Icy Rays" ]
+      keywords: [ expect: [ "arcane", "cold", "implement" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Reflex" },
+        { int_: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { int_: 10, expect: "1d10 damage (special)" },
+        { int_: 16, expect: "1d10+3 damage (special)" } ]
+
+  "[ShockSphere] should be defined":
+    Verify.testProperties "ShockSphere",
+      name: [ expect: "Shock Sphere" ]
+      keywords: [ expect: [ "arcane", "implement", "lightning" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Reflex" },
+        { int_: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { int_: 10, expect: "2d6 damage" },
+        { int_: 16, expect: "2d6+3 damage" } ]
+
+  "[BigbysIcyGrasp] should be defined":
+    Verify.testProperties "BigbysIcyGrasp",
+      name: [ expect: "Bigby's Icy Grasp" ]
+      keywords: [ expect: [ "arcane", "cold", "conjuration", "implement" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Reflex" },
+        { int_: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { int_: 10, expect: "2d8 damage (special)" },
+        { int_: 16, expect: "2d8+3 damage (special)" } ]
+
+  "[Fireball] should be defined":
+    Verify.testProperties "Fireball",
+      name: [ expect: "Fireball" ]
+      keywords: [ expect: [ "arcane", "fire", "implement" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Reflex" },
+        { int_: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { int_: 10, expect: "3d6 damage" },
+        { int_: 16, expect: "3d6+3 damage" } ]
+
+  "[StinkingCloud] should be defined":
+    Verify.testProperties "StinkingCloud",
+      name: [ expect: "Stinking Cloud" ]
+      keywords: [ expect: [ "arcane", "implement", "poison", "zone" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Fortitude" },
+        { int_: 16, expect: "+3 vs. Fortitude" } ]
+      hit: [
+        { int_: 10, expect: "1d10 damage (special)" },
+        { int_: 16, expect: "1d10+3 damage (special)" } ]
+
+  "[Web] should be defined":
+    Verify.testProperties "Web",
+      name: [ expect: "Web" ]
+      keywords: [ expect: [ "arcane", "implement", "zone" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Reflex" },
+        { int_: 16, expect: "+3 vs. Reflex" } ]
+
+  "[DimensionDoor] should be defined":
+    Verify.testProperties "DimensionDoor",
+      name: [ expect: "Dimension Door" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "teleportation" ] ]
+
+  "[DisguiseSelf] should be defined":
+    Verify.testProperties "DisguiseSelf",
+      name: [ expect: "Disguise Self" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "illusion" ] ]
+
+  "[DispelMagic] should be defined":
+    Verify.testProperties "DispelMagic",
+      name: [ expect: "Dispel Magic" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Will (special)" },
+        { int_: 16, expect: "+3 vs. Will (special)" } ]
+
+  "[Invisibility] should be defined":
+    Verify.testProperties "Invisibility",
+      name: [ expect: "Invisibility" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "illusion" ] ]
+
+  "[Levitate] should be defined":
+    Verify.testProperties "Levitate",
+      name: [ expect: "Levitate" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[WallOfFog] should be defined":
+    Verify.testProperties "WallOfFog",
+      name: [ expect: "Wall of Fog" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "conjuration" ] ]
+
+  "[FireBurst] should be defined":
+    Verify.testProperties "FireBurst",
+      name: [ expect: "Fire Burst" ]
+      keywords: [ expect: [ "arcane", "fire", "implement" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Reflex" },
+        { int_: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { int_: 10, expect: "3d6 damage" },
+        { int_: 16, expect: "3d6+3 damage" } ]
+
+  "[LightningBolt] should be defined":
+    Verify.testProperties "LightningBolt",
+      name: [ expect: "Lightning Bolt" ]
+      keywords: [ expect: [ "arcane", "implement", "lightning" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Reflex" },
+        { int_: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { int_: 10, expect: "2d6 damage, secondary 1d6 (special)" },
+        { int_: 16, expect: "2d6+3 damage, secondary 1d6+3 (special)" } ]
+
+  "[SpectralRam] should be defined":
+    Verify.testProperties "SpectralRam",
+      name: [ expect: "Spectral Ram" ]
+      keywords: [ expect: [ "arcane", "force", "implement" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Fortitude" },
+        { int_: 16, expect: "+3 vs. Fortitude" } ]
+      hit: [
+        { int_: 10, expect: "2d10 damage (special)" },
+        { int_: 16, expect: "2d10+3 damage (special)" } ]
+
+  "[WintersWrath] should be defined":
+    Verify.testProperties "WintersWrath",
+      name: [ expect: "Winter's Wrath" ]
+      keywords: [ expect: [ "arcane", "cold", "implement" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Fortitude" },
+        { int_: 16, expect: "+3 vs. Fortitude" } ]
+      hit: [
+        { int_: 10, expect: "2d8 damage (special)" },
+        { int_: 16, expect: "2d8+3 damage (special)" } ]
+
+  "[IceStorm] should be defined":
+    Verify.testProperties "IceStorm",
+      name: [ expect: "Ice Storm" ]
+      keywords: [ expect: [ "arcane", "cold", "implement", "zone" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Fortitude" },
+        { int_: 16, expect: "+3 vs. Fortitude" } ]
+      hit: [
+        { int_: 10, expect: "2d8 damage (special)" },
+        { int_: 16, expect: "2d8+3 damage (special)" } ]
+
+  "[LightningSerpent] should be defined":
+    Verify.testProperties "LightningSerpent",
+      name: [ expect: "Lightning Serpent" ]
+      keywords: [ expect: [ "arcane", "implement", "lightning", "poison" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Reflex" },
+        { int_: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { int_: 10, expect: "2d12 damage (special)" },
+        { int_: 16, expect: "2d12+3 damage (special)" } ]
+
+  "[MordenkainensSword] should be defined":
+    Verify.testProperties "MordenkainensSword",
+      name: [ expect: "Mordenkainen's Sword" ]
+      keywords: [ expect: [ "arcane", "conjuration", "force", "implement" ] ]
+      attack: [
+        { int_: 10, expect: "+0 vs. Reflex" },
+        { int_: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { int_: 10, expect: "1d10 damage (special)" },
+        { int_: 16, expect: "1d10+3 damage (special)" } ]
+
+  "[WallOfFire] should be defined":
+    Verify.testProperties "WallOfFire",
+      name: [ expect: "Wall of Fire" ]
+      keywords: [ expect: [ "arcane", "conjuration", "fire", "implement" ] ]
+      effect: [
+        { int_: 10, expect: "1d6 damage (adjacent), 3d6 damage (inside) (special)" },
+        { int_: 16, expect: "1d6+3 damage (adjacent), 3d6+3 damage (inside) (special)" } ]

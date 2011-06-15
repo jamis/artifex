@@ -72,6 +72,14 @@ Wizard.powers =
 
   encounter:
     1: [ "BurningHands", "ChillStrike", "ForceOrb", "IcyTerrain", "RayOfEnfeeblement" ]
+    3: [ "ColorSpray", "FireShroud", "IcyRays", "ShockSphere" ]
+    7: [ "FireBurst", "LightningBolt", "SpectralRam", "WintersWrath" ]
 
   daily:
     1: [ "AcidArrow", "FlamingSphere", "FreezingCloud", "Sleep" ]
+    5: [ "BigbysIcyGrasp", "Fireball", "StinkingCloud", "Web" ]
+    9: [ "IceStorm", "LightningSerpent", "MordenkainensSword", "WallOfFire" ]
+
+  utility:
+    2: [ "ExpeditiousRetreat", "FeatherFall", "Jump", "Shield" ]
+    6: [ "DimensionDoor", "DisguiseSelf", "DispelMagic", "Invisibility", "Levitate", "WallOfFog" ]
