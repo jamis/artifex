@@ -82,6 +82,15 @@ module.exports = class NPC
 
     this
 
+  advance: ->
+    @level++
+    @hitPoints.adjust @hitPointsPerLevel
+
+    for item in NPC.level[@level]
+      @advanceItem item
+
+    this
+
   initializeAbilities: ->
     @abilities =
       "str": new Ability 10
@@ -349,6 +358,21 @@ module.exports = class NPC
         @equipment.push @random.pick(proficient...)
 
     @weaponPreferences = []
+
+  delegateIfPresent: (method, delegate, args...) ->
+    (delegate[method] ? this[method])(this, args...)
+
+  advanceItem: (item) ->
+    switch item
+      when "feat"    then @delegateIfPresent "advanceItem_Feat", @class
+      when "utility" then @delegateIfPresent "advanceItem_Utility", @class
+      else throw new Error "unsupported advancement item `#{item}'"
+
+  advanceItem_Utility: (npc) ->
+    throw new Error "need to implement advanceItem_Utility"
+
+  advanceItem_Feat: (npc) ->
+    throw new Error "need to implement advanceItem_Feat"
 
 NPC.level =
   2 : [ "utility", "feat" ]

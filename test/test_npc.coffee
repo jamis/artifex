@@ -531,3 +531,60 @@ module.exports =
     test.deepEqual NPC.level[29], ["replace:daily"]
     test.deepEqual NPC.level[30], ["epic-destiny", "feat"]
     test.done()
+
+  "advanceItem should delegate 'utility' to npc if class does not override": (test) ->
+    test.expect 1
+
+    npc = new NPC class: Classes.Cleric
+    npc.generate()
+
+    npc.advanceItem_Utility = (n) -> test.equal npc, n
+    npc.advanceItem "utility"
+    test.done()
+
+  "advanceItem should delegate 'utility' to class if overridden": (test) ->
+    test.expect 1
+
+    npc = new NPC class: Classes.Cleric
+    npc.generate()
+    npc.class.advanceItem_Utility = (n) -> test.equal npc, n
+    npc.advanceItem_Utility = (n) -> test.ok false
+    npc.advanceItem "utility"
+    test.done()
+
+  "advanceItem should delegate 'feat' to npc if class does not override": (test) ->
+    test.expect 1
+
+    npc = new NPC class: Classes.Cleric
+    npc.generate()
+
+    npc.advanceItem_Feat = (n) -> test.equal npc, n
+    npc.advanceItem "feat"
+    test.done()
+
+  "advanceItem should delegate 'feat' to class if overridden": (test) ->
+    test.expect 1
+
+    npc = new NPC class: Classes.Cleric
+    npc.generate()
+    npc.class.advanceItem_Feat = (n) -> test.equal npc, n
+    npc.advanceItem_Feat = (n) -> test.ok false
+    npc.advanceItem "feat"
+    test.done()
+
+  "advance should advance character level": (test) ->
+    npc = new NPC class: Classes.Cleric
+    npc.generate()
+
+    hp = npc.hitPoints.score()
+    npc.advanceItem_Feat = (n) -> n.advancedFeat = true
+    npc.advanceItem_Utility = (n) -> n.advancedUtility = true
+
+    npc.advance()
+
+    test.equal npc.level, 2
+    test.equal npc.hitPoints.score(), hp + npc.hitPointsPerLevel
+    test.ok npc.advancedFeat, "expected feat to advance"
+    test.ok npc.advancedUtility, "expected utility to advance"
+
+    test.done()
