@@ -429,25 +429,32 @@ module.exports =
       test.ok true if power.id in npc.class.powers.daily[1]
     test.done()
 
-  "should have default preferences for how many initial powers to select": (test) ->
+  "initial power selection should invoke the default routine if there is no class": (test) ->
     npc = new NPC
-    test.equal npc.powersToSelect.atWill.count, 2
-    test.equal npc.powersToSelect.encounter.count, 1
-    test.equal npc.powersToSelect.daily.count, 1
-    test.equal npc.powersToSelect.utility.count, 0
+    npc.selectInitialPowers = -> test.ok true
+
+    test.expect 1
+    npc.selectPowers()
     test.done()
 
-  "should honor preferences for how many initial powers to select": (test) ->
+  "initial power selection should invoke the default routine if class does not override": (test) ->
     npc = new NPC
-    npc.powersToSelect.atWill.count = 0
-    npc.powersToSelect.encounter.count = 0
-    npc.powersToSelect.daily.count = 0
-    npc.powersToSelect.utility.count = 0
+    npc.class = new Classes.Fighter(npc)
+    npc.selectInitialPowers = -> test.ok true
+
+    test.expect 2
+    test.ok? not npc.class.selectInitialPowers?
     npc.selectPowers()
-    test.equal npc.powers.atWill.length, 0
-    test.equal npc.powers.encounter.length, 0
-    test.equal npc.powers.daily.length, 0
-    test.equal npc.powers.utility.length, 0
+    test.done()
+
+  "initial power selection should invoke the class-defined routine if present": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Fighter(npc)
+    npc.selectInitialPowers = -> test.ok false
+    npc.class.selectInitialPowers = (n) -> test.equal npc, n
+
+    test.expect 1
+    npc.selectPowers()
     test.done()
 
   "#generate should apply additional pending powers": (test) ->
@@ -491,4 +498,36 @@ module.exports =
     npc = new NPC class: Classes.Cleric
     npc.when "scoresAssigned", => test.ok true
     npc.generate()
+    test.done()
+
+  "advancement chart should describe gains at each level": (test) ->
+    test.deepEqual NPC.level[ 2], ["utility", "feat"]
+    test.deepEqual NPC.level[ 3], ["encounter"]
+    test.deepEqual NPC.level[ 4], ["abilities:2", "feat"]
+    test.deepEqual NPC.level[ 5], ["daily"]
+    test.deepEqual NPC.level[ 6], ["utility", "feat"]
+    test.deepEqual NPC.level[ 7], ["encounter"]
+    test.deepEqual NPC.level[ 8], ["abilities:2", "feat"]
+    test.deepEqual NPC.level[ 9], ["daily"]
+    test.deepEqual NPC.level[10], ["utility", "feat"]
+    test.deepEqual NPC.level[11], ["abilities:all", "paragon-path", "encounter:paragon", "feat"]
+    test.deepEqual NPC.level[12], ["utility:paragon", "feat"]
+    test.deepEqual NPC.level[13], ["replace:encounter"]
+    test.deepEqual NPC.level[14], ["abilities:2", "feat"]
+    test.deepEqual NPC.level[15], ["replace:daily"]
+    test.deepEqual NPC.level[16], ["paragon-path", "utility", "feat"]
+    test.deepEqual NPC.level[17], ["replace:encounter"]
+    test.deepEqual NPC.level[18], ["abilities:2", "feat"]
+    test.deepEqual NPC.level[19], ["replace:daily"]
+    test.deepEqual NPC.level[20], ["daily:paragon", "feat"]
+    test.deepEqual NPC.level[21], ["abilities:all", "epic-destiny", "feat"]
+    test.deepEqual NPC.level[22], ["utility", "feat"]
+    test.deepEqual NPC.level[23], ["replace:encounter"]
+    test.deepEqual NPC.level[24], ["abilities:2", "epic-destiny", "feat"]
+    test.deepEqual NPC.level[25], ["replace:daily"]
+    test.deepEqual NPC.level[26], ["utility:epic", "feat"]
+    test.deepEqual NPC.level[27], ["replace:encounter"]
+    test.deepEqual NPC.level[28], ["abilities:2", "feat"]
+    test.deepEqual NPC.level[29], ["replace:daily"]
+    test.deepEqual NPC.level[30], ["epic-destiny", "feat"]
     test.done()

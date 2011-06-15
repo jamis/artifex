@@ -55,7 +55,11 @@ module.exports = class Wizard
     npc.feature "class", "Spellbook"
     for ritual in npc.random.shuffle(Rituals.all(1)...)[0...3]
       npc.learnRitual 1, ritual
-    npc.powersToSelect.daily.count = 2
+
+  selectInitialPowers: (npc) ->
+    npc.selectPowersFor "atWill", 2
+    npc.selectPowersFor "encounter", 1
+    npc.selectPowersFor "daily", 2
 
 Wizard.simpleName = "wizard"
 Wizard.source = "phb"

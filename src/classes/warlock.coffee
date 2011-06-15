@@ -27,10 +27,6 @@ module.exports = class Warlock
 
     npc.pendingSkills.push count: 4, list: Warlock.skills
 
-    # we're going to select the atWill powers here, rather than letting
-    # the generic routine in the generator handle it.
-    npc.powersToSelect.atWill.count = 0
-
     npc.feature "class", "Eldritch Blast"
     eldritchBlast = Powers.get "EldritchBlast", npc: npc
     npc.powers.atWill.push eldritchBlast
@@ -64,6 +60,10 @@ module.exports = class Warlock
 
     npc.feature "class", "Warlock's Curse"
     npc.powers.atWill.push Powers.get("WarlocksCurse", npc: npc)
+
+  selectInitialPowers: (npc) ->
+    npc.selectPowersFor "encounter", 1
+    npc.selectPowersFor "daily", 1
 
 Warlock.simpleName = "warlock"
 Warlock.source = "phb"

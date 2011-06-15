@@ -131,12 +131,6 @@ module.exports = class NPC
               return power
         undefined
 
-    @powersToSelect =
-      atWill   : { count: 2 }
-      encounter: { count: 1 }
-      daily    : { count: 1 }
-      utility  : { count: 0 }
-
   initializeFeatures: ->
     @features =
       racial: []
@@ -292,18 +286,23 @@ module.exports = class NPC
       suitable.push power if @isSuitablePower(power)
     suitable
 
-  selectPowersFor: (category) ->
-    if @powersToSelect[category].count > 0
+  selectPowersFor: (category, count) ->
+    if count > 0
       list = @suitablePowersIn @class.powers[category][1]
-      for power in @random.shuffle(list...).slice(0, @powersToSelect[category].count)
+      for power in @random.shuffle(list...).slice(0, count)
         power = Powers.get power, npc: this
         @powers[category].push power
 
+  selectInitialPowers: ->
+    @selectPowersFor "atWill", 2
+    @selectPowersFor "encounter", 1
+    @selectPowersFor "daily", 1
+
   selectPowers: ->
-    @selectPowersFor "atWill"
-    @selectPowersFor "encounter"
-    @selectPowersFor "daily"
-    @selectPowersFor "utility"
+    if @class? and @class.selectInitialPowers?
+      @class.selectInitialPowers(this)
+    else
+      @selectInitialPowers()
 
     for pending in @pendingPowers
       list = if typeof pending.list is "function" then pending.list(this) else pending.list
@@ -350,3 +349,34 @@ module.exports = class NPC
         @equipment.push @random.pick(proficient...)
 
     @weaponPreferences = []
+
+NPC.level =
+  2 : [ "utility", "feat" ]
+  3 : [ "encounter" ]
+  4 : [ "abilities:2", "feat" ]
+  5 : [ "daily" ]
+  6 : [ "utility", "feat" ]
+  7 : [ "encounter" ]
+  8 : [ "abilities:2", "feat" ]
+  9 : [ "daily" ]
+  10: [ "utility", "feat" ]
+  11: [ "abilities:all", "paragon-path", "encounter:paragon", "feat" ]
+  12: [ "utility:paragon", "feat" ]
+  13: [ "replace:encounter" ]
+  14: [ "abilities:2", "feat" ]
+  15: [ "replace:daily" ]
+  16: [ "paragon-path", "utility", "feat" ]
+  17: [ "replace:encounter" ]
+  18: [ "abilities:2", "feat" ]
+  19: [ "replace:daily" ]
+  20: [ "daily:paragon", "feat" ]
+  21: [ "abilities:all", "epic-destiny", "feat" ]
+  22: [ "utility", "feat" ]
+  23: [ "replace:encounter" ]
+  24: [ "abilities:2", "epic-destiny", "feat" ]
+  25: [ "replace:daily" ]
+  26: [ "utility:epic", "feat" ]
+  27: [ "replace:encounter" ]
+  28: [ "abilities:2", "feat" ]
+  29: [ "replace:daily" ]
+  30: [ "epic-destiny", "feat" ]

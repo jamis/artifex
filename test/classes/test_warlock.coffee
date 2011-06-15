@@ -104,10 +104,23 @@ module.exports =
     test.ok npc.hasFeature("class", "Infernal Pact"), "missing Infernal Pact feature"
     test.done()
 
-  "should set powersToSelect.atWill to zero (because class will select powers)": (test) ->
-    new Classes.Warlock(npc = new NPC)
-    test.equal npc.powersToSelect.atWill.count, 0
-    test.notEqual npc.powersToSelect.encounter.count, 0
+  "should define custom selectInitialPowers method": (test) ->
+    klass = new Classes.Warlock(npc = new NPC)
+    npc.class = klass
+
+    count = npc.powers.atWill.length
+    test.ok npc.powers.find("atWill", "EldritchBlast")
+    test.ok npc.powers.find("atWill", "Eyebite") or
+      npc.powers.find("atWill", "HellishRebuke") or
+      npc.powers.find("atWill", "DireRadiance")
+
+    test.ok klass.selectInitialPowers?
+    klass.selectInitialPowers(npc)
+
+    test.equal npc.powers.atWill.length, count
+    test.equal npc.powers.encounter.length, 1
+    test.equal npc.powers.daily.length, 1
+    test.equal npc.powers.utility.length, 0
     test.done()
 
   "should add Eldritch Blast atWill power (via Eldritch Blast)": (test) ->

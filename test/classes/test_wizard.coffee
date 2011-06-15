@@ -142,9 +142,20 @@ module.exports =
     test.equal npc.rituals[1].length, 3
     test.done()
 
-  "should select two daily powers (via Spellbook)": (test) ->
-    new Classes.Wizard(npc = new NPC)
-    test.equal npc.powersToSelect.daily.count, 2
+  "should redefine initial power selection to add another daily power": (test) ->
+    klass = new Classes.Wizard(npc = new NPC)
+    npc.class = klass
+    atWillCount = npc.powers.atWill.length
+    encounterCount = npc.powers.encounter.length
+    dailyCount = npc.powers.daily.length
+
+    test.ok klass.selectInitialPowers?
+    klass.selectInitialPowers(npc)
+
+    test.equal npc.powers.atWill.length, atWillCount+2, "expected to add 2 atWill powers"
+    test.equal npc.powers.encounter.length, encounterCount+1, "expected to add 1 encounter power"
+    test.equal npc.powers.daily.length, dailyCount+2, "expected to add 2 daily powers"
+    test.equal npc.powers.utility.length, 0
     test.done()
 
   "wizard powers are called spells": (test) ->

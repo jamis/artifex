@@ -399,6 +399,17 @@ module.exports =
       grants:
         skill: { acrobatics: [2, "feat"] }
 
+#  "[ExpandedSpellbook] should be defined":
+#    featDefined "Expanded Spellbook",
+#      name: "Expanded Spellbook"
+#      allows: [ wis: 13, class: "wizard" ]
+#      disallows: [
+#        { wis: 12, class: "wizard" },
+#        { wis: 13, class: "warlock" } ]
+#      grants:
+#        setup:
+#          when: (npc) -> new Classes.Wizard(npc)
+
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",
       name: "Ritual Caster"
