@@ -347,6 +347,22 @@ module.exports = Feats =
       skill:
         acrobatics: [2, "feat"]
 
+  ExpandedSpellbook: new Feat
+    name: "Expanded Spellbook"
+    requires:
+      wis: 13
+      class: "wizard"
+    grants:
+      apply: (npc) ->
+        for level in [1..npc.level]
+          if npc.class.powers.daily[level]?
+            list = npc.suitablePowersIn(npc.class.powers.daily[level])
+            id = npc.random.pick(list...)
+            npc.powers.daily.push Powers.get(id, npc: npc)
+
+        delete npc.class.advanceItem_Daily
+        npc.advanceItem_Daily = (n) -> n.selectPowersFor "daily", 3
+
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat
     name: "Ritual Caster"

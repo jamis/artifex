@@ -1,4 +1,4 @@
-{NPC, Feats, Powers} = require '..'
+{Classes, NPC, Feats, Powers} = require '..'
 
 hasPower = (id, category) ->
   (npc) ->
@@ -399,16 +399,25 @@ module.exports =
       grants:
         skill: { acrobatics: [2, "feat"] }
 
-#  "[ExpandedSpellbook] should be defined":
-#    featDefined "Expanded Spellbook",
-#      name: "Expanded Spellbook"
-#      allows: [ wis: 13, class: "wizard" ]
-#      disallows: [
-#        { wis: 12, class: "wizard" },
-#        { wis: 13, class: "warlock" } ]
-#      grants:
-#        setup:
-#          when: (npc) -> new Classes.Wizard(npc)
+  "[ExpandedSpellbook] should be defined":
+    featDefined "ExpandedSpellbook",
+      name: "Expanded Spellbook"
+      allows: [ wis: 13, class: "wizard" ]
+      disallows: [
+        { wis: 12, class: "wizard" },
+        { wis: 13, class: "warlock" } ]
+      grants:
+        setup:
+          when: (npc) ->
+            npc.class = new Classes.Wizard(npc)
+            npc.level = 10
+        tests:
+          shouldAddExtraDailyOfEachLevel: (npc) ->
+            npc.powers.daily.length is 3 # 1, 5, 9
+          shouldDefine_advanceItem_Daily: (npc) ->
+            before = npc.powers.daily.length
+            npc.advanceItem_Daily(npc)
+            !npc.class.advanceItem_Daily? and npc.powers.daily.length is before+3
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",
