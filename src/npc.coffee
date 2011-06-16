@@ -268,6 +268,9 @@ module.exports = class NPC
     @pendingFeats = []
 
   isSuitablePower: (id) ->
+    present = @powers.firstThat (whence, p) -> p.id is id
+    return false if present?
+
     power = Powers.get id, npc: this
 
     types = power.get "attackTypes"
