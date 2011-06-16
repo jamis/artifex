@@ -115,7 +115,7 @@ module.exports =
       npc.powers.find("atWill", "DireRadiance")
 
     test.ok klass.selectInitialPowers?
-    klass.selectInitialPowers(npc)
+    klass.selectInitialPowers.call(npc)
 
     test.equal npc.powers.atWill.length, count
     test.equal npc.powers.encounter.length, 1

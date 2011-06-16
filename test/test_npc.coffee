@@ -451,7 +451,7 @@ module.exports =
     npc = new NPC
     npc.class = new Classes.Fighter(npc)
     npc.selectInitialPowers = -> test.ok false
-    npc.class.selectInitialPowers = (n) -> test.equal npc, n
+    npc.class.selectInitialPowers = -> test.equal npc, this
 
     test.expect 1
     npc.selectPowers()
@@ -538,7 +538,7 @@ module.exports =
     npc = new NPC class: Classes.Cleric
     npc.generate()
 
-    npc.advanceItem_Utility = (n) -> test.equal npc, n
+    npc.advanceItem_Utility = -> test.equal npc, this
     npc.advanceItem "utility"
     test.done()
 
@@ -547,9 +547,18 @@ module.exports =
 
     npc = new NPC class: Classes.Cleric
     npc.generate()
-    npc.class.advanceItem_Utility = (n) -> test.equal npc, n
-    npc.advanceItem_Utility = (n) -> test.ok false
+    npc.class.advanceItem_Utility = -> test.equal npc, this
+    npc.advanceItem_Utility = -> test.ok false
     npc.advanceItem "utility"
+    test.done()
+
+  "advanceItem_Utility should select a new utility power of the current level": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Wizard(npc)
+    npc.level = 2
+    npc.advanceItem_Utility(npc)
+    test.equal npc.powers.utility.length, 1
+    test.ok npc.powers.utility[0].id in npc.class.powers.utility[2]
     test.done()
 
   "advanceItem should delegate 'feat' to npc if class does not override": (test) ->
@@ -558,7 +567,7 @@ module.exports =
     npc = new NPC class: Classes.Cleric
     npc.generate()
 
-    npc.advanceItem_Feat = (n) -> test.equal npc, n
+    npc.advanceItem_Feat = -> test.equal npc, this
     npc.advanceItem "feat"
     test.done()
 
@@ -567,9 +576,17 @@ module.exports =
 
     npc = new NPC class: Classes.Cleric
     npc.generate()
-    npc.class.advanceItem_Feat = (n) -> test.equal npc, n
-    npc.advanceItem_Feat = (n) -> test.ok false
+    npc.class.advanceItem_Feat = -> test.equal npc, this
+    npc.advanceItem_Feat = -> test.ok false
     npc.advanceItem "feat"
+    test.done()
+
+  "advanceItem_Feat should add another feat": (test) ->
+    npc = new NPC
+    npc.generate()
+    count = npc.feats.length
+    npc.advanceItem_Feat(npc)
+    test.equal npc.feats.length, count+1
     test.done()
 
   "advance should advance character level": (test) ->
@@ -577,8 +594,8 @@ module.exports =
     npc.generate()
 
     hp = npc.hitPoints.score()
-    npc.advanceItem_Feat = (n) -> n.advancedFeat = true
-    npc.advanceItem_Utility = (n) -> n.advancedUtility = true
+    npc.advanceItem_Feat = -> @advancedFeat = true
+    npc.advanceItem_Utility = -> @advancedUtility = true
 
     npc.advance()
 

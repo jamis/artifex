@@ -150,12 +150,34 @@ module.exports =
     dailyCount = npc.powers.daily.length
 
     test.ok klass.selectInitialPowers?
-    klass.selectInitialPowers(npc)
+    klass.selectInitialPowers.call(npc)
 
     test.equal npc.powers.atWill.length, atWillCount+2, "expected to add 2 atWill powers"
     test.equal npc.powers.encounter.length, encounterCount+1, "expected to add 1 encounter power"
     test.equal npc.powers.daily.length, dailyCount+2, "expected to add 2 daily powers"
     test.equal npc.powers.utility.length, 0
+    test.done()
+
+  "should redefine selection of advanced daily spells": (test) ->
+    klass = new Classes.Wizard(npc = new NPC)
+    npc.class = klass
+    count = npc.powers.daily.length
+    npc.level = 5
+
+    test.ok klass.advanceItem_Daily?
+    klass.advanceItem_Daily.call(npc)
+    test.equal npc.powers.daily.length, count+2
+    test.done()
+    
+  "should redefine selection of advanced utility spells": (test) ->
+    klass = new Classes.Wizard(npc = new NPC)
+    npc.class = klass
+    count = npc.powers.utility.length
+    npc.level = 2
+
+    test.ok klass.advanceItem_Utility?
+    klass.advanceItem_Utility.call(npc)
+    test.equal npc.powers.utility.length, count+2
     test.done()
 
   "wizard powers are called spells": (test) ->

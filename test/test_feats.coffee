@@ -410,7 +410,7 @@ module.exports =
         setup:
           when: (npc) ->
             npc.class = new Classes.Wizard(npc)
-            npc.level = 10
+            npc.level = 9
         tests:
           shouldAddExtraDailyOfEachLevel: (npc) ->
             npc.powers.daily.length is 3 # 1, 5, 9

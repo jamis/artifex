@@ -56,10 +56,17 @@ module.exports = class Wizard
     for ritual in npc.random.shuffle(Rituals.all(1)...)[0...3]
       npc.learnRitual 1, ritual
 
-  selectInitialPowers: (npc) ->
-    npc.selectPowersFor "atWill", 2
-    npc.selectPowersFor "encounter", 1
-    npc.selectPowersFor "daily", 2
+  # intended to be called when "this" is an NPC instance
+  selectInitialPowers: ->
+    @selectPowersFor "atWill", 2
+    @selectPowersFor "encounter", 1
+    @selectPowersFor "daily", 2
+
+  advanceItem_Utility: ->
+    @selectPowersFor "utility", 2
+
+  advanceItem_Daily: ->
+    @selectPowersFor "daily", 2
 
 Wizard.simpleName = "wizard"
 Wizard.source = "phb"

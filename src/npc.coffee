@@ -297,7 +297,7 @@ module.exports = class NPC
 
   selectPowersFor: (category, count) ->
     if count > 0
-      list = @suitablePowersIn @class.powers[category][1]
+      list = @suitablePowersIn @class.powers[category][@level]
       for power in @random.shuffle(list...).slice(0, count)
         power = Powers.get power, npc: this
         @powers[category].push power
@@ -308,10 +308,7 @@ module.exports = class NPC
     @selectPowersFor "daily", 1
 
   selectPowers: ->
-    if @class? and @class.selectInitialPowers?
-      @class.selectInitialPowers(this)
-    else
-      @selectInitialPowers()
+    @delegateIfPresent "selectInitialPowers", @class
 
     for pending in @pendingPowers
       list = if typeof pending.list is "function" then pending.list(this) else pending.list
@@ -360,7 +357,7 @@ module.exports = class NPC
     @weaponPreferences = []
 
   delegateIfPresent: (method, delegate, args...) ->
-    (delegate[method] ? this[method])(this, args...)
+    (delegate?[method] ? this[method]).call(this, args...)
 
   advanceItem: (item) ->
     switch item
@@ -368,11 +365,12 @@ module.exports = class NPC
       when "utility" then @delegateIfPresent "advanceItem_Utility", @class
       else throw new Error "unsupported advancement item `#{item}'"
 
-  advanceItem_Utility: (npc) ->
-    throw new Error "need to implement advanceItem_Utility"
+  advanceItem_Utility: ->
+    @selectPowersFor "utility", 1
 
   advanceItem_Feat: (npc) ->
-    throw new Error "need to implement advanceItem_Feat"
+    @pendingFeats.push count: 1
+    @selectPendingFeats()
 
 NPC.level =
   2 : [ "utility", "feat" ]

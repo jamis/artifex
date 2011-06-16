@@ -360,8 +360,8 @@ module.exports = Feats =
             id = npc.random.pick(list...)
             npc.powers.daily.push Powers.get(id, npc: npc)
 
-        delete npc.class.advanceItem_Daily
-        npc.advanceItem_Daily = (n) -> n.selectPowersFor "daily", 3
+        npc.class.advanceItem_Daily = undefined
+        npc.advanceItem_Daily = -> @selectPowersFor "daily", 3
 
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat

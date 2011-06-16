@@ -61,9 +61,10 @@ module.exports = class Warlock
     npc.feature "class", "Warlock's Curse"
     npc.powers.atWill.push Powers.get("WarlocksCurse", npc: npc)
 
-  selectInitialPowers: (npc) ->
-    npc.selectPowersFor "encounter", 1
-    npc.selectPowersFor "daily", 1
+  # intended to be called with "this" set to an NPC instance
+  selectInitialPowers: ->
+    @selectPowersFor "encounter", 1
+    @selectPowersFor "daily", 1
 
 Warlock.simpleName = "warlock"
 Warlock.source = "phb"
