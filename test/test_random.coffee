@@ -48,3 +48,11 @@ module.exports =
     for i in [1..20]
       test.ok 1 <= random.d(10) <= 10
     test.done()
+
+  "#pickw should choose arguments randomly with weighted bias": (test) ->
+    random = new Random
+    list = [ { w: 1, v: 1 }, { w: 1, v: 2 }, { w: 1, v: 3 }, { w: 2, v: 4 }, { w: 3, v: 5 } ]
+    test.ok random.pickw(list...) in [1..5]
+    test.ok random.pickw(list...) in [1..5]
+    test.ok random.pickw(list...) in [1..5]
+    test.done()

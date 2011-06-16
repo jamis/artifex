@@ -361,9 +361,11 @@ module.exports = class NPC
 
   advanceItem: (item) ->
     switch item
-      when "feat"      then @advanceItem_Feat()
-      when "utility"   then @advanceItem_Utility()
-      when "encounter" then @advanceItem_Encounter()
+      when "feat"        then @advanceItem_Feat()
+      when "utility"     then @advanceItem_Utility()
+      when "encounter"   then @advanceItem_Encounter()
+      when "daily"       then @advanceItem_Daily()
+      when "abilities:2" then @advanceItem_Abilities2()
       else throw new Error "unsupported advancement item `#{item}'"
 
   advanceItem_Utility: ->
@@ -375,6 +377,33 @@ module.exports = class NPC
 
   advanceItem_Encounter: ->
     @selectPowersFor "encounter", 1
+
+  advanceItem_Daily: ->
+    @selectPowersFor "daily", 1
+
+  advanceItem_Abilities2: ->
+    possibilities = []
+
+    names = [ "str", "con", "dex", "int", "wis", "cha" ]
+    names.sort (a,b) => @abilities[a].score() - @abilities[b].score()
+
+    for ability in names
+      score = @abilities[ability].score()
+      if score < 10
+        weight = if score % 2 == 0 then 3 else 6
+        possibilities.push w: weight, v: ability
+      if ability in @class.keyAttributes
+        possibilities.push w: 4, v: ability
+
+    possibilities.push w: 2, v: names[0]
+    possibilities.push w: 2, v: names[1]
+    possibilities.push w: 1, v: names[2]
+
+    first = @random.pickw(possibilities...)
+    second = @random.pickw(possibilities...) while !second? or second is first
+
+    @abilities[first].adjust 1
+    @abilities[second].adjust 1
 
 NPC.level =
   2 : [ "utility", "feat" ]

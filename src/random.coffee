@@ -24,3 +24,16 @@ module.exports = class Random
     list
 
   d: (n) -> @number(n) + 1
+
+  pickw: ->
+    total = 0
+    total += i.w for i in arguments
+
+    target = @number(total)
+    counter = 0
+    n = 0
+
+    loop
+      counter += arguments[n].w
+      return arguments[n].v if counter > target
+      n++

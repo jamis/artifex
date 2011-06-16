@@ -573,6 +573,49 @@ module.exports =
     test.ok npc.powers.encounter[0].id in npc.class.powers.encounter[1]
     test.done()
 
+  "advanceItem should delegate 'daily' to advanceItem_Daily": (test) ->
+    test.expect 1
+
+    npc = new NPC class: Classes.Cleric
+    npc.generate()
+
+    npc.advanceItem_Daily = -> test.ok true
+    npc.advanceItem "daily"
+    test.done()
+
+  "advanceItem_Daily should add another daily power of the current level": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Rogue(npc)
+    npc.advanceItem_Daily(npc)
+    test.equal npc.powers.daily.length, 1
+    test.ok npc.powers.daily[0].id in npc.class.powers.daily[1]
+    test.done()
+
+  "advanceItem should delegate 'abilities:2' to advanceItem_Abilities2": (test) ->
+    test.expect 1
+
+    npc = new NPC class: Classes.Cleric
+    npc.generate()
+
+    npc.advanceItem_Abilities2 = -> test.ok true
+    npc.advanceItem "abilities:2"
+    test.done()
+
+  "advanceItem_Abilities2 should add another encounter power of the current level": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Wizard(npc)
+
+    before = 0
+    before += npc.abilities[a].score() for a in ["str", "con", "dex", "int", "wis", "cha"]
+
+    npc.advanceItem_Abilities2(npc)
+
+    after = 0
+    after += npc.abilities[a].score() for a in ["str", "con", "dex", "int", "wis", "cha"]
+
+    test.equal after, before+2
+    test.done()
+
   "advance should advance character level": (test) ->
     npc = new NPC class: Classes.Cleric
     npc.generate()
