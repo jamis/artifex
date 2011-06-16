@@ -114,8 +114,7 @@ module.exports =
       npc.powers.find("atWill", "HellishRebuke") or
       npc.powers.find("atWill", "DireRadiance")
 
-    test.ok klass.selectInitialPowers?
-    klass.selectInitialPowers.call(npc)
+    npc.selectInitialPowers()
 
     test.equal npc.powers.atWill.length, count
     test.equal npc.powers.encounter.length, 1

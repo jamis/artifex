@@ -429,29 +429,9 @@ module.exports =
       test.ok true if power.id in npc.class.powers.daily[1]
     test.done()
 
-  "initial power selection should invoke the default routine if there is no class": (test) ->
+  "initial power selection should defer to selectInitialPowers": (test) ->
     npc = new NPC
     npc.selectInitialPowers = -> test.ok true
-
-    test.expect 1
-    npc.selectPowers()
-    test.done()
-
-  "initial power selection should invoke the default routine if class does not override": (test) ->
-    npc = new NPC
-    npc.class = new Classes.Fighter(npc)
-    npc.selectInitialPowers = -> test.ok true
-
-    test.expect 2
-    test.ok? not npc.class.selectInitialPowers?
-    npc.selectPowers()
-    test.done()
-
-  "initial power selection should invoke the class-defined routine if present": (test) ->
-    npc = new NPC
-    npc.class = new Classes.Fighter(npc)
-    npc.selectInitialPowers = -> test.ok false
-    npc.class.selectInitialPowers = -> test.equal npc, this
 
     test.expect 1
     npc.selectPowers()
@@ -532,52 +512,32 @@ module.exports =
     test.deepEqual NPC.level[30], ["epic-destiny", "feat"]
     test.done()
 
-  "advanceItem should delegate 'utility' to npc if class does not override": (test) ->
+  "advanceItem should delegate 'utility' to advanceItem_Utility": (test) ->
     test.expect 1
 
     npc = new NPC class: Classes.Cleric
     npc.generate()
 
-    npc.advanceItem_Utility = -> test.equal npc, this
-    npc.advanceItem "utility"
-    test.done()
-
-  "advanceItem should delegate 'utility' to class if overridden": (test) ->
-    test.expect 1
-
-    npc = new NPC class: Classes.Cleric
-    npc.generate()
-    npc.class.advanceItem_Utility = -> test.equal npc, this
-    npc.advanceItem_Utility = -> test.ok false
+    npc.advanceItem_Utility = -> test.ok true
     npc.advanceItem "utility"
     test.done()
 
   "advanceItem_Utility should select a new utility power of the current level": (test) ->
     npc = new NPC
-    npc.class = new Classes.Wizard(npc)
+    npc.class = new Classes.Fighter(npc)
     npc.level = 2
     npc.advanceItem_Utility(npc)
     test.equal npc.powers.utility.length, 1
     test.ok npc.powers.utility[0].id in npc.class.powers.utility[2]
     test.done()
 
-  "advanceItem should delegate 'feat' to npc if class does not override": (test) ->
+  "advanceItem should delegate 'feat' to advanceItem_feat": (test) ->
     test.expect 1
 
     npc = new NPC class: Classes.Cleric
     npc.generate()
 
-    npc.advanceItem_Feat = -> test.equal npc, this
-    npc.advanceItem "feat"
-    test.done()
-
-  "advanceItem should delegate 'feat' to class if overridden": (test) ->
-    test.expect 1
-
-    npc = new NPC class: Classes.Cleric
-    npc.generate()
-    npc.class.advanceItem_Feat = -> test.equal npc, this
-    npc.advanceItem_Feat = -> test.ok false
+    npc.advanceItem_Feat = -> test.ok true
     npc.advanceItem "feat"
     test.done()
 

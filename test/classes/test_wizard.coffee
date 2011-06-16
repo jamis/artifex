@@ -149,8 +149,7 @@ module.exports =
     encounterCount = npc.powers.encounter.length
     dailyCount = npc.powers.daily.length
 
-    test.ok klass.selectInitialPowers?
-    klass.selectInitialPowers.call(npc)
+    npc.selectInitialPowers()
 
     test.equal npc.powers.atWill.length, atWillCount+2, "expected to add 2 atWill powers"
     test.equal npc.powers.encounter.length, encounterCount+1, "expected to add 1 encounter power"
@@ -164,8 +163,7 @@ module.exports =
     count = npc.powers.daily.length
     npc.level = 5
 
-    test.ok klass.advanceItem_Daily?
-    klass.advanceItem_Daily.call(npc)
+    npc.advanceItem_Daily()
     test.equal npc.powers.daily.length, count+2
     test.done()
     
@@ -175,8 +173,7 @@ module.exports =
     count = npc.powers.utility.length
     npc.level = 2
 
-    test.ok klass.advanceItem_Utility?
-    klass.advanceItem_Utility.call(npc)
+    npc.advanceItem_Utility()
     test.equal npc.powers.utility.length, count+2
     test.done()
 

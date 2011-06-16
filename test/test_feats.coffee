@@ -417,7 +417,7 @@ module.exports =
           shouldDefine_advanceItem_Daily: (npc) ->
             before = npc.powers.daily.length
             npc.advanceItem_Daily(npc)
-            !npc.class.advanceItem_Daily? and npc.powers.daily.length is before+3
+            npc.powers.daily.length is before+3
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",

@@ -308,7 +308,7 @@ module.exports = class NPC
     @selectPowersFor "daily", 1
 
   selectPowers: ->
-    @delegateIfPresent "selectInitialPowers", @class
+    @selectInitialPowers()
 
     for pending in @pendingPowers
       list = if typeof pending.list is "function" then pending.list(this) else pending.list
@@ -356,13 +356,10 @@ module.exports = class NPC
 
     @weaponPreferences = []
 
-  delegateIfPresent: (method, delegate, args...) ->
-    (delegate?[method] ? this[method]).call(this, args...)
-
   advanceItem: (item) ->
     switch item
-      when "feat"    then @delegateIfPresent "advanceItem_Feat", @class
-      when "utility" then @delegateIfPresent "advanceItem_Utility", @class
+      when "feat"    then @advanceItem_Feat()
+      when "utility" then @advanceItem_Utility()
       else throw new Error "unsupported advancement item `#{item}'"
 
   advanceItem_Utility: ->
