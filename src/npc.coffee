@@ -358,8 +358,9 @@ module.exports = class NPC
 
   advanceItem: (item) ->
     switch item
-      when "feat"    then @advanceItem_Feat()
-      when "utility" then @advanceItem_Utility()
+      when "feat"      then @advanceItem_Feat()
+      when "utility"   then @advanceItem_Utility()
+      when "encounter" then @advanceItem_Encounter()
       else throw new Error "unsupported advancement item `#{item}'"
 
   advanceItem_Utility: ->
@@ -368,6 +369,9 @@ module.exports = class NPC
   advanceItem_Feat: (npc) ->
     @pendingFeats.push count: 1
     @selectPendingFeats()
+
+  advanceItem_Encounter: ->
+    @selectPowersFor "encounter", 1
 
 NPC.level =
   2 : [ "utility", "feat" ]

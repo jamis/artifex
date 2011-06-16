@@ -549,6 +549,24 @@ module.exports =
     test.equal npc.feats.length, count+1
     test.done()
 
+  "advanceItem should delegate 'encounter' to advanceItem_Encounter": (test) ->
+    test.expect 1
+
+    npc = new NPC class: Classes.Cleric
+    npc.generate()
+
+    npc.advanceItem_Encounter = -> test.ok true
+    npc.advanceItem "encounter"
+    test.done()
+
+  "advanceItem_Encounter should add another encounter power of the current level": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Wizard(npc)
+    npc.advanceItem_Encounter(npc)
+    test.equal npc.powers.encounter.length, 1
+    test.ok npc.powers.encounter[0].id in npc.class.powers.encounter[1]
+    test.done()
+
   "advance should advance character level": (test) ->
     npc = new NPC class: Classes.Cleric
     npc.generate()
