@@ -111,3 +111,10 @@ module.exports =
     klass = new Classes.Fighter(new NPC)
     test.equal Classes.Fighter.powers, klass.powers
     test.done()
+
+  "level-2 exploits are accounted for": (test) ->
+    for power in [ "BoundlessEndurance", "GetOverHere", "NoOpening", "Unstoppable" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Fighter.powers.utility[2]
+    test.done()

@@ -48,3 +48,6 @@ Fighter.powers =
 
   daily:
     1: [ "BruteStrike", "ComebackStrike", "VillainsMenace" ]
+
+  utility:
+    2: [ "BoundlessEndurance", "GetOverHere", "NoOpening", "Unstoppable" ]

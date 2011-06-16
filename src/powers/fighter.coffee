@@ -85,3 +85,26 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "2[W]{±str.nz} damage (special)"
+
+  BoundlessEndurance:
+    name        : "Boundless Endurance"
+    type        : "daily"
+    keywords    : [ "healing", "martial", "stance" ]
+    effect      : "regeneration {regen} when bloodied"
+    _formulae   : { regen: ["+", 2, "#con"] }
+
+  GetOverHere:
+    name        : "Get Over Here"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+
+  NoOpening:
+    name        : "No Opening"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+
+  Unstoppable:
+    name        : "Unstoppable"
+    type        : "daily"
+    keywords    : [ "healing", "martial" ]
+    effect      : "gain 2d6{±con.nz} temp HP"

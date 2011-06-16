@@ -1,5 +1,4 @@
-{NPC, Powers} = require '../..'
-{Verify}      = require '../helpers'
+{Verify} = require '../helpers'
 
 module.exports =
   "[Cleave] should be defined":
@@ -127,3 +126,33 @@ module.exports =
       hit: [
         { str: 10, expect: "2[W] damage (special)" },
         { str: 16, expect: "2[W]+3 damage (special)" } ]
+
+  "[BoundlessEndurance] should be defined":
+    Verify.testProperties "BoundlessEndurance",
+      name: [ expect: "Boundless Endurance" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "healing", "martial", "stance" ] ]
+      effect: [
+        { con: 10, expect: "regeneration 2 when bloodied" },
+        { con: 16, expect: "regeneration 5 when bloodied" } ]
+
+  "[GetOverHere] should be defined":
+    Verify.testProperties "GetOverHere",
+      name: [ expect: "Get Over Here" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[NoOpening] should be defined":
+    Verify.testProperties "NoOpening",
+      name: [ expect: "No Opening" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[Unstoppable] should be defined":
+    Verify.testProperties "Unstoppable",
+      name: [ expect: "Unstoppable" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "healing", "martial" ] ]
+      effect: [
+        { con: 10, expect: "gain 2d6 temp HP" },
+        { con: 16, expect: "gain 2d6+3 temp HP" } ]
