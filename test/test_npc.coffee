@@ -351,13 +351,11 @@ module.exports =
 
   "weapon selection should honor preferredWeaponHandCount": (test) ->
     for hands in [1, 2]
-      while true
-        npc = new NPC
-        npc.preferredWeaponHandCount = hands
-        npc.generate()
-        break if npc.size != "small"
+      npc = new NPC class: TestClass, race: TestRace
+      npc.preferredWeaponHandCount = hands
+      npc.generate()
       for weapon in npc.equipment.weapons()
-        test.equal npc.preferredWeaponHandCount, Weapons.all[weapon].hands
+        test.equal npc.preferredWeaponHandCount, Weapons.all[weapon].hands, "class(#{npc.class.name}) race(#{npc.race.name})"
     test.done()
 
   "weapon selection should honor preferredWeaponHandCount of 2 for small characters": (test) ->
@@ -422,11 +420,12 @@ module.exports =
       test.ok true if power.id in npc.class.powers.encounter[1]
     test.done()
 
-  "should have one L1 daily class power": (test) ->
+  "should have (at least) one L1 daily class power": (test) ->
     npc = (new NPC).generate()
-    test.expect 1
+    count = 0
     for power in npc.powers.daily
-      test.ok true if power.id in npc.class.powers.daily[1]
+      count += 1 if power.id in npc.class.powers.daily[1]
+    test.ok count >= 1, "expected at least 1 power, got #{count}"
     test.done()
 
   "initial power selection should defer to selectInitialPowers": (test) ->
