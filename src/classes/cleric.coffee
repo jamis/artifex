@@ -72,6 +72,15 @@ Cleric.powers =
 
   encounter:
     1: [ "CauseFear", "DivineGlow", "HealingStrike", "WrathfulThunder" ]
+    3: [ "BlazingBeacon", "Command", "DauntingLight", "SplitTheSky" ]
+    7: [ "AweStrike", "BreakTheSpirit", "SearingLight", "StrengthenTheFaithful" ]
 
   daily:
     1: [ "AvengingFlame", "BeaconOfHope", "CascadeOfLight", "GuardianOfFaith" ]
+    5: [ "ConsecratedGround", "RuneOfPeace", "SpiritualWeapon", "WeaponOfTheGods" ]
+    9: [ "AstralDefenders", "BladeBarrier", "DivinePower", "FlameStrike" ]
+
+  utility:
+    2 : [ "Bless", "CureLightWounds", "DivineAid", "Sanctuary", "ShieldOfFaith" ]
+    6 : [ "BastionOfHealth", "CureSeriousWounds", "DivineVigor", "HolyLantern" ]
+    10: [ "AstralRefuge", "KnightsOfUnyieldingValor", "MassCureLightWounds", "ShieldingWord" ]
