@@ -35,7 +35,7 @@ class Feat
       when "race" then return true if npc.race.is value
       when "class" then return true if npc.class.name is value
       when "deity" then return true if npc.deity is value
-      when "str", "con", "dex", "int", "wis", "cha"
+      when "str", "con", "dex", "int", "int_", "wis", "cha"
         return true if npc.abilities[property].score() >= value
       when "trained"
         return @processCombination(value, (skill) -> npc.skills[skill].trained)
