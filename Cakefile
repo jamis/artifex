@@ -27,7 +27,7 @@ compile = (callback) ->
 
 compress = (callback) ->
   options = ['-o', 'compressed.js', 'package.js']
-  yui = spawn 'yuicompressor', options
+  yui = spawn 'uglifyjs', options
   yui.stdout.on 'data', (data) -> console.log data.toString()
   yui.stderr.on 'data', (data) -> console.log data.toString()
   yui.on 'exit', (status) ->
