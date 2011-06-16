@@ -218,7 +218,7 @@ module.exports = Feats =
   BurningBlizzard: new Feat
     name: "Burning Blizzard"
     requires:
-      int: 13
+      int_: 13
       wis: 13
       with: powersWithKeywords("acid", "cold")
     grants:
