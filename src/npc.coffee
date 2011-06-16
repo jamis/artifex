@@ -402,8 +402,8 @@ module.exports = class NPC
     first = @random.pickw(possibilities...)
     second = @random.pickw(possibilities...) while !second? or second is first
 
-    @abilities[first].adjust 1
-    @abilities[second].adjust 1
+    @abilities[first].adjust "level #{@level}", 1
+    @abilities[second].adjust "level #{@level}", 1
 
 NPC.level =
   2 : [ "utility", "feat" ]
