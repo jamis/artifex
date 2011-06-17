@@ -3,12 +3,12 @@ module.exports =
     name        : "Healing Word"
     keywords    : [ "divine", "healing" ]
     attackTypes : [ "Close burst {burstSize}" ]
-    frequency   : "{frequency}/encounter"
+    frequency   : "{times}/encounter"
     effect      : "surge+{surgeDice}d6"
     _formulae   :
-      burstSize: ["case", ["<", ".level", 11], 5, ["<", ".level", 21], 10, true, 15]
-      frequency: ["if", ["<", ".level", 16], 2, 3]
-      surgeDice: ["case", ["<", ".level", 6], 1, ["<", ".level", 11], 2, ["<", ".level", 16], 3, ["<", ".level", 21], 4, ["<", ".level", 26], 5, true, 6]
+      burstSize: -> @byLevel [5, 11], [10, 21], 15
+      times    : -> @byLevel [2, 16], 3
+      surgeDice: -> @byLevel [1, 6], [2, 11], [3, 16], [4, 21], [5, 26], 6
 
   DivineFortune:
     name        : "Channel Divinity: Divine Fortune"
@@ -21,9 +21,9 @@ module.exports =
     attack      : "{±wis} vs. Will"
     hit         : "{hitDice}d10{±wis.nz}, push {push} (special)"
     _formulae   :
-      burstSize: ["case", ["<", ".level", 11], 2, ["<", ".level", 21], 5, true, 8]
-      hitDice  : ["case", ["<", ".level", 5], 1, ["<", ".level", 11], 2, ["<", ".level", 15], 3, ["<", ".level", 21], 4, ["<", ".level", 25], 5, true, 6]
-      push     : ["+", 3, "#cha"]
+      burstSize: -> @byLevel [2, 11], [5, 21], 8
+      hitDice  : -> @byLevel [1, 5], [2, 11], [3, 15], [4, 21], [5, 25], 6
+      push     : -> 3 + @chaM()
 
   ArmorOfBahamut:
     name        : "Channel Divinity: Armor of Bahamut"
@@ -42,27 +42,27 @@ module.exports =
     keywords    : [ "divine", "implement", "radiant" ]
     attack      : "{±wis} vs. Reflex"
     hit         : "{hitDice}d8{±wis.nz} (special)"
-    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { hitDice: -> @byLevel [1, 21], 2 }
   PriestsShield:
     name        : "Priest's Shield"
     keywords    : [ "divine", "weapon" ]
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "{hitDice}[W]{±str.nz} (special)"
-    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { hitDice: -> @byLevel [1, 21], 2 }
   RighteousBrand:
     name        : "Righteous Brand"
     keywords    : [ "divine", "weapon" ]
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "{hitDice}[W]{±str.nz} (special)"
-    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { hitDice: -> @byLevel [1, 21], 2 }
   SacredFlame:
     name        : "Sacred Flame"
     keywords    : [ "divine", "implement", "radiant" ]
     attack      : "{±wis} vs. Reflex"
     hit         : "{hitDice}d6{±wis.nz} (special)"
-    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { hitDice: -> @byLevel [1, 21], 2 }
 
   CauseFear:
     name        : "Cause Fear"
@@ -142,7 +142,7 @@ module.exports =
     keywords    : [ "charm", "divine", "implement" ]
     attack      : "{±wis} vs. Will"
     hit         : "option to slide target up to {distance} squares (special)"
-    _formulae   : { distance: ["+", 3, "#cha"] }
+    _formulae   : { distance: -> 3 + @chaM() }
   DauntingLight:
     name        : "Daunting Light"
     keywords    : [ "divine", "implement", "radiant" ]
@@ -159,7 +159,7 @@ module.exports =
     name        : "Consecrated Ground"
     keywords    : [ "divine", "healing", "radiant", "zone" ]
     effect      : "enemies take 1d6{±cha.nz} damage, allies regain {regen} HP"
-    _formulae   : { regen: ["+", 1, "#cha"] }
+    _formulae   : { regen: -> 1 + @chaM() }
   RuneOfPeace:
     name        : "Rune of Peace"
     keywords    : [ "charm", "divine", "weapon" ]
@@ -204,7 +204,7 @@ module.exports =
     keywords    : [ "charm", "divine", "implement", "radiant" ]
     attack      : "{±wis} vs. Will"
     hit         : "2d8{±wis.nz} damage, target takes {penalty} penalty to attack"
-    _formulae   : { penalty: ["±", ["-", 0, "#cha"]] }
+    _formulae   : { penalty: -> @signed(-@chaM()) }
   SearingLight:
     name        : "Searing Light"
     keywords    : [ "divine", "implement", "radiant" ]
@@ -236,7 +236,7 @@ module.exports =
     keywords    : [ "divine", "fire", "implement" ]
     attack      : "{±wis} vs. Reflex"
     hit         : "2d10{±wis.nz} damage, ongoing {ongoing} damage"
-    _formulae   : { ongoing: ["+", 5, "#wis"] }
+    _formulae   : { ongoing: -> 5 + @wisM() }
 
   AstralRefuge:
     name        : "Astral Refuge"

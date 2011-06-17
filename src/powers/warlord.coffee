@@ -1,16 +1,16 @@
 hasPresence = (presence) ->
-  (power) -> power.npc.hasFeature("class", "#{presence} Presence")
+  -> @npc.hasFeature "class", "#{presence} Presence"
 
 module.exports =
   InspiringPresence:
     name        : "Inspiring Presence"
     effect      : "ally regains {±bonus} lost HP (special)"
-    _formulae   : { "±bonus": ["±", ["+", ["floor", ["/", ".level", 2]], "#cha"]] }
+    _formulae   : { "±bonus": -> @signed(Math.floor(@npc.level / 2) + @chaM()) }
 
   TacticalPresence:
     name        : "Tactical Presence"
     effect      : "ally gains {±bonus} attack bonus (special)"
-    _formulae   : { "±bonus": ["±", ["floor", ["/", "#int", 2]]] }
+    _formulae   : { "±bonus": -> @signed(Math.floor(@intM() / 2)) }
 
   InspiringWord:
     name        : "Inspiring Word"
@@ -19,9 +19,9 @@ module.exports =
     attackTypes : [ "Close burst {size}" ]
     effect      : "ally can regain +{dice}d6 hit points"
     _formulae   :
-      times: ["if", ["<", ".level", 16], 2, 3]
-      size : ["case", ["<", ".level", 11], 5, ["<", ".level", 21], 10, true, 15]
-      dice : ["floor", ["/", ["+", ".level", 5], 5]]
+      times: -> @byLevel [2, 16], 3
+      size : -> @byLevel [5, 11], [10, 21], 15
+      dice : -> Math.floor((@npc.level + 5) / 5)
 
   CommandersStrike:
     name        : "Commander's Strike"
@@ -41,7 +41,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "{count}[W]{±str.nz} damage (special)"
-    _formulae   : { count: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { count: -> @byLevel [1, 21], 2 }
 
   WolfPackTactics:
     name        : "Wolf Pack Tactics"
@@ -49,7 +49,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "{count}[W]{±str.nz} damage (special)"
-    _formulae   : { count: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { count: -> @byLevel [1, 21], 2 }
 
   GuardingAttack:
     name        : "Guarding Attack"
@@ -58,7 +58,8 @@ module.exports =
     attack      : "{±str} vs. AC"
     hit         : "2[W]{±str.nz} damage, adjacent ally gets {±bonus} AC vs. target"
     _formulae   :
-      "±bonus": ["±", ["if", hasPresence("Inspiring"), ["+", 1, "#cha"], 2]]
+      inspiring: hasPresence "Inspiring"
+      "±bonus": -> @signed(if @inspiring() then @chaM() + 1 else 2)
 
   HammerAndAnvil:
     name        : "Hammer and Anvil"
@@ -81,7 +82,8 @@ module.exports =
     attack      : "{±str} vs. AC"
     hit         : "2[W]{±str.nz} damage, adjacent ally gets {±bonus} to attack vs. target"
     _formulae   :
-      "±bonus": ["±", ["if", hasPresence("Tactical"), ["+", 1, "#int"], 2]]
+      tactical: hasPresence "Tactical"
+      "±bonus": -> @signed(if @tactical() then @intM() + 1 else 2)
 
   BastionOfDefense:
     name        : "Bastion of Defense"
@@ -90,7 +92,7 @@ module.exports =
     attack      : "{±str} vs. AC"
     hit         : "3[W]{±str.nz} damage (special)"
     effect      : "allies w/in 5 squares get {bonus} temporary HP"
-    _formulae   : { bonus: ["+", 5, "#cha"] }
+    _formulae   : { bonus: -> 5 + @chaM() }
 
   LeadTheAttack:
     name        : "Lead the Attack"
@@ -98,7 +100,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "3[W]{±str.nz} damage, {±bonus} to attack vs. target"
-    _formulae   : { "±bonus": ["±", ["+", 1, "#int"]] }
+    _formulae   : { "±bonus": -> @signed(@intM() + 1) }
 
   PinTheFoe:
     name        : "Pin the Foe"

@@ -5,7 +5,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "{hitDice}[W]{±str.nz} (special)"
-    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { hitDice: -> @byLevel [1, 21], 2 }
 
   ReapingStrike:
     name        : "Reaping Strike"
@@ -15,18 +15,18 @@ module.exports =
     hit         : "{hitDice}[W]{±str.nz} (special)"
     miss        : "{halfStr} damage ({#str} w/2h weapon)"
     _formulae   :
-      halfStr: ["floor", ["/", "#str", 2]]
-      hitDice: ["if", ["<", ".level", 21], 1, 2]
+      halfStr: -> Math.floor(@strM() / 2)
+      hitDice: -> @byLevel [1, 21], 2
 
   SureStrike:
     name        : "Sure Strike"
     keywords    : [ "martial", "weapon" ]
     attackTypes : [ "melee weapon" ]
-    attack      : "{attack} vs. AC"
+    attack      : "{bonus} vs. AC"
     hit         : "{hitDice}[W] damage"
     _formulae   :
-      attack : ["±", ["+", "#str", 2]]
-      hitDice: ["if", ["<", ".level", 21], 1, 2]
+      bonus  : -> @signed(@strM() + 2)
+      hitDice: -> @byLevel [1, 21], 2
 
   TideOfIron:
     name        : "Tide of Iron"
@@ -34,7 +34,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "{hitDice}[W]{±str.nz} damage (special)"
-    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { hitDice: -> @byLevel [1, 21], 2 }
 
   CoveringAttack:
     name        : "Covering Attack"
@@ -49,7 +49,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC (2nd target: {secondBonus} vs. AC)"
     hit         : "1[W]{±str.nz} damage (special)"
-    _formulae   : { secondBonus: ["±", ["+", "#str", 2]] }
+    _formulae   : { secondBonus: -> @signed(@strM() + 2) }
 
   SpinningSweep:
     name        : "Spinning Sweep"
@@ -91,7 +91,7 @@ module.exports =
     type        : "daily"
     keywords    : [ "healing", "martial", "stance" ]
     effect      : "regeneration {regen} when bloodied"
-    _formulae   : { regen: ["+", 2, "#con"] }
+    _formulae   : { regen: -> @conM() + 2 }
 
   GetOverHere:
     name        : "Get Over Here"
@@ -116,8 +116,8 @@ module.exports =
     attack      : "{±str} vs. Reflex{dexText}"
     hit         : "1[W]{±str.nz} damage{dexText}"
     _formulae   :
-      dexBonus: ["if", ["=", "#dex", 0], 0, ["+", "#str", "#dex"]]
-      dexText:  ["if", ["=", "dexBonus", 0], ["~", ""], ["+", ["~", " ("], ["±", "dexBonus"], ["~", " with light blade or spear)"]]]
+      dexBonus: -> if @dexM() is 0 then 0 else @strM() + @dexM()
+      dexText : -> if @dexBonus() is 0 then "" else " (#{@signed @dexBonus()} with light blade or spear)"
 
   CrushingBlow:
     name        : "Crushing Blow"
@@ -126,8 +126,8 @@ module.exports =
     attack      : "{±str} vs. AC"
     hit         : "2[W]{±str.nz} damage{conText}"
     _formulae   :
-      conBonus: ["if", ["=", "#con", 0], 0, ["+", "#str", "#con"]]
-      conText:  ["if", ["=", "conBonus", 0], ["~", ""], ["+", ["~", " ("], ["±", "conBonus"], ["~", " with axe, hammer, or mace)"]]]
+      conBonus: -> if @conM() is 0 then 0 else @strM() + @conM()
+      conText : -> if @conBonus() is 0 then "" else " (#{@signed @conBonus()} with axe, hammer, or mace)"
 
   DanceOfSteel:
     name        : "Dance of Steel"
@@ -142,7 +142,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str+4} vs. AC"
     hit         : "1[W]{±str.nz} damage"
-    _formulae   : { "±str+4": ["±", ["+", 4, "#str"]] }
+    _formulae   : { "±str+4": -> @signed(@strM() + 4) }
 
   RainOfBlows:
     name        : "Rain of Blows"
@@ -151,8 +151,7 @@ module.exports =
     attack      : "{±str} vs. AC"
     hit         : "1[W]{±str.nz} damage{dexText}"
     _formulae   :
-      dex    : (pow) -> pow.npc.abilities.dex.score()
-      dexText:  ["if", ["<", "dex", 15], ["~", ""], ["~", " (and make secondary attack if wielding light blade, spear, or flail)"]]
+      dexText: -> if @dex() < 15 then "" else " (and make secondary attack if wielding light blade, spear, or flail)"
 
   SweepingBlow:
     name        : "Sweeping Blow"
@@ -160,9 +159,9 @@ module.exports =
     attack      : "{±str} vs. AC{strText}"
     hit         : "1[W]{±str.nz} damage"
     _formulae   :
-      strMod  : ["floor", ["/", "#str", 2]]
-      strBonus: ["if", ["=", "strMod", 0], 0, ["+", "#str", "strMod"]]
-      strText:  ["if", ["=", "strBonus", 0], ["~", ""], ["+", ["~", " ("], ["±", "strBonus"], ["~", " if wielding an axe, flail, heavy blade, or pick)"]]]
+      halfStrM: -> Math.floor(@strM() / 2)
+      strBonus: -> if @halfStrM() is 0 then 0 else @strM() + @halfStrM()
+      strText : -> if @strBonus() is 0 then "" else " (#{@signed @strBonus()} if wielding an axe, flail, heavy blade, or pick)"
 
   CrackTheShell:
     name        : "Crack the Shell"
@@ -197,7 +196,7 @@ module.exports =
     type        : "encounter"
     keywords    : [ "martial" ]
     effect      : "reduce damage from attack by {resist}"
-    _formulae   : { resist: ["+", 5, "#con"] }
+    _formulae   : { resist: -> 5 + @conM() }
 
   ComeAndGetIt:
     name        : "Come and Get It"
@@ -225,7 +224,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str-2} vs. AC"
     hit         : "3[W]{±str.nz} damage"
-    _formulae   : { "±str-2": ["±", ["-", "#str", 2]] }
+    _formulae   : { "±str-2": -> @signed(@strM() - 2) }
 
   SuddenSurge:
     name        : "Sudden Surge"
@@ -235,8 +234,8 @@ module.exports =
     hit         : "2[W]{±str.nz} damage"
     effect      : "move {distance} {squares}"
     _formulae   :
-      distance: ["if", ["<", "#dex", 1], 1, "#dex"]
-      squares: ["if", ["=", "distance", 1], ["~", "square"], ["~", "squares"]]
+      distance: -> if @dexM() < 1 then 1 else @dexM()
+      squares : -> @plural @distance(), "square", "squares"
 
   ShiftTheBattlefield:
     name        : "Shift the Battlefield"

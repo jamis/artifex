@@ -22,36 +22,36 @@ module.exports =
     hit         : "{dice}d6{±int.nz} damage"
     effect      : "creatures entering/exiting area take {damage} damage"
     _formulae   :
-      dice  : ["if", ["<", ".level", 21], 1, 2]
-      damage: ["if", ["<", "#wis", 1], 1, "#wis"]
+      dice  : -> @byLevel [1, 21], 2
+      damage: -> @max @wisM(), 1
 
   MagicMissile:
     name        : "Magic Missile"
     keywords    : [ "arcane", "force", "implement" ]
     attack      : "{±int} vs. Reflex"
     hit         : "{dice}d4{±int.nz} damage"
-    _formulae   : { dice  : ["if", ["<", ".level", 21], 2, 4] }
+    _formulae   : { dice: -> @byLevel [2, 21], 4 }
 
   RayOfFrost:
     name        : "Ray of Frost"
     keywords    : [ "arcane", "cold", "implement" ]
     attack      : "{±int} vs. Fortitude"
     hit         : "{dice}d6{±int.nz} damage (special)"
-    _formulae   : { dice  : ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { dice: -> @byLevel [1, 21], 2 }
 
   ScorchingBurst:
     name        : "Scorching Burst"
     keywords    : [ "arcane", "fire", "implement" ]
     attack      : "{±int} vs. Reflex"
     hit         : "{dice}d6{±int.nz} damage"
-    _formulae   : { dice  : ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { dice: -> @byLevel [1, 21], 2 }
 
   Thunderwave:
     name        : "Thunderwave"
     keywords    : [ "arcane", "implement", "thunder" ]
     attack      : "{±int} vs. Fortitude"
     hit         : "{dice}d6{±int.nz} damage, push target {#wis} squares"
-    _formulae   : { dice  : ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { dice: -> @byLevel [1, 21], 2 }
 
   BurningHands:
     name        : "Burning Hands"

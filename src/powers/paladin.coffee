@@ -3,7 +3,7 @@ module.exports =
     name        : "Channel Divinity: Divine Mettle"
     keywords    : [ "divine" ]
     effect      : "target makes a save with {save} bonus"
-    _formulae   : { save: ["±", ["if", ["<", "#cha", 1], 0, "#cha"]] }
+    _formulae   : { save: -> @signed(@max(@chaM(), 0)) }
 
   DivineStrength:
     name        : "Channel Divinity: Divine Strength"
@@ -14,13 +14,13 @@ module.exports =
     name        : "Divine Challenge"
     keywords    : [ "divine", "radiant" ]
     effect      : "target takes {damage} damage on first attack that excludes you (special)"
-    _formulae   : { damage: ["+", ["case", ["<", ".level", 11], 3, ["<", ".level", 21], 6, true, 9], "#cha"] }
+    _formulae   : { damage: -> @chaM() + @byLevel [3, 11], [6, 21], 9 }
 
   LayOnHands:
     name        : "Lay on Hands"
     keywords    : [ "divine", "healing" ]
     frequency   : "{count}/day"
-    _formulae   : { count: ["if", ["<", "#wis", 1], 1, "#wis"] }
+    _formulae   : { count: -> @max(@wisM(), 1) }
 
   BolsteringStrike:
     name        : "Bolstering Strike"
@@ -28,7 +28,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±cha} vs. AC"
     hit         : "{hitDice}[W]{±cha.nz} damage, {±wis} temp HP"
-    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { hitDice: -> @byLevel [1, 21], 2 }
 
   EnfeeblingStrike:
     name        : "Enfeebling Strike"
@@ -36,7 +36,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±cha} vs. AC"
     hit         : "{hitDice}[W]{±cha.nz} damage (special)"
-    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { hitDice: -> @byLevel [1, 21], 2 }
 
   HolyStrike:
     name        : "Holy Strike"
@@ -45,8 +45,8 @@ module.exports =
     attack      : "{±str} vs. AC"
     hit         : "{hitDice}[W]{±str.nz} damage ({marked} if marked)"
     _formulae   :
-      hitDice: ["if", ["<", ".level", 21], 1, 2]
-      marked:  ["±", ["+", "#str", "#wis"]]
+      hitDice: -> @byLevel [1, 21], 2
+      marked:  -> @signed(@strM() + @wisM())
 
   ValiantStrike:
     name        : "Valiant Strike"
@@ -54,7 +54,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} + 1/adjacent enemy vs. AC"
     hit         : "{hitDice}[W]{±str.nz} damage"
-    _formulae   : { hitDice: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { hitDice: -> @byLevel [1, 21], 2 }
 
   FearsomeSmite:
     name        : "Fearsome Smite"
@@ -76,7 +76,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "2[W]{bonus} damage"
-    _formulae   : { bonus: ["±", ["+", "#str", "#wis"]] }
+    _formulae   : { bonus: -> @signed(@strM() + @wisM()) }
 
   ShieldingSmite:
     name        : "Shielding Smite"
@@ -133,7 +133,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±cha} vs. Will"
     hit         : "2[W]{±cha.nz} damage, bloodied allies regain {regen} HP"
-    _formulae   : { regen: ["+", 5, "#wis"] }
+    _formulae   : { regen: -> 5 + @wisM() }
 
   RighteousSmite:
     name        : "Righteous Smite"
@@ -141,7 +141,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±cha} vs. AC"
     hit         : "2[W]{±cha.nz} damage, allies get {regen} temp HP"
-    _formulae   : { regen: ["+", 5, "#wis"] }
+    _formulae   : { regen: -> 5 + @wisM() }
 
   StaggeringSmite:
     name        : "Staggering Smite"
@@ -150,7 +150,7 @@ module.exports =
     attack      : "{±str} vs. AC"
     hit         : "2[W]{±str.nz} damage{pushText}"
     _formulae   :
-      pushText: ["if", ["<", "#wis", 1], ["~", ""], ["+", ["~", ", target pushed "], "#wis", ["if", [">", "#wis", 1], ["~", " squares"], ["~", " square"]]]]
+      pushText: -> if @wisM() < 1 then "" else ", target pushed #{@wisM()} #{@plural @wisM(), 'square', 'squares'}"
 
   HallowedCircle:
     name        : "Hallowed Circle"
@@ -193,7 +193,7 @@ module.exports =
     attack      : "{±cha} vs. Will"
     hit         : "2d10{±cha.nz} damage{pullText}"
     _formulae   :
-      pullText: ["if", ["<", "#wis", 1], ["~", ""], ["+", ["~", ", pull target "], "#wis", ["if", [">", "#wis", 1], ["~", " squares"], ["~", " square"]]]]
+      pullText: -> if @wisM() < 1 then "" else ", pull target #{@wisM()} #{@plural @wisM(), 'square', 'squares'}"
 
   BenignTransposition:
     name        : "Benign Transposition"
@@ -203,8 +203,8 @@ module.exports =
     attack      : "{±cha} vs. AC (secondary)"
     hit         : "2[W]{±cha.nz} damage (secondary)"
     _formulae   :
-      minRange: ["if", ["<", "#wis", 1], 1, "#wis"]
-      squares: ["if", ["=", "minRange", 1], ["~", "square"], ["~", "squares"]]
+      minRange: -> @max(@wisM(), 1)
+      squares : -> @plural @minRange(), "square", "squares"
 
   DivineReverence:
     name        : "Divine Reverence"

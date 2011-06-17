@@ -16,258 +16,241 @@ module.exports =
     test.equal n, 1
     test.done()
 
+  "formulae should be added to power as methods": (test) ->
+    power = new Power _formulae: { one: (-> @two()), two: -> 2 }
+    test.ok power.one?
+    test.ok power.two?
+    test.equal power.one(), 2
+    test.done()
+
   "get() should return named property": (test) ->
     power = new Power one: "two"
     test.equal power.get("one"), "two"
     test.equal power.get("two"), undefined
     test.done()
 
-  "evaluate() should return value of named formula": (test) ->
-    power = new Power _formulae: { test: 5 }
-    test.equal power.evaluate("test"), 5
+  "process() should attempt to parse strings": (test) ->
+    power = new Power
+    power.parse = (str) -> test.equal str, "testing"
+    test.expect 1
+    power.process "testing"
     test.done()
 
-  "evaluate() should understand #str built-in formula": (test) ->
+  "process() should return strings": (test) ->
+    power = new Power
+    test.equal power.parse("testing"), "testing"
+    test.done()
+
+  "process() should recursively process arrays": (test) ->
+    power = new Power
+
+    n = 0
+    a = [ "one", "two" ]
+
+    power.parse = (str) -> test.equal str, a[n++]
+    test.expect 2
+    power.process a
+    test.done()
+
+  "process() should return arrays": (test) ->
+    power = new Power
+    test.deepEqual power.process(["one", "two"]), ["one", "two"]
+    test.done()
+
+  "process() should pass other values through directly": (test) ->
+    power = new Power
+    test.equal power.process(5), 5
+    test.done()
+
+  "should defined signed method": (test) ->
+    power = new Power
+    test.equal power.signed(-5), "-5"
+    test.equal power.signed(0), "+0"
+    test.equal power.signed(6), "+6"
+    test.done()
+
+  "should define plural method": (test) ->
+    power = new Power
+    test.equal power.plural(0, "thing", "things"), "things"
+    test.equal power.plural(1, "thing", "things"), "thing"
+    test.equal power.plural(2, "thing", "things"), "things"
+    test.done()
+
+  "should define byLevel method": (test) ->
     power = new Power npc: new NPC
-    power.npc.abilities.str.baseValue = 16
-    test.equal power.evaluate("#str"), 3
-    test.done()
-
-  "evaluate() should understand #con built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.con.baseValue = 16
-    test.equal power.evaluate("#con"), 3
-    test.done()
-
-  "evaluate() should understand #dex built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.dex.baseValue = 16
-    test.equal power.evaluate("#dex"), 3
-    test.done()
-
-  "evaluate() should understand #int built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.int_.baseValue = 16
-    test.equal power.evaluate("#int"), 3
-    test.done()
-
-  "evaluate() should understand #wis built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.wis.baseValue = 16
-    test.equal power.evaluate("#wis"), 3
-    test.done()
-
-  "evaluate() should understand #cha built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.cha.baseValue = 16
-    test.equal power.evaluate("#cha"), 3
-    test.done()
-
-  "evaluate() should understand ±str built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.str.baseValue = 16
-    test.equal power.evaluate("±str"), "+3"
-    test.done()
-
-  "evaluate() should understand ±con built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.con.baseValue = 16
-    test.equal power.evaluate("±con"), "+3"
-    test.done()
-
-  "evaluate() should understand ±dex built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.dex.baseValue = 16
-    test.equal power.evaluate("±dex"), "+3"
-    test.done()
-
-  "evaluate() should understand ±int built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.int_.baseValue = 16
-    test.equal power.evaluate("±int"), "+3"
-    test.done()
-
-  "evaluate() should understand ±wis built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.wis.baseValue = 16
-    test.equal power.evaluate("±wis"), "+3"
-    test.done()
-
-  "evaluate() should understand ±cha built-in formula": (test) ->
-    power = new Power npc: new NPC
-    power.npc.abilities.cha.baseValue = 16
-    test.equal power.evaluate("±cha"), "+3"
-    test.done()
-
-  "evaluate() should understand ±str.nz built-in formula": (test) ->
-    power = new Power npc: new NPC
-    test.equal power.evaluate("±str.nz"), ""
-    power.npc.abilities.str.baseValue = 16
-    test.equal power.evaluate("±str.nz"), "+3"
-    test.done()
-
-  "evaluate() should understand ±con.nz built-in formula": (test) ->
-    power = new Power npc: new NPC
-    test.equal power.evaluate("±con.nz"), ""
-    power.npc.abilities.con.baseValue = 16
-    test.equal power.evaluate("±con.nz"), "+3"
-    test.done()
-
-  "evaluate() should understand ±dex.nz built-in formula": (test) ->
-    power = new Power npc: new NPC
-    test.equal power.evaluate("±dex.nz"), ""
-    power.npc.abilities.dex.baseValue = 16
-    test.equal power.evaluate("±dex.nz"), "+3"
-    test.done()
-
-  "evaluate() should understand ±int.nz built-in formula": (test) ->
-    power = new Power npc: new NPC
-    test.equal power.evaluate("±int.nz"), ""
-    power.npc.abilities.int_.baseValue = 16
-    test.equal power.evaluate("±int.nz"), "+3"
-    test.done()
-
-  "evaluate() should understand ±wis.nz built-in formula": (test) ->
-    power = new Power npc: new NPC
-    test.equal power.evaluate("±wis.nz"), ""
-    power.npc.abilities.wis.baseValue = 16
-    test.equal power.evaluate("±wis.nz"), "+3"
-    test.done()
-
-  "evaluate() should understand ±cha.nz built-in formula": (test) ->
-    power = new Power npc: new NPC
-    test.equal power.evaluate("±cha.nz"), ""
-    power.npc.abilities.cha.baseValue = 16
-    test.equal power.evaluate("±cha.nz"), "+3"
-    test.done()
-
-  "evaluate() should understand ± function": (test) ->
-    power = new Power npc: new NPC,
-      _formulae: { test1: ["±", 3], test2: ["±", -3], test3: ["±", "#cha"] }
-    test.equal power.evaluate("test1"), "+3"
-    test.equal power.evaluate("test2"), "-3"
-    test.equal power.evaluate("test3"), "+0"
-    power.npc.abilities.cha.baseValue = 16
-    test.equal power.evaluate("test3"), "+3"
-    test.done()
-
-  "evaluate() should understand ~ function": (test) ->
-    power = new Power npc: new NPC,
-      _formulae: { test1: ["~", "#cha"], test2: ["~", "hello"] }
-    test.equal power.evaluate("test1"), "#cha"
-    test.equal power.evaluate("test2"), "hello"
-    test.done()
-
-  "evaluate() should understand arithmetic functions": (test) ->
-    power = new Power npc: new NPC,
-      _formulae:
-        add : ["+", "#cha", 2]
-        sub : ["-", "#cha", 2]
-        mul : ["*", "#cha", 2]
-        div : ["/", "#cha", 2]
-        add2: ["+", "#cha", "#wis", 2]
-
-    power.npc.abilities.cha.baseValue = 16
-    power.npc.abilities.wis.baseValue = 14
-    test.equal power.evaluate("add"), 5
-    test.equal power.evaluate("sub"), 1
-    test.equal power.evaluate("mul"), 6
-    test.equal power.evaluate("div"), 1.5
-    test.equal power.evaluate("add2"), 7
-    test.done()
-
-  "evaluate() should process nested formula": (test) ->
-    power = new Power npc: new NPC, _formulae: { nest: ["*", ["+", 3, ["-", "#cha", "#wis"]], 2] }
-    power.npc.abilities.cha.baseValue = 20 # +5
-    power.npc.abilities.wis.baseValue = 16 # +3
-    test.equal power.evaluate("nest"), 10 # 2 * (3 + (#cha - #wis))
-    test.done()
-
-  "evaluate() should understand if condition": (test) ->
-    power = new Power npc: new NPC, _formulae: { true: ["if", true, 5], else: ["if", false, 5, 10] }
-    test.equal power.evaluate("true"), 5
-    test.equal power.evaluate("else"), 10
-    test.done()
-
-  "evaluate() should understand lt comparison": (test) ->
-    power = new Power npc: new NPC, _formulae: { lt: ["<", "#cha", 3] }
-    power.npc.abilities.cha.baseValue = 10
-    test.ok power.evaluate("lt")
-    power.npc.abilities.cha.baseValue = 15
-    test.ok power.evaluate("lt")
-    power.npc.abilities.cha.baseValue = 16
-    test.ok !power.evaluate("lt")
-    test.done()
-
-  "evaluate() should understand gt comparison": (test) ->
-    power = new Power npc: new NPC, _formulae: { gt: [">", "#cha", 3] }
-    power.npc.abilities.cha.baseValue = 10
-    test.ok !power.evaluate("gt")
-    power.npc.abilities.cha.baseValue = 17
-    test.ok !power.evaluate("gt")
-    power.npc.abilities.cha.baseValue = 18
-    test.ok power.evaluate("gt")
-    test.done()
-
-  "evaluate() should understand eq comparison": (test) ->
-    power = new Power npc: new NPC, _formulae: { eq: ["=", "#cha", 3] }
-    power.npc.abilities.cha.baseValue = 15
-    test.ok !power.evaluate("eq")
-    power.npc.abilities.cha.baseValue = 16
-    test.ok power.evaluate("eq")
-    power.npc.abilities.cha.baseValue = 17
-    test.ok power.evaluate("eq")
-    power.npc.abilities.cha.baseValue = 18
-    test.ok !power.evaluate("eq")
-    test.done()
-
-  "evaluate() should understand case condition": (test) ->
-    power = new Power npc: new NPC, _formulae:
-      case: ["case",
-        ["<", ".level", 11], 1,
-        ["<", ".level", 21], 2,
-        true, 3]
-
-    power.npc.level = 1
-    test.equal power.evaluate("case"), 1
-    power.npc.level = 10
-    test.equal power.evaluate("case"), 1
+    test.equal power.byLevel([5, 11], [10, 21], 15), 5
     power.npc.level = 11
-    test.equal power.evaluate("case"), 2
-    power.npc.level = 20
-    test.equal power.evaluate("case"), 2
+    test.equal power.byLevel([5, 11], [10, 21], 15), 10
     power.npc.level = 21
-    test.equal power.evaluate("case"), 3
+    test.equal power.byLevel([5, 11], [10, 21], 15), 15
     test.done()
 
-  "evaluate() should understand floor operation": (test) ->
-    power = new Power npc: new NPC, _formulae: { half: ["floor", ["/", "#str", 2]] }
-    test.equal power.evaluate("half"), 0
+  "should define min method": (test) ->
+    power = new Power
+    test.equal power.min(1, 5), 1
+    test.equal power.min(7, 5), 5
+    test.done()
+
+  "should define max method": (test) ->
+    power = new Power
+    test.equal power.max(1, 5), 5
+    test.equal power.max(7, 5), 7
+    test.done()
+
+  "should define str method": (test) ->
+    power = new Power npc: new NPC
     power.npc.abilities.str.baseValue = 16
-    test.equal power.evaluate("half"), 1
-    power.npc.abilities.str.baseValue = 18
-    test.equal power.evaluate("half"), 2
+    test.equal power["str"](), 16
     test.done()
 
-  "evaluate() should understand direct references of the npc object": (test) ->
-    power = new Power npc: new NPC, _formulae:
-      level: ["±", ["+", ".level", 2]]
-      frop : ".frop"
-
-    power.npc.level = 5
-    power.npc.frop = "gimme"
-
-    test.equal power.evaluate("level"), 7
-    test.equal power.evaluate("frop"), "gimme"
+  "should define con method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.con.baseValue = 16
+    test.equal power["con"](), 16
     test.done()
 
-  "evaluate() should invoke functions": (test) ->
-    power = new Power npc: new NPC, _formulae:
-      will: (power) -> power.npc.defenses.will.score()
+  "should define dex method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.dex.baseValue = 16
+    test.equal power["dex"](), 16
+    test.done()
 
-    test.equal power.evaluate("will"), 10
+  "should define int method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.int_.baseValue = 16
+    test.equal power["int"](), 16
+    test.equal power["int_"](), 16
+    test.done()
+
+  "should define wis method": (test) ->
+    power = new Power npc: new NPC
     power.npc.abilities.wis.baseValue = 16
-    test.equal power.evaluate("will"), 13
+    test.equal power["wis"](), 16
+    test.done()
+
+  "should define cha method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.cha.baseValue = 16
+    test.equal power["cha"](), 16
+    test.done()
+
+  "should define #str method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.str.baseValue = 16
+    test.equal power["#str"](), 3
+    test.equal power["strM"](), 3
+    test.done()
+
+  "should define #con method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.con.baseValue = 16
+    test.equal power["#con"](), 3
+    test.equal power["conM"](), 3
+    test.done()
+
+  "should define #dex method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.dex.baseValue = 16
+    test.equal power["#dex"](), 3
+    test.equal power["dexM"](), 3
+    test.done()
+
+  "should define #int method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.int_.baseValue = 16
+    test.equal power["#int"](), 3
+    test.equal power["intM"](), 3
+    test.done()
+
+  "should define #wis method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.wis.baseValue = 16
+    test.equal power["#wis"](), 3
+    test.equal power["wisM"](), 3
+    test.done()
+
+  "should define #cha method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.cha.baseValue = 16
+    test.equal power["#cha"](), 3
+    test.done()
+
+  "should define ±str method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.str.baseValue = 16
+    test.equal power["±str"](), "+3"
+    test.done()
+
+  "should define ±con method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.con.baseValue = 16
+    test.equal power["±con"](), "+3"
+    test.done()
+
+  "should define ±dex method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.dex.baseValue = 16
+    test.equal power["±dex"](), "+3"
+    test.done()
+
+  "should define ±int method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.int_.baseValue = 16
+    test.equal power["±int"](), "+3"
+    test.done()
+
+  "should define ±wis method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.wis.baseValue = 16
+    test.equal power["±wis"](), "+3"
+    test.done()
+
+  "should define ±cha method": (test) ->
+    power = new Power npc: new NPC
+    power.npc.abilities.cha.baseValue = 16
+    test.equal power["±cha"](), "+3"
+    test.done()
+
+  "should define ±str.nz method": (test) ->
+    power = new Power npc: new NPC
+    test.equal power["±str.nz"](), ""
+    power.npc.abilities.str.baseValue = 16
+    test.equal power["±str.nz"](), "+3"
+    test.done()
+
+  "should define ±con.nz method": (test) ->
+    power = new Power npc: new NPC
+    test.equal power["±con.nz"](), ""
+    power.npc.abilities.con.baseValue = 16
+    test.equal power["±con.nz"](), "+3"
+    test.done()
+
+  "should define ±dex.nz method": (test) ->
+    power = new Power npc: new NPC
+    test.equal power["±dex.nz"](), ""
+    power.npc.abilities.dex.baseValue = 16
+    test.equal power["±dex.nz"](), "+3"
+    test.done()
+
+  "should define ±int.nz method": (test) ->
+    power = new Power npc: new NPC
+    test.equal power["±int.nz"](), ""
+    power.npc.abilities.int_.baseValue = 16
+    test.equal power["±int.nz"](), "+3"
+    test.done()
+
+  "should define ±wis.nz method": (test) ->
+    power = new Power npc: new NPC
+    test.equal power["±wis.nz"](), ""
+    power.npc.abilities.wis.baseValue = 16
+    test.equal power["±wis.nz"](), "+3"
+    test.done()
+
+  "should define ±cha.nz method": (test) ->
+    power = new Power npc: new NPC
+    test.equal power["±cha.nz"](), ""
+    power.npc.abilities.cha.baseValue = 16
+    test.equal power["±cha.nz"](), "+3"
     test.done()
 
   "get() should evaluate bracketed substrings before returning": (test) ->
@@ -280,8 +263,8 @@ module.exports =
   "get() returning an array should evaluate each element of the array": (test) ->
     power = new Power npc: new NPC, attackTypes: [ "Close burst {burst}", "Melee {melee}" ],
       _formulae:
-        burst: ["if", ["<", ".level", 21], 5, 10]
-        melee: ["if", ["<", ".level", 21], 1, 2]
+        burst: -> if @npc.level < 21 then 5 else 10
+        melee: -> if @npc.level < 21 then 1 else 2
 
     power.npc.level = 1
     test.deepEqual power.get("attackTypes"), [ "Close burst 5", "Melee 1" ]

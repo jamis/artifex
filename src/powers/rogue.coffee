@@ -1,37 +1,31 @@
-positioningStrikeSlideDistance = (power) ->
-  if power.npc.hasFeature "class", "Artful Dodger"
-    if power.npc.abilities.cha.modifier() > 0
-      power.npc.abilities.cha.modifier()
-    else
-      1
+positioningStrikeSlideDistance = ->
+  if @npc.hasFeature "class", "Artful Dodger"
+    @max @chaM(), 1
   else
     1
 
-torturousStrikeBonus = (power) ->
-  if power.npc.hasFeature "class", "Brutal Scoundrel"
-    if power.npc.abilities.str.modifier() > 0
-      power.npc.abilities.str.modifier()
+torturousStrikeBonus = ->
+  @dexM() + if @npc.hasFeature "class", "Brutal Scoundrel"
+      @max @strM(), 0
     else
       0
-  else
-    0
 
 module.exports =
   SneakAttack:
     name        : "Sneak Attack"
     hit         : "{count}d{die}{±bonus.nz} damage"
     _formulae   :
-      count: ["±", ["case", ["<", ".level", 11], 2, ["<", ".level", 21], 3, true, 5]]
-      die  : (power) -> if power.npc.attacks.sneakAttack? then power.npc.attacks.sneakAttack.damageDie ? 6 else 6
-      bonus: (power) -> if power.npc.attacks.sneakAttack? then power.npc.attacks.sneakAttack.score() else 0
-      "±bonus.nz": ["if", ["=", "bonus", 0], ["~", ""], ["±", "bonus"]]
+      count: -> @signed(@byLevel [2, 11], [3, 21], 5)
+      die  : -> if @npc.attacks.sneakAttack? then @npc.attacks.sneakAttack.damageDie ? 6 else 6
+      bonus: -> if @npc.attacks.sneakAttack? then @npc.attacks.sneakAttack.score() else 0
+      "±bonus.nz": -> if @bonus() is 0 then "" else @signed @bonus()
 
   DeftStrike:
     name        : "Deft Strike"
     keywords    : [ "martial", "weapon" ]
     attack      : "{±dex} vs. AC"
     hit         : "{count}[W]{±dex.nz} damage"
-    _formulae   : { count: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { count: -> @byLevel [1, 21], 2 }
 
   PiercingStrike:
     name        : "Piercing Strike"
@@ -39,7 +33,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±dex} vs. Reflex"
     hit         : "{count}[W]{±dex.nz} damage"
-    _formulae   : { count: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { count: -> @byLevel [1, 21], 2 }
 
   RiposteStrike:
     name        : "Riposte Strike"
@@ -47,7 +41,7 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±dex} vs. AC (special, riposte {±str} vs. AC)"
     hit         : "{count}[W]{±dex.nz} damage (special, riposte {count}[W]{±str.nz} damage)"
-    _formulae   : { count: ["if", ["<", ".level", 21], 1, 2] }
+    _formulae   : { count: -> @byLevel [1, 21], 2 }
 
   SlyFlourish:
     name        : "Sly Flourish"
@@ -55,9 +49,9 @@ module.exports =
     attack      : "{±dex} vs. AC"
     hit         : "{count}[W]{±dex+cha.nz} damage"
     _formulae   :
-      count        : ["if", ["<", ".level", 21], 1, 2]
-      "dex+cha"    : ["+", "#dex", "#cha"]
-      "±dex+cha.nz": ["if", ["=", "dex+cha", 0], ["~", ""], ["±", "dex+cha"]]
+      count        : -> @byLevel [1, 21], 2
+      "dexcha"     : -> @dexM() + @chaM()
+      "±dex+cha.nz": -> if @dexcha() is 0 then "" else @signed @dexcha()
 
   DazingStrike:
     name        : "Dazing Strike"
@@ -80,7 +74,7 @@ module.exports =
     hit         : "1[W]{±dex.nz} damage, slide target {count} {squares}"
     _formulae   :
       count     : positioningStrikeSlideDistance
-      squares   : ["if", ["=", positioningStrikeSlideDistance, 1], ["~", "square"], ["~", "squares"]]
+      squares   : -> @plural @count(), 'square', 'squares'
 
   TorturousStrike:
     name        : "Torturous Strike"
@@ -89,8 +83,8 @@ module.exports =
     attack      : "{±dex} vs. AC"
     hit         : "2[W]{±bonus.nz} damage"
     _formulae   :
-      bonus     : ["+", "#dex", torturousStrikeBonus]
-      "±bonus.nz": ["if", ["=", "bonus", 0], ["~", ""], ["±", "bonus"]]
+      bonus     : torturousStrikeBonus
+      "±bonus.nz": -> if @bonus() is 0 then "" else @signed @bonus()
 
   BlindingBarrage:
     name        : "Blinding Barrage"

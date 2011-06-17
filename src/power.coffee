@@ -2,18 +2,20 @@ module.exports = class Power
   constructor: (initializers...) ->
     for initializer in initializers
       for key, value of initializer
-        if typeof value is "function"
+        if key is "_formulae"
+          for name, impl of value
+            this[name] = impl
+        else if typeof value is "function"
           this[key] = value(this)
         else
           this[key] = value
 
-    @_formulae ?= {}
-
   get: (name) ->
-    value = this[name]
+    @process this[name]
 
+  process: (value) ->
     if typeof value is "object" and value.length?
-      @parse item for item in value
+      @process item for item in value
 
     else if typeof value is "string"
       @parse value
@@ -31,87 +33,58 @@ module.exports = class Power
 
       key = value.substring pos+1, ePos
       result += value.substring start, pos
-      result += @evaluate key
+      result += this[key]()
 
       start = ePos+1
 
     result + value.substring start
 
-  evaluate: (value) ->
-    switch typeof value
-      when "number", "boolean"
-        value
-      when "function"
-        value(this)
-      when "object"
-        [operation, operands...] = value
-        switch operation
-          when "±" then @prependSign operands...
-          when "~" then operands.join ""
-          when "+", "-", "*", "/" then @performArithmetic operation, operands
-          when "<", ">", "=" then @performComparison operation, operands...
-          when "if" then @performIfCondition operands...
-          when "case" then @performCaseCondition operands
-          when "floor" then Math.floor(@evaluate operands[0])
-          else throw new Error "unknown operation `#{operation}'"
-      when "string"
-        switch value
-          when "#str", "#con", "#dex", "#int", "#wis", "#cha"
-            @npc.abilities[value.slice(1)].modifier()
-          when "±str", "±con", "±dex", "±int", "±wis", "±cha"
-            @prependSign @npc.abilities[value.slice(1)].modifier()
-          when "±str.nz", "±con.nz", "±dex.nz", "±int.nz", "±wis.nz", "±cha.nz"
-            value = @npc.abilities[value.slice 1, 4].modifier()
-            if value != 0 then @prependSign value else ""
-          else
-            if (result = value.match /^\.(.*)/)
-              @npc[result[1]]
-            else if @_formulae[value]?
-              @evaluate @_formulae[value]
-            else
-              throw new Error "unknown formula `#{value}'"
+  signed: (n) -> if n >= 0 then "+#{n}" else "#{n}"
+  plural: (n, one, many) -> if n is 1 then one else many
+  min   : (a, b) -> if a < b then a else b
+  max   : (a, b) -> if a > b then a else b
+
+  byLevel: (stages...) ->
+    for stage in stages
+      if typeof stage is "object"
+        [value, cutoff] = stage
+        return value if @npc.level < cutoff
       else
-        throw new Error "unsupported value `#{value}' (#{typeof value})"
+        return stage
 
-  evaluateMap: (operands) -> @evaluate(operand) for operand in operands
-
-  prependSign: (value) ->
-    value = @evaluate value
-    if value >= 0 then "+#{value}" else "#{value}"
-
-  arithmetic:
-    "+": (a, b) -> a + b
-    "-": (a, b) -> a - b
-    "*": (a, b) -> a * b
-    "/": (a, b) -> a / b
-
-  performArithmetic: (operation, operands) ->
-    for operand in operands
-      operand = @evaluate operand
-      if result?
-        result = @arithmetic[operation](result, operand)
-      else
-        result = operand
-    result
-
-  comparisons:
-    "<": (a, b) -> a < b
-    ">": (a, b) -> a > b
-    "=": (a, b) -> a is b
-
-  performComparison: (operation, a, b) ->
-    @comparisons[operation](@evaluate(a), @evaluate(b))
-
-  performIfCondition: (condition, whenTrue, whenFalse) ->
-    if @evaluate condition
-      @evaluate whenTrue
-    else
-      @evaluate whenFalse
-
-  performCaseCondition: (operands) ->
-    i = 0
-    while operands[i]?
-      if @evaluate operands[i]
-        return @evaluate operands[i+1]
-      i += 2
     undefined
+
+  "str": -> @npc.abilities.str.score()
+  "con": -> @npc.abilities.con.score()
+  "dex": -> @npc.abilities.dex.score()
+  "int": -> @npc.abilities.int_.score()
+  "int_": -> @npc.abilities.int_.score()
+  "wis": -> @npc.abilities.wis.score()
+  "cha": -> @npc.abilities.cha.score()
+
+  "#str": -> @npc.abilities.str.modifier()
+  "strM": -> @npc.abilities.str.modifier()
+  "#con": -> @npc.abilities.con.modifier()
+  "conM": -> @npc.abilities.con.modifier()
+  "#dex": -> @npc.abilities.dex.modifier()
+  "dexM": -> @npc.abilities.dex.modifier()
+  "#int": -> @npc.abilities.int_.modifier()
+  "intM": -> @npc.abilities.int_.modifier()
+  "#wis": -> @npc.abilities.wis.modifier()
+  "wisM": -> @npc.abilities.wis.modifier()
+  "#cha": -> @npc.abilities.cha.modifier()
+  "chaM": -> @npc.abilities.cha.modifier()
+
+  "±str": -> @signed @strM()
+  "±con": -> @signed @conM()
+  "±dex": -> @signed @dexM()
+  "±int": -> @signed @intM()
+  "±wis": -> @signed @wisM()
+  "±cha": -> @signed @chaM()
+
+  "±str.nz": -> if @strM() != 0 then @signed @strM() else ""
+  "±con.nz": -> if @conM() != 0 then @signed @conM() else ""
+  "±dex.nz": -> if @dexM() != 0 then @signed @dexM() else ""
+  "±int.nz": -> if @intM() != 0 then @signed @intM() else ""
+  "±wis.nz": -> if @wisM() != 0 then @signed @wisM() else ""
+  "±cha.nz": -> if @chaM() != 0 then @signed @chaM() else ""
