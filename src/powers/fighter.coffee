@@ -108,3 +108,76 @@ module.exports =
     type        : "daily"
     keywords    : [ "healing", "martial" ]
     effect      : "gain 2d6{±con.nz} temp HP"
+
+  ArmorPiercingThrust:
+    name        : "Armor-Piercing Thrust"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. Reflex{dexText}"
+    hit         : "1[W]{±str.nz} damage{dexText}"
+    _formulae   :
+      dexBonus: ["if", ["=", "#dex", 0], 0, ["+", "#str", "#dex"]]
+      dexText:  ["if", ["=", "dexBonus", 0], ["~", ""], ["+", ["~", " ("], ["±", "dexBonus"], ["~", " with light blade or spear)"]]]
+
+  CrushingBlow:
+    name        : "Crushing Blow"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage{conText}"
+    _formulae   :
+      conBonus: ["if", ["=", "#con", 0], 0, ["+", "#str", "#con"]]
+      conText:  ["if", ["=", "conBonus", 0], ["~", ""], ["+", ["~", " ("], ["±", "conBonus"], ["~", " with axe, hammer, or mace)"]]]
+
+  DanceOfSteel:
+    name        : "Dance of Steel"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage (special)"
+
+  PreciseStrike:
+    name        : "Precise Strike"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str+4} vs. AC"
+    hit         : "1[W]{±str.nz} damage"
+    _formulae   : { "±str+4": ["±", ["+", 4, "#str"]] }
+
+  RainOfBlows:
+    name        : "Rain of Blows"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "1[W]{±str.nz} damage{dexText}"
+    _formulae   :
+      dex    : (pow) -> pow.npc.abilities.dex.score()
+      dexText:  ["if", ["<", "dex", 15], ["~", ""], ["~", " (and make secondary attack if wielding light blade, spear, or flail)"]]
+
+  SweepingBlow:
+    name        : "Sweeping Blow"
+    keywords    : [ "martial", "weapon" ]
+    attack      : "{±str} vs. AC{strText}"
+    hit         : "1[W]{±str.nz} damage"
+    _formulae   :
+      strMod  : ["floor", ["/", "#str", 2]]
+      strBonus: ["if", ["=", "strMod", 0], 0, ["+", "#str", "strMod"]]
+      strText:  ["if", ["=", "strBonus", 0], ["~", ""], ["+", ["~", " ("], ["±", "strBonus"], ["~", " if wielding an axe, flail, heavy blade, or pick)"]]]
+
+  CrackTheShell:
+    name        : "Crack the Shell"
+    keywords    : [ "martial", "reliable", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage (special)"
+
+  DizzyingBlow:
+    name        : "Dizzying Blow"
+    keywords    : [ "martial", "reliable", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "3[W]{±str.nz} damage (special)"
+
+  RainOfSteel:
+    name        : "Rain of Steel"
+    keywords    : [ "martial", "stance", "weapon" ]

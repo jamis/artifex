@@ -45,9 +45,11 @@ Fighter.powers =
 
   encounter:
     1: [ "CoveringAttack", "PassingAttack", "SpinningSweep", "SteelSerpentStrike" ]
+    3: [ "ArmorPiercingThrust", "CrushingBlow", "DanceOfSteel", "PreciseStrike", "RainOfBlows", "SweepingBlow" ]
 
   daily:
     1: [ "BruteStrike", "ComebackStrike", "VillainsMenace" ]
+    5: [ "CrackTheShell", "DizzyingBlow", "RainOfSteel" ]
 
   utility:
     2: [ "BoundlessEndurance", "GetOverHere", "NoOpening", "Unstoppable" ]

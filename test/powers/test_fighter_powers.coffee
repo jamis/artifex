@@ -57,7 +57,7 @@ module.exports =
 
   "[CoveringAttack] should be defined":
     Verify.testProperties "CoveringAttack",
-      name: [ expect: "Covering Attack" ],
+      name: [ expect: "Covering Attack" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
@@ -67,7 +67,7 @@ module.exports =
 
   "[PassingAttack] should be defined":
     Verify.testProperties "PassingAttack",
-      name: [ expect: "Passing Attack" ],
+      name: [ expect: "Passing Attack" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [
@@ -79,7 +79,7 @@ module.exports =
 
   "[SpinningSweep] should be defined":
     Verify.testProperties "SpinningSweep",
-      name: [ expect: "Spinning Sweep" ],
+      name: [ expect: "Spinning Sweep" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
@@ -89,7 +89,7 @@ module.exports =
 
   "[SteelSerpentStrike] should be defined":
     Verify.testProperties "SteelSerpentStrike",
-      name: [ expect: "Steel Serpent Strike" ],
+      name: [ expect: "Steel Serpent Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
@@ -99,7 +99,7 @@ module.exports =
 
   "[BruteStrike] should be defined":
     Verify.testProperties "BruteStrike",
-      name: [ expect: "Brute Strike" ],
+      name: [ expect: "Brute Strike" ]
       keywords: [ expect: [ "martial", "reliable", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
@@ -109,7 +109,7 @@ module.exports =
 
   "[ComebackStrike] should be defined":
     Verify.testProperties "ComebackStrike",
-      name: [ expect: "Comeback Strike" ],
+      name: [ expect: "Comeback Strike" ]
       keywords: [ expect: [ "healing", "martial", "reliable", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
@@ -119,7 +119,7 @@ module.exports =
 
   "[VillainsMenace] should be defined":
     Verify.testProperties "VillainsMenace",
-      name: [ expect: "Villain's Menace" ],
+      name: [ expect: "Villain's Menace" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
       attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
@@ -129,7 +129,7 @@ module.exports =
 
   "[BoundlessEndurance] should be defined":
     Verify.testProperties "BoundlessEndurance",
-      name: [ expect: "Boundless Endurance" ],
+      name: [ expect: "Boundless Endurance" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "healing", "martial", "stance" ] ]
       effect: [
@@ -138,21 +138,113 @@ module.exports =
 
   "[GetOverHere] should be defined":
     Verify.testProperties "GetOverHere",
-      name: [ expect: "Get Over Here" ],
+      name: [ expect: "Get Over Here" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
 
   "[NoOpening] should be defined":
     Verify.testProperties "NoOpening",
-      name: [ expect: "No Opening" ],
+      name: [ expect: "No Opening" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
 
   "[Unstoppable] should be defined":
     Verify.testProperties "Unstoppable",
-      name: [ expect: "Unstoppable" ],
+      name: [ expect: "Unstoppable" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "healing", "martial" ] ]
       effect: [
         { con: 10, expect: "gain 2d6 temp HP" },
         { con: 16, expect: "gain 2d6+3 temp HP" } ]
+
+  "[ArmorPiercingThrust] should be defined":
+    Verify.testProperties "ArmorPiercingThrust",
+      name: [ expect: "Armor-Piercing Thrust" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [
+        { str: 10, dex: 10, expect: "+0 vs. Reflex" },
+        { str: 10, dex: 14, expect: "+0 vs. Reflex (+2 with light blade or spear)" },
+        { str: 16, dex: 10, expect: "+3 vs. Reflex" },
+        { str: 16, dex: 14, expect: "+3 vs. Reflex (+5 with light blade or spear)" } ]
+      hit: [
+        { str: 10, dex: 10, expect: "1[W] damage" },
+        { str: 10, dex: 14, expect: "1[W] damage (+2 with light blade or spear)" },
+        { str: 16, dex: 10, expect: "1[W]+3 damage" },
+        { str: 16, dex: 14, expect: "1[W]+3 damage (+5 with light blade or spear)" } ]
+
+  "[CrushingBlow] should be defined":
+    Verify.testProperties "CrushingBlow",
+      name: [ expect: "Crushing Blow" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, con: 10, expect: "2[W] damage" },
+        { str: 10, con: 14, expect: "2[W] damage (+2 with axe, hammer, or mace)" },
+        { str: 16, con: 10, expect: "2[W]+3 damage" },
+        { str: 16, con: 14, expect: "2[W]+3 damage (+5 with axe, hammer, or mace)" } ]
+
+  "[DanceOfSteel] should be defined":
+    Verify.testProperties "DanceOfSteel",
+      name: [ expect: "Dance of Steel" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "2[W] damage (special)" },
+        { str: 16, expect: "2[W]+3 damage (special)" } ]
+
+  "[PreciseStrike] should be defined":
+    Verify.testProperties "PreciseStrike",
+      name: [ expect: "Precise Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+4 vs. AC" }, { str: 16, expect: "+7 vs. AC" } ]
+      hit: [ { str: 10, expect: "1[W] damage" }, { str: 16, expect: "1[W]+3 damage" } ]
+
+  "[RainOfBlows] should be defined":
+    Verify.testProperties "RainOfBlows",
+      name: [ expect: "Rain of Blows" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, dex: 14, expect: "1[W] damage" },
+        { str: 16, dex: 14, expect: "1[W]+3 damage" },
+        { str: 16, dex: 15, expect: "1[W]+3 damage (and make secondary attack if wielding light blade, spear, or flail)" } ]
+
+  "[SweepingBlow] should be defined":
+    Verify.testProperties "SweepingBlow",
+      name: [ expect: "Sweeping Blow" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attack: [
+        { str: 10, expect: "+0 vs. AC" },
+        { str: 13, expect: "+1 vs. AC" },
+        { str: 18, expect: "+4 vs. AC (+6 if wielding an axe, flail, heavy blade, or pick)" } ]
+      hit: [ { str: 10, expect: "1[W] damage" }, { str: 16, expect: "1[W]+3 damage" } ]
+
+  "[CrackTheShell] should be defined":
+    Verify.testProperties "CrackTheShell",
+      name: [ expect: "Crack the Shell" ]
+      keywords: [ expect: [ "martial", "reliable", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "2[W] damage (special)" },
+        { str: 16, expect: "2[W]+3 damage (special)" } ]
+
+  "[DizzyingBlow] should be defined":
+    Verify.testProperties "DizzyingBlow",
+      name: [ expect: "Dizzying Blow" ]
+      keywords: [ expect: [ "martial", "reliable", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "3[W] damage (special)" },
+        { str: 16, expect: "3[W]+3 damage (special)" } ]
+
+  "[RainOfSteel] should be defined":
+    Verify.testProperties "RainOfSteel",
+      name: [ expect: "Rain of Steel" ]
+      keywords: [ expect: [ "martial", "stance", "weapon" ] ]
