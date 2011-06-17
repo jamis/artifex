@@ -181,3 +181,59 @@ module.exports =
   RainOfSteel:
     name        : "Rain of Steel"
     keywords    : [ "martial", "stance", "weapon" ]
+
+  BattleAwareness:
+    name        : "Battle Awareness"
+    type        : "daily"
+    keywords    : [ "martial" ]
+
+  DefensiveTraining:
+    name        : "Defensive Training"
+    type        : "daily"
+    keywords    : [ "martial", "stance" ]
+
+  Unbreakable:
+    name        : "Unbreakable"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    effect      : "reduce damage from attack by {resist}"
+    _formulae   : { resist: ["+", 5, "#con"] }
+
+  ComeAndGetIt:
+    name        : "Come and Get It"
+    keywords    : [ "martial", "weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "1[W]{±str.nz} damage"
+
+  GriffonsWrath:
+    name        : "Griffon's Wrath"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage (special)"
+
+  IronBulwark:
+    name        : "Iron Bulwark"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage"
+
+  RecklessStrike:
+    name        : "Reckless Strike"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str-2} vs. AC"
+    hit         : "3[W]{±str.nz} damage"
+    _formulae   : { "±str-2": ["±", ["-", "#str", 2]] }
+
+  SuddenSurge:
+    name        : "Sudden Surge"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage"
+    effect      : "move {distance} {squares}"
+    _formulae   :
+      distance: ["if", ["<", "#dex", 1], 1, "#dex"]
+      squares: ["if", ["=", "distance", 1], ["~", "square"], ["~", "squares"]]

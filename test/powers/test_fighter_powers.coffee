@@ -248,3 +248,75 @@ module.exports =
     Verify.testProperties "RainOfSteel",
       name: [ expect: "Rain of Steel" ]
       keywords: [ expect: [ "martial", "stance", "weapon" ] ]
+
+  "[BattleAwareness] should be defined":
+    Verify.testProperties "BattleAwareness",
+      name: [ expect: "Battle Awareness" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[DefensiveTraining] should be defined":
+    Verify.testProperties "DefensiveTraining",
+      name: [ expect: "Defensive Training" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial", "stance" ] ]
+
+  "[Unbreakable] should be defined":
+    Verify.testProperties "Unbreakable",
+      name: [ expect: "Unbreakable" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+      effect: [
+        { con: 10, expect: "reduce damage from attack by 5" },
+        { con: 16, expect: "reduce damage from attack by 8" } ]
+
+  "[ComeAndGetIt] should be defined":
+    Verify.testProperties "ComeAndGetIt",
+      name: [ expect: "Come and Get It" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [ { str: 10, expect: "1[W] damage" }, { str: 16, expect: "1[W]+3 damage" } ]
+
+  "[GriffonsWrath] should be defined":
+    Verify.testProperties "GriffonsWrath",
+      name: [ expect: "Griffon's Wrath" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "2[W] damage (special)" },
+        { str: 16, expect: "2[W]+3 damage (special)" } ]
+
+  "[IronBulwark] should be defined":
+    Verify.testProperties "IronBulwark",
+      name: [ expect: "Iron Bulwark" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "2[W] damage" },
+        { str: 16, expect: "2[W]+3 damage" } ]
+
+  "[RecklessStrike] should be defined":
+    Verify.testProperties "RecklessStrike",
+      name: [ expect: "Reckless Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "-2 vs. AC" }, { str: 16, expect: "+1 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "3[W] damage" },
+        { str: 16, expect: "3[W]+3 damage" } ]
+
+  "[SuddenSurge] should be defined":
+    Verify.testProperties "SuddenSurge",
+      name: [ expect: "Sudden Surge" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "2[W] damage" },
+        { str: 16, expect: "2[W]+3 damage" } ]
+      effect: [
+        { dex: 10, expect: "move 1 square" },
+        { dex: 12, expect: "move 1 square" },
+        { dex: 16, expect: "move 3 squares" } ]
