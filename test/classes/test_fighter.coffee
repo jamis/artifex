@@ -146,3 +146,17 @@ module.exports =
       if Powers[power]
         test.ok power in Classes.Fighter.powers.encounter[7]
     test.done()
+
+  "level-9 exploits are accounted for": (test) ->
+    for power in [ "ShiftTheBattlefield", "ThicketOfBlades", "VictoriousSurge" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Fighter.powers.daily[9]
+    test.done()
+
+  "level-10 exploits are accounted for": (test) ->
+    for power in [ "IntoTheFray", "LastDitchEvasion", "StalwartGuard" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Fighter.powers.utility[10]
+    test.done()

@@ -237,3 +237,37 @@ module.exports =
     _formulae   :
       distance: ["if", ["<", "#dex", 1], 1, "#dex"]
       squares: ["if", ["=", "distance", 1], ["~", "square"], ["~", "squares"]]
+
+  ShiftTheBattlefield:
+    name        : "Shift the Battlefield"
+    keywords    : [ "martial", "weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage (special)"
+
+  ThicketOfBlades:
+    name        : "Thicket of Blades"
+    keywords    : [ "martial", "reliable", "weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "3[W]{±str.nz} damage (special)"
+
+  VictoriousSurge:
+    name        : "Victorious Surge"
+    keywords    : [ "martial", "reliable", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "3[W]{±str.nz} damage (special)"
+
+  IntoTheFray:
+    name        : "Into the Fray"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+
+  LastDitchEvasion:
+    name        : "Last Ditch Evasion"
+    type        : "daily"
+    keywords    : [ "martial" ]
+
+  StalwartGuard:
+    name        : "Stalwart Guard"
+    type        : "daily"
+    keywords    : [ "martial" ]

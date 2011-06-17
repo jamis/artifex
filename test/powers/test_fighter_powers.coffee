@@ -320,3 +320,49 @@ module.exports =
         { dex: 10, expect: "move 1 square" },
         { dex: 12, expect: "move 1 square" },
         { dex: 16, expect: "move 3 squares" } ]
+
+  "[ShiftTheBattlefield] should be defined":
+    Verify.testProperties "ShiftTheBattlefield",
+      name: [ expect: "Shift the Battlefield" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "2[W] damage (special)" },
+        { str: 16, expect: "2[W]+3 damage (special)" } ]
+
+  "[ThicketOfBlades] should be defined":
+    Verify.testProperties "ThicketOfBlades",
+      name: [ expect: "Thicket of Blades" ]
+      keywords: [ expect: [ "martial", "reliable", "weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "3[W] damage (special)" },
+        { str: 16, expect: "3[W]+3 damage (special)" } ]
+
+  "[VictoriousSurge] should be defined":
+    Verify.testProperties "VictoriousSurge",
+      name: [ expect: "Victorious Surge" ]
+      keywords: [ expect: [ "martial", "reliable", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, expect: "3[W] damage (special)" },
+        { str: 16, expect: "3[W]+3 damage (special)" } ]
+
+  "[IntoTheFray] should be defined":
+    Verify.testProperties "IntoTheFray",
+      name: [ expect: "Into the Fray" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[LastDitchEvasion] should be defined":
+    Verify.testProperties "LastDitchEvasion",
+      name: [ expect: "Last Ditch Evasion" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[StalwartGuard] should be defined":
+    Verify.testProperties "StalwartGuard",
+      name: [ expect: "Stalwart Guard" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]

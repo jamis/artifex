@@ -51,7 +51,9 @@ Fighter.powers =
   daily:
     1: [ "BruteStrike", "ComebackStrike", "VillainsMenace" ]
     5: [ "CrackTheShell", "DizzyingBlow", "RainOfSteel" ]
+    9: [ "ShiftTheBattlefield", "ThicketOfBlades", "VictoriousSurge" ]
 
   utility:
-    2: [ "BoundlessEndurance", "GetOverHere", "NoOpening", "Unstoppable" ]
-    6: [ "BattleAwareness", "DefensiveTraining", "Unbreakable" ]
+    2 : [ "BoundlessEndurance", "GetOverHere", "NoOpening", "Unstoppable" ]
+    6 : [ "BattleAwareness", "DefensiveTraining", "Unbreakable" ]
+    10: [ "IntoTheFray", "LastDitchEvasion", "StalwartGuard" ]
