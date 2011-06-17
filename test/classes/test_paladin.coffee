@@ -168,3 +168,52 @@ module.exports =
     klass = new Classes.Paladin(new NPC)
     test.equal Classes.Paladin.powers, klass.powers
     test.done()
+
+  "level-2 prayers are accounted for": (test) ->
+    for power in [ "AstralSpeech", "MartyrsBlessing", "SacredCircle" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Paladin.powers.utility[2]
+    test.done()
+
+  "level-3 prayers are accounted for": (test) ->
+    for power in [ "ArcingSmite", "InvigoratingSmite", "RighteousSmite", "StaggeringSmite" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Paladin.powers.encounter[3]
+    test.done()
+
+  "level-5 prayers are accounted for": (test) ->
+    for power in [ "HallowedCircle", "MartyrsRetribution", "SignOfVulnerability" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Paladin.powers.daily[5]
+    test.done()
+
+  "level-6 prayers are accounted for": (test) ->
+    for power in [ "DivineBodyguard", "OneHeartOneMind", "WrathOfTheGods" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Paladin.powers.utility[6]
+    test.done()
+
+  "level-7 prayers are accounted for": (test) ->
+    for power in [ "BeckonFoe", "BenignTransposition", "DivineReverence", "ThunderSmite" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Paladin.powers.encounter[7]
+    test.done()
+
+  "level-9 prayers are accounted for": (test) ->
+    for power in [ "CrownOfGlory", "OneStandsAlone", "RadiantPulse" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Paladin.powers.daily[9]
+    test.done()
+
+  "level-10 prayers are accounted for": (test) ->
+    for power in [ "CleansingSpirit", "NobleShield", "TurnTheTide" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Paladin.powers.utility[10]
+    test.done()

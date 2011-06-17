@@ -104,3 +104,150 @@ module.exports =
     keywords    : [ "divine", "implement", "radiant" ]
     attack      : "{±cha} vs. Reflex"
     hit         : "3d8{±cha.nz} damage (special)"
+
+  AstralSpeech:
+    name        : "Astral Speech"
+    type        : "daily"
+    keywords    : [ "divine" ]
+
+  MartyrsBlessing:
+    name        : "Martyr's Blessing"
+    type        : "daily"
+    keywords    : [ "divine" ]
+
+  SacredCircle:
+    name        : "Sacred Circle"
+    type        : "daily"
+    keywords    : [ "divine", "implement", "zone" ]
+
+  ArcingSmite:
+    name        : "Arcing Smite"
+    keywords    : [ "divine", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "1[W]{±str.nz} damage (special)"
+
+  InvigoratingSmite:
+    name        : "Invigorating Smite"
+    keywords    : [ "divine", "healing", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±cha} vs. Will"
+    hit         : "2[W]{±cha.nz} damage, bloodied allies regain {regen} HP"
+    _formulae   : { regen: ["+", 5, "#wis"] }
+
+  RighteousSmite:
+    name        : "Righteous Smite"
+    keywords    : [ "divine", "healing", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±cha} vs. AC"
+    hit         : "2[W]{±cha.nz} damage, allies get {regen} temp HP"
+    _formulae   : { regen: ["+", 5, "#wis"] }
+
+  StaggeringSmite:
+    name        : "Staggering Smite"
+    keywords    : [ "divine", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage{pushText}"
+    _formulae   :
+      pushText: ["if", ["<", "#wis", 1], ["~", ""], ["+", ["~", ", target pushed "], "#wis", ["if", [">", "#wis", 1], ["~", " squares"], ["~", " square"]]]]
+
+  HallowedCircle:
+    name        : "Hallowed Circle"
+    keywords    : [ "divine", "implement", "zone" ]
+    attack      : "{±cha} vs. Reflex"
+    hit         : "2d6{±cha.nz} damage"
+
+  MartyrsRetribution:
+    name        : "Martyr's Retribution"
+    keywords    : [ "divine", "radiant", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC (special)"
+    hit         : "4[W]{±str.nz} damage"
+
+  SignOfVulnerability:
+    name        : "Sign of Vulnerability"
+    keywords    : [ "divine", "implement", "radiant" ]
+    attack      : "{±cha} vs. Fortitude"
+    hit         : "3d8{±cha.nz} damage (special)"
+
+  DivineBodyguard:
+    name        : "Divine Bodyguard"
+    type        : "daily"
+    keywords    : [ "divine" ]
+
+  OneHeartOneMind:
+    name        : "One Heart, One Mind"
+    type        : "daily"
+    keywords    : [ "divine" ]
+
+  WrathOfTheGods:
+    name        : "Wrath of the Gods"
+    type        : "daily"
+    keywords    : [ "divine" ]
+    effect      : "targets add {±cha} to damage rolls"
+
+  BeckonFoe:
+    name        : "Beckon Foe"
+    keywords    : [ "divine", "implement" ]
+    attack      : "{±cha} vs. Will"
+    hit         : "2d10{±cha.nz} damage{pullText}"
+    _formulae   :
+      pullText: ["if", ["<", "#wis", 1], ["~", ""], ["+", ["~", ", pull target "], "#wis", ["if", [">", "#wis", 1], ["~", " squares"], ["~", " square"]]]]
+
+  BenignTransposition:
+    name        : "Benign Transposition"
+    keywords    : [ "divine", "teleportation", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    target      : "one ally within {minRange} {squares} (primary)"
+    attack      : "{±cha} vs. AC (secondary)"
+    hit         : "2[W]{±cha.nz} damage (secondary)"
+    _formulae   :
+      minRange: ["if", ["<", "#wis", 1], 1, "#wis"]
+      squares: ["if", ["=", "minRange", 1], ["~", "square"], ["~", "squares"]]
+
+  DivineReverence:
+    name        : "Divine Reverence"
+    keywords    : [ "divine", "implement", "radiant" ]
+    attack      : "{±cha} vs. Will"
+    hit         : "1d8{±cha.nz} damage (special)"
+
+  ThunderSmite:
+    name        : "Thunder Smite"
+    keywords    : [ "divine", "thunder", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC (special)"
+    hit         : "2[W]{±str.nz} damage (special)"
+
+  CrownOfGlory:
+    name        : "Crown of Glory"
+    keywords    : [ "divine", "implement", "radiant" ]
+    attack      : "{±cha} vs. Will"
+    hit         : "2d8{±cha.nz} damage (special)"
+
+  OneStandsAlone:
+    name        : "One Stands Alone"
+    keywords    : [ "divine", "implement", "radiant" ]
+    attack      : "{±cha} vs. Will"
+    hit         : "2d8{±cha.nz} damage (special)"
+
+  RadiantPulse:
+    name        : "Radiant Pulse"
+    keywords    : [ "divine", "implement", "radiant" ]
+    attack      : "{±cha} vs. Fortitude"
+    hit         : "1d10{±cha.nz} damage (special)"
+
+  CleansingSpirit:
+    name        : "Cleansing Spirit"
+    type        : "encounter"
+    keywords    : [ "divine" ]
+
+  NobleShield:
+    name        : "Noble Shield"
+    type        : "daily"
+    keywords    : [ "divine" ]
+
+  TurnTheTide:
+    name        : "Turn the Tide"
+    type        : "daily"
+    keywords    : [ "divine" ]

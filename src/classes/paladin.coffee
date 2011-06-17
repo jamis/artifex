@@ -61,6 +61,15 @@ Paladin.powers =
 
   encounter:
     1: [ "FearsomeSmite", "PiercingSmite", "RadiantSmite", "ShieldingSmite" ]
+    3: [ "ArcingSmite", "InvigoratingSmite", "RighteousSmite", "StaggeringSmite" ]
+    7: [ "BeckonFoe", "BenignTransposition", "DivineReverence", "ThunderSmite" ]
 
   daily:
     1: [ "OnPainOfDeath", "PaladinsJudgement", "RadiantDelirium" ]
+    5: [ "HallowedCircle", "MartyrsRetribution", "SignOfVulnerability" ]
+    9: [ "CrownOfGlory", "OneStandsAlone", "RadiantPulse" ]
+
+  utility:
+    2 : [ "AstralSpeech", "MartyrsBlessing", "SacredCircle" ]
+    6 : [ "DivineBodyguard", "OneHeartOneMind", "WrathOfTheGods" ]
+    10: [ "CleansingSpirit", "NobleShield", "TurnTheTide" ]
