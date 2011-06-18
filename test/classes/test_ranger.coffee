@@ -140,3 +140,31 @@ module.exports =
     klass = new Classes.Ranger(new NPC)
     test.equal Classes.Ranger.powers, klass.powers
     test.done()
+
+  "level-2 exploits are accounted for": (test) ->
+    for power in [ "CrucialAdvice", "UnbalancingParry", "YieldGround" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Ranger.powers.utility[2]
+    test.done()
+
+  "level-3 exploits are accounted for": (test) ->
+    for power in [ "CutAndRun", "DisruptiveStrike", "ShadowWaspStrike", "ThundertuskBoarStrike" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Ranger.powers.encounter[3]
+    test.done()
+
+  "level-5 exploits are accounted for": (test) ->
+    for power in [ "ExcruciatingShot", "FrenziedSkirmish", "SplinteringShot", "TwoWolfPounce" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Ranger.powers.daily[5]
+    test.done()
+
+  "level-6 exploits are accounted for": (test) ->
+    for power in [ "EvadeAmbush", "SkilledCompanion", "WeaveThroughTheFray" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Ranger.powers.utility[6]
+    test.done()

@@ -93,3 +93,103 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC (special)"
     hit         : "1[W] damage (off-hand) (special, 2[W]{±str.nz} damage w/ main weapon)"
+
+  CrucialAdvice:
+    name        : "Crucial Advice"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    effect      : "ally rerolls skill check with {±wis} bonus"
+
+  UnbalancingParry:
+    name        : "Unbalancing Parry"
+    type        : "encounter"
+    keywords    : [ "martial", "weapon" ]
+
+  YieldGround:
+    name        : "Yield Ground"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    effect      : "shift {#wis} {squares}"
+    _formulae:
+      squares: -> @plural @wisM(), "square", "squares"
+
+  CutAndRun:
+    name        : "Cut and Run"
+    keywords    : [ "martial", "weapon" ]
+    attack      : "{±str} vs. AC (melee) or {±dex} vs. AC (ranged) (special)"
+    hit         : "1[W]{±str.nz} damage (melee) or 1[W]{±dex.nz} damage (ranged), shift {distance} {squares}"
+    _formulae:
+      distance: -> @max(1 + @wisM(), 1)
+      squares: -> @plural @distance(), "square", "squares"
+
+  DisruptiveStrike:
+    name        : "Disruptive Strike"
+    keywords    : [ "martial", "weapon" ]
+    attack      : "{±str} vs. AC (melee) or {±dex} vs. AC (ranged)"
+    hit         : "1[W]{±str.nz} damage (melee) or 1[W]{±dex.nz} damage (ranged), target takes {penalty} attack penalty"
+    _formulae: { penalty: -> @signed(-(3 + @wisM())) }
+
+  ShadowWaspStrike:
+    name        : "Shadow Wasp Strike"
+    keywords    : [ "martial", "weapon" ]
+    attack      : "{±str} vs. AC (melee) or {±dex} vs. AC (ranged)"
+    hit         : "2[W]{±str.nz} damage (melee) or 2[W]{±dex.nz} damage (ranged)"
+
+  ThundertuskBoarStrike:
+    name        : "Thundertusk Boar Strike"
+    keywords    : [ "martial", "weapon" ]
+    attack      : "{±str} vs. AC (melee) or {±dex} vs. AC (ranged) (special)"
+    hit         : "1[W]{±str.nz} damage (melee) or 1[W]{±dex.nz} damage (ranged), push target {distance} {squares} (special)"
+    _formulae:
+      distance: -> @max(1 + @wisM(), 1)
+      squares: -> @plural @distance(), "square", "squares"
+
+  ExcruciatingShot:
+    name        : "Excruciating Shot"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "ranged weapon" ]
+    attack      : "{±dex} vs. AC"
+    hit         : "3[W]{±dex.nz} damage (special)"
+
+  FrenziedSkirmish:
+    name        : "Frenzied Skirmish"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC (special)"
+    hit         : "1[W]{±str.nz} damage (special)"
+
+  SplinteringShot:
+    name        : "Splintering Shot"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "ranged weapon" ]
+    attack      : "{±dex} vs. AC"
+    hit         : "3[W]{±dex.nz} damage (special)"
+
+  TwoWolfPounce:
+    name        : "Two-Wolf Pounce"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC (special)"
+    hit         : "2[W]{±str.nz} damage (main), 1[W]{±str.nz} damage (off-hand) (special)"
+
+  EvadeAmbush:
+    name        : "Evade Ambush"
+    type        : "daily"
+    keywords    : [ "martial" ]
+    effect      : "{#wis} {alliesAvoid} surprise"
+    _formulae:
+      alliesAvoid: -> @plural @wisM(), "ally avoids", "allies avoid"
+
+  SkilledCompanion:
+    name        : "Skilled Companion"
+    type        : "daily"
+    keywords    : [ "martial" ]
+    effect      : "ally gets {±wis} to skill check"
+
+  WeaveThroughTheFray:
+    name        : "Weave through the Fray"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    effect      : "shift {#wis} {squares}"
+    _formulae   :
+      squares: -> @plural @wisM(), "square", "squares"

@@ -1,5 +1,4 @@
-{NPC, Powers} = require '../..'
-{Verify}      = require '../helpers'
+{Verify} = require '../helpers'
 
 module.exports =
   "[HuntersQuarry] should be defined":
@@ -159,3 +158,166 @@ module.exports =
       hit: [
         { str: 10, expect: "1[W] damage (off-hand) (special, 2[W] damage w/ main weapon)" },
         { str: 16, expect: "1[W] damage (off-hand) (special, 2[W]+3 damage w/ main weapon)" } ]
+
+  "[CrucialAdvice] should be defined":
+    Verify.testProperties "CrucialAdvice",
+      name: [ expect: "Crucial Advice" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+      effect: [
+        { wis: 10, expect: "ally rerolls skill check with +0 bonus" },
+        { wis: 16, expect: "ally rerolls skill check with +3 bonus" } ]
+
+  "[UnbalancingParry] should be defined":
+    Verify.testProperties "UnbalancingParry",
+      name: [ expect: "Unbalancing Parry" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+
+  "[YieldGround] should be defined":
+    Verify.testProperties "YieldGround",
+      name: [ expect: "Yield Ground" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+      effect: [
+        { wis: 10, expect: "shift 0 squares" },
+        { wis: 16, expect: "shift 3 squares" } ]
+
+  "[CutAndRun] should be defined":
+    Verify.testProperties "CutAndRun",
+      name: [ expect: "Cut and Run" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attack: [
+        { str: 10, dex: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged) (special)" },
+        { str: 16, dex: 10, expect: "+3 vs. AC (melee) or +0 vs. AC (ranged) (special)" },
+        { str: 10, dex: 14, expect: "+0 vs. AC (melee) or +2 vs. AC (ranged) (special)" },
+        { str: 16, dex: 14, expect: "+3 vs. AC (melee) or +2 vs. AC (ranged) (special)" } ]
+      hit: [
+        { str: 10, dex: 10, wis: 8, expect: "1[W] damage (melee) or 1[W] damage (ranged), shift 1 square" },
+        { str: 10, dex: 10, wis: 10, expect: "1[W] damage (melee) or 1[W] damage (ranged), shift 1 square" },
+        { str: 18, dex: 10, wis: 10, expect: "1[W]+4 damage (melee) or 1[W] damage (ranged), shift 1 square" },
+        { str: 10, dex: 16, wis: 10, expect: "1[W] damage (melee) or 1[W]+3 damage (ranged), shift 1 square" },
+        { str: 10, dex: 10, wis: 14, expect: "1[W] damage (melee) or 1[W] damage (ranged), shift 3 squares" },
+        { str: 18, dex: 16, wis: 14, expect: "1[W]+4 damage (melee) or 1[W]+3 damage (ranged), shift 3 squares" } ]
+
+  "[DisruptiveStrike] should be defined":
+    Verify.testProperties "DisruptiveStrike",
+      name: [ expect: "Disruptive Strike" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attack: [
+        { str: 10, dex: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged)" },
+        { str: 16, dex: 10, expect: "+3 vs. AC (melee) or +0 vs. AC (ranged)" },
+        { str: 10, dex: 14, expect: "+0 vs. AC (melee) or +2 vs. AC (ranged)" },
+        { str: 16, dex: 14, expect: "+3 vs. AC (melee) or +2 vs. AC (ranged)" } ]
+      hit: [
+        { str: 10, dex: 10, wis: 10, expect: "1[W] damage (melee) or 1[W] damage (ranged), target takes -3 attack penalty" },
+        { str: 18, dex: 10, wis: 10, expect: "1[W]+4 damage (melee) or 1[W] damage (ranged), target takes -3 attack penalty" },
+        { str: 10, dex: 16, wis: 10, expect: "1[W] damage (melee) or 1[W]+3 damage (ranged), target takes -3 attack penalty" },
+        { str: 10, dex: 10, wis: 14, expect: "1[W] damage (melee) or 1[W] damage (ranged), target takes -5 attack penalty" },
+        { str: 18, dex: 16, wis: 14, expect: "1[W]+4 damage (melee) or 1[W]+3 damage (ranged), target takes -5 attack penalty" } ]
+
+  "[ShadowWaspStrike] should be defined":
+    Verify.testProperties "ShadowWaspStrike",
+      name: [ expect: "Shadow Wasp Strike" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attack: [
+        { str: 10, dex: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged)" },
+        { str: 16, dex: 10, expect: "+3 vs. AC (melee) or +0 vs. AC (ranged)" },
+        { str: 10, dex: 14, expect: "+0 vs. AC (melee) or +2 vs. AC (ranged)" },
+        { str: 16, dex: 14, expect: "+3 vs. AC (melee) or +2 vs. AC (ranged)" } ]
+      hit: [
+        { str: 10, dex: 10, expect: "2[W] damage (melee) or 2[W] damage (ranged)" },
+        { str: 16, dex: 10, expect: "2[W]+3 damage (melee) or 2[W] damage (ranged)" },
+        { str: 10, dex: 14, expect: "2[W] damage (melee) or 2[W]+2 damage (ranged)" },
+        { str: 16, dex: 14, expect: "2[W]+3 damage (melee) or 2[W]+2 damage (ranged)" } ]
+
+  "[ThundertuskBoarStrike] should be defined":
+    Verify.testProperties "ThundertuskBoarStrike",
+      name: [ expect: "Thundertusk Boar Strike" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attack: [
+        { str: 10, dex: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged) (special)" },
+        { str: 16, dex: 10, expect: "+3 vs. AC (melee) or +0 vs. AC (ranged) (special)" },
+        { str: 10, dex: 14, expect: "+0 vs. AC (melee) or +2 vs. AC (ranged) (special)" },
+        { str: 16, dex: 14, expect: "+3 vs. AC (melee) or +2 vs. AC (ranged) (special)" } ]
+      hit: [
+        { str: 10, dex: 10, wis: 10, expect: "1[W] damage (melee) or 1[W] damage (ranged), push target 1 square (special)" },
+        { str: 16, dex: 10, wis: 10, expect: "1[W]+3 damage (melee) or 1[W] damage (ranged), push target 1 square (special)" },
+        { str: 10, dex: 14, wis: 10, expect: "1[W] damage (melee) or 1[W]+2 damage (ranged), push target 1 square (special)" },
+        { str: 16, dex: 14, wis: 10, expect: "1[W]+3 damage (melee) or 1[W]+2 damage (ranged), push target 1 square (special)" },
+        { str: 16, dex: 14, wis: 18, expect: "1[W]+3 damage (melee) or 1[W]+2 damage (ranged), push target 5 squares (special)" } ]
+
+  "[ExcruciatingShot] should be defined":
+    Verify.testProperties "ExcruciatingShot",
+      name: [ expect: "Excruciating Shot" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "ranged weapon" ] ]
+      attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { dex: 10, expect: "3[W] damage (special)" },
+        { dex: 16, expect: "3[W]+3 damage (special)" } ]
+
+  "[FrenziedSkirmish] should be defined":
+    Verify.testProperties "FrenziedSkirmish",
+      name: [ expect: "Frenzied Skirmish" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [
+        { str: 10, expect: "+0 vs. AC (special)" },
+        { str: 16, expect: "+3 vs. AC (special)" } ]
+      hit: [
+        { str: 10, expect: "1[W] damage (special)" },
+        { str: 16, expect: "1[W]+3 damage (special)" } ]
+
+  "[SplinteringShot] should be defined":
+    Verify.testProperties "SplinteringShot",
+      name: [ expect: "Splintering Shot" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "ranged weapon" ] ]
+      attack: [
+        { dex: 10, expect: "+0 vs. AC" },
+        { dex: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { dex: 10, expect: "3[W] damage (special)" },
+        { dex: 16, expect: "3[W]+3 damage (special)" } ]
+
+  "[TwoWolfPounce] should be defined":
+    Verify.testProperties "TwoWolfPounce",
+      name: [ expect: "Two-Wolf Pounce" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [
+        { str: 10, expect: "+0 vs. AC (special)" },
+        { str: 16, expect: "+3 vs. AC (special)" } ]
+      hit: [
+        { str: 10, expect: "2[W] damage (main), 1[W] damage (off-hand) (special)" },
+        { str: 16, expect: "2[W]+3 damage (main), 1[W]+3 damage (off-hand) (special)" } ]
+
+  "[EvadeAmbush] should be defined":
+    Verify.testProperties "EvadeAmbush",
+      name: [ expect: "Evade Ambush" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+      effect: [
+        { wis: 10, expect: "0 allies avoid surprise" },
+        { wis: 12, expect: "1 ally avoids surprise" },
+        { wis: 16, expect: "3 allies avoid surprise" } ]
+
+  "[SkilledCompanion] should be defined":
+    Verify.testProperties "SkilledCompanion",
+      name: [ expect: "Skilled Companion" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+      effect: [
+        { wis: 10, expect: "ally gets +0 to skill check" },
+        { wis: 16, expect: "ally gets +3 to skill check" } ]
+
+  "[WeaveThroughTheFray] should be defined":
+    Verify.testProperties "WeaveThroughTheFray",
+      name: [ expect: "Weave through the Fray" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+      effect: [
+        { wis: 10, expect: "shift 0 squares" },
+        { wis: 12, expect: "shift 1 square" },
+        { wis: 16, expect: "shift 3 squares" } ]

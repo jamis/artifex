@@ -55,6 +55,12 @@ Ranger.powers =
 
   encounter:
     1: [ "DireWolverineStrike", "EvasiveStrike", "FoxsCunning", "TwoFangedStrike" ]
+    3: [ "CutAndRun", "DisruptiveStrike", "ShadowWaspStrike", "ThundertuskBoarStrike" ]
 
   daily:
     1: [ "HuntersBearTrap", "JawsOfTheWolf", "SplitTheTree", "SuddenStrike" ]
+    5: [ "ExcruciatingShot", "FrenziedSkirmish", "SplinteringShot", "TwoWolfPounce" ]
+
+  utility:
+    2: [ "CrucialAdvice", "UnbalancingParry", "YieldGround" ]
+    6: [ "EvadeAmbush", "SkilledCompanion", "WeaveThroughTheFray" ]
