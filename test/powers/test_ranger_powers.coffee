@@ -321,3 +321,127 @@ module.exports =
         { wis: 10, expect: "shift 0 squares" },
         { wis: 12, expect: "shift 1 square" },
         { wis: 16, expect: "shift 3 squares" } ]
+
+  "[ClawsOfTheGriffon] should be defined":
+    Verify.testProperties "ClawsOfTheGriffon",
+      name: [ expect: "Claws of the Griffon" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [
+        { str: 10, expect: "+0 vs. AC (special)" },
+        { str: 16, expect: "+3 vs. AC (special)" } ]
+      hit: [
+        { str: 10, expect: "2[W] damage (main), 1[W] damage (off-hand)" },
+        { str: 16, expect: "2[W]+3 damage (main), 1[W]+3 damage (off-hand)" } ]
+
+  "[HawksTalon] should be defined":
+    Verify.testProperties "HawksTalon",
+      name: [ expect: "Hawk's Talon" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attack: [
+        { str: 10, dex: 10, wis: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged) (special)" },
+        { str: 16, dex: 10, wis: 10, expect: "+3 vs. AC (melee) or +0 vs. AC (ranged) (special)" },
+        { str: 10, dex: 14, wis: 10, expect: "+0 vs. AC (melee) or +2 vs. AC (ranged) (special)" },
+        { str: 16, dex: 14, wis: 10, expect: "+3 vs. AC (melee) or +2 vs. AC (ranged) (special)" },
+        { str: 16, dex: 14, wis: 18, expect: "+7 vs. AC (melee) or +6 vs. AC (ranged) (special)" } ]
+      hit: [
+        { str: 10, dex: 10, expect: "2[W] damage (melee) or 2[W] damage (ranged)" },
+        { str: 16, dex: 10, expect: "2[W]+3 damage (melee) or 2[W] damage (ranged)" },
+        { str: 10, dex: 14, expect: "2[W] damage (melee) or 2[W]+2 damage (ranged)" },
+        { str: 16, dex: 14, expect: "2[W]+3 damage (melee) or 2[W]+2 damage (ranged)" } ]
+
+  "[SpikesOfTheManticore] should be defined":
+    Verify.testProperties "SpikesOfTheManticore",
+      name: [ expect: "Spikes of the Manticore" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "ranged weapon" ] ]
+      attack: [
+        { dex: 10, expect: "+0 vs. AC (special)" },
+        { dex: 16, expect: "+3 vs. AC (special)" } ]
+      hit: [
+        { dex: 10, expect: "2[W] damage (first), 1[W] damage (second)" },
+        { dex: 16, expect: "2[W]+3 damage (first), 1[W]+3 damage (second)" } ]
+
+  "[SweepingWhirlwind] should be defined":
+    Verify.testProperties "SweepingWhirlwind",
+      name: [ expect: "Sweeping Whirlwind" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [ { str: 10, expect: "+0 vs. AC" }, { str: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { str: 10, wis: 10, expect: "1[W] damage, target pushed 0 squares (special)" },
+        { str: 16, wis: 10, expect: "1[W]+3 damage, target pushed 0 squares (special)" },
+        { str: 16, wis: 12, expect: "1[W]+3 damage, target pushed 1 square (special)" },
+        { str: 16, wis: 14, expect: "1[W]+3 damage, target pushed 2 squares (special)" } ]
+
+  "[AttacksOnTheRun] should be defined":
+    Verify.testProperties "AttacksOnTheRun",
+      name: [ expect: "Attacks on the Run" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attack: [
+        { str: 10, dex: 10, expect: "+0 vs. AC (melee) or +0 vs. AC (ranged) (special)" },
+        { str: 16, dex: 10, expect: "+3 vs. AC (melee) or +0 vs. AC (ranged) (special)" },
+        { str: 10, dex: 14, expect: "+0 vs. AC (melee) or +2 vs. AC (ranged) (special)" },
+        { str: 16, dex: 14, expect: "+3 vs. AC (melee) or +2 vs. AC (ranged) (special)" } ]
+      hit: [
+        { str: 10, dex: 10, expect: "3[W] damage (melee) or 3[W] damage (ranged)" },
+        { str: 16, dex: 10, expect: "3[W]+3 damage (melee) or 3[W] damage (ranged)" },
+        { str: 10, dex: 14, expect: "3[W] damage (melee) or 3[W]+2 damage (ranged)" },
+        { str: 16, dex: 14, expect: "3[W]+3 damage (melee) or 3[W]+2 damage (ranged)" } ]
+
+  "[CloseQuartersShot] should be defined":
+    Verify.testProperties "CloseQuartersShot",
+      name: [ expect: "Close Quarters Shot" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "ranged weapon" ] ]
+      attack: [
+        { dex: 10, expect: "+0 vs. AC (special)" },
+        { dex: 16, expect: "+3 vs. AC (special)" } ]
+      hit: [
+        { dex: 10, expect: "4[W] damage" },
+        { dex: 16, expect: "4[W]+3 damage" } ]
+
+  "[SprayOfArrows] should be defined":
+    Verify.testProperties "SprayOfArrows",
+      name: [ expect: "Spray of Arrows" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "ranged weapon" ] ]
+      attack: [
+        { dex: 10, expect: "+0 vs. AC" },
+        { dex: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { dex: 10, expect: "2[W] damage" },
+        { dex: 16, expect: "2[W]+3 damage" } ]
+
+  "[SwirlingLeavesOfSteel] should be defined":
+    Verify.testProperties "SwirlingLeavesOfSteel",
+      name: [ expect: "Swirling Leaves of Steel" ],
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      attackTypes: [ expect: [ "melee weapon" ] ]
+      attack: [
+        { str: 10, expect: "+0 vs. AC (special)" },
+        { str: 16, expect: "+3 vs. AC (special)" } ]
+      hit: [
+        { str: 10, expect: "2[W] damage" },
+        { str: 16, expect: "2[W]+3 damage" } ]
+
+  "[ExpeditiousStride] should be defined":
+    Verify.testProperties "ExpeditiousStride",
+      name: [ expect: "Expeditious Stride" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[OpenTheRange] should be defined":
+    Verify.testProperties "OpenTheRange",
+      name: [ expect: "Open the Range" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+      effect: [
+        { wis: 10, expect: "move 1 square (special)" },
+        { wis: 16, expect: "move 4 squares (special)" } ]
+
+  "[UndauntedStride] should be defined":
+    Verify.testProperties "UndauntedStride",
+      name: [ expect: "Undaunted Stride" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial", "stance" ] ]

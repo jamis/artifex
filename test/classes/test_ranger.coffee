@@ -168,3 +168,24 @@ module.exports =
       if Powers[power]
         test.ok power in Classes.Ranger.powers.utility[6]
     test.done()
+
+  "level-7 exploits are accounted for": (test) ->
+    for power in [ "ClawsOfTheGriffon", "HawksTalon", "SpikesOfTheManticore", "SweepingWhirlwind" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Ranger.powers.encounter[7]
+    test.done()
+
+  "level-9 exploits are accounted for": (test) ->
+    for power in [ "AttacksOnTheRun", "CloseQuartersShot", "SprayOfArrows", "SwirlingLeavesOfSteel" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Ranger.powers.daily[9]
+    test.done()
+
+  "level-10 exploits are accounted for": (test) ->
+    for power in [ "ExpeditiousStride", "OpenTheRange", "UndauntedStride" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Ranger.powers.utility[10]
+    test.done()

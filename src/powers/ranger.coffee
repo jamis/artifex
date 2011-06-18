@@ -193,3 +193,81 @@ module.exports =
     effect      : "shift {#wis} {squares}"
     _formulae   :
       squares: -> @plural @wisM(), "square", "squares"
+
+  ClawsOfTheGriffon:
+    name        : "Claws of the Griffon"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC (special)"
+    hit         : "2[W]{±str.nz} damage (main), 1[W]{±str.nz} damage (off-hand)"
+
+  HawksTalon:
+    name        : "Hawk's Talon"
+    keywords    : [ "martial", "weapon" ]
+    attack      : "{±str+wis} vs. AC (melee) or {±dex+wis} vs. AC (ranged) (special)"
+    hit         : "2[W]{±str.nz} damage (melee) or 2[W]{±dex.nz} damage (ranged)"
+    _formulae   :
+      "±str+wis": -> @signed(@strM() + @wisM())
+      "±dex+wis": -> @signed(@dexM() + @wisM())
+
+  SpikesOfTheManticore:
+    name        : "Spikes of the Manticore"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "ranged weapon" ]
+    attack      : "{±dex} vs. AC (special)"
+    hit         : "2[W]{±dex.nz} damage (first), 1[W]{±dex.nz} damage (second)"
+
+  SweepingWhirlwind:
+    name        : "Sweeping Whirlwind"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "1[W]{±str.nz} damage, target pushed {#wis} {squares} (special)"
+    _formulae:
+      squares: -> @plural @wisM(), "square", "squares"
+
+  AttacksOnTheRun:
+    name        : "Attacks on the Run"
+    keywords    : [ "martial", "weapon" ]
+    attack      : "{±str} vs. AC (melee) or {±dex} vs. AC (ranged) (special)"
+    hit         : "3[W]{±str.nz} damage (melee) or 3[W]{±dex.nz} damage (ranged)"
+
+  CloseQuartersShot:
+    name        : "Close Quarters Shot"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "ranged weapon" ]
+    attack      : "{±dex} vs. AC (special)"
+    hit         : "4[W]{±dex.nz} damage"
+
+  SprayOfArrows:
+    name        : "Spray of Arrows"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "ranged weapon" ]
+    attack      : "{±dex} vs. AC"
+    hit         : "2[W]{±dex.nz} damage"
+
+  SwirlingLeavesOfSteel:
+    name        : "Swirling Leaves of Steel"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC (special)"
+    hit         : "2[W]{±str.nz} damage"
+
+  ExpeditiousStride:
+    name        : "Expeditious Stride"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+
+  OpenTheRange:
+    name        : "Open the Range"
+    type        : "daily"
+    keywords    : [ "martial" ]
+    effect      : "move {count} {squares} (special)"
+    _formulae   :
+      count: -> @wisM() + 1
+      squares: -> @plural @count(), "square", "squares"
+
+  UndauntedStride:
+    name        : "Undaunted Stride"
+    type        : "daily"
+    keywords    : [ "martial", "stance" ]

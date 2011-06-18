@@ -56,11 +56,14 @@ Ranger.powers =
   encounter:
     1: [ "DireWolverineStrike", "EvasiveStrike", "FoxsCunning", "TwoFangedStrike" ]
     3: [ "CutAndRun", "DisruptiveStrike", "ShadowWaspStrike", "ThundertuskBoarStrike" ]
+    7: [ "ClawsOfTheGriffon", "HawksTalon", "SpikesOfTheManticore", "SweepingWhirlwind" ]
 
   daily:
     1: [ "HuntersBearTrap", "JawsOfTheWolf", "SplitTheTree", "SuddenStrike" ]
     5: [ "ExcruciatingShot", "FrenziedSkirmish", "SplinteringShot", "TwoWolfPounce" ]
+    9: [ "AttacksOnTheRun", "CloseQuartersShot", "SprayOfArrows", "SwirlingLeavesOfSteel" ]
 
   utility:
-    2: [ "CrucialAdvice", "UnbalancingParry", "YieldGround" ]
-    6: [ "EvadeAmbush", "SkilledCompanion", "WeaveThroughTheFray" ]
+    2 : [ "CrucialAdvice", "UnbalancingParry", "YieldGround" ]
+    6 : [ "EvadeAmbush", "SkilledCompanion", "WeaveThroughTheFray" ]
+    10: [ "ExpeditiousStride", "OpenTheRange", "UndauntedStride" ]
