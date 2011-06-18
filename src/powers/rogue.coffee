@@ -103,3 +103,33 @@ module.exports =
     keywords    : [ "martial", "weapon" ]
     attack      : "{±dex} vs. AC"
     hit         : "3[W]{±dex.nz} damage (special)"
+
+  FleetingGhost:
+    name        : "Fleeting Ghost"
+    type        : "atWill"
+    keywords    : [ "martial" ]
+    requires    : { trained: "stealth" }
+
+  GreatLeap:
+    name        : "Great Leap"
+    type        : "atWill"
+    keywords    : [ "martial" ]
+    requires    : { trained: "athletics" }
+
+  MasterOfDeceit:
+    name        : "Master of Deceit"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    requires    : { trained: "bluff" }
+
+  QuickFingers:
+    name        : "Quick Fingers"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    requires    : { trained: "thievery" }
+
+  Tumble:
+    name        : "Tumble"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    requires    : { trained: "acrobatics" }

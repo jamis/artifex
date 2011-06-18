@@ -63,3 +63,6 @@ Rogue.powers =
 
   daily:
     1: [ "BlindingBarrage", "EasyTarget", "TrickStrike" ]
+
+  utility:
+    2: [ "FleetingGhost", "GreatLeap", "MasterOfDeceit", "QuickFingers", "Tumble" ]

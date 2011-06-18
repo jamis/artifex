@@ -271,3 +271,54 @@ module.exports =
     power.npc.level = 21
     test.deepEqual power.get("attackTypes"), [ "Close burst 10", "Melee 2" ]
     test.done()
+
+  "allowed() should compare attackType with equipped weapons": (test) ->
+    archer = new NPC
+    archer.equipment.push "longbow"
+
+    swordsman = new NPC
+    swordsman.equipment.push "longsword"
+
+    melee = { attackTypes: [ "melee weapon" ] }
+    ranged = { attackTypes: [ "ranged weapon" ] }
+    both = { attackTypes: [ "melee weapon", "ranged weapon" ] }
+    any = { }
+
+    archer_melee = new Power melee, npc: archer
+    archer_ranged = new Power ranged, npc: archer
+    archer_both = new Power both, npc: archer
+    archer_any = new Power any, npc: archer
+
+    swordsman_melee = new Power melee, npc: swordsman
+    swordsman_ranged = new Power ranged, npc: swordsman
+    swordsman_both = new Power both, npc: swordsman
+    swordsman_any = new Power any, npc: swordsman
+
+    test.ok not archer_melee.allowed()
+    test.ok archer_ranged.allowed()
+    test.ok archer_both.allowed()
+    test.ok archer_any.allowed()
+
+    test.ok swordsman_melee.allowed()
+    test.ok not swordsman_ranged.allowed()
+    test.ok swordsman_both.allowed()
+    test.ok swordsman_any.allowed()
+
+    test.done()
+
+  "allowed() should return false if the power is already selected": (test) ->
+    npc = new NPC
+    power1 = new Power npc: npc, id: "EldritchBlast"
+    power2 = new Power npc: npc, id: "EldritchBlast"
+    test.ok power2.allowed()
+    npc.powers.daily.push power1
+    test.ok not power2.allowed()
+    test.done()
+
+  "allowed() should respect the 'trained' condition in the require key": (test) ->
+    npc = new NPC
+    power = new Power npc: npc, id: "FooTest", requires: { trained: 'stealth' }
+    test.ok not power.allowed()
+    npc.skills.stealth.trained = true
+    test.ok power.allowed()
+    test.done()

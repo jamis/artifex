@@ -1,3 +1,5 @@
+Weapons = require "./weapons"
+
 module.exports = class Power
   constructor: (initializers...) ->
     for initializer in initializers
@@ -9,6 +11,46 @@ module.exports = class Power
           this[key] = value(this)
         else
           this[key] = value
+
+  allowed: ->
+    return false if @alreadyExists()
+    return false if not @matchesEquippedWeapons()
+    return false if not @matchesPrerequisites()
+    true
+
+  alreadyExists: ->
+    @npc.powers.firstThat (whence, p) => p.id is @id
+
+  matchesEquippedWeapons: ->
+    types = @get "attackTypes"
+    return true unless types?
+
+    hasRanged = hasMelee = false
+    for weapon in @npc.equipment.weapons()
+      if Weapons.category(weapon, "ranged")
+        hasRanged = true
+      else if Weapons.category(weapon, "melee")
+        hasMelee = true
+
+    valid = false
+    for type in types
+      switch type
+        when "ranged weapon" then valid |= hasRanged
+        when "melee weapon" then valid |= hasMelee
+        else valid = true
+
+    valid
+
+  matchesPrerequisites: ->
+    requires = @get "requires"
+    return true unless requires?
+
+    for key, value of requires
+      switch key
+        when "trained" then return false unless @npc.skills[value].trained?
+        else throw new Error "unknown prerequisite: `#{key}'"
+
+    true
 
   get: (name) ->
     @process this[name]

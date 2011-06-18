@@ -268,29 +268,8 @@ module.exports = class NPC
     @pendingFeats = []
 
   isSuitablePower: (id) ->
-    present = @powers.firstThat (whence, p) -> p.id is id
-    return false if present?
-
     power = Powers.get id, npc: this
-
-    types = power.get "attackTypes"
-    return true unless types?
-
-    hasRanged = hasMelee = false
-    for weapon in @equipment.weapons()
-      if Weapons.category(weapon, "ranged")
-        hasRanged = true
-      else if Weapons.category(weapon, "melee")
-        hasMelee = true
-
-    valid = false
-    for type in types
-      switch type
-        when "ranged weapon" then valid |= hasRanged
-        when "melee weapon" then valid |= hasMelee
-        else valid = true
-
-    valid
+    power.allowed()
 
   suitablePowersIn: (list) ->
     suitable = []

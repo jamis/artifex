@@ -146,3 +146,10 @@ module.exports =
     klass = new Classes.Rogue(new NPC)
     test.equal Classes.Rogue.powers, klass.powers
     test.done()
+
+  "level-2 exploits are accounted for": (test) ->
+    for power in [ "FleetingGhost", "GreatLeap", "MasterOfDeceit", "QuickFingers", "Tumble" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Rogue.powers.utility[2]
+    test.done()

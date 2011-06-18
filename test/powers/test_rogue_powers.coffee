@@ -142,3 +142,38 @@ module.exports =
       hit: [
         { dex: 10, expect: "3[W] damage (special)" },
         { dex: 16, expect: "3[W]+3 damage (special)" } ]
+
+  "[FleetingGhost] should be defined":
+    Verify.testProperties "FleetingGhost",
+      name: [ expect: "Fleeting Ghost" ]
+      type: [ expect: "atWill" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: { trained: "stealth" } ]
+
+  "[GreatLeap] should be defined":
+    Verify.testProperties "GreatLeap",
+      name: [ expect: "Great Leap" ]
+      type: [ expect: "atWill" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: { trained: "athletics" } ]
+
+  "[MasterOfDeceit] should be defined":
+    Verify.testProperties "MasterOfDeceit",
+      name: [ expect: "Master of Deceit" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: { trained: "bluff" } ]
+
+  "[QuickFingers] should be defined":
+    Verify.testProperties "QuickFingers",
+      name: [ expect: "Quick Fingers" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: { trained: "thievery" } ]
+
+  "[Tumble] should be defined":
+    Verify.testProperties "Tumble",
+      name: [ expect: "Tumble" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: { trained: "acrobatics" } ]

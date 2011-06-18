@@ -479,12 +479,6 @@ module.exports =
     npc.generate()
     test.done()
 
-  "isSuitablePower should return false if the power is already selected": (test) ->
-    npc = new NPC
-    npc.powers.daily.push Powers.get("EldritchBlast", npc: npc)
-    test.ok !npc.isSuitablePower("EldritchBlast")
-    test.done()
-
   "advancement chart should describe gains at each level": (test) ->
     test.deepEqual NPC.level[ 2], ["utility", "feat"]
     test.deepEqual NPC.level[ 3], ["encounter"]
