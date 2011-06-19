@@ -1,5 +1,5 @@
 hasPact = (pact) ->
-  -> @npc.hasFeature("class", "#{pact} Pact")
+  -> @npc.hasFeature "class", "#{pact} Pact"
 
 module.exports =
   WarlocksCurse:
@@ -100,3 +100,64 @@ module.exports =
     keywords    : [ "arcane", "fire", "implement" ]
     attack      : "{±con} vs. Reflex"
     hit         : "3d10{±con.nz} damage (special)"
+
+  BeguilingTongue:
+    name        : "Beguiling Tongue"
+    type        : "encounter"
+    keywords    : [ "arcane" ]
+
+  EtherealStride:
+    name        : "Ethereal Stride"
+    type        : "encounter"
+    keywords    : [ "arcane", "teleportation" ]
+
+  FiendishResilience:
+    name        : "Fiendish Resilience"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+    effect      : "gain {bonus} temp HP"
+    _formulae   : { bonus: -> 5 + @conM() }
+
+  ShadowVeil:
+    name        : "Shadow Veil"
+    type        : "encounter"
+    keywords    : [ "arcane", "illusion" ]
+
+  EldritchRain:
+    name        : "Eldritch Rain"
+    keywords    : [ "arcane", "implement" ]
+    attack      : "{±cha} vs. Reflex (special)"
+    hit         : "1d10{±bonus.nz} damage"
+    _formulae   :
+      fey: hasPact "Fey"
+      bonus: -> @chaM() + if @fey() then @intM() else 0
+      "±bonus.nz": -> if @bonus() is 0 then "" else @signed @bonus()
+
+  FieryBolt:
+    name        : "Fiery Bolt"
+    keywords    : [ "arcane", "fire", "implement" ]
+    attack      : "{±con} vs. Reflex"
+    hit         : "3d6{±con.nz} damage, adjacent creatures take 1d6{±bonus.nz} damage"
+    _formulae   :
+      infernal: hasPact "Infernal"
+      bonus: -> @conM() + if @infernal() then @intM() else 0
+      "±bonus.nz": -> if @bonus() is 0 then "" else @signed @bonus()
+
+  FrigidDarkness:
+    name        : "Frigid Darkness"
+    keywords    : [ "arcane", "cold", "fear", "implement" ]
+    attack      : "{±con} vs. Fortitude"
+    hit         : "2d8{±con.nz} damage{pactText} (special)"
+    _formulae   :
+      star: hasPact "Star"
+      pactText: -> if @star() then ", target has #{@signed(-@intM())} to AC" else ""
+
+  OtherwindStride:
+    name        : "Otherwind Stride"
+    keywords    : [ "arcane", "implement", "teleportation" ]
+    attack      : "{±cha} vs. Fortitude"
+    hit         : "1d8{±cha.nz} damage (special)"
+    effect      : "teleport {distance} squares"
+    _formulae   :
+      fey: hasPact "Fey"
+      distance: -> 5 + if @fey() then @intM() else 0

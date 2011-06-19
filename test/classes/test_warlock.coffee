@@ -195,3 +195,17 @@ module.exports =
     klass = new Classes.Warlock(new NPC)
     test.equal Classes.Warlock.powers, klass.powers
     test.done()
+
+  "level-2 spells are accounted for": (test) ->
+    for power in [ "BeguilingTongue", "EtherealStride", "FiendishResilience", "ShadowVeil" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Warlock.powers.utility[2]
+    test.done()
+
+  "level-3 spells are accounted for": (test) ->
+    for power in [ "EldritchRain", "FieryBolt", "FrigidDarkness", "OtherwindStride" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Warlock.powers.encounter[3]
+    test.done()

@@ -76,6 +76,10 @@ Warlock.powers =
 
   encounter:
     1: [ "DiabolicGrasp", "DreadfulWord", "VampiricEmbrace", "Witchfire" ]
+    3: [ "EldritchRain", "FieryBolt", "FrigidDarkness", "OtherwindStride" ]
 
   daily:
     1: [ "ArmorOfAgathys", "CurseOfTheDarkDream", "DreadStar", "FlamesOfPhlegethos" ]
+
+  utility:
+    2: [ "BeguilingTongue", "EtherealStride", "FiendishResilience", "ShadowVeil" ]

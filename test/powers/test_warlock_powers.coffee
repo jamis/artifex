@@ -178,3 +178,84 @@ module.exports =
       hit: [
         { con: 10, expect: "3d10 damage (special)" },
         { con: 16, expect: "3d10+3 damage (special)" } ]
+
+  "[BeguilingTongue] should be defined":
+    Verify.testProperties "BeguilingTongue",
+      name: [ expect: "Beguiling Tongue" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[EtherealStride] should be defined":
+    Verify.testProperties "EtherealStride",
+      name: [ expect: "Ethereal Stride" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane", "teleportation" ] ]
+
+  "[FiendishResilience] should be defined":
+    Verify.testProperties "FiendishResilience",
+      name: [ expect: "Fiendish Resilience" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+      effect: [
+        { con: 10, expect: "gain 5 temp HP" },
+        { con: 16, expect: "gain 8 temp HP" } ]
+
+  "[ShadowVeil] should be defined":
+    Verify.testProperties "ShadowVeil",
+      name: [ expect: "Shadow Veil" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane", "illusion" ] ]
+
+  "[EldritchRain] should be defined":
+    Verify.testProperties "EldritchRain",
+      name: [ expect: "Eldritch Rain" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
+      attack: [
+        { cha: 10, expect: "+0 vs. Reflex (special)" },
+        { cha: 16, expect: "+3 vs. Reflex (special)" } ]
+      hit: [
+        { cha: 10, int_: 14, expect: "1d10 damage" },
+        { cha: 16, int_: 14, expect: "1d10+3 damage" },
+        { cha: 16, int_: 14, when: pact("Star"), expect: "1d10+3 damage" },
+        { cha: 16, int_: 14, when: pact("Fey"), expect: "1d10+5 damage" } ]
+
+  "[FieryBolt] should be defined":
+    Verify.testProperties "FieryBolt",
+      name: [ expect: "Fiery Bolt" ]
+      keywords: [ expect: [ "arcane", "fire", "implement" ] ]
+      attack: [
+        { con: 10, expect: "+0 vs. Reflex" },
+        { con: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { con: 10, int_: 14, expect: "3d6 damage, adjacent creatures take 1d6 damage" },
+        { con: 16, int_: 14, expect: "3d6+3 damage, adjacent creatures take 1d6+3 damage" },
+        { con: 16, int_: 14, when: pact("Star"), expect: "3d6+3 damage, adjacent creatures take 1d6+3 damage" },
+        { con: 16, int_: 14, when: pact("Infernal"), expect: "3d6+3 damage, adjacent creatures take 1d6+5 damage" } ]
+
+  "[FrigidDarkness] should be defined":
+    Verify.testProperties "FrigidDarkness",
+      name: [ expect: "Frigid Darkness" ]
+      keywords: [ expect: [ "arcane", "cold", "fear", "implement" ] ]
+      attack: [
+        { con: 10, expect: "+0 vs. Fortitude" },
+        { con: 16, expect: "+3 vs. Fortitude" } ]
+      hit: [
+        { con: 10, int_: 14, expect: "2d8 damage (special)" },
+        { con: 16, int_: 14, expect: "2d8+3 damage (special)" },
+        { con: 16, int_: 14, when: pact("Fey"), expect: "2d8+3 damage (special)" },
+        { con: 16, int_: 14, when: pact("Star"), expect: "2d8+3 damage, target has -2 to AC (special)" } ]
+
+  "[OtherwindStride] should be defined":
+    Verify.testProperties "OtherwindStride",
+      name: [ expect: "Otherwind Stride" ]
+      keywords: [ expect: [ "arcane", "implement", "teleportation" ] ]
+      attack: [
+        { cha: 10, expect: "+0 vs. Fortitude" },
+        { cha: 16, expect: "+3 vs. Fortitude" } ]
+      hit: [
+        { cha: 10, expect: "1d8 damage (special)" },
+        { cha: 16, expect: "1d8+3 damage (special)" } ]
+      effect: [
+        { int_: 14, expect: "teleport 5 squares" },
+        { int_: 14, when: pact("Star"), expect: "teleport 5 squares" },
+        { int_: 14, when: pact("Fey"), expect: "teleport 7 squares" } ]
