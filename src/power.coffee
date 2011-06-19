@@ -48,9 +48,17 @@ module.exports = class Power
     for key, value of requires
       switch key
         when "trained" then return false unless @npc.skills[value].trained?
+        when "weapon" then return false unless @equippedWeapon(value)
         else throw new Error "unknown prerequisite: `#{key}'"
 
     true
+
+  equippedWeapon: (weapon) ->
+    for candidate in @npc.equipment.weapons()
+      return true if weapon is candidate
+      return true if Weapons.category(candidate, weapon)
+      return true if Weapons.group(candidate, weapon)
+    false
 
   get: (name) ->
     @process this[name]

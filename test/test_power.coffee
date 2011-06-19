@@ -322,3 +322,16 @@ module.exports =
     npc.skills.stealth.trained = true
     test.ok power.allowed()
     test.done()
+
+  "allowed() should respect the 'weapon' condition in the require key": (test) ->
+    npc = new NPC
+    power1 = new Power npc: npc, id: "FooTest", requires: { weapon: 'light blade' }
+    power2 = new Power npc: npc, id: "FooTest", requires: { weapon: 'simple melee' }
+    power3 = new Power npc: npc, id: "FooTest", requires: { weapon: 'dagger' }
+    power4 = new Power npc: npc, id: "FooTest", requires: { weapon: 'longbow' }
+    npc.equipment.push "dagger"
+    test.ok power1.allowed(), "expected 'light blade' to match 'dagger'"
+    test.ok power2.allowed(), "expected 'simple melee' to match 'dagger'"
+    test.ok power3.allowed(), "expected 'dagger' to match 'dagger'"
+    test.ok not power4.allowed(), "expected 'longbow' to not match 'dagger'"
+    test.done()

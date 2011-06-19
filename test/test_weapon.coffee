@@ -36,6 +36,14 @@ module.exports =
     test.ok !Weapons.category("longbow", "simple ranged")
     test.done()
 
+  "group should return true/false if parameter matches weapon group": (test) ->
+    test.ok Weapons.group("club", "mace")
+    test.ok !Weapons.group("club", "light blade")
+    test.ok Weapons.group("glaive", "heavy blade")
+    test.ok Weapons.group("glaive", "polearm")
+    test.ok !Weapons.group("glaive", "mace")
+    test.done()
+
   "club should be defined": (test) ->
     test.equal Weapons.all.club.name,        "club"
     test.equal Weapons.all.club.proficiency, +2

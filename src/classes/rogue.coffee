@@ -60,9 +60,15 @@ Rogue.powers =
 
   encounter:
     1: [ "DazingStrike", "KingsCastle", "PositioningStrike", "TorturousStrike" ]
+    3: [ "BaitAndSwitch", "SetupStrike", "ToppleOver", "TrickstersBlade" ]
+    7: [ "CloudOfSteel", "ImperilingStrike", "RoguesLuck", "SandInTheEyes" ]
 
   daily:
     1: [ "BlindingBarrage", "EasyTarget", "TrickStrike" ]
+    5: [ "CleverRiposte", "DeepCut", "WalkingWounded" ]
+    9: [ "CrimsonEdge", "DeadlyPositioning", "Knockout" ]
 
   utility:
-    2: [ "FleetingGhost", "GreatLeap", "MasterOfDeceit", "QuickFingers", "Tumble" ]
+    2 : [ "FleetingGhost", "GreatLeap", "MasterOfDeceit", "QuickFingers", "Tumble" ]
+    6 : [ "Chameleon", "IgnobleEscape", "MobMentality", "NimbleClimb", "SlipperyMind" ]
+    10: [ "CertainFreedom", "CloseQuarters", "DangerousTheft", "ShadowStride" ]

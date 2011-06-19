@@ -13,6 +13,9 @@ module.exports = Weapons =
   category: (weapon, category) ->
     Weapons.all[weapon].category.indexOf(category) >= 0
 
+  group: (weapon, group) ->
+    Weapons.all[weapon].groups.indexOf(group) >= 0
+
   all:
     club:
       name       : "club"
