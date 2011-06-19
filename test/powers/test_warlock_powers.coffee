@@ -259,3 +259,188 @@ module.exports =
         { int_: 14, expect: "teleport 5 squares" },
         { int_: 14, when: pact("Star"), expect: "teleport 5 squares" },
         { int_: 14, when: pact("Fey"), expect: "teleport 7 squares" } ]
+
+  "[AvernianEruption] should be defined":
+    Verify.testProperties "AvernianEruption",
+      name: [ expect: "Avernian Eruption" ]
+      keywords: [ expect: [ "arcane", "fire", "implement" ] ]
+      attack: [
+        { con: 10, expect: "+0 vs. Reflex" },
+        { con: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { con: 10, expect: "2d10 damage" },
+        { con: 16, expect: "2d10+3 damage" } ]
+
+  "[CrownOfMadness] should be defined":
+    Verify.testProperties "CrownOfMadness",
+      name: [ expect: "Crown of Madness" ]
+      keywords: [ expect: [ "arcane", "charm", "implement", "psychic" ] ]
+      attack: [
+        { cha: 10, expect: "+0 vs. Will" },
+        { cha: 16, expect: "+3 vs. Will" } ]
+      hit: [
+        { cha: 10, expect: "2d6 damage" },
+        { cha: 16, expect: "2d6+3 damage" } ]
+
+  "[CurseOfTheBloodyFangs] should be defined":
+    Verify.testProperties "CurseOfTheBloodyFangs",
+      name: [ expect: "Curse of the Bloody Fangs" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
+      attack: [
+        { cha: 10, expect: "+0 vs. AC" },
+        { cha: 16, expect: "+3 vs. AC" } ]
+      hit: [
+        { cha: 10, expect: "2d10 damage" },
+        { cha: 16, expect: "2d10+3 damage" } ]
+
+  "[HungerOfHadar] should be defined":
+    Verify.testProperties "HungerOfHadar",
+      name: [ expect: "Hunger of Hadar" ]
+      keywords: [ expect: [ "arcane", "implement", "necrotic", "zone" ] ]
+      attack: [
+        { con: 10, expect: "+0 vs. Fortitude (secondary)" },
+        { con: 16, expect: "+3 vs. Fortitude (secondary)" } ]
+      hit: [
+        { con: 10, expect: "1d6 damage (secondary)" },
+        { con: 16, expect: "1d6+3 damage (secondary)" } ]
+
+  "[DarkOnesOwnLuck] should be defined":
+    Verify.testProperties "DarkOnesOwnLuck",
+      name: [ expect: "Dark One's Own Luck" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[FeySwitch] should be defined":
+    Verify.testProperties "FeySwitch",
+      name: [ expect: "Fey Switch" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane", "teleportation" ] ]
+
+  "[ShroudOfBlackSteel] should be defined":
+    Verify.testProperties "ShroudOfBlackSteel",
+      name: [ expect: "Shroud of Black Steel" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "polymorph" ] ]
+
+  "[SpiderClimb] should be defined":
+    Verify.testProperties "SpiderClimb",
+      name: [ expect: "Spider Climb" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[HowlOfDoom] should be defined":
+    Verify.testProperties "HowlOfDoom",
+      name: [ expect: "Howl of Doom" ]
+      keywords: [ expect: [ "arcane", "fear", "implement", "thunder" ] ]
+      attack: [
+        { con: 10, expect: "+0 vs. Fortitude" },
+        { con: 16, expect: "+3 vs. Fortitude" } ]
+      hit: [
+        { con: 10, int_: 14, expect: "2d6 damage, push target 2 squares" },
+        { con: 16, int_: 14, expect: "2d6+3 damage, push target 2 squares" },
+        { con: 16, int_: 14, when: pact("Fey"), expect: "2d6+3 damage, push target 2 squares" },
+        { con: 16, int_: 14, when: pact("Infernal"), expect: "2d6+3 damage, push target 3 squares" } ]
+
+  "[InfernalMoonCurse] should be defined":
+    Verify.testProperties "InfernalMoonCurse",
+      name: [ expect: "Infernal Moon Curse" ]
+      keywords: [ expect: [ "arcane", "implement", "poison" ] ]
+      attack: [
+        { con: 10, expect: "+0 vs. Fortitude" },
+        { con: 16, expect: "+3 vs. Fortitude" } ]
+      hit: [
+        { con: 10, int_: 14, expect: "2d8 damage (special)" },
+        { con: 16, int_: 14, expect: "2d8+3 damage (special)" },
+        { con: 16, int_: 14, when: pact("Fey"), expect: "2d8+3 damage (special)" },
+        { con: 16, int_: 14, when: pact("Infernal"), expect: "2d8+5 damage (special)" } ]
+
+  "[MireTheMind] should be defined":
+    Verify.testProperties "MireTheMind",
+      name: [ expect: "Mire the Mind" ]
+      keywords: [ expect: [ "arcane", "illusion", "implement", "psychic" ] ]
+      attack: [
+        { cha: 10, expect: "+0 vs. Will" },
+        { cha: 16, expect: "+3 vs. Will" } ]
+      hit: [
+        { cha: 10, int_: 14, expect: "1d10 damage (special)" },
+        { cha: 16, int_: 14, expect: "1d10+3 damage (special)" },
+        { cha: 16, int_: 14, when: pact("Infernal"), expect: "1d10+3 damage (special)" },
+        { cha: 16, int_: 14, when: pact("Fey"), expect: "1d10+3 damage, stealth checks at +2 (special)" } ]
+
+  "[SignOfIllOmen] should be defined":
+    Verify.testProperties "SignOfIllOmen",
+      name: [ expect: "Sign of Ill Omen" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
+      attack: [
+        { cha: 10, expect: "+0 vs. Will" },
+        { cha: 16, expect: "+3 vs. Will" } ]
+      hit: [
+        { cha: 10, int_: 14, expect: "2d6 damage (special)" },
+        { cha: 16, int_: 14, expect: "2d6+3 damage (special)" },
+        { cha: 16, int_: 14, when: pact("Infernal"), expect: "2d6+3 damage (special)" },
+        { cha: 16, int_: 14, when: pact("Star"), expect: "2d6+3 damage, target has -2 to next attack (special)" } ]
+
+  "[CurseOfTheBlackFrost] should be defined":
+    Verify.testProperties "CurseOfTheBlackFrost",
+      name: [ expect: "Curse of the Black Frost" ]
+      keywords: [ expect: [ "arcane", "cold", "implement" ] ]
+      attack: [
+        { cha: 10, expect: "+0 vs. Reflex" },
+        { cha: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { cha: 10, expect: "2d8 damage (special)" },
+        { cha: 16, expect: "2d8+3 damage (special)" } ]
+
+  "[IronSpikeOfDis] should be defined":
+    Verify.testProperties "IronSpikeOfDis",
+      name: [ expect: "Iron Spike of Dis" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
+      attack: [
+        { con: 10, expect: "+0 vs. Reflex" },
+        { con: 16, expect: "+3 vs. Reflex" } ]
+      hit: [
+        { con: 10, expect: "3d10 damage (special)" },
+        { con: 16, expect: "3d10+3 damage (special)" } ]
+
+  "[SummonsOfKhirad] should be defined":
+    Verify.testProperties "SummonsOfKhirad",
+      name: [ expect: "Summons of Khirad" ]
+      keywords: [ expect: [ "arcane", "implement", "psychic", "teleportation" ] ]
+      attack: [
+        { con: 10, expect: "+0 vs. Will" },
+        { con: 16, expect: "+3 vs. Will" } ]
+      hit: [
+        { con: 10, expect: "2d10 damage (special)" },
+        { con: 16, expect: "2d10+3 damage (special)" } ]
+
+  "[ThiefOfFiveFates] should be defined":
+    Verify.testProperties "ThiefOfFiveFates",
+      name: [ expect: "Thief of Five Fates" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
+      attack: [
+        { cha: 10, expect: "+0 vs. Will" },
+        { cha: 16, expect: "+3 vs. Will" } ]
+
+  "[AmbassadorImp] should be defined":
+    Verify.testProperties "AmbassadorImp",
+      name: [ expect: "Ambassador Imp" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "conjuration" ] ]
+
+  "[ShadowForm] should be defined":
+    Verify.testProperties "ShadowForm",
+      name: [ expect: "Shadow Form" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "polymorph" ] ]
+
+  "[ShieldingShades] should be defined":
+    Verify.testProperties "ShieldingShades",
+      name: [ expect: "Shielding Shades" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[WarlocksLeap] should be defined":
+    Verify.testProperties "WarlocksLeap",
+      name: [ expect: "Warlock's Leap" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "teleportation" ] ]

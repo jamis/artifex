@@ -209,3 +209,38 @@ module.exports =
       if Powers[power]
         test.ok power in Classes.Warlock.powers.encounter[3]
     test.done()
+
+  "level-5 spells are accounted for": (test) ->
+    for power in [ "AvernianEruption", "CrownOfMadness", "CurseOfTheBloodyFangs", "HungerOfHadar" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Warlock.powers.daily[5]
+    test.done()
+
+  "level-6 spells are accounted for": (test) ->
+    for power in [ "DarkOnesOwnLuck", "FeySwitch", "ShroudOfBlackSteel", "SpiderClimb" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Warlock.powers.utility[6]
+    test.done()
+
+  "level-7 spells are accounted for": (test) ->
+    for power in [ "HowlOfDoom", "InfernalMoonCurse", "MireTheMind", "SignOfIllOmen" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Warlock.powers.encounter[7]
+    test.done()
+
+  "level-9 spells are accounted for": (test) ->
+    for power in [ "CurseOfTheBlackFrost", "IronSpikeOfDis", "SummonsOfKhirad", "ThiefOfFiveFates" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Warlock.powers.daily[9]
+    test.done()
+
+  "level-10 spells are accounted for": (test) ->
+    for power in [ "AmbassadorImp", "ShadowForm", "ShieldingShades", "WarlocksLeap" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Warlock.powers.utility[10]
+    test.done()

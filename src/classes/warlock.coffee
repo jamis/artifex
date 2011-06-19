@@ -77,9 +77,14 @@ Warlock.powers =
   encounter:
     1: [ "DiabolicGrasp", "DreadfulWord", "VampiricEmbrace", "Witchfire" ]
     3: [ "EldritchRain", "FieryBolt", "FrigidDarkness", "OtherwindStride" ]
+    7: [ "HowlOfDoom", "InfernalMoonCurse", "MireTheMind", "SignOfIllOmen" ]
 
   daily:
     1: [ "ArmorOfAgathys", "CurseOfTheDarkDream", "DreadStar", "FlamesOfPhlegethos" ]
+    5: [ "AvernianEruption", "CrownOfMadness", "CurseOfTheBloodyFangs", "HungerOfHadar" ]
+    9: [ "CurseOfTheBlackFrost", "IronSpikeOfDis", "SummonsOfKhirad", "ThiefOfFiveFates" ]
 
   utility:
-    2: [ "BeguilingTongue", "EtherealStride", "FiendishResilience", "ShadowVeil" ]
+    2 : [ "BeguilingTongue", "EtherealStride", "FiendishResilience", "ShadowVeil" ]
+    6 : [ "DarkOnesOwnLuck", "FeySwitch", "ShroudOfBlackSteel", "SpiderClimb" ]
+    10: [ "AmbassadorImp", "ShadowForm", "ShieldingShades", "WarlocksLeap" ]

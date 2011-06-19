@@ -161,3 +161,128 @@ module.exports =
     _formulae   :
       fey: hasPact "Fey"
       distance: -> 5 + if @fey() then @intM() else 0
+
+  AvernianEruption:
+    name        : "Avernian Eruption"
+    keywords    : [ "arcane", "fire", "implement" ]
+    attack      : "{±con} vs. Reflex"
+    hit         : "2d10{±con.nz} damage"
+
+  CrownOfMadness:
+    name        : "Crown of Madness"
+    keywords    : [ "arcane", "charm", "implement", "psychic" ]
+    attack      : "{±cha} vs. Will"
+    hit         : "2d6{±cha.nz} damage"
+
+  CurseOfTheBloodyFangs:
+    name        : "Curse of the Bloody Fangs"
+    keywords    : [ "arcane", "implement" ]
+    attack      : "{±cha} vs. AC"
+    hit         : "2d10{±cha.nz} damage"
+
+  HungerOfHadar:
+    name        : "Hunger of Hadar"
+    keywords    : [ "arcane", "implement", "necrotic", "zone" ]
+    attack      : "{±con} vs. Fortitude (secondary)"
+    hit         : "1d6{±con.nz} damage (secondary)"
+
+  DarkOnesOwnLuck:
+    name        : "Dark One's Own Luck"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+
+  FeySwitch:
+    name        : "Fey Switch"
+    type        : "encounter"
+    keywords    : [ "arcane", "teleportation" ]
+
+  ShroudOfBlackSteel:
+    name        : "Shroud of Black Steel"
+    type        : "daily"
+    keywords    : [ "arcane", "polymorph" ]
+
+  SpiderClimb:
+    name        : "Spider Climb"
+    type        : "encounter"
+    keywords    : [ "arcane" ]
+
+  HowlOfDoom:
+    name        : "Howl of Doom"
+    keywords    : [ "arcane", "fear", "implement", "thunder" ]
+    attack      : "{±con} vs. Fortitude"
+    hit         : "2d6{±con.nz} damage, push target {count} {squares}"
+    _formulae   :
+      infernal: hasPact "Infernal"
+      count: -> if @infernal() then 1 + @intM() else 2
+      squares: -> @plural @count(), "square", "squares"
+
+  InfernalMoonCurse:
+    name        : "Infernal Moon Curse"
+    keywords    : [ "arcane", "implement", "poison" ]
+    attack      : "{±con} vs. Fortitude"
+    hit         : "2d8{±bonus.nz} damage (special)"
+    _formulae   :
+      infernal: hasPact "Infernal"
+      bonus: -> @conM() + if @infernal() then @intM() else 0
+      "±bonus.nz": -> if @bonus() is 0 then "" else @signed @bonus()
+
+  MireTheMind:
+    name        : "Mire the Mind"
+    keywords    : [ "arcane", "illusion", "implement", "psychic" ]
+    attack      : "{±cha} vs. Will"
+    hit         : "1d10{±cha.nz} damage{pactText} (special)"
+    _formulae   :
+      fey: hasPact "Fey"
+      pactText: -> if @fey() then ", stealth checks at #{@signed @intM()}" else ""
+
+  SignOfIllOmen:
+    name        : "Sign of Ill Omen"
+    keywords    : [ "arcane", "implement" ]
+    attack      : "{±cha} vs. Will"
+    hit         : "2d6{±cha.nz} damage{pactText} (special)"
+    _formulae   :
+      star: hasPact "Star"
+      pactText: -> if @star() then ", target has #{@signed(-@intM())} to next attack" else ""
+
+  CurseOfTheBlackFrost:
+    name        : "Curse of the Black Frost"
+    keywords    : [ "arcane", "cold", "implement" ]
+    attack      : "{±cha} vs. Reflex"
+    hit         : "2d8{±cha.nz} damage (special)"
+
+  IronSpikeOfDis:
+    name        : "Iron Spike of Dis"
+    keywords    : [ "arcane", "implement" ]
+    attack      : "{±con} vs. Reflex"
+    hit         : "3d10{±con.nz} damage (special)"
+
+  SummonsOfKhirad:
+    name        : "Summons of Khirad"
+    keywords    : [ "arcane", "implement", "psychic", "teleportation" ]
+    attack      : "{±con} vs. Will"
+    hit         : "2d10{±con.nz} damage (special)"
+
+  ThiefOfFiveFates:
+    name        : "Thief of Five Fates"
+    keywords    : [ "arcane", "implement" ]
+    attack      : "{±cha} vs. Will"
+
+  AmbassadorImp:
+    name        : "Ambassador Imp"
+    type        : "daily"
+    keywords    : [ "arcane", "conjuration" ]
+
+  ShadowForm:
+    name        : "Shadow Form"
+    type        : "daily"
+    keywords    : [ "arcane", "polymorph" ]
+
+  ShieldingShades:
+    name        : "Shielding Shades"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+
+  WarlocksLeap:
+    name        : "Warlock's Leap"
+    type        : "daily"
+    keywords    : [ "arcane", "teleportation" ]
