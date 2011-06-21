@@ -251,3 +251,25 @@ module.exports =
     name        : "Wall of Fire"
     keywords    : [ "arcane", "conjuration", "fire", "implement" ]
     effect      : "1d6{±int.nz} damage (adjacent), 3d6{±int.nz} damage (inside) (special)"
+
+  ArcaneGate:
+    name        : "Arcane Gate"
+    type        : "daily"
+    keywords    : [ "arcane", "teleportation" ]
+
+  Blur:
+    name        : "Blur"
+    type        : "daily"
+    keywords    : [ "arcane", "illusion" ]
+
+  MirrorImage:
+    name        : "Mirror Image"
+    type        : "daily"
+    keywords    : [ "arcane", "illusion" ]
+
+  Resistance:
+    name        : "Resistance"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+    effect      : "target gains resistance {resist} vs. chosen damage type"
+    _formulae   : { resist: -> @npc.level + @intM() }

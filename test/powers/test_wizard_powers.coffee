@@ -400,3 +400,32 @@ module.exports =
       effect: [
         { int_: 10, expect: "1d6 damage (adjacent), 3d6 damage (inside) (special)" },
         { int_: 16, expect: "1d6+3 damage (adjacent), 3d6+3 damage (inside) (special)" } ]
+
+  "[ArcaneGate] should be defined":
+    Verify.testProperties "ArcaneGate",
+      name: [ expect: "Arcane Gate" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "teleportation" ] ]
+
+  "[Blur] should be defined":
+    Verify.testProperties "Blur",
+      name: [ expect: "Blur" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "illusion" ] ]
+
+  "[MirrorImage] should be defined":
+    Verify.testProperties "MirrorImage",
+      name: [ expect: "Mirror Image" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "illusion" ] ]
+
+  "[Resistance] should be defined":
+    Verify.testProperties "Resistance",
+      name: [ expect: "Resistance" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+      effect: [
+        { int_: 10, level: 1, expect: "target gains resistance 1 vs. chosen damage type" },
+        { int_: 16, level: 1, expect: "target gains resistance 4 vs. chosen damage type" },
+        { int_: 10, level: 10, expect: "target gains resistance 10 vs. chosen damage type" },
+        { int_: 16, level: 10, expect: "target gains resistance 13 vs. chosen damage type" } ]

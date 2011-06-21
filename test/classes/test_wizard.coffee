@@ -243,3 +243,10 @@ module.exports =
       if Powers[power]
         test.ok power in Classes.Wizard.powers.daily[9]
     test.done()
+
+  "level-10 spells are accounted for": (test) ->
+    for power in [ "ArcaneGate", "Blur", "MirrorImage", "Resistance" ]
+      test.ok Powers[power], "`#{power}' is not defined"
+      if Powers[power]
+        test.ok power in Classes.Wizard.powers.utility[10]
+    test.done()

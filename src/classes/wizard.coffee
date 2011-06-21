@@ -87,5 +87,6 @@ Wizard.powers =
     9: [ "IceStorm", "LightningSerpent", "MordenkainensSword", "WallOfFire" ]
 
   utility:
-    2: [ "ExpeditiousRetreat", "FeatherFall", "Jump", "Shield" ]
-    6: [ "DimensionDoor", "DisguiseSelf", "DispelMagic", "Invisibility", "Levitate", "WallOfFog" ]
+    2 : [ "ExpeditiousRetreat", "FeatherFall", "Jump", "Shield" ]
+    6 : [ "DimensionDoor", "DisguiseSelf", "DispelMagic", "Invisibility", "Levitate", "WallOfFog" ]
+    10: [ "ArcaneGate", "Blur", "MirrorImage", "Resistance" ]
