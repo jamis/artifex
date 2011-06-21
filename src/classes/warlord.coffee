@@ -56,6 +56,15 @@ Warlord.powers =
 
   encounter:
     1: [ "GuardingAttack", "HammerAndAnvil", "LeafOnTheWind", "WarlordsFavor" ]
+    3: [ "HoldTheLine", "InspiringWarCry", "SteelMonsoon", "WarlordsStrike" ]
+    7: [ "LionsRoar", "SunderArmor", "SurpriseAttack", "SurroundFoe" ]
 
   daily:
     1: [ "BastionOfDefense", "LeadTheAttack", "PinTheFoe", "WhiteRavenOnslaught" ]
+    5: [ "StandTheFallen", "TurningPoint", "VillainsNightmare" ]
+    9: [ "IronDragonCharge", "KnockThemDown", "WhiteRavenStrike" ]
+
+  utility:
+    2 : [ "AidTheInjured", "CrescendoOfViolence", "KnightsMove", "ShakeItOff" ]
+    6 : [ "GuideTheCharge", "InspiringReaction", "QuickStep", "StandTough" ]
+    10: [ "DefensiveRally", "EaseSuffering", "TacticalShift" ]

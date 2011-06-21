@@ -115,3 +115,182 @@ module.exports =
     attackTypes : [ "melee weapon" ]
     attack      : "{±str} vs. AC"
     hit         : "3[W]{±str.nz} damage (special)"
+
+  AidTheInjured:
+    name        : "Aid the Injured"
+    type        : "encounter"
+    keywords    : [ "healing", "martial" ]
+
+  CrescendoOfViolence:
+    name        : "Crescendo of Violence"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    effect      : "ally gains {#cha} temp HP"
+
+  KnightsMove:
+    name        : "Knight's Move"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+
+  ShakeItOff:
+    name        : "Shake It Off"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    effect      : "target gets {±cha} bonus to save"
+
+  HoldTheLine:
+    name        : "Hold the Line"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "1[W]{±str.nz} damage"
+
+  InspiringWarCry:
+    name        : "Inspiring War Cry"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage"
+
+  SteelMonsoon:
+    name        : "Steel Monsoon"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage, {count} {allies} may shift"
+    _formulae   :
+      tactical: hasPresence "Tactical"
+      count: -> if @tactical() then @intM() else 1
+      allies: -> @plural @count(), "ally", "allies"
+
+  WarlordsStrike:
+    name        : "Warlord's Strike"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage, allies gain {±bonus} to damage"
+    _formulae   :
+      inspiring: hasPresence "Inspiring"
+      "±bonus": -> @signed(if @inspiring() then 1+@chaM() else 2)
+
+  StandTheFallen:
+    name        : "Stand the Fallen"
+    keywords    : [ "healing", "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "3[W]{±str.nz} damage"
+    effect      : "allies can surge and regain {±cha} extra HP"
+
+  TurningPoint:
+    name        : "Turning Point"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage (special)"
+
+  VillainsNightmare:
+    name        : "Villain's Nightmare"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. Reflex"
+    hit         : "3[W]{±str.nz} damage"
+
+  GuideTheCharge:
+    name        : "Guide the Charge"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    effect      : "ally adds {±int} to damage roll, etc."
+
+  InspiringReaction:
+    name        : "Inspiring Reaction"
+    type        : "encounter"
+    keywords    : [ "healing", "martial" ]
+    effect      : "ally spends surge and gets {±cha} extra HP"
+
+  QuickStep:
+    name        : "Quick Step"
+    type        : "daily"
+    keywords    : [ "martial" ]
+
+  StandTough:
+    name        : "Stand Tough"
+    type        : "daily"
+    keywords    : [ "healing", "martial" ]
+    effect      : "targets regain {regen} HP"
+    _formulae   : { regen: -> 10 + @chaM() }
+
+  LionsRoar:
+    name        : "Lion's Roar"
+    keywords    : [ "healing", "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage"
+    effect      : "ally can surge and get {±bonus} extra HP"
+    _formulae   :
+      inspiring: hasPresence "Inspiring"
+      "±bonus": -> @signed(if @inspiring() then @chaM() else 0)
+
+  SunderArmor:
+    name        : "Sunder Armor"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage (special)"
+
+  SurpriseAttack:
+    name        : "Surprise Attack"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "1[W]{±str.nz} damage, ally makes free attack at {±bonus}"
+    _formulae   :
+      tactical: hasPresence "Tactical"
+      "±bonus": -> @signed(if @tactical() then @intM() else 0)
+
+  SurroundFoe:
+    name        : "Surround Foe"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "2[W]{±str.nz} damage"
+
+  IronDragonCharge:
+    name        : "Iron Dragon Charge"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC (special)"
+    hit         : "3[W]{±str.nz} damage"
+
+  KnockThemDown:
+    name        : "Knock Them Down"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "3[W]{±str.nz} damage (special)"
+
+  WhiteRavenStrike:
+    name        : "White Raven Strike"
+    keywords    : [ "martial", "weapon" ]
+    attackTypes : [ "melee weapon" ]
+    attack      : "{±str} vs. AC"
+    hit         : "3[W]{±str.nz} damage"
+    effect      : "allies gain {±cha} extra temp HP if target dropped to 0 HP"
+
+  DefensiveRally:
+    name        : "Defensive Rally"
+    type        : "daily"
+    keywords    : [ "healing", "martial" ]
+
+  EaseSuffering:
+    name        : "Ease Suffering"
+    type        : "daily"
+    keywords    : [ "martial" ]
+
+  TacticalShift:
+    name        : "Tactical Shift"
+    type        : "daily"
+    keywords    : [ "martial" ]
+    effect      : "ally can shift {distance} {squares}"
+    _formulae   :
+      distance: -> 1 + @intM()
+      squares: -> @plural @distance(), "square", "squares"
