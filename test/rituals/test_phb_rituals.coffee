@@ -56,3 +56,39 @@ module.exports =
   "Tenser's Floating Disk should be present": (test) ->
     checkRitual test, 1, "Tenser's Floating Disk", ["arcana"], "exploration", "phb"
     test.done()
+
+  "Endure Elements should be present": (test) ->
+    checkRitual test, 2, "Endure Elements", ["arcana", "nature"], "exploration", "phb"
+    test.done()
+
+  "Eye of Alarm should be present": (test) ->
+    checkRitual test, 2, "Eye of Alarm", ["arcana"], "warding", "phb"
+    test.done()
+
+  "Water Walk should be present": (test) ->
+    checkRitual test, 2, "Water Walk", ["nature"], "exploration", "phb"
+    test.done()
+
+  "Detect Secret Doors should be present": (test) ->
+    checkRitual test, 3, "Detect Secret Doors", ["arcana"], "exploration", "phb"
+    test.done()
+
+  "Arcane Lock should be present": (test) ->
+    checkRitual test, 4, "Arcane Lock", ["arcana"], "warding", "phb"
+    test.done()
+
+  "Enchant Magic Item should be present": (test) ->
+    checkRitual test, 4, "Enchant Magic Item", ["arcana"], "creation", "phb"
+    test.done()
+
+  "Hand of Fate should be present": (test) ->
+    checkRitual test, 4, "Hand of Fate", ["religion"], "divination", "phb"
+    test.done()
+
+  "Knock should be present": (test) ->
+    checkRitual test, 4, "Knock", ["arcana"], "exploration", "phb"
+    test.done()
+
+  "Travelers' Feast should be present": (test) ->
+    checkRitual test, 4, "Travelers' Feast", ["nature"], "exploration", "phb"
+    test.done()
