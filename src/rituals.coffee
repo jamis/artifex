@@ -1,3 +1,3 @@
 PHB = require './rituals/phb'
 
-module.exports = PHB  
+module.exports = PHB

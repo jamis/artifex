@@ -5,7 +5,7 @@ checkRitual = (test, level, name, skills, category, source) ->
   test.ok ritual?, "expected ritual `#{name}' to exist as level #{level}"
   test.equal ritual.name, name, "expected ritual name to be `#{name}', was `#{ritual.name}'"
 
-  keySkills = ritual.keySkills.sort()
+  keySkills = (ritual.keySkills ? []).sort()
   skills = skills.sort()
   test.deepEqual keySkills, skills, "expected ritual keySkills to be `#{skills}', was `#{keySkills}'"
 
@@ -91,4 +91,76 @@ module.exports =
 
   "Travelers' Feast should be present": (test) ->
     checkRitual test, 4, "Travelers' Feast", ["nature"], "exploration", "phb"
+    test.done()
+
+  "Brew Potion should be present": (test) ->
+    checkRitual test, 5, "Brew Potion", ["arcana", "religion"], "creation", "phb"
+    test.done()
+
+  "Hallucinatory Item should be present": (test) ->
+    checkRitual test, 5, "Hallucinatory Item", ["arcana"], "deception", "phb"
+    test.done()
+
+  "Magic Circle should be present": (test) ->
+    checkRitual test, 5, "Magic Circle", ["arcana"], "binding", "phb"
+    test.done()
+
+  "Commune with Nature should be present": (test) ->
+    checkRitual test, 6, "Commune with Nature", ["nature"], "divination", "phb"
+    test.done()
+
+  "Cure Disease should be present": (test) ->
+    checkRitual test, 6, "Cure Disease", ["heal"], "restoration", "phb"
+    test.done()
+
+  "Discern Lies should be present": (test) ->
+    checkRitual test, 6, "Discern Lies", ["religion"], "divination", "phb"
+    test.done()
+
+  "Disenchant Magic Item should be present": (test) ->
+    checkRitual test, 6, "Disenchant Magic Item", ["arcana"], "creation", "phb"
+    test.done()
+
+  "Leomund's Secret Chest should be present": (test) ->
+    checkRitual test, 6, "Leomund's Secret Chest", ["arcana"], "exploration", "phb"
+    test.done()
+
+  "Phantom Steed should be present": (test) ->
+    checkRitual test, 6, "Phantom Steed", ["arcana"], "exploration", "phb"
+    test.done()
+
+  "Sending should be present": (test) ->
+    checkRitual test, 6, "Sending", ["arcana"], "exploration", "phb"
+    test.done()
+
+  "Speak with Dead should be present": (test) ->
+    checkRitual test, 6, "Speak with Dead", ["religion"], "exploration", "phb"
+    test.done()
+
+  "Linked Portal should be present": (test) ->
+    checkRitual test, 8, "Linked Portal", ["arcana"], "travel", "phb"
+    test.done()
+
+  "Raise Dead should be present": (test) ->
+    checkRitual test, 8, "Raise Dead", ["heal"], "restoration", "phb"
+    test.done()
+
+  "Remove Afflication should be present": (test) ->
+    checkRitual test, 8, "Remove Afflication", ["heal"], "restoration", "phb"
+    test.done()
+
+  "Water Breathing should be present": (test) ->
+    checkRitual test, 8, "Water Breathing", ["arcana", "nature"], "exploration", "phb"
+    test.done()
+
+  "Wizard's Sight should be present": (test) ->
+    checkRitual test, 8, "Wizard's Sight", ["arcana"], "scrying", "phb"
+    test.done()
+
+  "Consult Mystic Sages should be present": (test) ->
+    checkRitual test, 10, "Consult Mystic Sages", ["religion"], "divination", "phb"
+    test.done()
+
+  "Detect Object should be present": (test) ->
+    checkRitual test, 10, "Detect Object", ["arcana"], "exploration", "phb"
     test.done()

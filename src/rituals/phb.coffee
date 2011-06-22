@@ -92,6 +92,104 @@ module.exports =
       category : "exploration"
       source   : "phb"
 
+  5:
+    "Brew Potion":
+      name     : "Brew Potion"
+      keySkills: [ "arcana", "religion" ]
+      category : "creation"
+      source   : "phb"
+    "Hallucinatory Item":
+      name     : "Hallucinatory Item"
+      keySkills: [ "arcana" ]
+      category : "deception"
+      source   : "phb"
+    "Magic Circle":
+      name     : "Magic Circle"
+      keySkills: [ "arcana" ]
+      category : "binding"
+      source   : "phb"
+
+  6:
+    "Commune with Nature":
+      name     : "Commune with Nature"
+      keySkills: [ "nature" ]
+      category : "divination"
+      source   : "phb"
+    "Cure Disease":
+      name     : "Cure Disease"
+      keySkills: [ "heal" ]
+      category : "restoration"
+      source   : "phb"
+    "Discern Lies":
+      name     : "Discern Lies"
+      keySkills: [ "religion" ]
+      category : "divination"
+      source   : "phb"
+    "Disenchant Magic Item":
+      name     : "Disenchant Magic Item"
+      keySkills: [ "arcana" ]
+      category : "creation"
+      source   : "phb"
+    "Leomund's Secret Chest":
+      name     : "Leomund's Secret Chest"
+      keySkills: [ "arcana" ]
+      category : "exploration"
+      source   : "phb"
+    "Phantom Steed":
+      name     : "Phantom Steed"
+      keySkills: [ "arcana" ]
+      category : "exploration"
+      source   : "phb"
+    "Sending":
+      name     : "Sending"
+      keySkills: [ "arcana" ]
+      category : "exploration"
+      source   : "phb"
+    "Speak with Dead":
+      name     : "Speak with Dead"
+      keySkills: [ "religion" ]
+      category : "exploration"
+      source   : "phb"
+
+  8:
+    "Linked Portal":
+      name     : "Linked Portal"
+      keySkills: [ "arcana" ]
+      category : "travel"
+      source   : "phb"
+    "Raise Dead":
+      name     : "Raise Dead"
+      keySkills: [ "heal" ]
+      category : "restoration"
+      source   : "phb"
+    "Remove Afflication":
+      name     : "Remove Afflication"
+      keySkills: [ "heal" ]
+      category : "restoration"
+      source   : "phb"
+    "Water Breathing":
+      name     : "Water Breathing"
+      keySkills: [ "arcana", "nature" ]
+      category : "exploration"
+      source   : "phb"
+    "Wizard's Sight":
+      name: "Wizard's Sight"
+      keySkills: [ "arcana" ]
+      category : "scrying"
+      source   : "phb"
+
+  10:
+    "Consult Mystic Sages":
+      name     : "Consult Mystic Sages"
+      keySkills: [ "religion" ]
+      category : "divination"
+      source   : "phb"
+    "Detect Object":
+      name: "Detect Object"
+      keySkills: [ "arcana" ]
+      category : "exploration"
+      source   : "phb"
+
   each: (level, callback) ->
     if this[level]?
       for key, value of this[level]
