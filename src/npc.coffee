@@ -83,12 +83,15 @@ module.exports = class NPC
     this
 
   advance: ->
+    @fire "advance:before"
+
     @level++
     @hitPoints.adjust @hitPointsPerLevel
 
     for item in NPC.level[@level]
       @advanceItem item
 
+    @fire "advance:after"
     this
 
   initializeAbilities: ->

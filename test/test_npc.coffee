@@ -479,6 +479,28 @@ module.exports =
     npc.generate()
     test.done()
 
+  "advance callbacks should be invoked around the advance method": (test) ->
+    npc = new NPC
+    npc.class = new TestClass npc
+    npc.race = new TestRace npc
+    hp = npc.hitPoints.score()
+
+    npc.when "advance:before", ->
+      npc.firedBefore = true
+      test.equal npc.hitPoints.score(), hp
+      test.equal npc.level, 1
+
+    npc.when "advance:after", ->
+      npc.firedAfter = true
+      test.equal npc.hitPoints.score(), hp+5
+      test.equal npc.level, 2
+
+    npc.advance()
+
+    test.ok npc.firedBefore, "expected advance:before to fire"
+    test.ok npc.firedAfter, "expected advance:after to fire"
+    test.done()
+
   "advancement chart should describe gains at each level": (test) ->
     test.deepEqual NPC.level[ 2], ["utility", "feat"]
     test.deepEqual NPC.level[ 3], ["encounter"]
