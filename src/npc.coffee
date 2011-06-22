@@ -75,9 +75,6 @@ module.exports = class NPC
     @selectTrainedSkills()
     @selectPendingFeats()
 
-    @selectArmor()
-    @selectWeapons()
-
     @selectPowers()
 
     this
@@ -92,6 +89,11 @@ module.exports = class NPC
       @advanceItem item
 
     @fire "advance:after"
+    this
+
+  equip: ->
+    @selectArmor()
+    @selectWeapons()
     this
 
   initializeAbilities: ->

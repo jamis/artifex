@@ -343,17 +343,21 @@ module.exports =
     test.ok npc.feats.length > 0
     test.done()
 
-  "#generate should select and apply an appropriate armor": (test) ->
+  "#equip should select and apply an appropriate armor": (test) ->
     npc = (new NPC).generate()
-    test.ok npc.armor?, "expected armor to be set"
+    test.ok not npc.armor?, "expected armor to not be set"
+    npc.equip()
+    test.ok npc.armor?, "expected to not be set"
     armor = Armor[npc.armor]
     test.ok armor?, "expected a valid armor to be selected"
     test.ok Armor.allows(npc, npc.armor), "expected selected armor to match proficiency"
     test.ok npc.defenses.ac.has(armor.bonus, "armor") if armor.bonus != 0
     test.done()
 
-  "#generate should select an appropriate weapon": (test) ->
-    npc = (new NPC).generate()
+  "#equip should select an appropriate weapon": (test) ->
+    npc = (new NPC class: TestClass).generate()
+    test.equal npc.equipment.weapons().length, 0, "expected generate to not assign weapons"
+    npc.equip()
     test.ok npc.equipment.weapons().length > 0, "expected weapons to be assigned"
     for weapon in npc.equipment.weapons()
       test.ok Weapons.proficient(npc, weapon), "expected NPC to be proficient in assigned weapon `#{weapon}'"
@@ -361,11 +365,13 @@ module.exports =
 
   "weapon selection should honor preferredWeaponHandCount": (test) ->
     for hands in [1, 2]
-      npc = new NPC class: TestClass, race: TestRace
+      npc = new NPC
       npc.preferredWeaponHandCount = hands
-      npc.generate()
+      npc.proficiencies.weapons.push "simple melee"
+      npc.proficiencies.weapons.push "military melee"
+      npc.selectWeapons()
       for weapon in npc.equipment.weapons()
-        test.equal npc.preferredWeaponHandCount, Weapons.all[weapon].hands, "class(#{npc.class.name}) race(#{npc.race.name})"
+        test.equal npc.preferredWeaponHandCount, Weapons.all[weapon].hands
     test.done()
 
   "weapon selection should honor preferredWeaponHandCount of 2 for small characters": (test) ->
@@ -416,7 +422,7 @@ module.exports =
     test.done()
 
   "should have (at least) two L1 atWill class powers": (test) ->
-    npc = (new NPC).generate()
+    npc = (new NPC class: TestClass).generate()
     count = 0
     for power in npc.powers.atWill
       count += 1 if power.id in npc.class.powers.atWill[1]
@@ -424,14 +430,14 @@ module.exports =
     test.done()
 
   "should have one L1 encounter class power": (test) ->
-    npc = (new NPC).generate()
+    npc = (new NPC class: TestClass).generate()
     test.expect 1
     for power in npc.powers.encounter
       test.ok true if power.id in npc.class.powers.encounter[1]
     test.done()
 
   "should have (at least) one L1 daily class power": (test) ->
-    npc = (new NPC).generate()
+    npc = (new NPC class: TestClass).generate()
     count = 0
     for power in npc.powers.daily
       count += 1 if power.id in npc.class.powers.daily[1]
