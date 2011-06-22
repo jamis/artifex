@@ -34,6 +34,11 @@ module.exports =
       test.ok weapon in npc.proficiencies.weapons, "expected to find #{weapon} in weapon proficiencies"
     test.done()
 
+  "should prefer both melee and ranged weapons": (test) ->
+    new Classes.Rogue(npc = new NPC)
+    test.equal npc.preferredWeaponStyle, "both"
+    test.done()
+
   "should have +2 to reflex": (test) ->
     new Classes.Rogue(npc = new NPC)
     test.ok npc.defenses.ref.has(2, "class"), "missing +2 class bonus to ref"

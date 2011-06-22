@@ -20,6 +20,8 @@ module.exports = class Rogue
     npc.proficiencies.weapons.push "sling"
     npc.proficiencies.weapons.push "shortSword"
 
+    npc.preferredWeaponStyle = "both"
+
     npc.defenses.ref.adjust "class", 2
 
     npc.attacks.sneakAttack = new Attribute 0

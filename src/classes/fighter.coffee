@@ -30,7 +30,7 @@ module.exports = class Fighter
     npc.feature "class", "Combat Challenge"
     npc.feature "class", "Combat Superiority", "opportunity attacks at +wis"
 
-    npc.weaponPreferences.push count: 1, type: "melee"
+    npc.preferredWeaponStyle = "melee"
     npc.preferredWeaponHandCount = npc.random.pick 1, 2
     npc.feature "class", "Fighter Weapon Talent", "+1 to attack with #{npc.preferredWeaponHandCount}-handed weapons"
 

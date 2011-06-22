@@ -20,6 +20,8 @@ module.exports = class Cleric
     npc.proficiencies.weapons.push "simple melee"
     npc.proficiencies.weapons.push "simple ranged"
 
+    npc.preferredWeaponStyle = "both"
+
     npc.supportedImplements.push "holy symbol"
 
     npc.defenses.will.adjust "class", 2

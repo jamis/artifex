@@ -82,9 +82,7 @@ module.exports =
 
   "should prefer melee weapons": (test) ->
     new Classes.Fighter(npc = new NPC)
-    test.equal npc.weaponPreferences.length, 1
-    test.equal npc.weaponPreferences[0].count, 1
-    test.equal npc.weaponPreferences[0].type, "melee"
+    test.equal npc.preferredWeaponStyle, "melee"
     test.done()
 
   "fighter powers are called exploits": (test) ->

@@ -36,6 +36,11 @@ module.exports =
       test.ok weapon in npc.proficiencies.weapons, "expected to find #{weapon} in weapon proficiencies"
     test.done()
 
+  "should have no preferred weapon style": (test) ->
+    new Classes.Warlock(npc = new NPC)
+    test.ok not npc.preferredWeaponStyle?
+    test.done()
+    
   "should add rod and wand as implements": (test) ->
     npc = new NPC
     warlock = new Classes.Warlock npc

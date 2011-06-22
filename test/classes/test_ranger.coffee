@@ -93,13 +93,12 @@ module.exports =
     
   "archer should prefer ranged weapons": (test) ->
     new Classes.Ranger(npc = new NPC ranger: { style: "Archer" })
-    test.equal npc.weaponPreferences.length, 1
-    test.equal npc.weaponPreferences[0].count, 1
-    test.equal npc.weaponPreferences[0].type, "ranged"
+    test.equal npc.preferredWeaponStyle, "ranged"
     test.done()
     
   "two-blade should prefer melee weapons": (test) ->
     new Classes.Ranger(npc = new NPC ranger: { style: "Two-Blade" })
+    test.equal npc.preferredWeaponStyle, "melee"
     test.equal npc.preferredWeaponHandCount, 1
     test.equal npc.weaponPreferences.length, 1
     test.equal npc.weaponPreferences[0].count, 2

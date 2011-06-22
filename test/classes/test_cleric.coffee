@@ -36,6 +36,11 @@ module.exports =
       test.ok weapon in npc.proficiencies.weapons, "expected to find #{weapon} in weapon proficiencies"
     test.done()
 
+  "should prefer both weapon styles": (test) ->
+    new Classes.Cleric(npc = new NPC)
+    test.equal npc.preferredWeaponStyle, "both"
+    test.done()
+
   "should add holy symbol as an implement": (test) ->
     npc = new NPC
     cleric = new Classes.Cleric npc

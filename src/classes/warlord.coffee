@@ -27,7 +27,7 @@ module.exports = class Warlord
     npc.healingSurge.count.adjust "class", 7
 
     npc.pendingSkills.push count: 4, list: Warlord.skills
-    npc.weaponPreferences.push count: 1, type: "melee"
+    npc.preferredWeaponStyle = "melee"
 
     npc.feature "class", "Combat Leader"
 

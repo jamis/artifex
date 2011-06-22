@@ -386,6 +386,41 @@ module.exports =
       test.ok "versatile" in Weapons.all[weapon].properties
     test.done()
 
+  "weaponPreferences should default to melee when preferredWeaponStyle is melee": (test) ->
+    npc = new NPC
+    npc.preferredWeaponStyle = "melee"
+    npc.proficiencies.weapons.push "simple melee"
+    npc.proficiencies.weapons.push "simple ranged"
+    npc.selectWeapons()
+    weapons = npc.equipment.weapons()
+    test.equal weapons.length, 1
+    test.equal Weapons.all[weapons[0]].category, "simple melee"
+    test.done()
+
+  "weaponPreferences should default to ranged when preferredWeaponStyle is ranged": (test) ->
+    npc = new NPC
+    npc.preferredWeaponStyle = "ranged"
+    npc.proficiencies.weapons.push "simple melee"
+    npc.proficiencies.weapons.push "simple ranged"
+    npc.selectWeapons()
+    weapons = npc.equipment.weapons()
+    test.equal weapons.length, 1
+    test.equal Weapons.all[weapons[0]].category, "simple ranged"
+    test.done()
+
+  "weaponPreferences should default to both when preferredWeaponStyle is both": (test) ->
+    npc = new NPC
+    npc.preferredWeaponStyle = "both"
+    npc.proficiencies.weapons.push "simple melee"
+    npc.proficiencies.weapons.push "simple ranged"
+    npc.selectWeapons()
+    weapons = npc.equipment.weapons()
+    test.equal weapons.length, 2
+    categories = [Weapons.all[weapons[0]].category, Weapons.all[weapons[1]].category]
+    test.ok "simple melee" in categories
+    test.ok "simple ranged" in categories
+    test.done()
+
   "weapon selection should honor 'ranged' weaponPreferences": (test) ->
     npc = new NPC
     npc.weaponPreferences.push type: "ranged", count: 2

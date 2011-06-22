@@ -351,7 +351,11 @@ module.exports = class NPC
 
   selectWeapons: ->
     if @weaponPreferences.length is 0
-      @weaponPreferences.push count: 1
+      if @preferredWeaponStyle is "both"
+        @weaponPreferences.push count: 1, type: "melee"
+        @weaponPreferences.push count: 1, type: "ranged"
+      else
+        @weaponPreferences.push count: 1, type: @preferredWeaponStyle
 
     for pref in @weaponPreferences
       for count in [1..pref.count]

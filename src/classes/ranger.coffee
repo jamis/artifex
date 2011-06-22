@@ -33,8 +33,9 @@ module.exports = class Ranger
     npc.feature "class", "#{style} Fighting Style"
 
     if style is "Archer"
-      npc.weaponPreferences.push count: 1, type: "ranged"
+      npc.preferredWeaponStyle = "ranged"
     else
+      npc.preferredWeaponStyle = "melee"
       npc.weaponPreferences.push count: 2, type: "melee"
       npc.preferredWeaponHandCount = 1
 
