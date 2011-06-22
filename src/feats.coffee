@@ -1,6 +1,7 @@
 Armor     = require './armor'
 Attribute = require './attribute'
 Powers    = require './powers'
+Rituals   = require './rituals'
 Weapons   = require './weapons'
 
 class Feat
@@ -367,3 +368,16 @@ module.exports = Feats =
     name: "Ritual Caster"
     requires:
       trained: "religion|arcana"
+    grants:
+      apply: (npc) ->
+        npc.advanceItem_RitualCaster = ->
+          if npc.random.number(100) < 50
+            list = []
+            for level in [1..npc.level]
+              for ritual in Rituals.all(level)
+                unless ritual in (npc.rituals[level] ? [])
+                  list.push v: [level, ritual], w: Math.pow(31 - level, 2)
+            [level, ritual] = npc.random.pickw(list...)
+            npc.learnRitual level, ritual
+
+        npc.when "advance:after", -> npc.advanceItem_RitualCaster()

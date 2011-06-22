@@ -1,4 +1,4 @@
-{Classes, NPC, Feats, Powers} = require '..'
+{Classes, NPC, Feats, Powers, Races} = require '..'
 
 hasPower = (id, category) ->
   (npc) ->
@@ -424,3 +424,21 @@ module.exports =
       name: "Ritual Caster"
       allows: [ { trained: [ "arcana" ] }, { trained: [ "religion" ] } ]
       disallows: [ {} ]
+      grants:
+        setup:
+          when: (npc) ->
+            npc.class = new Classes.Fighter(npc)
+            npc.race = new Races.Human(npc)
+        tests:
+          "should add advancement hook for adding rituals": (npc) ->
+            original = npc.advanceItem_RitualCaster
+            return false unless original?
+            npc.advanceItem_RitualCaster = -> npc.advancedRitualCaster = true
+            npc.advance()
+            npc.advanceItem_RitualCaster = original
+            npc.advancedRitualCaster?
+
+          "advancement hook can possibly add a ritual": (npc) ->
+            loop
+              npc.advanceItem_RitualCaster()
+              return true if npc.rituals.count() > 0
