@@ -272,12 +272,16 @@ module.exports =
     test.deepEqual power.get("attackTypes"), [ "Close burst 10", "Melee 2" ]
     test.done()
 
-  "allowed() should compare attackType with equipped weapons": (test) ->
+  "allowed() should compare attackType with weaponStyle": (test) ->
     archer = new NPC
-    archer.equipment.push "longbow"
+    archer.preferredWeaponStyle = "ranged"
 
     swordsman = new NPC
-    swordsman.equipment.push "longsword"
+    swordsman.preferredWeaponStyle = "melee"
+
+    flexible = new NPC
+    flexible.equipment.push "longsword"
+    flexible.equipment.push "crossbow"
 
     melee = { attackTypes: [ "melee weapon" ] }
     ranged = { attackTypes: [ "ranged weapon" ] }
@@ -294,6 +298,11 @@ module.exports =
     swordsman_both = new Power both, npc: swordsman
     swordsman_any = new Power any, npc: swordsman
 
+    both_melee = new Power melee, npc: flexible
+    both_ranged = new Power ranged, npc: flexible
+    both_both = new Power both, npc: flexible
+    both_any = new Power any, npc: flexible
+
     test.ok not archer_melee.allowed()
     test.ok archer_ranged.allowed()
     test.ok archer_both.allowed()
@@ -303,6 +312,11 @@ module.exports =
     test.ok not swordsman_ranged.allowed()
     test.ok swordsman_both.allowed()
     test.ok swordsman_any.allowed()
+
+    test.ok both_melee.allowed()
+    test.ok both_ranged.allowed()
+    test.ok both_both.allowed()
+    test.ok both_any.allowed()
 
     test.done()
 

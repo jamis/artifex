@@ -96,6 +96,22 @@ module.exports = class NPC
     @selectWeapons()
     this
 
+  weaponStyle: ->
+    return @preferredWeaponStyle if @preferredWeaponStyle?
+
+    style = undefined
+
+    for weapon in @equipment.weapons()
+      info = Weapons.all[weapon]
+      if 0 <= info.category.indexOf "melee"
+        return "both" if style is "ranged"
+        style = "melee"
+      else if 0 <= info.category.indexOf "ranged"
+        return "both" if style is "melee"
+        style = "ranged"
+
+    style
+
   initializeAbilities: ->
     @abilities =
       "str": new Ability 10

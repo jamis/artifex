@@ -452,6 +452,34 @@ module.exports =
     npc.selectPowers()
     test.done()
 
+  "#weaponStyle should default to undefined": (test) ->
+    npc = new NPC
+    test.ok not npc.weaponStyle()?
+    test.done()
+
+  "#weaponStyle should return general style of equipped weapons": (test) ->
+    npc = new NPC
+    npc.equipment.push "longsword"
+    test.equal npc.weaponStyle(), "melee"
+
+    npc = new NPC
+    npc.equipment.push "crossbow"
+    test.equal npc.weaponStyle(), "ranged"
+
+    npc = new NPC
+    npc.equipment.push "crossbow"
+    npc.equipment.push "longsword"
+    test.equal npc.weaponStyle(), "both"
+
+    test.done()
+
+  "#weaponStyle should use preferredWeaponStyle over any equipped weapons": (test) ->
+    npc = new NPC
+    npc.preferredWeaponStyle = "ranged"
+    npc.equipment.push "longsword"
+    test.equal npc.weaponStyle(), "ranged"
+    test.done()
+
   "#generate should apply additional pending powers": (test) ->
     npc = new NPC
     npc.pendingPowers.push count: 1, category: "atWill", list: Classes.Cleric.powers.daily[1]

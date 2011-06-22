@@ -25,12 +25,9 @@ module.exports = class Power
     types = @get "attackTypes"
     return true unless types?
 
-    hasRanged = hasMelee = false
-    for weapon in @npc.equipment.weapons()
-      if Weapons.category(weapon, "ranged")
-        hasRanged = true
-      else if Weapons.category(weapon, "melee")
-        hasMelee = true
+    weaponStyle = @npc.weaponStyle()
+    hasRanged   = weaponStyle in ["both", "ranged"]
+    hasMelee    = weaponStyle in ["both", "melee"]
 
     valid = false
     for type in types
