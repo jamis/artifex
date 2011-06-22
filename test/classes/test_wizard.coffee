@@ -144,6 +144,7 @@ module.exports =
 
   "should gain two rituals at levels 5, 11, 15, 21, and 25": (test) ->
     new Classes.Wizard(npc = new NPC)
+    npc.advanceItem_RitualCaster = -> # undef this so that we don't get extra rituals
     count = 3
 
     for level in [5, 11, 15, 21, 25]
