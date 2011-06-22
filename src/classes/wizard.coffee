@@ -67,6 +67,30 @@ module.exports = class Wizard
     npc.advanceItem_Daily = ->
       @selectPowersFor "daily", 2
 
+    npc.when "advance:after", =>
+      @considerRitualsFor npc
+        
+  considerRitualsFor: (npc) ->
+    if npc.level in [5, 11, 15, 21, 25]
+      @addHighestLevelRitualsFor npc
+
+  relevantRitualsFor: (npc, level) ->
+    list = []
+    for ritual in Rituals.all(level)
+      list.push(ritual) unless ritual in (npc.rituals[level] ? [])
+    list
+
+  addHighestLevelRitualsFor: (npc) ->
+    level = npc.level
+    remaining = 2
+    while level > 0
+      list = npc.random.shuffle(@relevantRitualsFor(npc, level)...)[0...remaining]
+      for ritual in list
+        npc.learnRitual level, ritual
+        remaining--
+      break if remaining is 0
+      level--
+
 Wizard.simpleName = "wizard"
 Wizard.source = "phb"
 Wizard.powerSource = "arcane"

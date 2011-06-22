@@ -22,7 +22,6 @@ module.exports = class NPC
     @feats = []
     @pendingFeats = [count: 1]
     @pendingPowers = []
-    @rituals = {}
     @alignment = "unaligned"
     @pendingSkills = []
     @gender = @options.gender
@@ -31,6 +30,7 @@ module.exports = class NPC
     @initializeAbilities()
     @initializeSkills()
     @initializePowers()
+    @initializeRituals()
     @initializeFeatures()
     @initializeHitPoints()
     @initializeHealingSurges()
@@ -141,6 +141,20 @@ module.exports = class NPC
           for power in this[category]
             if callback(category, power)
               return power
+        undefined
+
+  initializeRituals: ->
+    @rituals =
+      count: ->
+        total = 0
+        for level in [1..30]
+          total += (this[level] ? []).length
+        total
+    
+      knows: (needle) ->
+        for level in [1..30]
+          for ritual in (this[level] ? [])
+            return level if needle is ritual
         undefined
 
   initializeFeatures: ->

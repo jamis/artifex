@@ -142,6 +142,19 @@ module.exports =
     test.equal npc.rituals[1].length, 3
     test.done()
 
+  "should gain two rituals at levels 5, 11, 15, 21, and 25": (test) ->
+    new Classes.Wizard(npc = new NPC)
+    count = 3
+
+    for level in [5, 11, 15, 21, 25]
+      test.equal npc.rituals.count(), count
+      npc.level = level
+
+      npc.fire "advance:after"
+      test.equal npc.rituals.count(), count+2
+      count += 2
+    test.done()
+
   "should redefine initial power selection to add another daily power": (test) ->
     klass = new Classes.Wizard(npc = new NPC)
     npc.class = klass

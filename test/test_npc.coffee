@@ -247,6 +247,16 @@ module.exports =
     test.deepEqual npc.rituals[1], [ "Animal Messenger" ]
     test.done()
 
+  "rituals should allow querying": (test) ->
+    npc = new NPC
+    npc.learnRitual 1, "Animal Messenger"
+    npc.learnRitual 5, "Brew Potion"
+    test.equal npc.rituals.count(), 2
+    test.equal npc.rituals.knows("Animal Messenger"), 1
+    test.equal npc.rituals.knows("Brew Potion"), 5
+    test.ok not npc.rituals.knows("Hazing")
+    test.done()
+    
   "#generate should return the npc": (test) ->
     npc = new NPC
     test.equal npc.generate(), npc
