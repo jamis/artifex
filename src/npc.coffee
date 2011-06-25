@@ -75,6 +75,8 @@ module.exports = class NPC
     @selectTrainedSkills()
     @selectPendingFeats()
 
+    @equip()
+
     @selectPowers()
 
     this

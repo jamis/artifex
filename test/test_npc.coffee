@@ -343,10 +343,8 @@ module.exports =
     test.ok npc.feats.length > 0
     test.done()
 
-  "#equip should select and apply an appropriate armor": (test) ->
+  "#generate should select and apply an appropriate armor": (test) ->
     npc = (new NPC).generate()
-    test.ok not npc.armor?, "expected armor to not be set"
-    npc.equip()
     test.ok npc.armor?, "expected to not be set"
     armor = Armor[npc.armor]
     test.ok armor?, "expected a valid armor to be selected"
@@ -354,10 +352,8 @@ module.exports =
     test.ok npc.defenses.ac.has(armor.bonus, "armor") if armor.bonus != 0
     test.done()
 
-  "#equip should select an appropriate weapon": (test) ->
+  "#generate should select an appropriate weapon": (test) ->
     npc = (new NPC class: TestClass).generate()
-    test.equal npc.equipment.weapons().length, 0, "expected generate to not assign weapons"
-    npc.equip()
     test.ok npc.equipment.weapons().length > 0, "expected weapons to be assigned"
     for weapon in npc.equipment.weapons()
       test.ok Weapons.proficient(npc, weapon), "expected NPC to be proficient in assigned weapon `#{weapon}'"
