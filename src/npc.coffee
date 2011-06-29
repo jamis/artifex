@@ -327,6 +327,24 @@ module.exports = class NPC
   selectPowersFor: (category, count) ->
     @selectPowersFrom @class.name, @class.powers, category, count
 
+  replacePowerFor: (category) ->
+    removable = []
+
+    for power in @powers[category]
+      for level, list of @class.powers[category]
+        break if level > @level
+        if power.id in list
+          removable.push { v: power.id, w: 901 - level*level }
+
+    id = @random.pickw removable...
+
+    newList = []
+    for power in @powers[category]
+      newList.push power unless power.id is id
+    @powers[category] = newList
+
+    @selectPowersFor category, 1
+
   selectInitialPowers: ->
     @selectPowersFor "atWill", 2
     @selectPowersFor "encounter", 1
@@ -458,21 +476,7 @@ module.exports = class NPC
     @selectPowersFrom @paragonPath.id, @paragonPath.powers, "utility", 1
 
   advanceItem_ReplaceEncounter: ->
-    removable = []
-
-    for power in @powers.encounter
-      for level, list of @class.powers.encounter
-        if power.id in list
-          removable.push { v: power.id, w: 901 - level*level }
-
-    id = @random.pickw removable...
-
-    newList = []
-    for power in @powers.encounter
-      newList.push power unless power.id is id
-    @powers.encounter = newList
-
-    @selectPowersFor "encounter", 1
+    @replacePowerFor "encounter"
 
 NPC.level =
   2 : [ "utility", "feat" ]
