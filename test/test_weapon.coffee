@@ -44,6 +44,15 @@ module.exports =
     test.ok !Weapons.group("glaive", "mace")
     test.done()
 
+  "inGroup should return all weapons in the given group": (test) ->
+    list = Weapons.inGroup "heavy blade"
+    test.ok "scythe" in list
+    test.ok "longsword" in list
+    test.ok "scimitar" in list
+    test.ok "falchion" in list
+    test.ok "glaive" in list
+    test.done()
+
   "club should be defined": (test) ->
     test.equal Weapons.all.club.name,        "club"
     test.equal Weapons.all.club.proficiency, +2

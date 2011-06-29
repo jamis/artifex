@@ -16,6 +16,12 @@ module.exports = Weapons =
   group: (weapon, group) ->
     Weapons.all[weapon].groups.indexOf(group) >= 0
 
+  inGroup: (group) ->
+    list = []
+    for name, data of Weapons.all
+      list.push name if group in data.groups
+    list
+
   all:
     club:
       name       : "club"
