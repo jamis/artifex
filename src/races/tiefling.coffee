@@ -23,7 +23,7 @@ module.exports = class Tiefling
     npc.resistance.fire.baseValue = 5
     npc.resistance.fire.adjust "racial", -> Math.floor(npc.level/2)
 
-    npc.powers.encounter.push Powers.get("InfernalWrath", npc: npc)
+    npc.powers.encounter.push Powers.get("racial", "InfernalWrath", npc: npc)
 
     npc.languages.push "common"
     npc.languages.push npc.random.pick(Languages.possible(npc)...)

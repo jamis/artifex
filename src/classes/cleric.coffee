@@ -37,9 +37,9 @@ module.exports = class Cleric
     npc.feature "class", "Healing Word"
     npc.feature "class", "Ritual Casting"
 
-    divineFortune = Powers.get "DivineFortune", npc: npc
-    turnUndead    = Powers.get "TurnUndead", npc: npc
-    healingWord   = Powers.get "HealingWord", npc: npc
+    divineFortune = Powers.get "cleric", "DivineFortune", npc: npc
+    turnUndead    = Powers.get "cleric", "TurnUndead", npc: npc
+    healingWord   = Powers.get "cleric", "HealingWord", npc: npc
 
     npc.powers.encounter.push divineFortune
     npc.powers.encounter.push turnUndead

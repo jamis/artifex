@@ -134,18 +134,18 @@ module.exports =
 
   "level-1 exploits are accounted for": (test) ->
     for power in [ "DeftStrike", "PiercingStrike", "RiposteStrike", "SlyFlourish" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.atWill[1]
 
     for power in [ "DazingStrike", "KingsCastle", "PositioningStrike", "TorturousStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.encounter[1]
 
     for power in [ "BlindingBarrage", "EasyTarget", "TrickStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.daily[1]
 
     klass = new Classes.Rogue(new NPC)
@@ -154,49 +154,49 @@ module.exports =
 
   "level-2 exploits are accounted for": (test) ->
     for power in [ "FleetingGhost", "GreatLeap", "MasterOfDeceit", "QuickFingers", "Tumble" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.utility[2]
     test.done()
 
   "level-3 exploits are accounted for": (test) ->
     for power in [ "BaitAndSwitch", "SetupStrike", "ToppleOver", "TrickstersBlade" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.encounter[3]
     test.done()
 
   "level-5 exploits are accounted for": (test) ->
     for power in [ "CleverRiposte", "DeepCut", "WalkingWounded" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.daily[5]
     test.done()
 
   "level-6 exploits are accounted for": (test) ->
     for power in [ "Chameleon", "IgnobleEscape", "MobMentality", "NimbleClimb", "SlipperyMind" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.utility[6]
     test.done()
 
   "level-7 exploits are accounted for": (test) ->
     for power in [ "CloudOfSteel", "ImperilingStrike", "RoguesLuck", "SandInTheEyes" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.encounter[7]
     test.done()
 
   "level-9 exploits are accounted for": (test) ->
     for power in [ "CrimsonEdge", "DeadlyPositioning", "Knockout" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.daily[9]
     test.done()
 
   "level-10 exploits are accounted for": (test) ->
     for power in [ "CertainFreedom", "CloseQuarters", "DangerousTheft", "ShadowStride" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.utility[10]
     test.done()

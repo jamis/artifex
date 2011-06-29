@@ -1,9 +1,9 @@
 {Classes, NPC, Feats, Powers, Races} = require '..'
 
-hasPower = (id, category) ->
+hasPower = (collection, id, category) ->
   (npc) ->
     category ||= "atWill"
-    npc.powers[category].push Powers.get(id, npc: npc)
+    npc.powers[category].push Powers.get(collection, id, npc: npc)
 
 equippedWith = (item) ->
   (npc) -> npc.equipment.push(item)
@@ -210,12 +210,12 @@ module.exports =
     featDefined "BurningBlizzard",
       name: "Burning Blizzard"
       allows: [
-        { int_: 13, wis: 13, when: hasPower("AcidArrow") },
-        { int_: 13, wis: 13, when: hasPower("ArmorOfAgathys") } ]
+        { int_: 13, wis: 13, when: hasPower("wizard", "AcidArrow") },
+        { int_: 13, wis: 13, when: hasPower("warlock", "ArmorOfAgathys") } ]
       disallows: [
-        { int_: 13, wis: 13, when: hasPower("BurningHands") },
-        { int_: 12, wis: 13, when: hasPower("AcidArrow") },
-        { int_: 13, wis: 12, when: hasPower("AcidArrow") } ]
+        { int_: 13, wis: 13, when: hasPower("wizard", "BurningHands") },
+        { int_: 12, wis: 13, when: hasPower("wizard", "AcidArrow") },
+        { int_: 13, wis: 12, when: hasPower("wizard", "AcidArrow") } ]
       grants:
         tests:
           conditionalBonus: (npc) ->
@@ -255,12 +255,12 @@ module.exports =
     featDefined "DarkFury",
       name: "Dark Fury"
       allows: [
-        { con: 13, wis: 13, when: hasPower("VampiricEmbrace") },
-        { con: 13, wis: 13, when: hasPower("Eyebite") } ]
+        { con: 13, wis: 13, when: hasPower("warlock", "VampiricEmbrace") },
+        { con: 13, wis: 13, when: hasPower("warlock", "Eyebite") } ]
       disallows: [
-        { con: 13, wis: 13, when: hasPower("BurningHands") },
-        { con: 12, wis: 13, when: hasPower("Eyebite") },
-        { con: 13, wis: 12, when: hasPower("Eyebite") } ]
+        { con: 13, wis: 13, when: hasPower("wizard", "BurningHands") },
+        { con: 12, wis: 13, when: hasPower("warlock", "Eyebite") },
+        { con: 13, wis: 12, when: hasPower("warlock", "Eyebite") } ]
       grants:
         tests:
           conditionalBonus: (npc) ->
@@ -365,13 +365,13 @@ module.exports =
   "[ElvenPrecision] should be defined":
     featDefined "ElvenPrecision",
       name: "Elven Precision"
-      allows: [ race: "elf", when: hasPower("ElvenAccuracy", "encounter") ]
+      allows: [ race: "elf", when: hasPower("racial", "ElvenAccuracy", "encounter") ]
       disallows: [
-        { race: "human", when: hasPower("ElvenAccuracy", "encounter") },
+        { race: "human", when: hasPower("racial", "ElvenAccuracy", "encounter") },
         { race: "elf" } ]
       grants:
         setup:
-          when: hasPower "ElvenAccuracy", "encounter"
+          when: hasPower "racial", "ElvenAccuracy", "encounter"
         tests:
           attackBonus: (npc) ->
             power = npc.powers.firstThat (whence, p) -> p.id is "ElvenAccuracy"
@@ -380,11 +380,11 @@ module.exports =
   "[EnlargedDragonBreath] should be defined":
     featDefined "EnlargedDragonBreath",
       name: "Enlarged Dragon Breath",
-      allows: [ race: "dragonborn", when: hasPower("DragonBreath", "encounter") ],
+      allows: [ race: "dragonborn", when: hasPower("racial", "DragonBreath", "encounter") ],
       disallows: [
         { race: "human" },
         { race: "dragonborn" },
-        { race: "human", when: hasPower("DragonBreath", "encounter") } ]
+        { race: "human", when: hasPower("racial", "DragonBreath", "encounter") } ]
       grants:
         setup:
           when: (npc) -> npc.breath = {}

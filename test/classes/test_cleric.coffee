@@ -167,18 +167,18 @@ module.exports =
 
   "level-1 prayers are accounted for": (test) ->
     for power in [ "LanceOfFaith", "PriestsShield", "RighteousBrand", "SacredFlame" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.atWill[1]
 
     for power in [ "CauseFear", "DivineGlow", "HealingStrike", "WrathfulThunder" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.encounter[1]
 
     for power in [ "AvengingFlame", "BeaconOfHope", "CascadeOfLight", "GuardianOfFaith" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.daily[1]
 
     klass = new Classes.Cleric(new NPC)
@@ -187,49 +187,49 @@ module.exports =
 
   "level-2 prayers are accounted for": (test) ->
     for power in [ "Bless", "CureLightWounds", "DivineAid", "Sanctuary", "ShieldOfFaith" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.utility[2]
     test.done()
 
   "level-3 prayers are accounted for": (test) ->
     for power in [ "BlazingBeacon", "Command", "DauntingLight", "SplitTheSky" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.encounter[3]
     test.done()
 
   "level-5 prayers are accounted for": (test) ->
     for power in [ "ConsecratedGround", "RuneOfPeace", "SpiritualWeapon", "WeaponOfTheGods" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.daily[5]
     test.done()
 
   "level-6 prayers are accounted for": (test) ->
     for power in [ "BastionOfHealth", "CureSeriousWounds", "DivineVigor", "HolyLantern" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.utility[6]
     test.done()
 
   "level-7 prayers are accounted for": (test) ->
     for power in [ "AweStrike", "BreakTheSpirit", "SearingLight", "StrengthenTheFaithful" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.encounter[7]
     test.done()
 
   "level-9 prayers are accounted for": (test) ->
     for power in [ "AstralDefenders", "BladeBarrier", "DivinePower", "FlameStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.daily[9]
     test.done()
 
   "level-10 prayers are accounted for": (test) ->
     for power in [ "AstralRefuge", "KnightsOfUnyieldingValor", "MassCureLightWounds", "ShieldingWord" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.utility[10]
     test.done()

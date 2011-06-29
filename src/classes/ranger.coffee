@@ -41,7 +41,7 @@ module.exports = class Ranger
 
     npc.feature "class", "Hunter's Quarry"
     npc.quarryDie = 6
-    npc.powers.atWill.push Powers.get("HuntersQuarry", npc: npc)
+    npc.powers.atWill.push Powers.get("ranger", "HuntersQuarry", npc: npc)
 
     npc.feature "class", "Prime Shot", "+1 to ranged attack when no ally is closer to target"
 

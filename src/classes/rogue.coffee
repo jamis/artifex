@@ -49,7 +49,7 @@ module.exports = class Rogue
     npc.feature "class", "Rogue Weapon Talent"
 
     npc.feature "class", "Sneak Attack"
-    npc.powers.atWill.push Powers.get("SneakAttack", npc: npc)
+    npc.powers.atWill.push Powers.get("rogue", "SneakAttack", npc: npc)
 
 Rogue.simpleName = "rogue"
 Rogue.source = "phb"

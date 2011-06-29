@@ -36,14 +36,14 @@ module.exports = class Warlord
 
     switch presence
       when "Inspiring"
-        npc.powers.atWill.push Powers.get("InspiringPresence", npc: npc)
+        npc.powers.atWill.push Powers.get("warlord", "InspiringPresence", npc: npc)
       when "Tactical"
-        npc.powers.atWill.push Powers.get("TacticalPresence", npc: npc)
+        npc.powers.atWill.push Powers.get("warlord", "TacticalPresence", npc: npc)
       else
         throw new Error "unknown commanding presence type `#{presence}'"
 
     npc.feature "class", "Inspiring Word"
-    npc.powers.encounter.push Powers.get("InspiringWord", npc: npc)
+    npc.powers.encounter.push Powers.get("warlord", "InspiringWord", npc: npc)
 
 Warlord.simpleName = "warlord"
 Warlord.source = "phb"

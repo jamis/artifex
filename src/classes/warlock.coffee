@@ -28,7 +28,7 @@ module.exports = class Warlock
     npc.pendingSkills.push count: 4, list: Warlock.skills
 
     npc.feature "class", "Eldritch Blast"
-    eldritchBlast = Powers.get "EldritchBlast", npc: npc
+    eldritchBlast = Powers.get "warlock", "EldritchBlast", npc: npc
     npc.powers.atWill.push eldritchBlast
 
     npc.when "scoresAssigned", =>
@@ -53,13 +53,13 @@ module.exports = class Warlock
       else throw new Error "unknown pact `#{pact}'"
 
     npc.feature "class", "Pact Boon: #{boon}"
-    npc.powers.atWill.push Powers.get(power, npc: npc)
+    npc.powers.atWill.push Powers.get("warlock", power, npc: npc)
 
     npc.feature "class", "Prime Shot"
     npc.feature "class", "Shadow Walk"
 
     npc.feature "class", "Warlock's Curse"
-    npc.powers.atWill.push Powers.get("WarlocksCurse", npc: npc)
+    npc.powers.atWill.push Powers.get("warlock", "WarlocksCurse", npc: npc)
 
     npc.selectInitialPowers = ->
       @selectPowersFor "encounter", 1

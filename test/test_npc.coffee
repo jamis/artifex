@@ -5,11 +5,6 @@ class TestRace extends Races.Human
     super
     @name = "test"
 
-class TestClass extends Classes.Cleric
-  constructor: (npc) ->
-    super
-    @name = "test"
-
 module.exports =
   "should be level 1": (test) ->
     npc = new NPC
@@ -308,8 +303,8 @@ module.exports =
     test.done()
 
   "#generate should prefer the class set in options": (test) ->
-    npc = (new NPC class: TestClass).generate()
-    test.equal npc.class.name, "test"
+    npc = (new NPC class: Classes.Cleric).generate()
+    test.equal npc.class.name, "cleric"
     test.done()
 
   "#generate on level 1 npc should determine ability scores": (test) ->
@@ -363,7 +358,7 @@ module.exports =
     test.done()
 
   "#generate should select an appropriate weapon": (test) ->
-    npc = (new NPC class: TestClass).generate()
+    npc = (new NPC class: Classes.Cleric).generate()
     test.ok npc.equipment.weapons().length > 0, "expected weapons to be assigned"
     for weapon in npc.equipment.weapons()
       test.ok Weapons.proficient(npc, weapon), "expected NPC to be proficient in assigned weapon `#{weapon}'"
@@ -463,7 +458,7 @@ module.exports =
     test.done()
 
   "should have (at least) two L1 atWill class powers": (test) ->
-    npc = (new NPC class: TestClass).generate()
+    npc = (new NPC class: Classes.Cleric).generate()
     count = 0
     for power in npc.powers.atWill
       count += 1 if power.id in npc.class.powers.atWill[1]
@@ -471,14 +466,14 @@ module.exports =
     test.done()
 
   "should have one L1 encounter class power": (test) ->
-    npc = (new NPC class: TestClass).generate()
+    npc = (new NPC class: Classes.Cleric).generate()
     test.expect 1
     for power in npc.powers.encounter
       test.ok true if power.id in npc.class.powers.encounter[1]
     test.done()
 
   "should have (at least) one L1 daily class power": (test) ->
-    npc = (new NPC class: TestClass).generate()
+    npc = (new NPC class: Classes.Cleric).generate()
     count = 0
     for power in npc.powers.daily
       count += 1 if power.id in npc.class.powers.daily[1]
@@ -566,7 +561,7 @@ module.exports =
 
   "advance callbacks should be invoked around the advance method": (test) ->
     npc = new NPC
-    npc.class = new TestClass npc
+    npc.class = new Classes.Cleric npc
     npc.race = new TestRace npc
     hp = npc.hitPoints.score()
 

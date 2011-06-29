@@ -92,18 +92,18 @@ module.exports =
 
   "level-1 exploits are accounted for": (test) ->
     for power in [ "Cleave", "ReapingStrike", "SureStrike", "TideOfIron" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.atWill[1]
 
     for power in [ "CoveringAttack", "PassingAttack", "SpinningSweep", "SteelSerpentStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.encounter[1]
 
     for power in [ "BruteStrike", "ComebackStrike", "VillainsMenace" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.daily[1]
 
     klass = new Classes.Fighter(new NPC)
@@ -112,49 +112,49 @@ module.exports =
 
   "level-2 exploits are accounted for": (test) ->
     for power in [ "BoundlessEndurance", "GetOverHere", "NoOpening", "Unstoppable" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.utility[2]
     test.done()
 
   "level-3 exploits are accounted for": (test) ->
     for power in [ "ArmorPiercingThrust", "CrushingBlow", "DanceOfSteel", "PreciseStrike", "RainOfBlows", "SweepingBlow" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.encounter[3]
     test.done()
 
   "level-5 exploits are accounted for": (test) ->
     for power in [ "CrackTheShell", "DizzyingBlow", "RainOfSteel" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.daily[5]
     test.done()
 
   "level-6 exploits are accounted for": (test) ->
     for power in [ "BattleAwareness", "DefensiveTraining", "Unbreakable" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.utility[6]
     test.done()
 
   "level-7 exploits are accounted for": (test) ->
     for power in [ "ComeAndGetIt", "GriffonsWrath", "IronBulwark", "RecklessStrike", "SuddenSurge" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.encounter[7]
     test.done()
 
   "level-9 exploits are accounted for": (test) ->
     for power in [ "ShiftTheBattlefield", "ThicketOfBlades", "VictoriousSurge" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.daily[9]
     test.done()
 
   "level-10 exploits are accounted for": (test) ->
     for power in [ "IntoTheFray", "LastDitchEvasion", "StalwartGuard" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.utility[10]
     test.done()

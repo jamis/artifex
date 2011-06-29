@@ -117,18 +117,18 @@ module.exports =
 
   "level-1 exploits are accounted for": (test) ->
     for power in [ "CommandersStrike", "FuriousSmash", "VipersStrike", "WolfPackTactics" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.atWill[1]
 
     for power in [ "GuardingAttack", "HammerAndAnvil", "LeafOnTheWind", "WarlordsFavor" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.encounter[1]
 
     for power in [ "BastionOfDefense", "LeadTheAttack", "PinTheFoe", "WhiteRavenOnslaught" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.daily[1]
 
     klass = new Classes.Warlord(new NPC)
@@ -137,49 +137,49 @@ module.exports =
 
   "level-2 exploits are accounted for": (test) ->
     for power in [ "AidTheInjured", "CrescendoOfViolence", "KnightsMove", "ShakeItOff" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.utility[2]
     test.done()
 
   "level-3 exploits are accounted for": (test) ->
     for power in [ "HoldTheLine", "InspiringWarCry", "SteelMonsoon", "WarlordsStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.encounter[3]
     test.done()
 
   "level-5 exploits are accounted for": (test) ->
     for power in [ "StandTheFallen", "TurningPoint", "VillainsNightmare" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.daily[5]
     test.done()
 
   "level-6 exploits are accounted for": (test) ->
     for power in [ "GuideTheCharge", "InspiringReaction", "QuickStep", "StandTough" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.utility[6]
     test.done()
 
   "level-7 exploits are accounted for": (test) ->
     for power in [ "LionsRoar", "SunderArmor", "SurpriseAttack", "SurroundFoe" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.encounter[7]
     test.done()
 
   "level-9 exploits are accounted for": (test) ->
     for power in [ "IronDragonCharge", "KnockThemDown", "WhiteRavenStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.daily[9]
     test.done()
 
   "level-10 exploits are accounted for": (test) ->
     for power in [ "DefensiveRally", "EaseSuffering", "TacticalShift" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.utility[10]
     test.done()

@@ -30,7 +30,7 @@ module.exports = class Eladrin
     npc.feature "racial", "Trance", "4 hour trance, same as 6 hour sleep"
 
     npc.feature "racial", "Fey Step"
-    npc.powers.encounter.push Powers.get("FeyStep", npc: npc)
+    npc.powers.encounter.push Powers.get("racial", "FeyStep", npc: npc)
 
     npc.languages.push "common"
     npc.languages.push "elven"

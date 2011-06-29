@@ -26,7 +26,7 @@ module.exports = class Elf
     npc.feature "racial", "Wild Step", "ignore difficult terrain while shifting"
 
     npc.feature "racial", "Elven Accuracy"
-    npc.powers.encounter.push Powers.get("ElvenAccuracy", npc: npc)
+    npc.powers.encounter.push Powers.get("racial", "ElvenAccuracy", npc: npc)
 
     npc.languages.push "common"
     npc.languages.push "elven"

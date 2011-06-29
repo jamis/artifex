@@ -307,7 +307,7 @@ module.exports = class NPC
     @pendingFeats = []
 
   isSuitablePower: (id) ->
-    power = Powers.get id, npc: this
+    power = Powers.get @class.name, id, npc: this
     power.allowed()
 
   suitablePowersIn: (list) ->
@@ -320,7 +320,7 @@ module.exports = class NPC
     if count > 0
       list = @suitablePowersIn @class.powers[category][@level]
       for power in @random.shuffle(list...).slice(0, count)
-        power = Powers.get power, npc: this
+        power = Powers.get @class.name, power, npc: this
         @powers[category].push power
 
   selectInitialPowers: ->
@@ -340,7 +340,7 @@ module.exports = class NPC
         available.push power if !@powers.find(pending.category, power)? && @isSuitablePower(power)
 
       for power in @random.shuffle(available...).slice(0, pending.count)
-        @powers[pending.category].push(Powers.get power, npc: this)
+        @powers[pending.category].push(Powers.get @class.name, power, npc: this)
 
     @pendingPowers = []
 

@@ -44,10 +44,10 @@ module.exports = class Wizard
         throw new Error "unknown mastery implement `#{implement}'"
 
     npc.feature "class", "Cantrips"
-    npc.powers.atWill.push Powers.get("GhostSound", npc: npc)
-    npc.powers.atWill.push Powers.get("Light", npc: npc)
-    npc.powers.atWill.push Powers.get("MageHand", npc: npc)
-    npc.powers.atWill.push Powers.get("Prestidigitation", npc: npc)
+    npc.powers.atWill.push Powers.get("wizard", "GhostSound", npc: npc)
+    npc.powers.atWill.push Powers.get("wizard", "Light", npc: npc)
+    npc.powers.atWill.push Powers.get("wizard", "MageHand", npc: npc)
+    npc.powers.atWill.push Powers.get("wizard", "Prestidigitation", npc: npc)
 
     npc.feature "class", "Ritual Casting"
     Feats.RitualCaster.applyTo npc

@@ -5,7 +5,7 @@ presenceIs = (presence) ->
 
 module.exports =
   "[InspiringPresence] should be defined":
-    Verify.testProperties "InspiringPresence",
+    Verify.testProperties "warlord", "InspiringPresence",
       name: [ expect: "Inspiring Presence" ]
       effect: [
         { level:  1, cha: 10, expect: "ally regains +0 lost HP (special)" },
@@ -14,7 +14,7 @@ module.exports =
         { level: 10, cha: 16, expect: "ally regains +8 lost HP (special)" } ]
 
   "[TacticalPresence] should be defined":
-    Verify.testProperties "TacticalPresence",
+    Verify.testProperties "warlord", "TacticalPresence",
       name: [ expect: "Tactical Presence" ]
       effect: [
         { int_: 10, expect: "ally gains +0 attack bonus (special)" },
@@ -22,7 +22,7 @@ module.exports =
         { int_: 18, expect: "ally gains +2 attack bonus (special)" } ]
 
   "[InspiringWord] should be defined":
-    Verify.testProperties "InspiringWord",
+    Verify.testProperties "warlord", "InspiringWord",
       name: [ expect: "Inspiring Word" ]
       keywords: [ expect: [ "martial", "healing" ] ]
       frequency: [
@@ -44,7 +44,7 @@ module.exports =
         { level: 26, expect: "ally can regain +6d6 hit points" } ]
 
   "[CommandersStrike] should be defined":
-    Verify.testProperties "CommandersStrike",
+    Verify.testProperties "warlord", "CommandersStrike",
       name: [ expect: "Commander's Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       hit: [
@@ -52,7 +52,7 @@ module.exports =
         { int_: 16, expect: "ally's basic attack damage+3" } ]
 
   "[FuriousSmash] should be defined":
-    Verify.testProperties "FuriousSmash",
+    Verify.testProperties "warlord", "FuriousSmash",
       name: [ expect: "Furious Smash" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -65,7 +65,7 @@ module.exports =
         { str: 16, cha: 14, expect: "3 damage, selected ally gets +2 to next attack and damage vs. this target (special)" } ]
 
   "[VipersStrike] should be defined":
-    Verify.testProperties "VipersStrike",
+    Verify.testProperties "warlord", "VipersStrike",
       name: [ expect: "Viper's Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -76,7 +76,7 @@ module.exports =
         { level: 21, str: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[WolfPackTactics] should be defined":
-    Verify.testProperties "WolfPackTactics",
+    Verify.testProperties "warlord", "WolfPackTactics",
       name: [ expect: "Wolf Pack Tactics" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -87,7 +87,7 @@ module.exports =
         { level: 21, str: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[GuardingAttack] should be defined":
-    Verify.testProperties "GuardingAttack",
+    Verify.testProperties "warlord", "GuardingAttack",
       name: [ expect: "Guarding Attack" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -100,7 +100,7 @@ module.exports =
         { str: 16, cha: 14, when: presenceIs("Inspiring"), expect: "2[W]+3 damage, adjacent ally gets +3 AC vs. target" } ]
 
   "[HammerAndAnvil] should be defined":
-    Verify.testProperties "HammerAndAnvil",
+    Verify.testProperties "warlord", "HammerAndAnvil",
       name: [ expect: "Hammer and Anvil" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -111,7 +111,7 @@ module.exports =
         { str: 16, cha: 14, expect: "1[W]+3 damage, adjacent ally attacks as free action with +2 damage" } ]
 
   "[LeafOnTheWind] should be defined":
-    Verify.testProperties "LeafOnTheWind",
+    Verify.testProperties "warlord", "LeafOnTheWind",
       name: [ expect: "Leaf on the Wind" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -121,7 +121,7 @@ module.exports =
         { str: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[WarlordsFavor] should be defined":
-    Verify.testProperties "WarlordsFavor",
+    Verify.testProperties "warlord", "WarlordsFavor",
       name: [ expect: "Warlord's Favor" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -133,7 +133,7 @@ module.exports =
         { str: 16, int_: 14, when: presenceIs("Tactical"), expect: "2[W]+3 damage, adjacent ally gets +3 to attack vs. target" } ]
 
   "[BastionOfDefense] should be defined":
-    Verify.testProperties "BastionOfDefense",
+    Verify.testProperties "warlord", "BastionOfDefense",
       name: [ expect: "Bastion of Defense" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -146,7 +146,7 @@ module.exports =
         { cha: 16, expect: "allies w/in 5 squares get 8 temporary HP" } ]
 
   "[LeadTheAttack] should be defined":
-    Verify.testProperties "LeadTheAttack",
+    Verify.testProperties "warlord", "LeadTheAttack",
       name: [ expect: "Lead the Attack" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -157,7 +157,7 @@ module.exports =
         { str: 16, int_: 14, expect: "3[W]+3 damage, +3 to attack vs. target" } ]
 
   "[PinTheFoe] should be defined":
-    Verify.testProperties "PinTheFoe",
+    Verify.testProperties "warlord", "PinTheFoe",
       name: [ expect: "Pin the Foe" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -167,7 +167,7 @@ module.exports =
         { str: 16, expect: "3[W]+3 damage" } ]
 
   "[WhiteRavenOnslaught] should be defined":
-    Verify.testProperties "WhiteRavenOnslaught",
+    Verify.testProperties "warlord", "WhiteRavenOnslaught",
       name: [ expect: "White Raven Onslaught" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -177,13 +177,13 @@ module.exports =
         { str: 16, expect: "3[W]+3 damage (special)" } ]
 
   "[AidTheInjured] should be defined":
-    Verify.testProperties "AidTheInjured",
+    Verify.testProperties "warlord", "AidTheInjured",
       name: [ expect: "Aid the Injured" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "healing", "martial" ] ]
 
   "[CrescendoOfViolence] should be defined":
-    Verify.testProperties "CrescendoOfViolence",
+    Verify.testProperties "warlord", "CrescendoOfViolence",
       name: [ expect: "Crescendo of Violence" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
@@ -192,13 +192,13 @@ module.exports =
         { cha: 16, expect: "ally gains 3 temp HP" } ]
 
   "[KnightsMove] should be defined":
-    Verify.testProperties "KnightsMove",
+    Verify.testProperties "warlord", "KnightsMove",
       name: [ expect: "Knight's Move" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
 
   "[ShakeItOff] should be defined":
-    Verify.testProperties "ShakeItOff",
+    Verify.testProperties "warlord", "ShakeItOff",
       name: [ expect: "Shake It Off" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
@@ -207,7 +207,7 @@ module.exports =
         { cha: 16, expect: "target gets +3 bonus to save" } ]
 
   "[HoldTheLine] should be defined":
-    Verify.testProperties "HoldTheLine",
+    Verify.testProperties "warlord", "HoldTheLine",
       name: [ expect: "Hold the Line" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -217,7 +217,7 @@ module.exports =
         { str: 16, expect: "1[W]+3 damage" } ]
 
   "[InspiringWarCry] should be defined":
-    Verify.testProperties "InspiringWarCry",
+    Verify.testProperties "warlord", "InspiringWarCry",
       name: [ expect: "Inspiring War Cry" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -227,7 +227,7 @@ module.exports =
         { str: 16, expect: "2[W]+3 damage" } ]
 
   "[SteelMonsoon] should be defined":
-    Verify.testProperties "SteelMonsoon",
+    Verify.testProperties "warlord", "SteelMonsoon",
       name: [ expect: "Steel Monsoon" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -239,7 +239,7 @@ module.exports =
         { str: 16, int_: 14, when: presenceIs("Tactical"), expect: "2[W]+3 damage, 2 allies may shift" } ]
 
   "[WarlordsStrike] should be defined":
-    Verify.testProperties "WarlordsStrike",
+    Verify.testProperties "warlord", "WarlordsStrike",
       name: [ expect: "Warlord's Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -251,7 +251,7 @@ module.exports =
         { str: 16, cha: 14, when: presenceIs("Inspiring"), expect: "2[W]+3 damage, allies gain +3 to damage" } ]
 
   "[StandTheFallen] should be defined":
-    Verify.testProperties "StandTheFallen",
+    Verify.testProperties "warlord", "StandTheFallen",
       name: [ expect: "Stand the Fallen" ]
       keywords: [ expect: [ "healing", "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -264,7 +264,7 @@ module.exports =
         { cha: 16, expect: "allies can surge and regain +3 extra HP" } ]
 
   "[TurningPoint] should be defined":
-    Verify.testProperties "TurningPoint",
+    Verify.testProperties "warlord", "TurningPoint",
       name: [ expect: "Turning Point" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -274,7 +274,7 @@ module.exports =
         { str: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[VillainsNightmare] should be defined":
-    Verify.testProperties "VillainsNightmare",
+    Verify.testProperties "warlord", "VillainsNightmare",
       name: [ expect: "Villain's Nightmare" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -284,7 +284,7 @@ module.exports =
         { str: 16, expect: "3[W]+3 damage" } ]
 
   "[GuideTheCharge] should be defined":
-    Verify.testProperties "GuideTheCharge",
+    Verify.testProperties "warlord", "GuideTheCharge",
       name: [ expect: "Guide the Charge" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
@@ -293,7 +293,7 @@ module.exports =
         { int_: 16, expect: "ally adds +3 to damage roll, etc." } ]
 
   "[InspiringReaction] should be defined":
-    Verify.testProperties "InspiringReaction",
+    Verify.testProperties "warlord", "InspiringReaction",
       name: [ expect: "Inspiring Reaction" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "healing", "martial" ] ]
@@ -302,13 +302,13 @@ module.exports =
         { cha: 16, expect: "ally spends surge and gets +3 extra HP" } ]
 
   "[QuickStep] should be defined":
-    Verify.testProperties "QuickStep",
+    Verify.testProperties "warlord", "QuickStep",
       name: [ expect: "Quick Step" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial" ] ]
 
   "[StandTough] should be defined":
-    Verify.testProperties "StandTough",
+    Verify.testProperties "warlord", "StandTough",
       name: [ expect: "Stand Tough" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "healing", "martial" ] ]
@@ -317,7 +317,7 @@ module.exports =
         { cha: 16, expect: "targets regain 13 HP" } ]
 
   "[LionsRoar] should be defined":
-    Verify.testProperties "LionsRoar",
+    Verify.testProperties "warlord", "LionsRoar",
       name: [ expect: "Lion's Roar" ]
       keywords: [ expect: [ "healing", "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -332,7 +332,7 @@ module.exports =
         { cha: 14, when: presenceIs("Inspiring"), expect: "ally can surge and get +2 extra HP" } ]
 
   "[SunderArmor] should be defined":
-    Verify.testProperties "SunderArmor",
+    Verify.testProperties "warlord", "SunderArmor",
       name: [ expect: "Sunder Armor" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -342,7 +342,7 @@ module.exports =
         { str: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[SurpriseAttack] should be defined":
-    Verify.testProperties "SurpriseAttack",
+    Verify.testProperties "warlord", "SurpriseAttack",
       name: [ expect: "Surprise Attack" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -354,7 +354,7 @@ module.exports =
         { str: 16, int_: 14, when: presenceIs("Tactical"), expect: "1[W]+3 damage, ally makes free attack at +2" } ]
 
   "[SurroundFoe] should be defined":
-    Verify.testProperties "SurroundFoe",
+    Verify.testProperties "warlord", "SurroundFoe",
       name: [ expect: "Surround Foe" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -362,7 +362,7 @@ module.exports =
       hit: [ { str: 10, expect: "2[W] damage" }, { str: 16, expect: "2[W]+3 damage" } ]
 
   "[IronDragonCharge] should be defined":
-    Verify.testProperties "IronDragonCharge",
+    Verify.testProperties "warlord", "IronDragonCharge",
       name: [ expect: "Iron Dragon Charge" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -372,7 +372,7 @@ module.exports =
       hit: [ { str: 10, expect: "3[W] damage" }, { str: 16, expect: "3[W]+3 damage" } ]
 
   "[KnockThemDown] should be defined":
-    Verify.testProperties "KnockThemDown",
+    Verify.testProperties "warlord", "KnockThemDown",
       name: [ expect: "Knock Them Down" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -382,7 +382,7 @@ module.exports =
         { str: 16, expect: "3[W]+3 damage (special)" } ]
 
   "[WhiteRavenStrike] should be defined":
-    Verify.testProperties "WhiteRavenStrike",
+    Verify.testProperties "warlord", "WhiteRavenStrike",
       name: [ expect: "White Raven Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -393,19 +393,19 @@ module.exports =
         { cha: 16, expect: "allies gain +3 extra temp HP if target dropped to 0 HP" } ]
 
   "[DefensiveRally] should be defined":
-    Verify.testProperties "DefensiveRally",
+    Verify.testProperties "warlord", "DefensiveRally",
       name: [ expect: "Defensive Rally" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "healing", "martial" ] ]
 
   "[EaseSuffering] should be defined":
-    Verify.testProperties "EaseSuffering",
+    Verify.testProperties "warlord", "EaseSuffering",
       name: [ expect: "Ease Suffering" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial" ] ]
 
   "[TacticalShift] should be defined":
-    Verify.testProperties "TacticalShift",
+    Verify.testProperties "warlord", "TacticalShift",
       name: [ expect: "Tactical Shift" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial" ] ]

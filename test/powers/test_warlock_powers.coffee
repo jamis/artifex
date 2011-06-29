@@ -8,7 +8,7 @@ pact = (pact) ->
 
 module.exports =
   "[WarlocksCurse] should be defined":
-    Verify.testProperties "WarlocksCurse",
+    Verify.testProperties "warlock", "WarlocksCurse",
       name: [ expect: "Warlock's Curse" ]
       effect: [
         { level:  1, expect: "+1d6 extra damage (special)" },
@@ -18,7 +18,7 @@ module.exports =
         { level: 21, expect: "+3d6 extra damage (special)" } ]
 
   "[DireRadiance] should be defined":
-    Verify.testProperties "DireRadiance",
+    Verify.testProperties "warlock", "DireRadiance",
       name: [ expect: "Dire Radiance" ]
       keywords: [ expect: [ "arcane", "fear", "implement", "radiant" ] ]
       attack: [
@@ -31,7 +31,7 @@ module.exports =
         { level: 21, con: 16, expect: "2d6+3 damage (special)" } ]
 
   "[EldritchBlast] should be defined":
-    Verify.testProperties "EldritchBlast",
+    Verify.testProperties "warlock", "EldritchBlast",
       name: [ expect: "Eldritch Blast" ]
       keywords: [ expect: [ "arcane", "implement" ] ]
       attack: [
@@ -47,7 +47,7 @@ module.exports =
         { level: 21, con: 16, cha: 14, when: uses("con"), expect: "2d10+3 damage" } ]
 
   "[Eyebite] should be defined":
-    Verify.testProperties "Eyebite",
+    Verify.testProperties "warlock", "Eyebite",
       name: [ expect: "Eyebite" ]
       keywords: [ expect: [ "arcane", "charm", "implement", "psychic" ] ]
       attack: [
@@ -60,7 +60,7 @@ module.exports =
         { level: 21, cha: 16, expect: "2d6+3 damage (special)" } ]
 
   "[HellishRebuke] should be defined":
-    Verify.testProperties "HellishRebuke",
+    Verify.testProperties "warlock", "HellishRebuke",
       name: [ expect: "Hellish Rebuke" ]
       keywords: [ expect: [ "arcane", "fire", "implement" ] ]
       attack: [
@@ -73,7 +73,7 @@ module.exports =
         { level: 21, con: 16, expect: "2d6+3 damage (special)" } ]
 
   "[DiabolicGrasp] should be defined":
-    Verify.testProperties "DiabolicGrasp",
+    Verify.testProperties "warlock", "DiabolicGrasp",
       name: [ expect: "Diabolic Grasp" ]
       keywords: [ expect: [ "arcane", "implement" ] ]
       attack: [
@@ -89,7 +89,7 @@ module.exports =
         { int_: 18, con: 16, when: pact("Infernal"), expect: "2d8+3 damage, slide target 5 squares" } ]
 
   "[DreadfulWord] should be defined":
-    Verify.testProperties "DreadfulWord",
+    Verify.testProperties "warlock", "DreadfulWord",
       name: [ expect: "Dreadful Word" ]
       keywords: [ expect: [ "arcane", "fear", "implement", "psychic" ] ]
       attack: [
@@ -105,7 +105,7 @@ module.exports =
         { int_: 18, cha: 16, when: pact("Star"), expect: "2d8+3 damage, target has -5 Will" } ]
 
   "[VampiricEmbrace] should be defined":
-    Verify.testProperties "VampiricEmbrace",
+    Verify.testProperties "warlock", "VampiricEmbrace",
       name: [ expect: "Vampiric Embrace" ]
       keywords: [ expect: [ "arcane", "implement", "necrotic" ] ]
       attack: [
@@ -121,7 +121,7 @@ module.exports =
         { int_: 18, con: 16, when: pact("Infernal"), expect: "2d8+3 damage, you gain 9 temporary HP" } ]
 
   "[Witchfire] should be defined":
-    Verify.testProperties "Witchfire",
+    Verify.testProperties "warlock", "Witchfire",
       name: [ expect: "Witchfire" ]
       keywords: [ expect: [ "arcane", "fire", "implement" ] ]
       attack: [
@@ -137,7 +137,7 @@ module.exports =
         { int_: 18, cha: 16, when: pact("Fey"), expect: "2d6+3 damage, target has -6 attack" } ]
 
   "[ArmorOfAgathys] should be defined":
-    Verify.testProperties "ArmorOfAgathys",
+    Verify.testProperties "warlock", "ArmorOfAgathys",
       name: [ expect: "Armor of Agathys" ]
       keywords: [ expect: [ "arcane", "cold" ] ]
       effect: [
@@ -147,7 +147,7 @@ module.exports =
         { int_: 16, con: 14, expect: "+13 temporary HP, adjacent enemies take 1d6+2 damage" } ]
 
   "[CurseOfTheDarkDream] should be defined":
-    Verify.testProperties "CurseOfTheDarkDream",
+    Verify.testProperties "warlock", "CurseOfTheDarkDream",
       name: [ expect: "Curse of the Dark Dream" ]
       keywords: [ expect: [ "arcane", "charm", "implement", "psychic" ] ]
       attack: [
@@ -158,7 +158,7 @@ module.exports =
         { cha: 16, expect: "3d8+3 damage (special)" } ]
 
   "[DreadStar] should be defined":
-    Verify.testProperties "DreadStar",
+    Verify.testProperties "warlock", "DreadStar",
       name: [ expect: "Dread Star" ]
       keywords: [ expect: [ "arcane", "fear", "implement", "radiant" ] ]
       attack: [
@@ -169,7 +169,7 @@ module.exports =
         { cha: 16, expect: "3d6+3 damage (special)" } ]
 
   "[FlamesOfPhlegethos] should be defined":
-    Verify.testProperties "FlamesOfPhlegethos",
+    Verify.testProperties "warlock", "FlamesOfPhlegethos",
       name: [ expect: "Flames of Phlegethos" ]
       keywords: [ expect: [ "arcane", "fire", "implement" ] ]
       attack: [
@@ -180,19 +180,19 @@ module.exports =
         { con: 16, expect: "3d10+3 damage (special)" } ]
 
   "[BeguilingTongue] should be defined":
-    Verify.testProperties "BeguilingTongue",
+    Verify.testProperties "warlock", "BeguilingTongue",
       name: [ expect: "Beguiling Tongue" ],
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "arcane" ] ]
 
   "[EtherealStride] should be defined":
-    Verify.testProperties "EtherealStride",
+    Verify.testProperties "warlock", "EtherealStride",
       name: [ expect: "Ethereal Stride" ],
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "arcane", "teleportation" ] ]
 
   "[FiendishResilience] should be defined":
-    Verify.testProperties "FiendishResilience",
+    Verify.testProperties "warlock", "FiendishResilience",
       name: [ expect: "Fiendish Resilience" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "arcane" ] ]
@@ -201,13 +201,13 @@ module.exports =
         { con: 16, expect: "gain 8 temp HP" } ]
 
   "[ShadowVeil] should be defined":
-    Verify.testProperties "ShadowVeil",
+    Verify.testProperties "warlock", "ShadowVeil",
       name: [ expect: "Shadow Veil" ],
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "arcane", "illusion" ] ]
 
   "[EldritchRain] should be defined":
-    Verify.testProperties "EldritchRain",
+    Verify.testProperties "warlock", "EldritchRain",
       name: [ expect: "Eldritch Rain" ]
       keywords: [ expect: [ "arcane", "implement" ] ]
       attack: [
@@ -220,7 +220,7 @@ module.exports =
         { cha: 16, int_: 14, when: pact("Fey"), expect: "1d10+5 damage" } ]
 
   "[FieryBolt] should be defined":
-    Verify.testProperties "FieryBolt",
+    Verify.testProperties "warlock", "FieryBolt",
       name: [ expect: "Fiery Bolt" ]
       keywords: [ expect: [ "arcane", "fire", "implement" ] ]
       attack: [
@@ -233,7 +233,7 @@ module.exports =
         { con: 16, int_: 14, when: pact("Infernal"), expect: "3d6+3 damage, adjacent creatures take 1d6+5 damage" } ]
 
   "[FrigidDarkness] should be defined":
-    Verify.testProperties "FrigidDarkness",
+    Verify.testProperties "warlock", "FrigidDarkness",
       name: [ expect: "Frigid Darkness" ]
       keywords: [ expect: [ "arcane", "cold", "fear", "implement" ] ]
       attack: [
@@ -246,7 +246,7 @@ module.exports =
         { con: 16, int_: 14, when: pact("Star"), expect: "2d8+3 damage, target has -2 to AC (special)" } ]
 
   "[OtherwindStride] should be defined":
-    Verify.testProperties "OtherwindStride",
+    Verify.testProperties "warlock", "OtherwindStride",
       name: [ expect: "Otherwind Stride" ]
       keywords: [ expect: [ "arcane", "implement", "teleportation" ] ]
       attack: [
@@ -261,7 +261,7 @@ module.exports =
         { int_: 14, when: pact("Fey"), expect: "teleport 7 squares" } ]
 
   "[AvernianEruption] should be defined":
-    Verify.testProperties "AvernianEruption",
+    Verify.testProperties "warlock", "AvernianEruption",
       name: [ expect: "Avernian Eruption" ]
       keywords: [ expect: [ "arcane", "fire", "implement" ] ]
       attack: [
@@ -272,7 +272,7 @@ module.exports =
         { con: 16, expect: "2d10+3 damage" } ]
 
   "[CrownOfMadness] should be defined":
-    Verify.testProperties "CrownOfMadness",
+    Verify.testProperties "warlock", "CrownOfMadness",
       name: [ expect: "Crown of Madness" ]
       keywords: [ expect: [ "arcane", "charm", "implement", "psychic" ] ]
       attack: [
@@ -283,7 +283,7 @@ module.exports =
         { cha: 16, expect: "2d6+3 damage" } ]
 
   "[CurseOfTheBloodyFangs] should be defined":
-    Verify.testProperties "CurseOfTheBloodyFangs",
+    Verify.testProperties "warlock", "CurseOfTheBloodyFangs",
       name: [ expect: "Curse of the Bloody Fangs" ]
       keywords: [ expect: [ "arcane", "implement" ] ]
       attack: [
@@ -294,7 +294,7 @@ module.exports =
         { cha: 16, expect: "2d10+3 damage" } ]
 
   "[HungerOfHadar] should be defined":
-    Verify.testProperties "HungerOfHadar",
+    Verify.testProperties "warlock", "HungerOfHadar",
       name: [ expect: "Hunger of Hadar" ]
       keywords: [ expect: [ "arcane", "implement", "necrotic", "zone" ] ]
       attack: [
@@ -305,31 +305,31 @@ module.exports =
         { con: 16, expect: "1d6+3 damage (secondary)" } ]
 
   "[DarkOnesOwnLuck] should be defined":
-    Verify.testProperties "DarkOnesOwnLuck",
+    Verify.testProperties "warlock", "DarkOnesOwnLuck",
       name: [ expect: "Dark One's Own Luck" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "arcane" ] ]
 
   "[FeySwitch] should be defined":
-    Verify.testProperties "FeySwitch",
+    Verify.testProperties "warlock", "FeySwitch",
       name: [ expect: "Fey Switch" ],
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "arcane", "teleportation" ] ]
 
   "[ShroudOfBlackSteel] should be defined":
-    Verify.testProperties "ShroudOfBlackSteel",
+    Verify.testProperties "warlock", "ShroudOfBlackSteel",
       name: [ expect: "Shroud of Black Steel" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "arcane", "polymorph" ] ]
 
   "[SpiderClimb] should be defined":
-    Verify.testProperties "SpiderClimb",
+    Verify.testProperties "warlock", "SpiderClimb",
       name: [ expect: "Spider Climb" ],
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "arcane" ] ]
 
   "[HowlOfDoom] should be defined":
-    Verify.testProperties "HowlOfDoom",
+    Verify.testProperties "warlock", "HowlOfDoom",
       name: [ expect: "Howl of Doom" ]
       keywords: [ expect: [ "arcane", "fear", "implement", "thunder" ] ]
       attack: [
@@ -342,7 +342,7 @@ module.exports =
         { con: 16, int_: 14, when: pact("Infernal"), expect: "2d6+3 damage, push target 3 squares" } ]
 
   "[InfernalMoonCurse] should be defined":
-    Verify.testProperties "InfernalMoonCurse",
+    Verify.testProperties "warlock", "InfernalMoonCurse",
       name: [ expect: "Infernal Moon Curse" ]
       keywords: [ expect: [ "arcane", "implement", "poison" ] ]
       attack: [
@@ -355,7 +355,7 @@ module.exports =
         { con: 16, int_: 14, when: pact("Infernal"), expect: "2d8+5 damage (special)" } ]
 
   "[MireTheMind] should be defined":
-    Verify.testProperties "MireTheMind",
+    Verify.testProperties "warlock", "MireTheMind",
       name: [ expect: "Mire the Mind" ]
       keywords: [ expect: [ "arcane", "illusion", "implement", "psychic" ] ]
       attack: [
@@ -368,7 +368,7 @@ module.exports =
         { cha: 16, int_: 14, when: pact("Fey"), expect: "1d10+3 damage, stealth checks at +2 (special)" } ]
 
   "[SignOfIllOmen] should be defined":
-    Verify.testProperties "SignOfIllOmen",
+    Verify.testProperties "warlock", "SignOfIllOmen",
       name: [ expect: "Sign of Ill Omen" ]
       keywords: [ expect: [ "arcane", "implement" ] ]
       attack: [
@@ -381,7 +381,7 @@ module.exports =
         { cha: 16, int_: 14, when: pact("Star"), expect: "2d6+3 damage, target has -2 to next attack (special)" } ]
 
   "[CurseOfTheBlackFrost] should be defined":
-    Verify.testProperties "CurseOfTheBlackFrost",
+    Verify.testProperties "warlock", "CurseOfTheBlackFrost",
       name: [ expect: "Curse of the Black Frost" ]
       keywords: [ expect: [ "arcane", "cold", "implement" ] ]
       attack: [
@@ -392,7 +392,7 @@ module.exports =
         { cha: 16, expect: "2d8+3 damage (special)" } ]
 
   "[IronSpikeOfDis] should be defined":
-    Verify.testProperties "IronSpikeOfDis",
+    Verify.testProperties "warlock", "IronSpikeOfDis",
       name: [ expect: "Iron Spike of Dis" ]
       keywords: [ expect: [ "arcane", "implement" ] ]
       attack: [
@@ -403,7 +403,7 @@ module.exports =
         { con: 16, expect: "3d10+3 damage (special)" } ]
 
   "[SummonsOfKhirad] should be defined":
-    Verify.testProperties "SummonsOfKhirad",
+    Verify.testProperties "warlock", "SummonsOfKhirad",
       name: [ expect: "Summons of Khirad" ]
       keywords: [ expect: [ "arcane", "implement", "psychic", "teleportation" ] ]
       attack: [
@@ -414,7 +414,7 @@ module.exports =
         { con: 16, expect: "2d10+3 damage (special)" } ]
 
   "[ThiefOfFiveFates] should be defined":
-    Verify.testProperties "ThiefOfFiveFates",
+    Verify.testProperties "warlock", "ThiefOfFiveFates",
       name: [ expect: "Thief of Five Fates" ]
       keywords: [ expect: [ "arcane", "implement" ] ]
       attack: [
@@ -422,25 +422,25 @@ module.exports =
         { cha: 16, expect: "+3 vs. Will" } ]
 
   "[AmbassadorImp] should be defined":
-    Verify.testProperties "AmbassadorImp",
+    Verify.testProperties "warlock", "AmbassadorImp",
       name: [ expect: "Ambassador Imp" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "arcane", "conjuration" ] ]
 
   "[ShadowForm] should be defined":
-    Verify.testProperties "ShadowForm",
+    Verify.testProperties "warlock", "ShadowForm",
       name: [ expect: "Shadow Form" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "arcane", "polymorph" ] ]
 
   "[ShieldingShades] should be defined":
-    Verify.testProperties "ShieldingShades",
+    Verify.testProperties "warlock", "ShieldingShades",
       name: [ expect: "Shielding Shades" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "arcane" ] ]
 
   "[WarlocksLeap] should be defined":
-    Verify.testProperties "WarlocksLeap",
+    Verify.testProperties "warlock", "WarlocksLeap",
       name: [ expect: "Warlock's Leap" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "arcane", "teleportation" ] ]

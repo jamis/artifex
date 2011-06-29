@@ -122,18 +122,18 @@ module.exports =
 
   "level-1 exploits are accounted for": (test) ->
     for power in [ "CarefulAttack", "HitAndRun", "NimbleStrike", "TwinStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.atWill[1]
 
     for power in [ "DireWolverineStrike", "EvasiveStrike", "FoxsCunning", "TwoFangedStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.encounter[1]
 
     for power in [ "HuntersBearTrap", "JawsOfTheWolf", "SplitTheTree", "SuddenStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.daily[1]
 
     klass = new Classes.Ranger(new NPC)
@@ -142,49 +142,49 @@ module.exports =
 
   "level-2 exploits are accounted for": (test) ->
     for power in [ "CrucialAdvice", "UnbalancingParry", "YieldGround" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.utility[2]
     test.done()
 
   "level-3 exploits are accounted for": (test) ->
     for power in [ "CutAndRun", "DisruptiveStrike", "ShadowWaspStrike", "ThundertuskBoarStrike" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.encounter[3]
     test.done()
 
   "level-5 exploits are accounted for": (test) ->
     for power in [ "ExcruciatingShot", "FrenziedSkirmish", "SplinteringShot", "TwoWolfPounce" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.daily[5]
     test.done()
 
   "level-6 exploits are accounted for": (test) ->
     for power in [ "EvadeAmbush", "SkilledCompanion", "WeaveThroughTheFray" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.utility[6]
     test.done()
 
   "level-7 exploits are accounted for": (test) ->
     for power in [ "ClawsOfTheGriffon", "HawksTalon", "SpikesOfTheManticore", "SweepingWhirlwind" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.encounter[7]
     test.done()
 
   "level-9 exploits are accounted for": (test) ->
     for power in [ "AttacksOnTheRun", "CloseQuartersShot", "SprayOfArrows", "SwirlingLeavesOfSteel" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.daily[9]
     test.done()
 
   "level-10 exploits are accounted for": (test) ->
     for power in [ "ExpeditiousStride", "OpenTheRange", "UndauntedStride" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.utility[10]
     test.done()

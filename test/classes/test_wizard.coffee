@@ -203,18 +203,18 @@ module.exports =
 
   "level-1 spells are accounted for": (test) ->
     for power in [ "CloudOfDaggers", "MagicMissile", "RayOfFrost", "ScorchingBurst", "Thunderwave" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.atWill[1]
 
     for power in [ "BurningHands", "ChillStrike", "ForceOrb", "IcyTerrain", "RayOfEnfeeblement" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.encounter[1]
 
     for power in [ "AcidArrow", "FlamingSphere", "FreezingCloud", "Sleep" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.daily[1]
 
     klass = new Classes.Wizard(new NPC)
@@ -223,49 +223,49 @@ module.exports =
 
   "level-2 spells are accounted for": (test) ->
     for power in [ "ExpeditiousRetreat", "FeatherFall", "Jump", "Shield" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.utility[2]
     test.done()
 
   "level-3 spells are accounted for": (test) ->
     for power in [ "ColorSpray", "FireShroud", "IcyRays", "ShockSphere" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.encounter[3]
     test.done()
 
   "level-5 spells are accounted for": (test) ->
     for power in [ "BigbysIcyGrasp", "Fireball", "StinkingCloud", "Web" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.daily[5]
     test.done()
 
   "level-6 spells are accounted for": (test) ->
     for power in [ "DimensionDoor", "DisguiseSelf", "DispelMagic", "Invisibility", "Levitate", "WallOfFog" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.utility[6]
     test.done()
 
   "level-7 spells are accounted for": (test) ->
     for power in [ "FireBurst", "LightningBolt", "SpectralRam", "WintersWrath" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.encounter[7]
     test.done()
 
   "level-9 spells are accounted for": (test) ->
     for power in [ "IceStorm", "LightningSerpent", "MordenkainensSword", "WallOfFire" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.daily[9]
     test.done()
 
   "level-10 spells are accounted for": (test) ->
     for power in [ "ArcaneGate", "Blur", "MirrorImage", "Resistance" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.utility[10]
     test.done()

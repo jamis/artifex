@@ -27,7 +27,7 @@ module.exports = class Dragonborn
       range: 3
       ability: npc.random.pick "dex", "str", "con"
 
-    dragonBreath = Powers.get "DragonBreath", npc: npc
+    dragonBreath = Powers.get "racial", "DragonBreath", npc: npc
     npc.powers.encounter.push dragonBreath
 
     npc.feature "racial", "Dragonborn fury", "+1 to attack when bloodied"

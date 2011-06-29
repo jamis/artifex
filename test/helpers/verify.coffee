@@ -1,9 +1,9 @@
 {NPC, Powers} = require '../..'
 
 module.exports = Verify =
-  property: (test, id, property, tests...) ->
+  property: (test, collection, id, property, tests...) ->
     for conditions in tests
-      power = Powers.get id, npc: new NPC
+      power = Powers.get collection, id, npc: new NPC
       expect = undefined
       for attribute, value of conditions
         switch attribute
@@ -18,13 +18,13 @@ module.exports = Verify =
       actual = power.get(property)
       test.deepEqual actual, expect, "expected `#{property}' to be `#{expect}', was `#{actual}'"
 
-  testProperty: (id, property, tests...) ->
+  testProperty: (collection, id, property, tests...) ->
     (test) ->
-      Verify.property test, id, property, tests...
+      Verify.property test, collection, id, property, tests...
       test.done()
 
-  testProperties: (id, properties) ->
+  testProperties: (collection, id, properties) ->
     (test) ->
       for property, tests of properties
-        Verify.property test, id, property, tests...
+        Verify.property test, collection, id, property, tests...
       test.done()

@@ -2,7 +2,7 @@
 
 module.exports =
   "[HuntersQuarry] should be defined":
-    Verify.testProperties "HuntersQuarry",
+    Verify.testProperties "ranger", "HuntersQuarry",
       name: [ expect: "Hunter's Quarry" ]
       effect: [
         { level:  1, quarryDie: 6, expect: "deal +1d6 extra damage to quarry per round" },
@@ -11,7 +11,7 @@ module.exports =
         { level: 21, quarryDie: 8, expect: "deal +3d8 extra damage to quarry per round" } ]
 
   "[CarefulAttack] should be defined":
-    Verify.testProperties "CarefulAttack",
+    Verify.testProperties "ranger", "CarefulAttack",
       name: [ expect: "Careful Attack" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -25,7 +25,7 @@ module.exports =
         { level: 21, expect: "2[W] damage" } ]
 
   "[HitAndRun] should be defined":
-    Verify.testProperties "HitAndRun",
+    Verify.testProperties "ranger", "HitAndRun",
       name: [ expect: "Hit and Run" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -37,7 +37,7 @@ module.exports =
         { level: 21, str: 16, expect: "2[W]+3 damage" } ]
 
   "[NimbleStrike] should be defined":
-    Verify.testProperties "NimbleStrike",
+    Verify.testProperties "ranger", "NimbleStrike",
       name: [ expect: "Nimble Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "ranged weapon" ] ]
@@ -49,7 +49,7 @@ module.exports =
         { level: 21, dex: 16, expect: "2[W]+3 damage" } ]
 
   "[TwinStrike] should be defined":
-    Verify.testProperties "TwinStrike",
+    Verify.testProperties "ranger", "TwinStrike",
       name: [ expect: "Twin Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -63,7 +63,7 @@ module.exports =
         { level: 21, expect: "2[W] damage per attack" } ]
 
   "[DireWolverineStrike] should be defined":
-    Verify.testProperties "DireWolverineStrike",
+    Verify.testProperties "ranger", "DireWolverineStrike",
       name: [ expect: "Dire Wolverine Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -71,7 +71,7 @@ module.exports =
       hit: [ { str: 10, expect: "1[W] damage" }, { str: 16, expect: "1[W]+3 damage" } ]
 
   "[EvasiveStrike] should be defined":
-    Verify.testProperties "EvasiveStrike",
+    Verify.testProperties "ranger", "EvasiveStrike",
       name: [ expect: "Evasive Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       special: [ { wis: 10, expect: "shift 1 square" }, { wis: 16, expect: "shift 4 squares" } ]
@@ -87,13 +87,13 @@ module.exports =
         { str: 16, dex: 16, expect: "2[W]+3 damage (melee) or 2[W]+3 damage (ranged)" } ]
 
   "[FoxsCunning] should be defined":
-    Verify.testProperties "FoxsCunning",
+    Verify.testProperties "ranger", "FoxsCunning",
       name: [ expect: "Fox's Cunning" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { wis: 10, expect: "basic attack +0" }, { wis: 16, expect: "basic attack +3" } ]
 
   "[TwoFangedStrike] should be defined":
-    Verify.testProperties "TwoFangedStrike",
+    Verify.testProperties "ranger", "TwoFangedStrike",
       name: [ expect: "Two-Fanged Strike" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -109,7 +109,7 @@ module.exports =
         { str: 16, dex: 16, wis: 16, expect: "1[W]+3 damage (melee) or 1[W]+3 damage (ranged) per attack, +3 if both attacks hit" } ]
 
   "[HuntersBearTrap] should be defined":
-    Verify.testProperties "HuntersBearTrap",
+    Verify.testProperties "ranger", "HuntersBearTrap",
       name: [ expect: "Hunter's Bear Trap" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -124,7 +124,7 @@ module.exports =
         { str: 16, dex: 16, expect: "2[W]+3 damage (melee) or 2[W]+3 damage (ranged) (special)" } ]
 
   "[JawsOfTheWolf] should be defined":
-    Verify.testProperties "JawsOfTheWolf",
+    Verify.testProperties "ranger", "JawsOfTheWolf",
       name: [ expect: "Jaws of the Wolf" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -136,7 +136,7 @@ module.exports =
         { str: 16, expect: "2[W]+3 damage per attack" } ]
 
   "[SplitTheTree] should be defined":
-    Verify.testProperties "SplitTheTree",
+    Verify.testProperties "ranger", "SplitTheTree",
       name: [ expect: "Split the Tree" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "ranged weapon" ] ]
@@ -148,7 +148,7 @@ module.exports =
         { dex: 16, expect: "2[W]+3 damage" } ]
 
   "[SuddenStrike] should be defined":
-    Verify.testProperties "SuddenStrike",
+    Verify.testProperties "ranger", "SuddenStrike",
       name: [ expect: "Sudden Strike" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -160,7 +160,7 @@ module.exports =
         { str: 16, expect: "1[W] damage (off-hand) (special, 2[W]+3 damage w/ main weapon)" } ]
 
   "[CrucialAdvice] should be defined":
-    Verify.testProperties "CrucialAdvice",
+    Verify.testProperties "ranger", "CrucialAdvice",
       name: [ expect: "Crucial Advice" ],
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
@@ -169,13 +169,13 @@ module.exports =
         { wis: 16, expect: "ally rerolls skill check with +3 bonus" } ]
 
   "[UnbalancingParry] should be defined":
-    Verify.testProperties "UnbalancingParry",
+    Verify.testProperties "ranger", "UnbalancingParry",
       name: [ expect: "Unbalancing Parry" ],
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
 
   "[YieldGround] should be defined":
-    Verify.testProperties "YieldGround",
+    Verify.testProperties "ranger", "YieldGround",
       name: [ expect: "Yield Ground" ],
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
@@ -184,7 +184,7 @@ module.exports =
         { wis: 16, expect: "shift 3 squares" } ]
 
   "[CutAndRun] should be defined":
-    Verify.testProperties "CutAndRun",
+    Verify.testProperties "ranger", "CutAndRun",
       name: [ expect: "Cut and Run" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -201,7 +201,7 @@ module.exports =
         { str: 18, dex: 16, wis: 14, expect: "1[W]+4 damage (melee) or 1[W]+3 damage (ranged), shift 3 squares" } ]
 
   "[DisruptiveStrike] should be defined":
-    Verify.testProperties "DisruptiveStrike",
+    Verify.testProperties "ranger", "DisruptiveStrike",
       name: [ expect: "Disruptive Strike" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -217,7 +217,7 @@ module.exports =
         { str: 18, dex: 16, wis: 14, expect: "1[W]+4 damage (melee) or 1[W]+3 damage (ranged), target takes -5 attack penalty" } ]
 
   "[ShadowWaspStrike] should be defined":
-    Verify.testProperties "ShadowWaspStrike",
+    Verify.testProperties "ranger", "ShadowWaspStrike",
       name: [ expect: "Shadow Wasp Strike" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -232,7 +232,7 @@ module.exports =
         { str: 16, dex: 14, expect: "2[W]+3 damage (melee) or 2[W]+2 damage (ranged)" } ]
 
   "[ThundertuskBoarStrike] should be defined":
-    Verify.testProperties "ThundertuskBoarStrike",
+    Verify.testProperties "ranger", "ThundertuskBoarStrike",
       name: [ expect: "Thundertusk Boar Strike" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -248,7 +248,7 @@ module.exports =
         { str: 16, dex: 14, wis: 18, expect: "1[W]+3 damage (melee) or 1[W]+2 damage (ranged), push target 5 squares (special)" } ]
 
   "[ExcruciatingShot] should be defined":
-    Verify.testProperties "ExcruciatingShot",
+    Verify.testProperties "ranger", "ExcruciatingShot",
       name: [ expect: "Excruciating Shot" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "ranged weapon" ] ]
@@ -258,7 +258,7 @@ module.exports =
         { dex: 16, expect: "3[W]+3 damage (special)" } ]
 
   "[FrenziedSkirmish] should be defined":
-    Verify.testProperties "FrenziedSkirmish",
+    Verify.testProperties "ranger", "FrenziedSkirmish",
       name: [ expect: "Frenzied Skirmish" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -270,7 +270,7 @@ module.exports =
         { str: 16, expect: "1[W]+3 damage (special)" } ]
 
   "[SplinteringShot] should be defined":
-    Verify.testProperties "SplinteringShot",
+    Verify.testProperties "ranger", "SplinteringShot",
       name: [ expect: "Splintering Shot" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "ranged weapon" ] ]
@@ -282,7 +282,7 @@ module.exports =
         { dex: 16, expect: "3[W]+3 damage (special)" } ]
 
   "[TwoWolfPounce] should be defined":
-    Verify.testProperties "TwoWolfPounce",
+    Verify.testProperties "ranger", "TwoWolfPounce",
       name: [ expect: "Two-Wolf Pounce" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -294,7 +294,7 @@ module.exports =
         { str: 16, expect: "2[W]+3 damage (main), 1[W]+3 damage (off-hand) (special)" } ]
 
   "[EvadeAmbush] should be defined":
-    Verify.testProperties "EvadeAmbush",
+    Verify.testProperties "ranger", "EvadeAmbush",
       name: [ expect: "Evade Ambush" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial" ] ]
@@ -304,7 +304,7 @@ module.exports =
         { wis: 16, expect: "3 allies avoid surprise" } ]
 
   "[SkilledCompanion] should be defined":
-    Verify.testProperties "SkilledCompanion",
+    Verify.testProperties "ranger", "SkilledCompanion",
       name: [ expect: "Skilled Companion" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial" ] ]
@@ -313,7 +313,7 @@ module.exports =
         { wis: 16, expect: "ally gets +3 to skill check" } ]
 
   "[WeaveThroughTheFray] should be defined":
-    Verify.testProperties "WeaveThroughTheFray",
+    Verify.testProperties "ranger", "WeaveThroughTheFray",
       name: [ expect: "Weave through the Fray" ],
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
@@ -323,7 +323,7 @@ module.exports =
         { wis: 16, expect: "shift 3 squares" } ]
 
   "[ClawsOfTheGriffon] should be defined":
-    Verify.testProperties "ClawsOfTheGriffon",
+    Verify.testProperties "ranger", "ClawsOfTheGriffon",
       name: [ expect: "Claws of the Griffon" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -335,7 +335,7 @@ module.exports =
         { str: 16, expect: "2[W]+3 damage (main), 1[W]+3 damage (off-hand)" } ]
 
   "[HawksTalon] should be defined":
-    Verify.testProperties "HawksTalon",
+    Verify.testProperties "ranger", "HawksTalon",
       name: [ expect: "Hawk's Talon" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -351,7 +351,7 @@ module.exports =
         { str: 16, dex: 14, expect: "2[W]+3 damage (melee) or 2[W]+2 damage (ranged)" } ]
 
   "[SpikesOfTheManticore] should be defined":
-    Verify.testProperties "SpikesOfTheManticore",
+    Verify.testProperties "ranger", "SpikesOfTheManticore",
       name: [ expect: "Spikes of the Manticore" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "ranged weapon" ] ]
@@ -363,7 +363,7 @@ module.exports =
         { dex: 16, expect: "2[W]+3 damage (first), 1[W]+3 damage (second)" } ]
 
   "[SweepingWhirlwind] should be defined":
-    Verify.testProperties "SweepingWhirlwind",
+    Verify.testProperties "ranger", "SweepingWhirlwind",
       name: [ expect: "Sweeping Whirlwind" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -375,7 +375,7 @@ module.exports =
         { str: 16, wis: 14, expect: "1[W]+3 damage, target pushed 2 squares (special)" } ]
 
   "[AttacksOnTheRun] should be defined":
-    Verify.testProperties "AttacksOnTheRun",
+    Verify.testProperties "ranger", "AttacksOnTheRun",
       name: [ expect: "Attacks on the Run" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -390,7 +390,7 @@ module.exports =
         { str: 16, dex: 14, expect: "3[W]+3 damage (melee) or 3[W]+2 damage (ranged)" } ]
 
   "[CloseQuartersShot] should be defined":
-    Verify.testProperties "CloseQuartersShot",
+    Verify.testProperties "ranger", "CloseQuartersShot",
       name: [ expect: "Close Quarters Shot" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "ranged weapon" ] ]
@@ -402,7 +402,7 @@ module.exports =
         { dex: 16, expect: "4[W]+3 damage" } ]
 
   "[SprayOfArrows] should be defined":
-    Verify.testProperties "SprayOfArrows",
+    Verify.testProperties "ranger", "SprayOfArrows",
       name: [ expect: "Spray of Arrows" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "ranged weapon" ] ]
@@ -414,7 +414,7 @@ module.exports =
         { dex: 16, expect: "2[W]+3 damage" } ]
 
   "[SwirlingLeavesOfSteel] should be defined":
-    Verify.testProperties "SwirlingLeavesOfSteel",
+    Verify.testProperties "ranger", "SwirlingLeavesOfSteel",
       name: [ expect: "Swirling Leaves of Steel" ],
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -426,13 +426,13 @@ module.exports =
         { str: 16, expect: "2[W]+3 damage" } ]
 
   "[ExpeditiousStride] should be defined":
-    Verify.testProperties "ExpeditiousStride",
+    Verify.testProperties "ranger", "ExpeditiousStride",
       name: [ expect: "Expeditious Stride" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
 
   "[OpenTheRange] should be defined":
-    Verify.testProperties "OpenTheRange",
+    Verify.testProperties "ranger", "OpenTheRange",
       name: [ expect: "Open the Range" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial" ] ]
@@ -441,7 +441,7 @@ module.exports =
         { wis: 16, expect: "move 4 squares (special)" } ]
 
   "[UndauntedStride] should be defined":
-    Verify.testProperties "UndauntedStride",
+    Verify.testProperties "ranger", "UndauntedStride",
       name: [ expect: "Undaunted Stride" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial", "stance" ] ]

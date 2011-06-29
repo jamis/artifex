@@ -2,7 +2,7 @@
 
 module.exports =
   "[DivineMettle] should be defined":
-    Verify.testProperties "DivineMettle",
+    Verify.testProperties "paladin", "DivineMettle",
       name: [ expect: "Channel Divinity: Divine Mettle" ]
       keywords: [ expect: [ "divine" ] ]
       effect: [
@@ -11,7 +11,7 @@ module.exports =
         { cha: 18, expect: "target makes a save with +4 bonus" } ]
     
   "[DivineStrength] should be defined":
-    Verify.testProperties "DivineStrength",
+    Verify.testProperties "paladin", "DivineStrength",
       name: [ expect: "Channel Divinity: Divine Strength" ]
       keywords: [ expect: [ "divine" ] ]
       effect: [
@@ -19,7 +19,7 @@ module.exports =
         { str: 18, expect: "apply +4 extra damage on next attack" } ]
     
   "[DivineChallenge] should be defined":
-    Verify.testProperties "DivineChallenge",
+    Verify.testProperties "paladin", "DivineChallenge",
       name: [ expect: "Divine Challenge" ]
       keywords: [ expect: [ "divine", "radiant" ] ]
       effect: [
@@ -31,13 +31,13 @@ module.exports =
         { level: 21, cha: 16, expect: "target takes 12 damage on first attack that excludes you (special)" } ]
 
   "[LayOnHands] should be defined":
-    Verify.testProperties "LayOnHands",
+    Verify.testProperties "paladin", "LayOnHands",
       name: [ expect: "Lay on Hands" ]
       keywords: [ expect: [ "divine", "healing" ] ]
       frequency: [ { wis: 10, expect: "1/day" }, { wis: 16, expect: "3/day" } ]
 
   "[BolsteringStrike] should be defined":
-    Verify.testProperties "BolsteringStrike",
+    Verify.testProperties "paladin", "BolsteringStrike",
       name: [ expect: "Bolstering Strike" ]
       keywords: [ expect: [ "divine", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -50,7 +50,7 @@ module.exports =
         { level: 21, cha: 16, wis: 14, expect: "2[W]+3 damage, +2 temp HP" } ]
 
   "[EnfeeblingStrike] should be defined":
-    Verify.testProperties "EnfeeblingStrike",
+    Verify.testProperties "paladin", "EnfeeblingStrike",
       name: [ expect: "Enfeebling Strike" ]
       keywords: [ expect: [ "divine", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -62,7 +62,7 @@ module.exports =
         { level: 21, cha: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[HolyStrike] should be defined":
-    Verify.testProperties "HolyStrike",
+    Verify.testProperties "paladin", "HolyStrike",
       name: [ expect: "Holy Strike" ]
       keywords: [ expect: [ "divine", "radiant", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -75,7 +75,7 @@ module.exports =
         { level: 21, str: 16, wis: 14, expect: "2[W]+3 damage (+5 if marked)" } ]
 
   "[ValiantStrike] should be defined":
-    Verify.testProperties "ValiantStrike",
+    Verify.testProperties "paladin", "ValiantStrike",
       name: [ expect: "Valiant Strike" ]
       keywords: [ expect: [ "divine", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -89,7 +89,7 @@ module.exports =
         { level: 21, str: 16, expect: "2[W]+3 damage" } ]
 
   "[FearsomeSmite] should be defined":
-    Verify.testProperties "FearsomeSmite",
+    Verify.testProperties "paladin", "FearsomeSmite",
       name: [ expect: "Fearsome Smite" ]
       keywords: [ expect: [ "divine", "fear", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -99,7 +99,7 @@ module.exports =
         { cha: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[PiercingSmite] should be defined":
-    Verify.testProperties "PiercingSmite",
+    Verify.testProperties "paladin", "PiercingSmite",
       name: [ expect: "Piercing Smite" ]
       keywords: [ expect: [ "divine", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -110,7 +110,7 @@ module.exports =
         { str: 16, wis: 18, expect: "2[W]+3 damage, mark target and 4 adjacent enemies" } ]
 
   "[RadiantSmite] should be defined":
-    Verify.testProperties "RadiantSmite",
+    Verify.testProperties "paladin", "RadiantSmite",
       name: [ expect: "Radiant Smite" ]
       keywords: [ expect: [ "divine", "radiant", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -121,7 +121,7 @@ module.exports =
         { str: 14, wis: 16, expect: "2[W]+5 damage" } ]
 
   "[ShieldingSmite] should be defined":
-    Verify.testProperties "ShieldingSmite",
+    Verify.testProperties "paladin", "ShieldingSmite",
       name: [ expect: "Shielding Smite" ]
       keywords: [ expect: [ "divine", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -134,7 +134,7 @@ module.exports =
         { wis: 16, expect: "ally w/in 5 squares gets +3 bonus to AC" } ]
 
   "[OnPainOfDeath] should be defined":
-    Verify.testProperties "OnPainOfDeath",
+    Verify.testProperties "paladin", "OnPainOfDeath",
       name: [ expect: "On Pain of Death" ]
       keywords: [ expect: [ "divine", "implement" ] ]
       attack: [ { cha: 10, expect: "+0 vs. Will" }, { cha: 16, expect: "+3 vs. Will" } ]
@@ -143,7 +143,7 @@ module.exports =
         { cha: 16, expect: "3d8+3 damage (special)" } ]
 
   "[PaladinsJudgement] should be defined":
-    Verify.testProperties "PaladinsJudgement",
+    Verify.testProperties "paladin", "PaladinsJudgement",
       name: [ expect: "Paladin's Judgement" ]
       keywords: [ expect: [ "divine", "healing", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -153,7 +153,7 @@ module.exports =
         { str: 16, expect: "3[W]+3 damage (special)" } ]
 
   "[RadiantDelirium] should be defined":
-    Verify.testProperties "RadiantDelirium",
+    Verify.testProperties "paladin", "RadiantDelirium",
       name: [ expect: "Radiant Delirium" ]
       keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [ { cha: 10, expect: "+0 vs. Reflex" }, { cha: 16, expect: "+3 vs. Reflex" } ]
@@ -162,25 +162,25 @@ module.exports =
         { cha: 16, expect: "3d8+3 damage (special)" } ]
 
   "[AstralSpeech] should be defined":
-    Verify.testProperties "AstralSpeech",
+    Verify.testProperties "paladin", "AstralSpeech",
       name: [ expect: "Astral Speech" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "divine" ] ]
 
   "[MartyrsBlessing] should be defined":
-    Verify.testProperties "MartyrsBlessing",
+    Verify.testProperties "paladin", "MartyrsBlessing",
       name: [ expect: "Martyr's Blessing" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "divine" ] ]
 
   "[SacredCircle] should be defined":
-    Verify.testProperties "SacredCircle",
+    Verify.testProperties "paladin", "SacredCircle",
       name: [ expect: "Sacred Circle" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "divine", "implement", "zone" ] ]
 
   "[ArcingSmite] should be defined":
-    Verify.testProperties "ArcingSmite",
+    Verify.testProperties "paladin", "ArcingSmite",
       name: [ expect: "Arcing Smite" ]
       keywords: [ expect: [ "divine", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -190,7 +190,7 @@ module.exports =
         { str: 16, expect: "1[W]+3 damage (special)" } ]
 
   "[InvigoratingSmite] should be defined":
-    Verify.testProperties "InvigoratingSmite",
+    Verify.testProperties "paladin", "InvigoratingSmite",
       name: [ expect: "Invigorating Smite" ]
       keywords: [ expect: [ "divine", "healing", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -202,7 +202,7 @@ module.exports =
         { cha: 16, wis: 14, expect: "2[W]+3 damage, bloodied allies regain 7 HP" } ]
 
   "[RighteousSmite] should be defined":
-    Verify.testProperties "RighteousSmite",
+    Verify.testProperties "paladin", "RighteousSmite",
       name: [ expect: "Righteous Smite" ]
       keywords: [ expect: [ "divine", "healing", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -214,7 +214,7 @@ module.exports =
         { cha: 16, wis: 14, expect: "2[W]+3 damage, allies get 7 temp HP" } ]
 
   "[StaggeringSmite] should be defined":
-    Verify.testProperties "StaggeringSmite",
+    Verify.testProperties "paladin", "StaggeringSmite",
       name: [ expect: "Staggering Smite" ]
       keywords: [ expect: [ "divine", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -227,14 +227,14 @@ module.exports =
         { str: 16, wis: 14, expect: "2[W]+3 damage, target pushed 2 squares" } ]
 
   "[HallowedCircle] should be defined":
-    Verify.testProperties "HallowedCircle",
+    Verify.testProperties "paladin", "HallowedCircle",
       name: [ expect: "Hallowed Circle" ]
       keywords: [ expect: [ "divine", "implement", "zone" ] ]
       attack: [ { cha: 10, expect: "+0 vs. Reflex" }, { cha: 16, expect: "+3 vs. Reflex" } ]
       hit: [ { cha: 10, expect: "2d6 damage" }, { cha: 16, expect: "2d6+3 damage" } ]
 
   "[MartyrsRetribution] should be defined":
-    Verify.testProperties "MartyrsRetribution",
+    Verify.testProperties "paladin", "MartyrsRetribution",
       name: [ expect: "Martyr's Retribution" ]
       keywords: [ expect: [ "divine", "radiant", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -244,7 +244,7 @@ module.exports =
       hit: [ { str: 10, expect: "4[W] damage" }, { str: 16, expect: "4[W]+3 damage" } ]
 
   "[SignOfVulnerability] should be defined":
-    Verify.testProperties "SignOfVulnerability",
+    Verify.testProperties "paladin", "SignOfVulnerability",
       name: [ expect: "Sign of Vulnerability" ]
       keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [
@@ -255,19 +255,19 @@ module.exports =
         { cha: 16, expect: "3d8+3 damage (special)" } ]
 
   "[DivineBodyguard] should be defined":
-    Verify.testProperties "DivineBodyguard",
+    Verify.testProperties "paladin", "DivineBodyguard",
       name: [ expect: "Divine Bodyguard" ]
       type: [expect: "daily" ]
       keywords: [ expect: [ "divine" ] ]
 
   "[OneHeartOneMind] should be defined":
-    Verify.testProperties "OneHeartOneMind",
+    Verify.testProperties "paladin", "OneHeartOneMind",
       name: [ expect: "One Heart, One Mind" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "divine" ] ]
 
   "[WrathOfTheGods] should be defined":
-    Verify.testProperties "WrathOfTheGods",
+    Verify.testProperties "paladin", "WrathOfTheGods",
       name: [ expect: "Wrath of the Gods" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "divine" ] ]
@@ -276,7 +276,7 @@ module.exports =
         { cha: 16, expect: "targets add +3 to damage rolls" } ]
 
   "[BeckonFoe] should be defined":
-    Verify.testProperties "BeckonFoe",
+    Verify.testProperties "paladin", "BeckonFoe",
       name: [ expect: "Beckon Foe" ]
       keywords: [ expect: [ "divine", "implement" ] ]
       attack: [ { cha: 10, expect: "+0 vs. Will" }, { cha: 16, expect: "+3 vs. Will" } ]
@@ -289,7 +289,7 @@ module.exports =
         { cha: 16, wis: 14, expect: "2d10+3 damage, pull target 2 squares" } ]
 
   "[BenignTransposition] should be defined":
-    Verify.testProperties "BenignTransposition",
+    Verify.testProperties "paladin", "BenignTransposition",
       name: [ expect: "Benign Transposition" ]
       keywords: [ expect: [ "divine", "teleportation", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -304,7 +304,7 @@ module.exports =
         { cha: 16, expect: "2[W]+3 damage (secondary)" } ]
 
   "[DivineReverence] should be defined":
-    Verify.testProperties "DivineReverence",
+    Verify.testProperties "paladin", "DivineReverence",
       name: [ expect: "Divine Reverence" ]
       keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [ { cha: 10, expect: "+0 vs. Will" }, { cha: 16, expect: "+3 vs. Will" } ]
@@ -313,7 +313,7 @@ module.exports =
         { cha: 16, expect: "1d8+3 damage (special)" } ]
 
   "[ThunderSmite] should be defined":
-    Verify.testProperties "ThunderSmite",
+    Verify.testProperties "paladin", "ThunderSmite",
       name: [ expect: "Thunder Smite" ]
       keywords: [ expect: [ "divine", "thunder", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -325,7 +325,7 @@ module.exports =
         { str: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[CrownOfGlory] should be defined":
-    Verify.testProperties "CrownOfGlory",
+    Verify.testProperties "paladin", "CrownOfGlory",
       name: [ expect: "Crown of Glory" ]
       keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [ { cha: 10, expect: "+0 vs. Will" }, { cha: 16, expect: "+3 vs. Will" } ]
@@ -334,7 +334,7 @@ module.exports =
         { cha: 16, expect: "2d8+3 damage (special)" } ]
 
   "[OneStandsAlone] should be defined":
-    Verify.testProperties "OneStandsAlone",
+    Verify.testProperties "paladin", "OneStandsAlone",
       name: [ expect: "One Stands Alone" ]
       keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [ { cha: 10, expect: "+0 vs. Will" }, { cha: 16, expect: "+3 vs. Will" } ]
@@ -343,7 +343,7 @@ module.exports =
         { cha: 16, expect: "2d8+3 damage (special)" } ]
 
   "[RadiantPulse] should be defined":
-    Verify.testProperties "RadiantPulse",
+    Verify.testProperties "paladin", "RadiantPulse",
       name: [ expect: "Radiant Pulse" ]
       keywords: [ expect: [ "divine", "implement", "radiant" ] ]
       attack: [
@@ -354,19 +354,19 @@ module.exports =
         { cha: 16, expect: "1d10+3 damage (special)" } ]
 
   "[CleansingSpirit] should be defined":
-    Verify.testProperties "CleansingSpirit",
+    Verify.testProperties "paladin", "CleansingSpirit",
       name: [ expect: "Cleansing Spirit" ]
       type: [expect: "encounter" ]
       keywords: [ expect: [ "divine" ] ]
 
   "[NobleShield] should be defined":
-    Verify.testProperties "NobleShield",
+    Verify.testProperties "paladin", "NobleShield",
       name: [ expect: "Noble Shield" ]
       type: [expect: "daily" ]
       keywords: [ expect: [ "divine" ] ]
 
   "[TurnTheTide] should be defined":
-    Verify.testProperties "TurnTheTide",
+    Verify.testProperties "paladin", "TurnTheTide",
       name: [ expect: "Turn the Tide" ]
       type: [expect: "daily" ]
       keywords: [ expect: [ "divine" ] ]

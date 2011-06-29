@@ -183,18 +183,18 @@ module.exports =
 
   "level-1 spells are accounted for": (test) ->
     for power in [ "DireRadiance", "EldritchBlast", "Eyebite", "HellishRebuke" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.atWill[1]
 
     for power in [ "DiabolicGrasp", "DreadfulWord", "VampiricEmbrace", "Witchfire" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.encounter[1]
 
     for power in [ "ArmorOfAgathys", "CurseOfTheDarkDream", "DreadStar", "FlamesOfPhlegethos" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.daily[1]
 
     klass = new Classes.Warlock(new NPC)
@@ -203,49 +203,49 @@ module.exports =
 
   "level-2 spells are accounted for": (test) ->
     for power in [ "BeguilingTongue", "EtherealStride", "FiendishResilience", "ShadowVeil" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.utility[2]
     test.done()
 
   "level-3 spells are accounted for": (test) ->
     for power in [ "EldritchRain", "FieryBolt", "FrigidDarkness", "OtherwindStride" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.encounter[3]
     test.done()
 
   "level-5 spells are accounted for": (test) ->
     for power in [ "AvernianEruption", "CrownOfMadness", "CurseOfTheBloodyFangs", "HungerOfHadar" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.daily[5]
     test.done()
 
   "level-6 spells are accounted for": (test) ->
     for power in [ "DarkOnesOwnLuck", "FeySwitch", "ShroudOfBlackSteel", "SpiderClimb" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.utility[6]
     test.done()
 
   "level-7 spells are accounted for": (test) ->
     for power in [ "HowlOfDoom", "InfernalMoonCurse", "MireTheMind", "SignOfIllOmen" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.encounter[7]
     test.done()
 
   "level-9 spells are accounted for": (test) ->
     for power in [ "CurseOfTheBlackFrost", "IronSpikeOfDis", "SummonsOfKhirad", "ThiefOfFiveFates" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.daily[9]
     test.done()
 
   "level-10 spells are accounted for": (test) ->
     for power in [ "AmbassadorImp", "ShadowForm", "ShieldingShades", "WarlocksLeap" ]
-      test.ok Powers[power], "`#{power}' is not defined"
-      if Powers[power]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.utility[10]
     test.done()

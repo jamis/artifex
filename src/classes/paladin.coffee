@@ -39,14 +39,14 @@ module.exports = class Paladin
     npc.pendingSkills.push count: 3, list: Paladin.skills
 
     npc.feature "class", "Channel Divinity"
-    npc.powers.encounter.push Powers.get("DivineMettle", npc: npc)
-    npc.powers.encounter.push Powers.get("DivineStrength", npc: npc)
+    npc.powers.encounter.push Powers.get("paladin", "DivineMettle", npc: npc)
+    npc.powers.encounter.push Powers.get("paladin", "DivineStrength", npc: npc)
 
     npc.feature "class", "Divine Challenge"
-    npc.powers.encounter.push Powers.get("DivineChallenge", npc: npc)
+    npc.powers.encounter.push Powers.get("paladin", "DivineChallenge", npc: npc)
 
     npc.feature "class", "Lay on Hands"
-    npc.powers.encounter.push Powers.get("LayOnHands", npc: npc)
+    npc.powers.encounter.push Powers.get("paladin", "LayOnHands", npc: npc)
 
     npc.deity = npc.random.pick Deities[npc.alignment]...
 

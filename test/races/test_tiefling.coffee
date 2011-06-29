@@ -1,4 +1,4 @@
-{NPC, Powers, Races} = require '../..'
+{NPC, Races} = require '../..'
 
 module.exports =
   "should be from PHB": (test) ->

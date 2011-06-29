@@ -12,7 +12,7 @@ brutalScoundrel = (power) -> power.npc.feature "class", "Brutal Scoundrel"
   
 module.exports =
   "[SneakAttack] should be defined":
-    Verify.testProperties "SneakAttack",
+    Verify.testProperties "rogue", "SneakAttack",
       name: [ expect: "Sneak Attack" ]
       hit: [
         { level:  1, expect: "+2d6 damage" },
@@ -22,7 +22,7 @@ module.exports =
         { level: 21, expect: "+5d6 damage" } ]
 
   "[DeftStrike] should be defined":
-    Verify.testProperties "DeftStrike",
+    Verify.testProperties "rogue", "DeftStrike",
       name: [ expect: "Deft Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
@@ -32,7 +32,7 @@ module.exports =
         { level: 21, dex: 16, expect: "2[W]+3 damage" } ]
 
   "[PiercingStrike] should be defined":
-    Verify.testProperties "PiercingStrike",
+    Verify.testProperties "rogue", "PiercingStrike",
       name: [ expect: "Piercing Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -43,7 +43,7 @@ module.exports =
         { level: 21, dex: 16, expect: "2[W]+3 damage" } ]
 
   "[RiposteStrike] should be defined":
-    Verify.testProperties "RiposteStrike",
+    Verify.testProperties "rogue", "RiposteStrike",
       name: [ expect: "Riposte Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -60,7 +60,7 @@ module.exports =
         { level: 21, dex: 16, str: 16, expect: "2[W]+3 damage (special, riposte 2[W]+3 damage)" } ]
 
   "[SlyFlourish] should be defined":
-    Verify.testProperties "SlyFlourish",
+    Verify.testProperties "rogue", "SlyFlourish",
       name: [ expect: "Sly Flourish" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
@@ -72,7 +72,7 @@ module.exports =
         { level: 21, dex: 16, cha: 14, expect: "2[W]+5 damage" } ]
 
   "[DazingStrike] should be defined":
-    Verify.testProperties "DazingStrike",
+    Verify.testProperties "rogue", "DazingStrike",
       name: [ expect: "Dazing Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -82,7 +82,7 @@ module.exports =
         { dex: 16, expect: "1[W]+3 damage (special)" } ]
 
   "[KingsCastle] should be defined":
-    Verify.testProperties "KingsCastle",
+    Verify.testProperties "rogue", "KingsCastle",
       name: [ expect: "King's Castle" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. Reflex" }, { dex: 16, expect: "+3 vs. Reflex" } ]
@@ -91,7 +91,7 @@ module.exports =
         { dex: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[PositioningStrike] should be defined":
-    Verify.testProperties "PositioningStrike",
+    Verify.testProperties "rogue", "PositioningStrike",
       name: [ expect: "Positioning Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -104,7 +104,7 @@ module.exports =
         { dex: 14, cha: 16, when: artfulDodger, expect: "1[W]+2 damage, slide target 3 squares" } ]
 
   "[TorturousStrike] should be defined":
-    Verify.testProperties "TorturousStrike",
+    Verify.testProperties "rogue", "TorturousStrike",
       name: [ expect: "Torturous Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -117,7 +117,7 @@ module.exports =
         { dex: 14, str: 16, when: brutalScoundrel, expect: "2[W]+5 damage" } ]
 
   "[BlindingBarrage] should be defined":
-    Verify.testProperties "BlindingBarrage",
+    Verify.testProperties "rogue", "BlindingBarrage",
       name: [ expect: "Blinding Barrage" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
@@ -126,7 +126,7 @@ module.exports =
         { dex: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[EasyTarget] should be defined":
-    Verify.testProperties "EasyTarget",
+    Verify.testProperties "rogue", "EasyTarget",
       name: [ expect: "Easy Target" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
@@ -135,7 +135,7 @@ module.exports =
         { dex: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[TrickStrike] should be defined":
-    Verify.testProperties "TrickStrike",
+    Verify.testProperties "rogue", "TrickStrike",
       name: [ expect: "Trick Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
@@ -144,42 +144,42 @@ module.exports =
         { dex: 16, expect: "3[W]+3 damage (special)" } ]
 
   "[FleetingGhost] should be defined":
-    Verify.testProperties "FleetingGhost",
+    Verify.testProperties "rogue", "FleetingGhost",
       name: [ expect: "Fleeting Ghost" ]
       type: [ expect: "atWill" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "stealth" } ]
 
   "[GreatLeap] should be defined":
-    Verify.testProperties "GreatLeap",
+    Verify.testProperties "rogue", "GreatLeap",
       name: [ expect: "Great Leap" ]
       type: [ expect: "atWill" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "athletics" } ]
 
   "[MasterOfDeceit] should be defined":
-    Verify.testProperties "MasterOfDeceit",
+    Verify.testProperties "rogue", "MasterOfDeceit",
       name: [ expect: "Master of Deceit" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "bluff" } ]
 
   "[QuickFingers] should be defined":
-    Verify.testProperties "QuickFingers",
+    Verify.testProperties "rogue", "QuickFingers",
       name: [ expect: "Quick Fingers" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "thievery" } ]
 
   "[Tumble] should be defined":
-    Verify.testProperties "Tumble",
+    Verify.testProperties "rogue", "Tumble",
       name: [ expect: "Tumble" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "acrobatics" } ]
 
   "[BaitAndSwitch] should be defined":
-    Verify.testProperties "BaitAndSwitch",
+    Verify.testProperties "rogue", "BaitAndSwitch",
       name: [ expect: "Bait and Switch" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -191,7 +191,7 @@ module.exports =
         { dex: 16, cha: 14, when: artfulDodger, expect: "2[W]+3 damage, shift 2 squares (special)" } ]
 
   "[SetupStrike] should be defined":
-    Verify.testProperties "SetupStrike",
+    Verify.testProperties "rogue", "SetupStrike",
       name: [ expect: "Setup Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -202,7 +202,7 @@ module.exports =
         { dex: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[ToppleOver] should be defined":
-    Verify.testProperties "ToppleOver",
+    Verify.testProperties "rogue", "ToppleOver",
       name: [ expect: "Topple Over" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -216,7 +216,7 @@ module.exports =
         { dex: 16, expect: "1[W]+3 damage (special)" } ]
 
   "[TrickstersBlade] should be defined":
-    Verify.testProperties "TrickstersBlade",
+    Verify.testProperties "rogue", "TrickstersBlade",
       name: [ expect: "Trickster's Blade" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [ { dex: 10, expect: "+0 vs. AC" }, { dex: 16, expect: "+3 vs. AC" } ]
@@ -226,7 +226,7 @@ module.exports =
         { dex: 16, cha: 14, expect: "2[W]+3 damage, +2 AC bonus" } ]
 
   "[CleverRiposte] should be defined":
-    Verify.testProperties "CleverRiposte",
+    Verify.testProperties "rogue", "CleverRiposte",
       name: [ expect: "Clever Riposte" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -238,7 +238,7 @@ module.exports =
         { dex: 16, expect: "target takes 3 damage on attack" } ]
 
   "[DeepCut] should be defined":
-    Verify.testProperties "DeepCut",
+    Verify.testProperties "rogue", "DeepCut",
       name: [ expect: "Deep Cut" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -251,7 +251,7 @@ module.exports =
         { dex: 16, str: 14, expect: "2[W]+3 damage, ongoing 7" } ]
 
   "[WalkingWounded] should be defined":
-    Verify.testProperties "WalkingWounded",
+    Verify.testProperties "rogue", "WalkingWounded",
       name: [ expect: "Walking Wounded" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -262,42 +262,42 @@ module.exports =
         { dex: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[Chameleon] should be defined":
-    Verify.testProperties "Chameleon",
+    Verify.testProperties "rogue", "Chameleon",
       name: [ expect: "Chameleon" ]
       type: [ expect: "atWill" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "stealth" } ]
 
   "[IgnobleEscape] should be defined":
-    Verify.testProperties "IgnobleEscape",
+    Verify.testProperties "rogue", "IgnobleEscape",
       name: [ expect: "Ignoble Escape" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "acrobatics" } ]
 
   "[MobMentality] should be defined":
-    Verify.testProperties "MobMentality",
+    Verify.testProperties "rogue", "MobMentality",
       name: [ expect: "Mob Mentality" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "intimidate" } ]
 
   "[NimbleClimb] should be defined":
-    Verify.testProperties "NimbleClimb",
+    Verify.testProperties "rogue", "NimbleClimb",
       name: [ expect: "Nimble Climb" ]
       type: [ expect: "atWill" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "athletics" } ]
 
   "[SlipperyMind] should be defined":
-    Verify.testProperties "SlipperyMind",
+    Verify.testProperties "rogue", "SlipperyMind",
       name: [ expect: "Slippery Mind" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "bluff" } ]
 
   "[CloudOfSteel] should be defined":
-    Verify.testProperties "CloudOfSteel",
+    Verify.testProperties "rogue", "CloudOfSteel",
       name: [ expect: "Cloud of Steel" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -308,7 +308,7 @@ module.exports =
         { dex: 16, expect: "1[W]+3 damage" } ]
 
   "[ImperilingStrike] should be defined":
-    Verify.testProperties "ImperilingStrike",
+    Verify.testProperties "rogue", "ImperilingStrike",
       name: [ expect: "Imperiling Strike" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -322,7 +322,7 @@ module.exports =
         { dex: 16, str: 14, when: brutalScoundrel, expect: "1[W]+3 damage, target takes -2 to AC and Reflex" } ]
 
   "[RoguesLuck] should be defined":
-    Verify.testProperties "RoguesLuck",
+    Verify.testProperties "rogue", "RoguesLuck",
       name: [ expect: "Rogue's Luck" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attack: [
@@ -338,7 +338,7 @@ module.exports =
         { dex: 16, cha: 14, when: artfulDodger, expect: "secondary attack at +5 vs. AC for 1[W]+3 damage" } ]
 
   "[SandInTheEyes] should be defined":
-    Verify.testProperties "SandInTheEyes",
+    Verify.testProperties "rogue", "SandInTheEyes",
       name: [ expect: "Sand in the Eyes" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -351,7 +351,7 @@ module.exports =
         { dex: 16, expect: "1[W]+3 damage (special)" } ]
 
   "[CrimsonEdge] should be defined":
-    Verify.testProperties "CrimsonEdge",
+    Verify.testProperties "rogue", "CrimsonEdge",
       name: [ expect: "Crimson Edge" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -365,7 +365,7 @@ module.exports =
         { dex: 16, str: 14, expect: "2[W]+3 damage, ongoing 7 (special)" } ]
 
   "[DeadlyPositioning] should be defined":
-    Verify.testProperties "DeadlyPositioning",
+    Verify.testProperties "rogue", "DeadlyPositioning",
       name: [ expect: "Deadly Positioning" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       requires: [ expect: { weapon: "light blade" } ]
@@ -377,7 +377,7 @@ module.exports =
         { dex: 16, expect: "3[W]+3 damage" } ]
 
   "[Knockout] should be defined":
-    Verify.testProperties "Knockout",
+    Verify.testProperties "rogue", "Knockout",
       name: [ expect: "Knockout" ]
       keywords: [ expect: [ "martial", "weapon" ] ]
       attackTypes: [ expect: [ "melee weapon" ] ]
@@ -390,28 +390,28 @@ module.exports =
         { dex: 16, expect: "2[W]+3 damage (special)" } ]
 
   "[CertainFreedom] should be defined":
-    Verify.testProperties "CertainFreedom",
+    Verify.testProperties "rogue", "CertainFreedom",
       name: [ expect: "Certain Freedom" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "acrobatics" } ]
 
   "[CloseQuarters] should be defined":
-    Verify.testProperties "CloseQuarters",
+    Verify.testProperties "rogue", "CloseQuarters",
       name: [ expect: "Close Quarters" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "acrobatics" } ]
 
   "[DangerousTheft] should be defined":
-    Verify.testProperties "DangerousTheft",
+    Verify.testProperties "rogue", "DangerousTheft",
       name: [ expect: "Dangerous Theft" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "thievery" } ]
 
   "[ShadowStride] should be defined":
-    Verify.testProperties "ShadowStride",
+    Verify.testProperties "rogue", "ShadowStride",
       name: [ expect: "Shadow Stride" ]
       type: [ expect: "atWill" ]
       keywords: [ expect: [ "martial" ] ]

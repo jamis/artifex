@@ -68,8 +68,8 @@ class Feat
               npc.skills[skill].adjust adjustment[1], adjustment[0]
           when "power"
             for category, list of value
-              for power in list
-                power = Powers.get power, npc: npc
+              for info in list
+                power = Powers.get info.collection, info.id, npc: npc
                 npc.powers[category].push power
           when "proficiencies"
             for category, list of value
@@ -126,7 +126,7 @@ module.exports = Feats =
       feature: { class: [ "Channel Divinity" ] }
     grants:
       power:
-        encounter: [ "ArmorOfBahamut" ]
+        encounter: [ collection: "cleric", id: "ArmorOfBahamut" ]
 
   ChainmailProficiency: new Feat
     name: "Armor Proficiency (Chainmail)"
@@ -202,7 +202,7 @@ module.exports = Feats =
       feature: { class: [ "Channel Divinity" ] }
     grants:
       power:
-        encounter: [ "AvandrasRescue" ]
+        encounter: [ collection: "cleric", id: "AvandrasRescue" ]
 
   Backstabber: new Feat
     name: "Backstabber"
@@ -242,7 +242,7 @@ module.exports = Feats =
       feature: { class: [ "Channel Divinity" ] }
     grants:
       power:
-        encounter: [ "CorellonsGrace" ]
+        encounter: [ collection: "cleric", id: "CorellonsGrace" ]
 
   DarkFury: new Feat
     name: "Dark Fury"
@@ -359,7 +359,7 @@ module.exports = Feats =
           if npc.class.powers.daily[level]?
             list = npc.suitablePowersIn(npc.class.powers.daily[level])
             id = npc.random.pick(list...)
-            npc.powers.daily.push Powers.get(id, npc: npc)
+            npc.powers.daily.push Powers.get(npc.class.name, id, npc: npc)
 
         npc.advanceItem_Daily = -> @selectPowersFor "daily", 3
 

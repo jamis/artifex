@@ -8,7 +8,7 @@ breathIs = (definition) ->
 
 module.exports =
   "[DragonBreath] should be defined":
-    Verify.testProperties "DragonBreath",
+    Verify.testProperties "racial", "DragonBreath",
       name: [
         { when: breathIs(type: "poison"), expect: "Dragon Breath (poison)" },
         { when: breathIs(type: "cold"), expect: "Dragon Breath (cold)" } ]
@@ -36,7 +36,7 @@ module.exports =
         
 
   "[ElvenAccuracy] should be defined":
-    Verify.testProperties "ElvenAccuracy",
+    Verify.testProperties "racial", "ElvenAccuracy",
       name: [ expect: "Elven Accuracy" ]
       keywords: [ expect: [] ]
       effect: [
@@ -44,12 +44,12 @@ module.exports =
         { when: attrBonusIs("bonus", 2), expect: "reroll attack at +2" } ]
 
   "[FeyStep] should be defined":
-    Verify.testProperties "FeyStep",
+    Verify.testProperties "racial", "FeyStep",
       name: [ expect: "Fey Step" ]
       keywords: [ expect: [ "teleportation" ] ]
 
   "[InfernalWrath] should be defined":
-    Verify.testProperties "InfernalWrath",
+    Verify.testProperties "racial", "InfernalWrath",
       name: [ expect: "Infernal Wrath" ]
       keywords: [ expect: [] ]
       effect: [
@@ -57,6 +57,6 @@ module.exports =
         { cha: 16, expect: "+3 extra damage (special)" } ]
     
   "[SecondChance] should be defined":
-    Verify.testProperties "SecondChance",
+    Verify.testProperties "racial", "SecondChance",
       name: [ expect: "Second Chance" ]
       keywords: [ expect: [] ]

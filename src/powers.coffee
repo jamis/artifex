@@ -1,16 +1,19 @@
 Power = require './power'
 
-powerGetter = (key, initializers...) ->
-  if typeof Powers[key] is "function"
-    new Powers[key](initializers...)
-  else
-    new Power Powers[key], { id: key }, initializers...
-
 module.exports = Powers =
-  get: powerGetter
+  get: (collection, key, initializers...) ->
+    new Power Powers.collections[collection][key],
+      { collection: collection, id: key },
+      initializers...
     
-for group in [ "racial", "cleric", "fighter", "paladin", "ranger", "rogue", "warlock", "warlord", "wizard" ]
-  powers = require "./powers/#{group}"
-  for label, data of powers
-    throw "power `#{label}' is already defined outside of `#{group}'" if Powers[label]
-    Powers[label] = data
+  collections:
+    cleric : require "./powers/cleric"
+    fighter: require "./powers/fighter"
+    paladin: require "./powers/paladin"
+    ranger : require "./powers/ranger"
+    rogue  : require "./powers/rogue"
+    warlock: require "./powers/warlock"
+    warlord: require "./powers/warlord"
+    wizard : require "./powers/wizard"
+
+    racial : require "./powers/racial"
