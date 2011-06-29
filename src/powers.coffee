@@ -7,6 +7,8 @@ module.exports = Powers =
       initializers...
     
   collections:
+    racial : require "./powers/racial"
+
     cleric : require "./powers/cleric"
     fighter: require "./powers/fighter"
     paladin: require "./powers/paladin"
@@ -16,4 +18,4 @@ module.exports = Powers =
     warlord: require "./powers/warlord"
     wizard : require "./powers/wizard"
 
-    racial : require "./powers/racial"
+    angelicAvenger: require "./powers/angelic_avenger"

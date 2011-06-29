@@ -29,6 +29,11 @@ module.exports =
     test.ok not npc.hasFeature("class", "Blood and Radiance")
     test.done()
 
+  "should set the astralVibranceType": (test) ->
+    new AngelicAvenger(npc = newCleric())
+    test.ok npc.astralVibranceType in ["lightning", "radiant", "thunder"]
+    test.done()
+
   "should gain training in a single heavy-blade weapon": (test) ->
     npc = new NPC
     test.ok npc.proficiencies.weapons.length is 0
@@ -46,4 +51,13 @@ module.exports =
     new AngelicAvenger npc
     test.ok "bastardSword" in npc.proficiencies.weapons
     test.ok "bastardSword" in npc.equipment.weapons()
+    test.done()
+
+  "powers are accounted for": (test) ->
+    test.ok "AstralWave" in AngelicAvenger.powers.encounter[11]
+    test.ok "AngelicPresence" in AngelicAvenger.powers.utility[12]
+    test.ok "AngelAscendant" in AngelicAvenger.powers.daily[20]
+
+    klass = new AngelicAvenger(new NPC)
+    test.equal AngelicAvenger.powers, klass.powers
     test.done()
