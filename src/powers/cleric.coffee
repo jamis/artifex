@@ -255,3 +255,18 @@ module.exports =
     name        : "Shielding Word"
     type        : "encounter"
     keywords    : [ "divine" ]
+
+  ArcOfTheRighteous:
+    name        : "Arc of the Righteous"
+    keywords    : [ "divine", "lightning", "weapon" ]
+    requires    : { weapon: "melee" }
+  InspiringStrike:
+    name        : "Inspiring Strike"
+    keywords    : [ "divine", "healing", "weapon" ]
+    requires    : { weapon: "melee" }
+  MantleOfGlory:
+    name        : "Mantle of Glory"
+    keywords    : [ "divine", "healing", "implement", "radiant" ]
+  PlagueOfDoom:
+    name        : "Plague of Doom"
+    keywords    : [ "divine", "implement" ]

@@ -73,9 +73,10 @@ Cleric.powers =
     1: [ "LanceOfFaith", "PriestsShield", "RighteousBrand", "SacredFlame" ]
 
   encounter:
-    1: [ "CauseFear", "DivineGlow", "HealingStrike", "WrathfulThunder" ]
-    3: [ "BlazingBeacon", "Command", "DauntingLight", "SplitTheSky" ]
-    7: [ "AweStrike", "BreakTheSpirit", "SearingLight", "StrengthenTheFaithful" ]
+    1 : [ "CauseFear", "DivineGlow", "HealingStrike", "WrathfulThunder" ]
+    3 : [ "BlazingBeacon", "Command", "DauntingLight", "SplitTheSky" ]
+    7 : [ "AweStrike", "BreakTheSpirit", "SearingLight", "StrengthenTheFaithful" ]
+    13: [ "ArcOfTheRighteous", "InspiringStrike", "MantleOfGlory", "PlagueOfDoom" ]
 
   daily:
     1: [ "AvengingFlame", "BeaconOfHope", "CascadeOfLight", "GuardianOfFaith" ]

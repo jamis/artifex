@@ -411,3 +411,25 @@ module.exports =
       name: [ expect: "Shielding Word" ]
       type: [ expect: "encounter" ]
       keywords: [ expect: [ "divine" ] ]
+
+  "[ArcOfTheRighteous] should be defined":
+    Verify.testProperties "cleric", "ArcOfTheRighteous",
+      name: [ expect: "Arc of the Righteous" ]
+      keywords: [ expect: [ "divine", "lightning", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[InspiringStrike] should be defined":
+    Verify.testProperties "cleric", "InspiringStrike",
+      name: [ expect: "Inspiring Strike" ]
+      keywords: [ expect: [ "divine", "healing", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[MantleOfGlory] should be defined":
+    Verify.testProperties "cleric", "MantleOfGlory",
+      name: [ expect: "Mantle of Glory" ]
+      keywords: [ expect: [ "divine", "healing", "implement", "radiant" ] ]
+
+  "[PlagueOfDoom] should be defined":
+    Verify.testProperties "cleric", "PlagueOfDoom",
+      name: [ expect: "Plague of Doom" ]
+      keywords: [ expect: [ "divine", "implement" ] ]
