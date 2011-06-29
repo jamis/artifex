@@ -317,12 +317,15 @@ module.exports = class NPC
       suitable.push power if @isSuitablePower(power)
     suitable
 
-  selectPowersFor: (category, count) ->
+  selectPowersFrom: (name, collection, category, count) ->
     if count > 0
-      list = @suitablePowersIn @class.powers[category][@level]
+      list = @suitablePowersIn collection[category][@level]
       for power in @random.shuffle(list...).slice(0, count)
-        power = Powers.get @class.name, power, npc: this
+        power = Powers.get name, power, npc: this
         @powers[category].push power
+
+  selectPowersFor: (category, count) ->
+    @selectPowersFrom @class.name, @class.powers, category, count
 
   selectInitialPowers: ->
     @selectPowersFor "atWill", 2
@@ -391,7 +394,9 @@ module.exports = class NPC
       when "encounter:paragon" then @advanceItem_EncounterParagon()
       when "feat"              then @advanceItem_Feat()
       when "paragon-path"      then @advanceItem_ParagonPath()
+      when "replace:encounter" then @advanceItem_ReplaceEncounter()
       when "utility"           then @advanceItem_Utility()
+      when "utility:paragon"   then @advanceItem_UtilityParagon()
       else throw new Error "unsupported advancement item `#{item}'"
 
   advanceItem_Utility: ->
@@ -447,18 +452,27 @@ module.exports = class NPC
     @paragonPath = new path this
 
   advanceItem_EncounterParagon: ->
-    powers = @paragonPath.powers.encounter[@level]
-    throw new Error "no paragon encounter powers of level #{@level}" unless powers?
+    @selectPowersFrom @paragonPath.id, @paragonPath.powers, "encounter", 1
 
-    allowed = []
-    for id in powers
-      power = Powers.get @paragonPath.id, id, npc: this
-      allowed.push power if power.allowed()
+  advanceItem_UtilityParagon: ->
+    @selectPowersFrom @paragonPath.id, @paragonPath.powers, "utility", 1
 
-    throw new Error "no paragon encounter powers allowed of level #{@level}" unless allowed.length > 0
+  advanceItem_ReplaceEncounter: ->
+    removable = []
 
-    power = @random.pick allowed...
-    @powers.encounter.push power
+    for power in @powers.encounter
+      for level, list of @class.powers.encounter
+        if power.id in list
+          removable.push { v: power.id, w: 901 - level*level }
+
+    id = @random.pickw removable...
+
+    newList = []
+    for power in @powers.encounter
+      newList.push power unless power.id is id
+    @powers.encounter = newList
+
+    @selectPowersFor "encounter", 1
 
 NPC.level =
   2 : [ "utility", "feat" ]

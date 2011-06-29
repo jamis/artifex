@@ -767,6 +767,48 @@ module.exports =
     test.ok newest.id in npc.paragonPath.powers.encounter[11]
     test.done()
 
+  "advanceItem should delegate 'utility:paragon' to advanceItem_UtilityParagon": (test) ->
+    test.expect 1
+    npc = new NPC
+    npc.advanceItem_UtilityParagon = -> test.ok true
+    npc.advanceItem "utility:paragon"
+    test.done()
+
+  "advanceItem_UtilityParagon should select and add one utilty power from the paragon path": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Cleric npc
+    npc.paragonPath = new ParagonPaths.AngelicAvenger npc
+    npc.level = 12
+
+    count = npc.powers.utility.length
+    npc.advanceItem_UtilityParagon()
+    test.equal npc.powers.utility.length, count+1
+
+    newest = npc.powers.utility[count]
+    test.ok newest.id in npc.paragonPath.powers.utility[12]
+    test.done()
+
+  "advanceItem should delegate 'replace:encounter' to advanceItem_ReplaceEncounter": (test) ->
+    test.expect 1
+    npc = new NPC
+    npc.advanceItem_ReplaceEncounter = -> test.ok true
+    npc.advanceItem "replace:encounter"
+    test.done()
+
+  "advanceItem_ReplaceEncounter should replace one encounter power with higher level encounter power": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Cleric npc
+    npc.level = 13
+    npc.powers.encounter = []
+    npc.powers.encounter.push Powers.get("cleric", "WrathfulThunder", npc: npc)
+    npc.powers.encounter.push Powers.get("racial", "SecondChance", npc: npc)
+
+    npc.advanceItem_ReplaceEncounter()
+    test.equal npc.powers.encounter.length, 2
+    test.equal npc.powers.encounter[0].id, "SecondChance"
+    test.ok npc.powers.encounter[1].id in npc.class.powers.encounter[13]
+    test.done()
+    
   "advance should advance character level": (test) ->
     npc = new NPC class: Classes.Cleric
     npc.generate()
