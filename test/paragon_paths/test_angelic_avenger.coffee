@@ -8,6 +8,12 @@ newCleric = ->
   npc
 
 module.exports =
+  "should have id": (test) ->
+    test.equal AngelicAvenger.id, "angelicAvenger"
+    avenger = new AngelicAvenger(new NPC)
+    test.equal avenger.id, "angelicAvenger"
+    test.done()
+    
   "should have name": (test) ->
     test.equal AngelicAvenger.simpleName, "angelic avenger"
     avenger = new AngelicAvenger(new NPC)

@@ -1,4 +1,4 @@
-{Armor, Classes, NPC, Powers, Races, Weapons} = require '..'
+{Armor, Classes, NPC, ParagonPaths, Powers, Races, Weapons} = require '..'
 
 class TestRace extends Races.Human
   constructor: (npc) ->
@@ -627,7 +627,7 @@ module.exports =
     npc = new NPC
     npc.class = new Classes.Fighter(npc)
     npc.level = 2
-    npc.advanceItem_Utility(npc)
+    npc.advanceItem_Utility()
     test.equal npc.powers.utility.length, 1
     test.ok npc.powers.utility[0].id in npc.class.powers.utility[2]
     test.done()
@@ -646,7 +646,7 @@ module.exports =
     npc = new NPC
     npc.generate()
     count = npc.feats.length
-    npc.advanceItem_Feat(npc)
+    npc.advanceItem_Feat()
     test.equal npc.feats.length, count+1
     test.done()
 
@@ -663,7 +663,7 @@ module.exports =
   "advanceItem_Encounter should add another encounter power of the current level": (test) ->
     npc = new NPC
     npc.class = new Classes.Wizard(npc)
-    npc.advanceItem_Encounter(npc)
+    npc.advanceItem_Encounter()
     test.equal npc.powers.encounter.length, 1
     test.ok npc.powers.encounter[0].id in npc.class.powers.encounter[1]
     test.done()
@@ -681,7 +681,7 @@ module.exports =
   "advanceItem_Daily should add another daily power of the current level": (test) ->
     npc = new NPC
     npc.class = new Classes.Rogue(npc)
-    npc.advanceItem_Daily(npc)
+    npc.advanceItem_Daily()
     test.equal npc.powers.daily.length, 1
     test.ok npc.powers.daily[0].id in npc.class.powers.daily[1]
     test.done()
@@ -703,12 +703,68 @@ module.exports =
     before = 0
     before += npc.abilities[a].score() for a in ["str", "con", "dex", "int", "wis", "cha"]
 
-    npc.advanceItem_Abilities2(npc)
+    npc.advanceItem_Abilities2()
 
     after = 0
     after += npc.abilities[a].score() for a in ["str", "con", "dex", "int", "wis", "cha"]
 
     test.equal after, before+2
+    test.done()
+
+  "advanceItem should delegate 'paragon-path' to advanceItem_ParagonPath": (test) ->
+    test.expect 1
+    npc = new NPC class: Classes.Cleric
+    npc.generate()
+
+    npc.advanceItem_ParagonPath = -> test.ok true
+    npc.advanceItem "paragon-path"
+    test.done()
+
+  "advanceItem_ParagonPath should select and apply an appropriate paragon path": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Cleric(npc)
+
+    npc.advanceItem_ParagonPath()
+    test.ok npc.paragonPath?
+    test.done()
+
+  "advanceItem should delegate 'abilities:all' to advanceItem_AbilitiesAll": (test) ->
+    test.expect 1
+    npc = new NPC
+    npc.advanceItem_AbilitiesAll = -> test.ok true
+    npc.advanceItem "abilities:all"
+    test.done()
+
+  "advanceItem_AbilitiesAll should add 1 to every ability score": (test) ->
+    npc = new NPC
+    npc.advanceItem_AbilitiesAll()
+    test.equal npc.abilities.str.score(), 11
+    test.equal npc.abilities.con.score(), 11
+    test.equal npc.abilities.dex.score(), 11
+    test.equal npc.abilities.int_.score(), 11
+    test.equal npc.abilities.wis.score(), 11
+    test.equal npc.abilities.cha.score(), 11
+    test.done()
+
+  "advanceItem should delegate 'encounter:paragon' to advanceItem_EncounterParagon": (test) ->
+    test.expect 1
+    npc = new NPC
+    npc.advanceItem_EncounterParagon = -> test.ok true
+    npc.advanceItem "encounter:paragon"
+    test.done()
+
+  "advanceItem_EncounterParagon should select and add one encounter power from the paragon path": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Cleric npc
+    npc.paragonPath = new ParagonPaths.AngelicAvenger npc
+    npc.level = 11
+
+    encounterCount = npc.powers.encounter.length
+    npc.advanceItem_EncounterParagon()
+    test.equal npc.powers.encounter.length, encounterCount+1
+
+    newest = npc.powers.encounter[encounterCount]
+    test.ok newest.id in npc.paragonPath.powers.encounter[11]
     test.done()
 
   "advance should advance character level": (test) ->

@@ -1,13 +1,14 @@
-Ability   = require './ability'
-Attribute = require './attribute'
-Armor     = require './armor'
-Classes   = require './classes'
-Feats     = require './feats'
-Powers    = require './powers'
-Races     = require './races'
-Random    = require './random'
-Skill     = require './skill'
-Weapons   = require './weapons'
+Ability      = require './ability'
+Attribute    = require './attribute'
+Armor        = require './armor'
+Classes      = require './classes'
+Feats        = require './feats'
+ParagonPaths = require './paragon_paths'
+Powers       = require './powers'
+Races        = require './races'
+Random       = require './random'
+Skill        = require './skill'
+Weapons      = require './weapons'
 
 module.exports = class NPC
   constructor: (@options) ->
@@ -383,17 +384,20 @@ module.exports = class NPC
 
   advanceItem: (item) ->
     switch item
-      when "feat"        then @advanceItem_Feat()
-      when "utility"     then @advanceItem_Utility()
-      when "encounter"   then @advanceItem_Encounter()
-      when "daily"       then @advanceItem_Daily()
-      when "abilities:2" then @advanceItem_Abilities2()
+      when "abilities:2"       then @advanceItem_Abilities2()
+      when "abilities:all"     then @advanceItem_AbilitiesAll()
+      when "daily"             then @advanceItem_Daily()
+      when "encounter"         then @advanceItem_Encounter()
+      when "encounter:paragon" then @advanceItem_EncounterParagon()
+      when "feat"              then @advanceItem_Feat()
+      when "paragon-path"      then @advanceItem_ParagonPath()
+      when "utility"           then @advanceItem_Utility()
       else throw new Error "unsupported advancement item `#{item}'"
 
   advanceItem_Utility: ->
     @selectPowersFor "utility", 1
 
-  advanceItem_Feat: (npc) ->
+  advanceItem_Feat: ->
     @pendingFeats.push count: 1
     @selectPendingFeats()
 
@@ -426,6 +430,35 @@ module.exports = class NPC
 
     @abilities[first].adjust "level #{@level}", 1
     @abilities[second].adjust "level #{@level}", 1
+
+  advanceItem_AbilitiesAll: ->
+    for ability in [ "str", "con", "dex", "int", "wis", "cha" ]
+      @abilities[ability].adjust "level #{@level}", 1
+    
+  advanceItem_ParagonPath: ->
+    possibilities = []
+
+    for name, path of ParagonPaths
+      possibilities.push path if path.accepts this
+
+    throw new Error "no matching paragon paths!" if possibilities.length is 0
+
+    path = @random.pick possibilities...
+    @paragonPath = new path this
+
+  advanceItem_EncounterParagon: ->
+    powers = @paragonPath.powers.encounter[@level]
+    throw new Error "no paragon encounter powers of level #{@level}" unless powers?
+
+    allowed = []
+    for id in powers
+      power = Powers.get @paragonPath.id, id, npc: this
+      allowed.push power if power.allowed()
+
+    throw new Error "no paragon encounter powers allowed of level #{@level}" unless allowed.length > 0
+
+    power = @random.pick allowed...
+    @powers.encounter.push power
 
 NPC.level =
   2 : [ "utility", "feat" ]

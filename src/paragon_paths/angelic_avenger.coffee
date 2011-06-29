@@ -2,6 +2,7 @@ Weapons = require '../weapons'
 
 module.exports = class AngelicAvenger
   constructor: (npc) ->
+    @id = AngelicAvenger.id
     @name = AngelicAvenger.simpleName
     @powers = AngelicAvenger.powers
 
@@ -21,6 +22,7 @@ module.exports = class AngelicAvenger
     npc.proficiencies.weapons.push(weapon)
     npc.equipment.push(weapon)
 
+AngelicAvenger.id = "angelicAvenger"
 AngelicAvenger.simpleName = "angelic avenger"
 AngelicAvenger.accepts = (npc) -> npc.class.name is "cleric"
 
