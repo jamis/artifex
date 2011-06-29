@@ -219,6 +219,16 @@ module.exports =
     test.deepEqual npc.features.racial, [ [ "Dragonborn fury", "+1 to attack when bloodied" ] ]
     test.done()
 
+  "#hasFeature should test for presence of named feature": (test) ->
+    npc = new NPC
+    npc.feature "racial", "Dragonborn fury", "+1 to attack when bloodied"
+    test.ok npc.hasFeature("racial", "Dragonborn fury"), "expected strmatch to succeed"
+    test.ok not npc.hasFeature("class", "Dragonborn fury"), "expected strmatch to fail"
+
+    test.ok npc.hasFeature("racial", /dragonborn/i), "expected regex to succeed"
+    test.ok not npc.hasFeature("class", /dragonborn/i), "expected regex to fail"
+    test.done()
+
   "#hitPoints should be dependent on CON score": (test) ->
     npc = new NPC
     npc.abilities.con.baseValue = 10

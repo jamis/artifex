@@ -52,9 +52,11 @@ module.exports = class NPC
   feature: (collection, name, description) ->
     @features[collection].push [name, description]
 
-  hasFeature: (collection, name) ->
+  hasFeature: (collection, pattern) ->
+    fn = if typeof pattern is "function" then pattern else (v) -> v is pattern
+
     for feature in @features[collection]
-      return true if feature[0] is name
+      return true if fn feature[0]
     false
 
   learnRitual: (level, name) ->
