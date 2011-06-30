@@ -23,7 +23,10 @@ module.exports = class HalfElf
         possible = []
         for klass in Classes.All
           possible.push klass unless klass.simpleName is npc.class.name
-        npc.random.pick(possible...).powers.atWill[1]
+        klass = npc.random.pick(possible...)
+        list = klass.powers.atWill[1]
+        list.name = klass.simpleName
+        list
 
     npc.feature "racial", "Dual Heritage"
     npc.feature "racial", "Group Diplomacy", "allies w/in 10 squares get +1 to diplomacy"

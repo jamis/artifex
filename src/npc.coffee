@@ -307,14 +307,15 @@ module.exports = class NPC
 
     @pendingFeats = []
 
-  isSuitablePower: (id) ->
-    power = Powers.get @class.name, id, npc: this
+  isSuitablePower: (name, id) ->
+    name ||= @class.name
+    power = Powers.get name, id, npc: this
     power.allowed()
 
   suitablePowersIn: (list) ->
     suitable = []
     for power in list
-      suitable.push power if @isSuitablePower(power)
+      suitable.push power if @isSuitablePower(list.name, power)
     suitable
 
   selectPowersFrom: (name, collection, category, count) ->
@@ -355,14 +356,15 @@ module.exports = class NPC
 
     for pending in @pendingPowers
       list = if typeof pending.list is "function" then pending.list(this) else pending.list
+      powerSource = list.name || @class.name
 
       # disallow selection of powers that have already been selected
       available = []
       for power in list
-        available.push power if !@powers.find(pending.category, power)? && @isSuitablePower(power)
+        available.push power if !@powers.find(pending.category, power)? && @isSuitablePower(powerSource, power)
 
       for power in @random.shuffle(available...).slice(0, pending.count)
-        @powers[pending.category].push(Powers.get @class.name, power, npc: this)
+        @powers[pending.category].push(Powers.get powerSource, power, npc: this)
 
     @pendingPowers = []
 
