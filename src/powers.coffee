@@ -19,3 +19,4 @@ module.exports = Powers =
     wizard : require "./powers/wizard"
 
     angelicAvenger: require "./powers/angelic_avenger"
+    divineOracle  : require "./powers/divine_oracle"
