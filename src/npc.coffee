@@ -467,15 +467,15 @@ module.exports = class NPC
       @paragonPath.advance()
 
     else
-    possibilities = []
+      possibilities = []
 
-    for name, path of ParagonPaths
-      possibilities.push path if path.accepts this
+      for name, path of ParagonPaths
+        possibilities.push path if path.accepts this
 
-    throw new Error "no matching paragon paths!" if possibilities.length is 0
+      throw new Error "no matching paragon paths!" if possibilities.length is 0
 
-    path = @random.pick possibilities...
-    @paragonPath = new path this
+      path = @random.pick possibilities...
+      @paragonPath = new path this
 
   advanceItem_EncounterParagon: ->
     @selectPowersFrom @paragonPath.id, @paragonPath.powers, "encounter", 1
