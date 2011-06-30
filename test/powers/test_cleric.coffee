@@ -449,3 +449,64 @@ module.exports =
     Verify.testProperties "cleric", "SealOfWarding",
       name: [ expect: "Seal of Warding" ]
       keywords: [ expect: [ "divine", "implement", "radiant", "zone" ] ]
+
+  "[AstralShield] should be defined":
+    Verify.testProperties "cleric", "AstralShield",
+      name: [ expect: "Astral Shield" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "conjuration", "divine" ] ]
+
+  "[CloakOfPeace] should be defined":
+    Verify.testProperties "cleric", "CloakOfPeace",
+      name: [ expect: "Cloak of Peace" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "divine" ] ]
+
+  "[DivineArmor] should be defined":
+    Verify.testProperties "cleric", "DivineArmor",
+      name: [ expect: "Divine Armor" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "divine", "healing" ] ]
+
+  "[HallowedGround] should be defined":
+    Verify.testProperties "cleric", "HallowedGround",
+      name: [ expect: "Hallowed Ground" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "divine", "zone" ] ]
+
+  "[BlindingLight] should be defined":
+    Verify.testProperties "cleric", "BlindingLight",
+      name: [ expect: "Blinding Light" ]
+      keywords: [ expect: [ "divine", "radiant", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[Enthrall] should be defined":
+    Verify.testProperties "cleric", "Enthrall",
+      name: [ expect: "Enthrall" ]
+      keywords: [ expect: [ "charm", "divine", "implement", "psychic" ] ]
+
+  "[ThunderousWord] should be defined":
+    Verify.testProperties "cleric", "ThunderousWord",
+      name: [ expect: "Thunderous Word" ]
+      keywords: [ expect: [ "divine", "implement", "thunder" ] ]
+
+  "[FireStorm] should be defined":
+    Verify.testProperties "cleric", "FireStorm",
+      name: [ expect: "Fire Storm" ]
+      keywords: [ expect: [ "divine", "fire", "implement", "zone" ] ]
+
+  "[HolyWrath] should be defined":
+    Verify.testProperties "cleric", "HolyWrath",
+      name: [ expect: "Holy Wrath" ]
+      keywords: [ expect: [ "divine", "healing", "implement", "radiant" ] ]
+
+  "[IndomitableSpirit] should be defined":
+    Verify.testProperties "cleric", "IndomitableSpirit",
+      name: [ expect: "Indomitable Spirit" ]
+      keywords: [ expect: [ "divine", "healing", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[KnightOfGlory] should be defined":
+    Verify.testProperties "cleric", "KnightOfGlory",
+      name: [ expect: "Knight of Glory" ]
+      keywords: [ expect: [ "conjuration", "divine", "implement" ] ]

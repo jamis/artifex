@@ -247,3 +247,24 @@ module.exports =
       if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.daily[15]
     test.done()
+
+  "level-16 prayers are accounted for": (test) ->
+    for power in [ "AstralShield", "CloakOfPeace", "DivineArmor", "HallowedGround" ]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
+        test.ok power in Classes.Cleric.powers.utility[16]
+    test.done()
+
+  "level-17 prayers are accounted for": (test) ->
+    for power in [ "BlindingLight", "Enthrall", "SentinelStrike", "ThunderousWord" ]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
+        test.ok power in Classes.Cleric.powers.encounter[17]
+    test.done()
+
+  "level-19 prayers are accounted for": (test) ->
+    for power in [ "FireStorm", "HolyWrath", "IndomitableSpirit", "KnightOfGlory" ]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
+        test.ok power in Classes.Cleric.powers.daily[19]
+    test.done()

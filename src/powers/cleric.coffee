@@ -281,3 +281,49 @@ module.exports =
   SealOfWarding:
     name        : "Seal of Warding"
     keywords    : [ "divine", "implement", "radiant", "zone" ]
+
+  AstralShield:
+    name        : "Astral Shield"
+    type        : "encounter"
+    keywords    : [ "conjuration", "divine" ]
+  CloakOfPeace:
+    name        : "Cloak of Peace"
+    type        : "daily"
+    keywords    : [ "divine" ]
+  DivineArmor:
+    name        : "Divine Armor"
+    type        : "daily"
+    keywords    : [ "divine", "healing" ]
+  HallowedGround:
+    name        : "Hallowed Ground"
+    type        : "daily"
+    keywords    : [ "divine", "zone" ]
+
+  BlindingLight:
+    name        : "Blinding Light"
+    keywords    : [ "divine", "radiant", "weapon" ]
+    requires    : { weapon: "melee" }
+  Enthrall:
+    name        : "Enthrall"
+    keywords    : [ "charm", "divine", "implement", "psychic" ]
+  SentinelStrike:
+    name        : "Sentinel Strike"
+    keywords    : [ "divine", "weapon" ]
+    requires    : { weapon: "melee" }
+  ThunderousWord:
+    name        : "Thunderous Word"
+    keywords    : [ "divine", "implement", "thunder" ]
+
+  FireStorm:
+    name        : "Fire Storm"
+    keywords    : [ "divine", "fire", "implement", "zone" ]
+  HolyWrath:
+    name        : "Holy Wrath"
+    keywords    : [ "divine", "healing", "implement", "radiant" ]
+  IndomitableSpirit:
+    name        : "Indomitable Spirit"
+    keywords    : [ "divine", "healing", "weapon" ]
+    requires    : { weapon: "melee" }
+  KnightOfGlory:
+    name        : "Knight of Glory"
+    keywords    : [ "conjuration", "divine", "implement" ]

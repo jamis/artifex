@@ -728,6 +728,15 @@ module.exports =
     test.ok npc.paragonPath?
     test.done()
 
+  "advanceItem_ParagonPath should invoke paragonPath.advance if paragonPath is present": (test) ->
+    test.expect 1
+    npc = new NPC
+    npc.class = new Classes.Cleric npc
+    npc.paragonPath = new ParagonPaths.AngelicAvenger npc
+    npc.paragonPath.advance = -> test.ok true
+    npc.advanceItem_ParagonPath()
+    test.done()
+
   "advanceItem should delegate 'abilities:all' to advanceItem_AbilitiesAll": (test) ->
     test.expect 1
     npc = new NPC
@@ -786,6 +795,27 @@ module.exports =
 
     newest = npc.powers.utility[count]
     test.ok newest.id in npc.paragonPath.powers.utility[12]
+    test.done()
+
+  "advanceItem should delegate 'daily:paragon' to advanceItem_DailyParagon": (test) ->
+    test.expect 1
+    npc = new NPC
+    npc.advanceItem_DailyParagon = -> test.ok true
+    npc.advanceItem "daily:paragon"
+    test.done()
+
+  "advanceItem_DailyParagon should select and add one daily power from the paragon path": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Cleric npc
+    npc.paragonPath = new ParagonPaths.AngelicAvenger npc
+    npc.level = 20
+
+    count = npc.powers.daily.length
+    npc.advanceItem_DailyParagon()
+    test.equal npc.powers.daily.length, count+1
+
+    newest = npc.powers.daily[count]
+    test.ok newest.id in npc.paragonPath.powers.daily[20]
     test.done()
 
   "advanceItem should delegate 'replace:encounter' to advanceItem_ReplaceEncounter": (test) ->

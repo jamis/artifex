@@ -410,6 +410,7 @@ module.exports = class NPC
       when "abilities:2"       then @advanceItem_Abilities2()
       when "abilities:all"     then @advanceItem_AbilitiesAll()
       when "daily"             then @advanceItem_Daily()
+      when "daily:paragon"     then @advanceItem_DailyParagon()
       when "encounter"         then @advanceItem_Encounter()
       when "encounter:paragon" then @advanceItem_EncounterParagon()
       when "feat"              then @advanceItem_Feat()
@@ -462,6 +463,10 @@ module.exports = class NPC
       @abilities[ability].adjust "level #{@level}", 1
     
   advanceItem_ParagonPath: ->
+    if @paragonPath
+      @paragonPath.advance()
+
+    else
     possibilities = []
 
     for name, path of ParagonPaths
@@ -477,6 +482,9 @@ module.exports = class NPC
 
   advanceItem_UtilityParagon: ->
     @selectPowersFrom @paragonPath.id, @paragonPath.powers, "utility", 1
+
+  advanceItem_DailyParagon: ->
+    @selectPowersFrom @paragonPath.id, @paragonPath.powers, "daily", 1
 
   advanceItem_ReplaceEncounter: ->
     @replacePowerFor "encounter"
