@@ -144,6 +144,22 @@ module.exports =
     test.deepEqual npc.pendingSkills, []
     test.done()
 
+  "should initialize initiative": (test) ->
+    npc = new NPC
+    test.ok npc.initiative?
+    test.done()
+
+  "initiative should depend on level and dexterity": (test) ->
+    npc = new NPC
+    npc.abilities.dex.baseValue = 10
+    npc.level = 1
+    test.equal npc.initiative.score(), 0
+    npc.abilities.dex.baseValue = 16
+    test.equal npc.initiative.score(), 3
+    npc.level = 10
+    test.equal npc.initiative.score(), 8
+    test.done()
+
   "constructor parameters should be stored as options": (test) ->
     npc = new NPC gender: "male"
     test.ok npc.options?

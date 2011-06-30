@@ -29,6 +29,7 @@ module.exports = class NPC
     @callbacks = {}
 
     @initializeAbilities()
+    @initializeInitiative()
     @initializeSkills()
     @initializePowers()
     @initializeRituals()
@@ -126,6 +127,9 @@ module.exports = class NPC
       "wis": new Ability 10
       "cha": new Ability 10
     @abilities.int_ = @abilities["int"]
+
+  initializeInitiative: ->
+    @initiative = new Attribute => Math.floor(@level/2) + @abilities.dex.modifier()
 
   initializeSkills: ->
     @skills =
