@@ -67,3 +67,21 @@ module.exports =
     klass = new AngelicAvenger(new NPC)
     test.equal AngelicAvenger.powers, klass.powers
     test.done()
+
+  "advance should do nothing if level is not significant": (test) ->
+    klass = new AngelicAvenger(npc = new NPC)
+    npc.paragonPath = klass
+    npc.level = 13
+    count = npc.features.class.length
+    npc.paragonPath.advance()
+    test.equal npc.features.class.length, count
+    test.done()
+
+  "advance should add class feature if level is significant": (test) ->
+    klass = new AngelicAvenger(npc = new NPC)
+    npc.paragonPath = klass
+    npc.level = 16
+    test.ok not npc.hasFeature("class", "Blood and Radiance")
+    npc.paragonPath.advance()
+    test.ok npc.hasFeature("class", "Blood and Radiance")
+    test.done()

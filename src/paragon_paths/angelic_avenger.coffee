@@ -5,6 +5,7 @@ module.exports = class AngelicAvenger
     @id = AngelicAvenger.id
     @name = AngelicAvenger.simpleName
     @powers = AngelicAvenger.powers
+    @npc = npc
 
     npc.feature "class", "Angelic Action"
 
@@ -21,6 +22,10 @@ module.exports = class AngelicAvenger
     npc.feature "class", "Weapon Training (#{weapon})"
     npc.proficiencies.weapons.push(weapon)
     npc.equipment.push(weapon)
+
+  advance: ->
+    if @npc.level >= 16 and not @npc.hasFeature("class", "Blood and Radiance")
+      @npc.feature "class", "Blood and Radiance"
 
 AngelicAvenger.id = "angelicAvenger"
 AngelicAvenger.simpleName = "angelic avenger"
