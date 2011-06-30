@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>D&amp;D4e NPC Generator</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+
+    .button {
+      display: block;
+      text-decoration: none;
+      font-family: sans-serif;
+      font-size: 2em;
+      font-weight: bold;
+      text-align: center;
+      margin: 5em;
+      border: 1px solid black;
+      color: white;
+      background: #555;
+      cursor: pointer;
+    }
+
+    .missing {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 5em;
+      padding: 1em;
+      border: 1px solid #400;
+      color: white;
+      background: #700;
+    }
+
+    .ops { 
+      border-bottom: 1px solid black;
+      background: #666;
+      color: #ccc;
+      padding: 0.3em;
+      margin-bottom: 1em;
+      text-align: center;
+    }
+
+    .ops a {
+      color: white;
+    }
+
+    .sheet {
+      margin: 0px 1em;
+    }
+
+    .row {
+      width: 100%;
+      white-space: nowrap;
+      margin-bottom: 0.5em;
+    }
+
+    .field {
+      display: inline-block;
+    }
+
+    .w100 { width: 100%; min-width: 20em; }
+    .w25 { width: 25%; min-width: 5em; }
+    .w20 { width: 20%; min-width: 5em; }
+    .w10 { width: 10%; min-width: 5em; }
+    .w05 { width:  5%; min-width: 3em; }
+
+    .field .value {
+      border-bottom: 1px solid black;
+      min-height: 1.0em;
+      margin: 0px 5px;
+      font-size: 1.2em;
+      font-family: "Marker Felt", "Comic Sans MS", sans-serif;
+      white-space: normal;
+    }
+
+    .numeric .value { text-align: center; }
+
+    .field .label {
+      font-size: 0.7em;
+      margin: 0px 5px;
+      color: #777;
+    }
+
+    .section {
+      display: inline-block;
+    }
+
+    .section .title {
+      background: black;
+      color: white;
+      text-align: center;
+      font-size: 0.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-family: sans-serif;
+      padding: 0.2em 0.4em;
+    }
+
+    .section .body {
+      margin: 0 0.4em;
+    }
+
+    .section th {
+      font-weight: bold;
+      font-family: sans-serif;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      text-align: left;
+      color: #777;
+      padding-right: 0.75em;
+    }
+
+    .section td.box {
+      font-family: "Marker Felt", "Comic Sans MS", sans-serif;
+      border: 1px solid black;
+      padding: 0.3em;
+      text-align: center;
+    }
+
+    .section td.mod {
+      text-align: right;
+      padding-left: 0.75em;
+    }
+
+    .ruled div {
+      margin-top: 0.2em;
+      border-bottom: 1px solid black;
+      font-family: "Marker Felt", "Comic Sans MS", sans-serif;
+      font-size: 1.2em;
+    }
+  </style>
+  <script type="text/javascript" src="../compressed.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+
+  <script type="text/javascript">
+    function dataPresent() {
+      return (this.require && this.require('npc'));
+    }
+
+    function signed(v) {
+      return v < 0 ? ("" + v) : ("+" + v);
+    }
+
+    function powers(npc, category) {
+      var list = []
+      list = list.concat(npc.powers[category]);
+      for(i = 0; i < npc.powers.utility.length; i++)
+        if (npc.powers.utility[i].get('type') === category)
+          list.push(npc.powers.utility[i]);
+      list.sort(function(a, b) {
+        an = a.get('name');
+        bn = b.get('name');
+        if (an < bn) return -1
+        else if (an > bn) return 1
+        else return 0;
+      });
+      return list;
+    }
+
+    $(document).ready(function() {
+      if (dataPresent()) {
+        $('#start').show();
+      } else {
+        $('#missing').show();
+      }
+
+      $('.generate').click(function() {
+        $('#start').hide();
+        $('#sheet').show();
+        $('#ops').show();
+
+        var NPC = require('npc');
+        var Classes = require('classes');
+        var npc = new NPC({class: Classes.Cleric});
+        npc.generate();
+        while(npc.level < 20) npc.advance();
+
+        $('#name').html(npc.name);
+        $('#level').html(npc.level);
+        $('#class').html(npc['class'].name);
+        $('#paragonPath').html(npc.paragonPath ? npc.paragonPath.name : "");
+        $('#epicDestiny').html(npc.epicDestiny ? npc.epicDestiny.name : "");
+        $('#race').html(npc.race.name);
+        $('#size').html(npc.size);
+        $('#gender').html(npc.gender);
+        $('#height').html(npc.height + '"');
+        $('#weight').html(npc.weight);
+        $('#alignment').html(npc.alignment);
+        $('#deity').html(npc.deity ? npc.deity : "");
+
+        var list = "";
+        for(var i = 0; i < npc.features.racial.length; i++) {
+          if(i > 0) list += ", ";
+          list += npc.features.racial[i][0];
+        }
+        $('#racialFeatures').html(list);
+
+        var list = "";
+        for(var i = 0; i < npc.features['class'].length; i++) {
+          if(i > 0) list += ", ";
+          list += npc.features['class'][i][0];
+        }
+        $('#classFeatures').html(list);
+
+        var abilities = ["str", "con", "dex", "int", "wis", "cha"];
+        for(var i = 0; i < abilities.length; i++) {
+          $('#' + abilities[i]).html(npc.abilities[abilities[i]].score());
+          $('#' + abilities[i] + 'mod').html(signed(npc.abilities[abilities[i]].modifier()));
+        }
+
+        $('#ac').html(npc.defenses.ac.score());
+        $('#fort').html(npc.defenses.fort.score());
+        $('#ref').html(npc.defenses.ref.score());
+        $('#will').html(npc.defenses.will.score());
+
+        $('#hp').html(npc.hitPoints.score());
+        $('#bloodied').html(Math.floor(npc.hitPoints.score()/2));
+        $('#surge').html(Math.floor(npc.healingSurge.value.score()));
+        $('#surgeTimes').html(Math.floor(npc.healingSurge.count.score()));
+
+        $('#initiative').html(signed(npc.initiative.score()));
+        $('#speed').html(npc.speed.score());
+
+        for(skill in npc.skills) {
+          $('#' + skill).html(signed(npc.skills[skill].score()));
+          $('#' + skill + "_trained").html(npc.skills[skill].trained ? "&radic;" : "");
+        }
+
+        $('#feats').html("");
+        npc.feats.sort();
+        for(var i = 0; i < npc.feats.length; i++) {
+          $('#feats').append("<div>" + npc.feats[i] + "</div>");
+        }
+
+        var list = [];
+        for(var i = 1; i < 30; i++)
+          if (npc.rituals[i]) list = list.concat(npc.rituals[i]);
+        list.sort();
+
+        $('#rituals').html("");
+        for(var i = 0; i < list.length; i++) {
+          $('#rituals').append("<div>" + list[i] + "</div>");
+        }
+
+        $('#equipment').html("");
+        for(var i = 0; i < npc.equipment.length; i++) {
+          $('#equipment').append("<div>" + npc.equipment[i] + "</div>");
+        }
+        if (npc.armor)
+          $('#equipment').append("<div>" + npc.armor + "</div>");
+
+        var atWill = powers(npc, "atWill");
+        $('#atWill').html("");
+        for(var i = 0; i < atWill.length; i++) {
+          $('#atWill').append("<div>" + atWill[i].get('name') + "</div>");
+        }
+
+        var encounter = powers(npc, "encounter");
+        $('#encounter').html("");
+        for(var i = 0; i < encounter.length; i++) {
+          $('#encounter').append("<div>" + encounter[i].get('name') + "</div>");
+        }
+
+        var daily = powers(npc, "daily");
+        $('#daily').html("");
+        for(var i = 0; i < daily.length; i++) {
+          $('#daily').append("<div>" + daily[i].get('name') + "</div>");
+        }
+
+        npc.languages.sort();
+        $('#languages').html("");
+        for(var i = 0; i < npc.languages.length; i++) {
+          $('#languages').append("<div>" + npc.languages[i] + "</div>");
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="missing" id="missing" style="display: none;">
+    <p>You'll need to generate the necessary Javascript before running
+      this demo. To do this, simply run this command:</p>
+      
+    <p style="text-align: center"><code>cake compress</code></p>
+
+    <p>from your <code>artifex</code> directory.</p>
+  </div>
+
+  <a class="button generate" id="start" style="display: none;">
+    <br />
+    <br />
+    Generate your NPC!
+    <br />
+    <br />
+    <br />
+  </a>
+
+  <div class="ops" id="ops" style="display: none;">
+    Go ahead, <a href="#" class="generate">generate another one</a>!
+  </div>
+
+  <div class="sheet" id="sheet" style="display: none;">
+    <div class="row">
+      <div class="field w25">
+        <div class="value" id="name"></div>
+        <div class="label">Name</div>
+      </div><div class="field w05 numeric">
+        <div class="value" id="level"></div>
+        <div class="label">Level</div>
+      </div><div class="field w20">
+        <div class="value" id="class"></div>
+        <div class="label">Class</div>
+      </div><div class="field w25">
+        <div class="value" id="paragonPath"></div>
+        <div class="label">Paragon Path</div>
+      </div><div class="field w25">
+        <div class="value" id="epicDestiny"></div>
+        <div class="label">Epic Destiny</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field w20">
+        <div class="value" id="race"></div>
+        <div class="label">Race</div>
+      </div><div class="field w10">
+        <div class="value" id="size"></div>
+        <div class="label">Size</div>
+      </div><div class="field w05 numeric">
+        <div class="value" id="age"></div>
+        <div class="label">Age</div>
+      </div><div class="field w10">
+        <div class="value" id="gender"></div>
+        <div class="label">Gender</div>
+      </div><div class="field w05 numeric">
+        <div class="value" id="height"></div>
+        <div class="label">Height</div>
+      </div><div class="field w05 numeric">
+        <div class="value" id="weight"></div>
+        <div class="label">Weight</div>
+      </div><div class="field w20">
+        <div class="value" id="alignment"></div>
+        <div class="label">Alignment</div>
+      </div><div class="field w25">
+        <div class="value" id="deity"></div>
+        <div class="label">Deity</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field w100">
+        <div class="value" id="racialFeatures"></div>
+        <div class="label">Racial Features</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field w100">
+        <div class="value" id="classFeatures"></div>
+        <div class="label">Class Features</div>
+      </div>
+    </div>
+
+    <table style="width: 100%">
+      <tr><td valign="top">
+        <div class="section">
+          <div class="title">Ability Scores</div>
+          <div class="body">
+            <table>
+              <tr><th>STR</th><td class="box" id="str"></td><td class="mod" id="strmod"></td></tr>
+              <tr><th>CON</th><td class="box" id="con"></td><td class="mod" id="conmod"></td></tr>
+              <tr><th>DEX</th><td class="box" id="dex"></td><td class="mod" id="dexmod"></td></tr>
+              <tr><th>INT</th><td class="box" id="int"></td><td class="mod" id="intmod"></td></tr>
+              <tr><th>WIS</th><td class="box" id="wis"></td><td class="mod" id="wismod"></td></tr>
+              <tr><th>CHA</th><td class="box" id="cha"></td><td class="mod" id="chamod"></td></tr>
+            </table>
+          </div>
+
+          <div class="title">Defenses</div>
+          <div class="body">
+            <table>
+              <tr><th>AC</th><td class="box" id="ac"></td></tr>
+              <tr><th>Fort</th><td class="box" id="fort"></td></tr>
+              <tr><th>Ref</th><td class="box" id="ref"></td></tr>
+              <tr><th>Will</th><td class="box" id="will"></td></tr>
+            </table>
+          </div>
+
+          <div class="title">Hit Points</div>
+          <div class="body">
+            <table>
+              <tr><th>HP</th><td class="box" id="hp"></td></tr>
+              <tr><th>Bloodied</th><td class="box" id="bloodied"></td></tr>
+              <tr><th>Surge</th><td class="box" id="surge"></td></tr>
+              <tr><th>Surges/day</th><td class="box" id="surgeTimes"></td></tr>
+            </table>
+          </div>
+
+          <div class="title">Initiative</div>
+          <div class="body">
+            <table>
+              <tr><th>Modifier</th><td class="box" id="initiative"></td></tr>
+            </table>
+          </div>
+
+          <div class="title">Movement</div>
+          <div class="body">
+            <table>
+              <tr><th>Speed</th><td class="box" id="speed"></td></tr>
+            </table>
+          </div>
+
+          <div class="title">Equipment</div>
+          <div class="body ruled" id="equipment">
+          </div>
+        </div>
+      </td><td valign="top">
+        <div class="section">
+          <div class="title">Skills</div>
+          <div class="body">
+            <table>
+              <tr><th>Acrobatics</th><td class="box" id="acrobatics"></td><td id='acrobatics_trained'></td></tr>
+              <tr><th>Arcana</th><td class="box" id="arcana"></td><td id='arcana_trained'></td></tr>
+              <tr><th>Athletics</th><td class="box" id="athletics"></td><td id='athletics_trained'></td></tr>
+              <tr><th>Bluff</th><td class="box" id="bluff"></td><td id='bluff_trained'></td></tr>
+              <tr><th>Diplomacy</th><td class="box" id="diplomacy"></td><td id='diplomacy_trained'></td></tr>
+              <tr><th>Dungeoneering</th><td class="box" id="dungeoneering"></td><td id='dungeoneering_trained'></td></tr>
+              <tr><th>Endurance</th><td class="box" id="endurance"></td><td id='endurance_trained'></td></tr>
+              <tr><th>Heal</th><td class="box" id="heal"></td><td id='heal_trained'></td></tr>
+              <tr><th>History</th><td class="box" id="history"></td><td id='history_trained'></td></tr>
+              <tr><th>Insight</th><td class="box" id="insight"></td><td id='insight_trained'></td></tr>
+              <tr><th>Intimidate</th><td class="box" id="intimidate"></td><td id='intimidate_trained'></td></tr>
+              <tr><th>Nature</th><td class="box" id="nature"></td><td id='nature_trained'></td></tr>
+              <tr><th>Perception</th><td class="box" id="perception"></td><td id='perception_trained'></td></tr>
+              <tr><th>Religion</th><td class="box" id="religion"></td><td id='religion_trained'></td></tr>
+              <tr><th>Stealth</th><td class="box" id="stealth"></td><td id='stealth_trained'></td></tr>
+              <tr><th>Streetwise</th><td class="box" id="streetwise"></td><td id='streetwise_trained'></td></tr>
+              <tr><th>Thievery</th><td class="box" id="thievery"></td><td id='thievery_trained'></td></tr>
+            </table>
+
+          <div class="title">Languages</div>
+          <div class="body ruled" id="languages">
+          </div>
+        </div>
+      </td><td valign="top">
+        <div class="section">
+          <div class="title">Feats</div>
+          <div class="body ruled" id="feats">
+          </div>
+          <br />
+
+          <div class="title">Rituals</div>
+          <div class="body ruled" id="rituals">
+          </div>
+        </div>
+      </td><td valign="top">
+        <div class="section">
+          <div class="title">At-Will Powers</div>
+          <div class="body ruled" id="atWill">
+          </div>
+          <br />
+
+          <div class="title">Encounter Powers</div>
+          <div class="body ruled" id="encounter">
+          </div>
+          <br />
+
+          <div class="title">Daily Powers</div>
+          <div class="body ruled" id="daily">
+          </div>
+        </div>
+
+      </td></tr>
+    </table>
+
+  </div>
+</body>
+</html>
