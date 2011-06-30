@@ -412,6 +412,7 @@ module.exports = class NPC
       when "encounter:paragon" then @advanceItem_EncounterParagon()
       when "feat"              then @advanceItem_Feat()
       when "paragon-path"      then @advanceItem_ParagonPath()
+      when "replace:daily"     then @advanceItem_ReplaceDaily()
       when "replace:encounter" then @advanceItem_ReplaceEncounter()
       when "utility"           then @advanceItem_Utility()
       when "utility:paragon"   then @advanceItem_UtilityParagon()
@@ -477,6 +478,9 @@ module.exports = class NPC
 
   advanceItem_ReplaceEncounter: ->
     @replacePowerFor "encounter"
+
+  advanceItem_ReplaceDaily: ->
+    @replacePowerFor "daily"
 
 NPC.level =
   2 : [ "utility", "feat" ]

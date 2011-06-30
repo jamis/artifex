@@ -809,6 +809,27 @@ module.exports =
     test.ok npc.powers.encounter[1].id in npc.class.powers.encounter[13]
     test.done()
     
+  "advanceItem should delegate 'replace:daily' to advanceItem_ReplaceDaily": (test) ->
+    test.expect 1
+    npc = new NPC
+    npc.advanceItem_ReplaceDaily = -> test.ok true
+    npc.advanceItem "replace:daily"
+    test.done()
+
+  "advanceItem_ReplaceDaily should replace one daily power with higher level daily power": (test) ->
+    npc = new NPC
+    npc.class = new Classes.Cleric npc
+    npc.level = 15
+    npc.powers.daily = []
+    npc.powers.daily.push Powers.get("cleric", "CascadeOfLight", npc: npc)
+    npc.powers.daily.push Powers.get("racial", "SecondChance", npc: npc)
+
+    npc.advanceItem_ReplaceDaily()
+    test.equal npc.powers.daily.length, 2
+    test.equal npc.powers.daily[0].id, "SecondChance"
+    test.ok npc.powers.daily[1].id in npc.class.powers.daily[15]
+    test.done()
+
   "advance should advance character level": (test) ->
     npc = new NPC class: Classes.Cleric
     npc.generate()
