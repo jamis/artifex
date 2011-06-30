@@ -433,3 +433,19 @@ module.exports =
     Verify.testProperties "cleric", "PlagueOfDoom",
       name: [ expect: "Plague of Doom" ]
       keywords: [ expect: [ "divine", "implement" ] ]
+
+  "[HolySpark] should be defined":
+    Verify.testProperties "cleric", "HolySpark",
+      name: [ expect: "Holy Spark" ]
+      keywords: [ expect: [ "divine", "lightning", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[PurifyingFire] should be defined":
+    Verify.testProperties "cleric", "PurifyingFire",
+      name: [ expect: "Purifying Fire" ]
+      keywords: [ expect: [ "divine", "fire", "healing", "implement" ] ]
+
+  "[SealOfWarding] should be defined":
+    Verify.testProperties "cleric", "SealOfWarding",
+      name: [ expect: "Seal of Warding" ]
+      keywords: [ expect: [ "divine", "implement", "radiant", "zone" ] ]

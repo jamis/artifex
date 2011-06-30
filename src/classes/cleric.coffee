@@ -79,9 +79,10 @@ Cleric.powers =
     13: [ "ArcOfTheRighteous", "InspiringStrike", "MantleOfGlory", "PlagueOfDoom" ]
 
   daily:
-    1: [ "AvengingFlame", "BeaconOfHope", "CascadeOfLight", "GuardianOfFaith" ]
-    5: [ "ConsecratedGround", "RuneOfPeace", "SpiritualWeapon", "WeaponOfTheGods" ]
-    9: [ "AstralDefenders", "BladeBarrier", "DivinePower", "FlameStrike" ]
+    1 : [ "AvengingFlame", "BeaconOfHope", "CascadeOfLight", "GuardianOfFaith" ]
+    5 : [ "ConsecratedGround", "RuneOfPeace", "SpiritualWeapon", "WeaponOfTheGods" ]
+    9 : [ "AstralDefenders", "BladeBarrier", "DivinePower", "FlameStrike" ]
+    15: [ "HolySpark", "PurifyingFire", "SealOfWarding" ]
 
   utility:
     2 : [ "Bless", "CureLightWounds", "DivineAid", "Sanctuary", "ShieldOfFaith" ]

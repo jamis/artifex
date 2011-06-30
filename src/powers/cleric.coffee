@@ -270,3 +270,14 @@ module.exports =
   PlagueOfDoom:
     name        : "Plague of Doom"
     keywords    : [ "divine", "implement" ]
+
+  HolySpark:
+    name        : "Holy Spark"
+    keywords    : [ "divine", "lightning", "weapon" ]
+    requires    : { weapon: "melee" }
+  PurifyingFire:
+    name        : "Purifying Fire"
+    keywords    : [ "divine", "fire", "healing", "implement" ]
+  SealOfWarding:
+    name        : "Seal of Warding"
+    keywords    : [ "divine", "implement", "radiant", "zone" ]

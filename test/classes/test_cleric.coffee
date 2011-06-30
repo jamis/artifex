@@ -240,3 +240,10 @@ module.exports =
       if Powers.collections.cleric[power]
         test.ok power in Classes.Cleric.powers.encounter[13]
     test.done()
+
+  "level-15 prayers are accounted for": (test) ->
+    for power in [ "HolySpark", "PurifyingFire", "SealOfWarding" ]
+      test.ok Powers.collections.cleric[power], "`#{power}' is not defined"
+      if Powers.collections.cleric[power]
+        test.ok power in Classes.Cleric.powers.daily[15]
+    test.done()
