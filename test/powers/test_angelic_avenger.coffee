@@ -15,6 +15,7 @@ module.exports =
   "[AngelicPresence] should be defined":
     Verify.testProperties "angelicAvenger", "AngelicPresence",
       name: [ expect: "Angelic Presence" ]
+      type: [ expect: "daily" ]
       keywords: [ expect: [ "divine", "fear" ] ]
 
   "[AngelAscendant] should be defined":

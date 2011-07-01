@@ -5,6 +5,7 @@ module.exports =
 
   BattleFavor:
     name        : "Battle Favor"
+    type        : "daily"
     keywords    : [ "divine", "healing" ]
 
   BattlePyres:

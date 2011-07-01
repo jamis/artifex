@@ -6,6 +6,7 @@ module.exports =
 
   AngelicPresence:
     name        : "Angelic Presence"
+    type        : "daily"
     keywords    : [ "divine", "fear" ]
 
   AngelAscendant:

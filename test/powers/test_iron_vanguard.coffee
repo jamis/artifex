@@ -10,6 +10,7 @@ module.exports =
   "[InexorableShift] should be defined":
     Verify.testProperties "ironVanguard", "InexorableShift",
       name: [ expect: "Inexorable Shift" ]
+      type: [ expect: "encounter" ]
       keywords: [ expect: [ "martial" ] ]
 
   "[IndomitableStrength] should be defined":

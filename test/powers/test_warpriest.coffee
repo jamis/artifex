@@ -9,6 +9,7 @@ module.exports =
   "[BattleFavor] should be defined":
     Verify.testProperties "warpriest", "BattleFavor",
       name: [ expect: "Battle Favor" ]
+      type: [ expect: "daily" ]
       keywords: [ expect: [ "divine", "healing" ] ]
 
   "[BattlePyres] should be defined":

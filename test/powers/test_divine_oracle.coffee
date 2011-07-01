@@ -9,6 +9,7 @@ module.exports =
   "[GoodOmens] should be defined":
     Verify.testProperties "divineOracle", "GoodOmens",
       name: [ expect: "Good Omens" ]
+      type: [ expect: "daily" ]
       keywords: [ expect: [ "divine" ] ]
 
   "[HammerOfFate] should be defined":

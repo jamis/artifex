@@ -9,6 +9,7 @@ module.exports =
   "[HealingSun] should be defined":
     Verify.testProperties "radiantServant", "HealingSun",
       name: [ expect: "Healing Sun" ]
+      type: [ expect: "daily" ]
       keywords: [ expect: [ "divine", "healing", "radiant", "zone" ] ]
 
   "[RadiantBrilliance] should be defined":

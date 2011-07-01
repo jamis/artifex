@@ -5,6 +5,7 @@ module.exports =
 
   HealingSun:
     name        : "Healing Sun"
+    type        : "daily"
     keywords    : [ "divine", "healing", "radiant", "zone" ]
 
   RadiantBrilliance:

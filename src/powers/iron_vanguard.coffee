@@ -6,6 +6,7 @@ module.exports =
 
   InexorableShift:
     name        : "Inexorable Shift"
+    type        : "encounter"
     keywords    : [ "martial" ]
 
   IndomitableStrength:

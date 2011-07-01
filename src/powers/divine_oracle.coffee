@@ -5,6 +5,7 @@ module.exports =
 
   GoodOmens:
     name        : "Good Omens"
+    type        : "daily"
     keywords    : [ "divine" ]
 
   HammerOfFate:
