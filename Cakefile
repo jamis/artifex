@@ -43,6 +43,10 @@ task 'compile', 'Stitch all the files together for use in a browser', ->
 task 'compress', 'Compress the stitched output', ->
   build -> compile -> compress()
 
+task 'sheet', 'Open the example character sheet generator', ->
+  build -> compile -> compress ->
+    exec 'open example/sheet.html'
+
 task 'test', 'Run the test suite', (options) ->
   build ->
     {reporters} = require 'nodeunit'
