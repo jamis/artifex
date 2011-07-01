@@ -24,4 +24,5 @@ module.exports = Powers =
     kensei        : require "./powers/kensei"
     pitFighter    : require "./powers/pit_fighter"
     radiantServant: require "./powers/radiant_servant"
+    swordmaster   : require "./powers/swordmaster"
     warpriest     : require "./powers/warpriest"

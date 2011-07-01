@@ -5,4 +5,5 @@ module.exports =
   Kensei        : require './paragon_paths/kensei'
   PitFighter    : require './paragon_paths/pit_fighter'
   RadiantServant: require './paragon_paths/radiant_servant'
+  Swordmaster   : require './paragon_paths/swordmaster'
   Warpriest     : require './paragon_paths/warpriest'
