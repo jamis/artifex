@@ -1,5 +1,6 @@
 module.exports =
   AngelicAvenger: require './paragon_paths/angelic_avenger'
+  AstralWeapon  : require './paragon_paths/astral_weapon'
   DivineOracle  : require './paragon_paths/divine_oracle'
   IronVanguard  : require './paragon_paths/iron_vanguard'
   Kensei        : require './paragon_paths/kensei'
