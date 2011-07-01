@@ -349,3 +349,21 @@ module.exports =
     test.ok power3.allowed(), "expected 'dagger' to match 'dagger'"
     test.ok not power4.allowed(), "expected 'longbow' to not match 'dagger'"
     test.done()
+
+  "allowed() should understand complicated weapon requirements": (test) ->
+    npc = new NPC
+    power = new Power npc: npc, id: "FooTest",
+      requires: { weapon: { yes: [ 'light blade', 'heavy blade' ], no: 'polearm' } }
+
+    npc.equipment[0] = "crossbow"
+    test.ok not power.allowed()
+
+    npc.equipment[0] = "longsword"
+    test.ok power.allowed()
+
+    npc.equipment[0] = "shortSword"
+    test.ok power.allowed()
+
+    npc.equipment[0] = "glaive"
+    test.ok not power.allowed()
+    test.done()

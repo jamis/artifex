@@ -50,11 +50,28 @@ module.exports = class Power
 
     true
 
+  weaponMatches: (candidate, weapon) ->
+    return true if weapon is candidate
+    return true if Weapons.category(candidate, weapon)
+    return true if Weapons.group(candidate, weapon)
+    return false
+
+  weaponMatchesAny: (candidate, list) ->
+    if typeof list is "object"
+      for weapon in list
+        return true if @weaponMatches candidate, weapon
+      false
+    else
+      @weaponMatches candidate, list
+
   equippedWeapon: (weapon) ->
     for candidate in @npc.equipment.weapons()
-      return true if weapon is candidate
-      return true if Weapons.category(candidate, weapon)
-      return true if Weapons.group(candidate, weapon)
+      if weapon.yes? or weapon.no?
+        allowed = not weapon.yes? or @weaponMatchesAny(candidate, weapon.yes)
+        disallowed = weapon.no? and @weaponMatchesAny(candidate, weapon.no)
+        return true if allowed and not disallowed
+      else
+        return true if @weaponMatches candidate, weapon
     false
 
   get: (name) ->
