@@ -7,14 +7,46 @@ the Dungeons & Dragons game.
 Eventually it will support automated creation of NPC's that employ all of
 the races, classes, powers, feats, and equipment from the core rules.
 
+Requirements
+------------
+
+As a bare minimum, you must have CoffeeScript installed. In order to try the
+included example character sheet, you must also have stitch and uglifyjs
+installed.
+
+Getting Started
+---------------
+
+You can compile the CoffeeScript sources to Javascript using this cake
+command:
+
+    cake build
+
+This will put all the Javascript sources into the "lib" directory. To stitch
+them all together into a single Javascript file, run:
+
+    cake compile
+
+This will create a "package.js" file in the project root.
+
+To minimize the package.js file, try:
+
+    cake compress
+
+This will create a "compressed.js" file in the project root.
+
+To play with the example character sheet generator, run:
+
+    cake sheet
+
 Contributing
 ------------
 
 One of the goals behind Artifex is a test is written for every feature,
 before the feature is implemented in code. If you wish to contribute an
 implementation of a class, race, power, feat, or anything else, please
-ensure that it is properly tested, or your contribution will not be
-accepted.
+ensure that it is properly tested (using existing tests as an example),
+or your contribution will not be accepted.
 
 License
 -------
