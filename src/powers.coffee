@@ -20,5 +20,6 @@ module.exports = Powers =
 
     angelicAvenger: require "./powers/angelic_avenger"
     divineOracle  : require "./powers/divine_oracle"
+    ironVanguard  : require "./powers/iron_vanguard"
     radiantServant: require "./powers/radiant_servant"
     warpriest     : require "./powers/warpriest"
