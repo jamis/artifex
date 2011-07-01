@@ -22,5 +22,6 @@ module.exports = Powers =
     divineOracle  : require "./powers/divine_oracle"
     ironVanguard  : require "./powers/iron_vanguard"
     kensei        : require "./powers/kensei"
+    pitFighter    : require "./powers/pit_fighter"
     radiantServant: require "./powers/radiant_servant"
     warpriest     : require "./powers/warpriest"

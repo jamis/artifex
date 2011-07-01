@@ -3,5 +3,6 @@ module.exports =
   DivineOracle  : require './paragon_paths/divine_oracle'
   IronVanguard  : require './paragon_paths/iron_vanguard'
   Kensei        : require './paragon_paths/kensei'
+  PitFighter    : require './paragon_paths/pit_fighter'
   RadiantServant: require './paragon_paths/radiant_servant'
   Warpriest     : require './paragon_paths/warpriest'
