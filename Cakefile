@@ -50,7 +50,7 @@ task 'sheet', 'Open the example character sheet generator', ->
 task 'test', 'Run the test suite', (options) ->
   build ->
     {reporters} = require 'nodeunit'
-    tests = options.tests || ['test', 'test/classes', 'test/powers', 'test/races', 'test/rituals']
+    tests = options.tests || ['test', 'test/classes', 'test/paragon_paths', 'test/powers', 'test/races', 'test/rituals']
     expanded = []
     for test in tests
       try
