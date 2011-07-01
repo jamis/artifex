@@ -44,16 +44,21 @@ Fighter.powers =
     1: [ "Cleave", "ReapingStrike", "SureStrike", "TideOfIron" ]
 
   encounter:
-    1: [ "CoveringAttack", "PassingAttack", "SpinningSweep", "SteelSerpentStrike" ]
-    3: [ "ArmorPiercingThrust", "CrushingBlow", "DanceOfSteel", "PreciseStrike", "RainOfBlows", "SweepingBlow" ]
-    7: [ "ComeAndGetIt", "GriffonsWrath", "IronBulwark", "RecklessStrike", "SuddenSurge" ]
+    1 : [ "CoveringAttack", "PassingAttack", "SpinningSweep", "SteelSerpentStrike" ]
+    3 : [ "ArmorPiercingThrust", "CrushingBlow", "DanceOfSteel", "PreciseStrike", "RainOfBlows", "SweepingBlow" ]
+    7 : [ "ComeAndGetIt", "GriffonsWrath", "IronBulwark", "RecklessStrike", "SuddenSurge" ]
+    13: [ "AnvilOfDoom", "ChainsOfSorrow", "GiantsWake", "Silverstep", "StormOfBlows", "TalonOfTheRoc" ]
+    17: [ "ExactingStrike", "ExorcismOfSteel", "HarryingAssault", "MountainBreakingBlow", "VorpalTornado", "WarriorsChallenge" ]
 
   daily:
-    1: [ "BruteStrike", "ComebackStrike", "VillainsMenace" ]
-    5: [ "CrackTheShell", "DizzyingBlow", "RainOfSteel" ]
-    9: [ "ShiftTheBattlefield", "ThicketOfBlades", "VictoriousSurge" ]
+    1 : [ "BruteStrike", "ComebackStrike", "VillainsMenace" ]
+    5 : [ "CrackTheShell", "DizzyingBlow", "RainOfSteel" ]
+    9 : [ "ShiftTheBattlefield", "ThicketOfBlades", "VictoriousSurge" ]
+    15: [ "DragonsFangs", "SerpentDanceStrike", "UnyieldingAvalanche" ]
+    19: [ "DevastationsWake", "ReavingStrike", "StrikeOfTheWatchfulGuard" ]
 
   utility:
     2 : [ "BoundlessEndurance", "GetOverHere", "NoOpening", "Unstoppable" ]
     6 : [ "BattleAwareness", "DefensiveTraining", "Unbreakable" ]
     10: [ "IntoTheFray", "LastDitchEvasion", "StalwartGuard" ]
+    16: [ "InterposingShield", "IronWarrior", "SurpriseStep" ]

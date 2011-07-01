@@ -366,3 +366,126 @@ module.exports =
       name: [ expect: "Stalwart Guard" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial" ] ]
+
+  "[AnvilOfDoom] should be defined":
+    Verify.testProperties "fighter", "AnvilOfDoom",
+      name: [ expect: "Anvil of Doom" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[ChainsOfSorrow] should be defined":
+    Verify.testProperties "fighter", "ChainsOfSorrow",
+      name: [ expect: "Chains of Sorrow" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[GiantsWake] should be defined":
+    Verify.testProperties "fighter", "GiantsWake",
+      name: [ expect: "Giant's Wake" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[Silverstep] should be defined":
+    Verify.testProperties "fighter", "Silverstep",
+      name: [ expect: "Silverstep" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[StormOfBlows] should be defined":
+    Verify.testProperties "fighter", "StormOfBlows",
+      name: [ expect: "Storm of Blows" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[TalonOfTheRoc] should be defined":
+    Verify.testProperties "fighter", "TalonOfTheRoc",
+      name: [ expect: "Talon of the Roc" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[DragonsFangs] should be defined":
+    Verify.testProperties "fighter", "DragonsFangs",
+      name: [ expect: "Dragon's Fangs" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[SerpentDanceStrike] should be defined":
+    Verify.testProperties "fighter", "SerpentDanceStrike",
+      name: [ expect: "Serpent Dance Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[UnyieldingAvalanche] should be defined":
+    Verify.testProperties "fighter", "UnyieldingAvalanche",
+      name: [ expect: "Unyielding Avalanche" ]
+      keywords: [ expect: [ "healing", "martial", "stance", "weapon" ] ]
+
+  "[InterposingShield] should be defined":
+    Verify.testProperties "fighter", "InterposingShield",
+      name: [ expect: "Interposing Shield" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[IronWarrior] should be defined":
+    Verify.testProperties "fighter", "IronWarrior",
+      name: [ expect: "Iron Warrior" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "healing", "martial" ] ]
+
+  "[SurpriseStep] should be defined":
+    Verify.testProperties "fighter", "SurpriseStep",
+      name: [ expect: "Surprise Step" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[ExactingStrike] should be defined":
+    Verify.testProperties "fighter", "ExactingStrike",
+      name: [ expect: "Exacting Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[ExorcismOfSteel] should be defined":
+    Verify.testProperties "fighter", "ExorcismOfSteel",
+      name: [ expect: "Exorcism of Steel" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[HarryingAssault] should be defined":
+    Verify.testProperties "fighter", "HarryingAssault",
+      name: [ expect: "Harrying Assault" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[MountainBreakingBlow] should be defined":
+    Verify.testProperties "fighter", "MountainBreakingBlow",
+      name: [ expect: "Mountain Breaking Blow" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[VorpalTornado] should be defined":
+    Verify.testProperties "fighter", "VorpalTornado",
+      name: [ expect: "Vorpal Tornado" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+
+  "[WarriorsChallenge] should be defined":
+    Verify.testProperties "fighter", "WarriorsChallenge",
+      name: [ expect: "Warrior's Challenge" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[DevastationsWake] should be defined":
+    Verify.testProperties "fighter", "DevastationsWake",
+      name: [ expect: "Devastation's Wake" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+
+  "[ReavingStrike] should be defined":
+    Verify.testProperties "fighter", "ReavingStrike",
+      name: [ expect: "Reaving Strike" ]
+      keywords: [ expect: [ "martial", "reliable", "weapon" ] ]
+      requires: { weapon: "melee" }
+
+  "[StrikeOfTheWatchfulGuard] should be defined":
+    Verify.testProperties "fighter", "StrikeOfTheWatchfulGuard",
+      name: [ expect: "Strike of the Watchful Guard" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: { weapon: "melee" }

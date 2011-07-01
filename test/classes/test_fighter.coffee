@@ -158,3 +158,38 @@ module.exports =
       if Powers.collections.fighter[power]
         test.ok power in Classes.Fighter.powers.utility[10]
     test.done()
+
+  "level-13 exploits are accounted for": (test) ->
+    for power in [ "AnvilOfDoom", "ChainsOfSorrow", "GiantsWake", "Silverstep", "StormOfBlows", "TalonOfTheRoc" ]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
+        test.ok power in Classes.Fighter.powers.encounter[13]
+    test.done()
+
+  "level-15 exploits are accounted for": (test) ->
+    for power in [ "DragonsFangs", "SerpentDanceStrike", "UnyieldingAvalanche" ]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
+        test.ok power in Classes.Fighter.powers.daily[15]
+    test.done()
+
+  "level-16 exploits are accounted for": (test) ->
+    for power in [ "InterposingShield", "IronWarrior", "SurpriseStep" ]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
+        test.ok power in Classes.Fighter.powers.utility[16]
+    test.done()
+
+  "level-17 exploits are accounted for": (test) ->
+    for power in [ "ExactingStrike", "ExorcismOfSteel", "HarryingAssault", "MountainBreakingBlow", "VorpalTornado", "WarriorsChallenge" ]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
+        test.ok power in Classes.Fighter.powers.encounter[17]
+    test.done()
+
+  "level-19 exploits are accounted for": (test) ->
+    for power in [ "DevastationsWake", "ReavingStrike", "StrikeOfTheWatchfulGuard" ]
+      test.ok Powers.collections.fighter[power], "`#{power}' is not defined"
+      if Powers.collections.fighter[power]
+        test.ok power in Classes.Fighter.powers.daily[19]
+    test.done()

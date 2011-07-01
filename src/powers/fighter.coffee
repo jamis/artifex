@@ -270,3 +270,105 @@ module.exports =
     name        : "Stalwart Guard"
     type        : "daily"
     keywords    : [ "martial" ]
+
+  AnvilOfDoom:
+    name        : "Anvil of Doom"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  ChainsOfSorrow:
+    name        : "Chains of Sorrow"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  GiantsWake:
+    name        : "Giant's Wake"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  Silverstep:
+    name        : "Silverstep"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  StormOfBlows:
+    name        : "Storm of Blows"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  TalonOfTheRoc:
+    name        : "Talon of the Roc"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  DragonsFangs:
+    name        : "Dragon's Fangs"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  SerpentDanceStrike:
+    name        : "Serpent Dance Strike"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  UnyieldingAvalanche:
+    name        : "Unyielding Avalanche"
+    keywords    : [ "healing", "martial", "stance", "weapon" ]
+
+  InterposingShield:
+    name        : "Interposing Shield"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+
+  IronWarrior:
+    name        : "Iron Warrior"
+    type        : "daily"
+    keywords    : [ "healing", "martial" ]
+
+  SurpriseStep:
+    name        : "Surprise Step"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+
+  ExactingStrike:
+    name        : "Exacting Strike"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  ExorcismOfSteel:
+    name        : "Exorcism of Steel"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  HarryingAssault:
+    name        : "Harrying Assault"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  MountainBreakingBlow:
+    name        : "Mountain Breaking Blow"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  VorpalTornado:
+    name        : "Vorpal Tornado"
+    keywords    : [ "martial", "weapon" ]
+
+  WarriorsChallenge:
+    name        : "Warrior's Challenge"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  DevastationsWake:
+    name        : "Devastation's Wake"
+    keywords    : [ "martial", "weapon" ]
+
+  ReavingStrike:
+    name        : "Reaving Strike"
+    keywords    : [ "martial", "reliable", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  StrikeOfTheWatchfulGuard:
+    name        : "Strike of the Watchful Guard"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
