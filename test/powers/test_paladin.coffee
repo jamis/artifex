@@ -370,3 +370,101 @@ module.exports =
       name: [ expect: "Turn the Tide" ]
       type: [expect: "daily" ]
       keywords: [ expect: [ "divine" ] ]
+
+  "[EntanglingSmite] should be defined":
+    Verify.testProperties "paladin", "EntanglingSmite",
+      name: [ expect: "Entangling Smite" ]
+      keywords: [ expect: [ "divine", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[RadiantCharge] should be defined":
+    Verify.testProperties "paladin", "RadiantCharge",
+      name: [ expect: "Radiant Charge" ]
+      keywords: [ expect: [ "divine", "radiant", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[RenewingSmite] should be defined":
+    Verify.testProperties "paladin", "RenewingSmite",
+      name: [ expect: "Renewing Smite" ]
+      keywords: [ expect: [ "divine", "healing", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[WhirlwindSmite] should be defined":
+    Verify.testProperties "paladin", "WhirlwindSmite",
+      name: [ expect: "Whirlwind Smite" ]
+      keywords: [ expect: [ "divine", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[BloodiedRetribution] should be defined":
+    Verify.testProperties "paladin", "BloodiedRetribution",
+      name: [ expect: "Bloodied Retribution" ]
+      keywords: [ expect: [ "divine", "healing", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[BreakTheWall] should be defined":
+    Verify.testProperties "paladin", "BreakTheWall",
+      name: [ expect: "Break the Wall" ]
+      keywords: [ expect: [ "divine", "implement" ] ]
+      requires: [ expect: undefined ]
+
+  "[TrueNemesis] should be defined":
+    Verify.testProperties "paladin", "TrueNemesis",
+      name: [ expect: "True Nemesis" ]
+      keywords: [ expect: [ "divine", "implement" ] ]
+      requires: [ expect: undefined ]
+
+  "[AngelicIntercession] should be defined":
+    Verify.testProperties "paladin", "AngelicIntercession",
+      name: [ expect: "Angelic Intercession" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "divine", "teleportation" ] ]
+      requires: [ expect: undefined ]
+
+  "[DeathWard] should be defined":
+    Verify.testProperties "paladin", "DeathWard",
+      name: [ expect: "Death Ward" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "divine", "healing" ] ]
+      requires: [ expect: undefined ]
+
+  "[EnervatingSmite] should be defined":
+    Verify.testProperties "paladin", "EnervatingSmite",
+      name: [ expect: "Enervating Smite" ]
+      keywords: [ expect: [ "divine", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[FortifyingSmite] should be defined":
+    Verify.testProperties "paladin", "FortifyingSmite",
+      name: [ expect: "Fortifying Smite" ]
+      keywords: [ expect: [ "divine", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[HandOfTheGods] should be defined":
+    Verify.testProperties "paladin", "HandOfTheGods",
+      name: [ expect: "Hand of the Gods" ]
+      keywords: [ expect: [ "divine", "implement", "radiant" ] ]
+      requires: [ expect: undefined ]
+
+  "[TerrifyingSmite] should be defined":
+    Verify.testProperties "paladin", "TerrifyingSmite",
+      name: [ expect: "Terrifying Smite" ]
+      keywords: [ expect: [ "divine", "fear", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[CoronaOfBlindingRadiance] should be defined":
+    Verify.testProperties "paladin", "CoronaOfBlindingRadiance",
+      name: [ expect: "Corona of Blinding Radiance" ]
+      keywords: [ expect: [ "divine", "radiant", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[CrusadersBoon] should be defined":
+    Verify.testProperties "paladin", "CrusadersBoon",
+      name: [ expect: "Crusader's Boon" ]
+      keywords: [ expect: [ "divine", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[RighteousInferno] should be defined":
+    Verify.testProperties "paladin", "RighteousInferno",
+      name: [ expect: "Righteous Inferno" ]
+      keywords: [ expect: [ "divine", "fire", "implement", "zone" ] ]
+      requires: [ expect: undefined ]

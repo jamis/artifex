@@ -60,16 +60,21 @@ Paladin.powers =
     1: [ "BolsteringStrike", "EnfeeblingStrike", "HolyStrike", "ValiantStrike" ]
 
   encounter:
-    1: [ "FearsomeSmite", "PiercingSmite", "RadiantSmite", "ShieldingSmite" ]
-    3: [ "ArcingSmite", "InvigoratingSmite", "RighteousSmite", "StaggeringSmite" ]
-    7: [ "BeckonFoe", "BenignTransposition", "DivineReverence", "ThunderSmite" ]
+    1 : [ "FearsomeSmite", "PiercingSmite", "RadiantSmite", "ShieldingSmite" ]
+    3 : [ "ArcingSmite", "InvigoratingSmite", "RighteousSmite", "StaggeringSmite" ]
+    7 : [ "BeckonFoe", "BenignTransposition", "DivineReverence", "ThunderSmite" ]
+    13: [ "EntanglingSmite", "RadiantCharge", "RenewingSmite", "WhirlwindSmite" ]
+    17: [ "EnervatingSmite", "FortifyingSmite", "HandOfTheGods", "TerrifyingSmite" ]
 
   daily:
-    1: [ "OnPainOfDeath", "PaladinsJudgement", "RadiantDelirium" ]
-    5: [ "HallowedCircle", "MartyrsRetribution", "SignOfVulnerability" ]
-    9: [ "CrownOfGlory", "OneStandsAlone", "RadiantPulse" ]
+    1 : [ "OnPainOfDeath", "PaladinsJudgement", "RadiantDelirium" ]
+    5 : [ "HallowedCircle", "MartyrsRetribution", "SignOfVulnerability" ]
+    9 : [ "CrownOfGlory", "OneStandsAlone", "RadiantPulse" ]
+    15: [ "BloodiedRetribution", "BreakTheWall", "TrueNemesis" ]
+    19: [ "CoronaOfBlindingRadiance", "CrusadersBoon", "RighteousInferno" ]
 
   utility:
     2 : [ "AstralSpeech", "MartyrsBlessing", "SacredCircle" ]
     6 : [ "DivineBodyguard", "OneHeartOneMind", "WrathOfTheGods" ]
     10: [ "CleansingSpirit", "NobleShield", "TurnTheTide" ]
+    16: [ "AngelicIntercession", "DeathWard" ]

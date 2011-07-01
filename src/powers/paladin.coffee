@@ -251,3 +251,79 @@ module.exports =
     name        : "Turn the Tide"
     type        : "daily"
     keywords    : [ "divine" ]
+
+  EntanglingSmite:
+    name        : "Entangling Smite"
+    keywords    : [ "divine", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  RadiantCharge:
+    name        : "Radiant Charge"
+    keywords    : [ "divine", "radiant", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  RenewingSmite:
+    name        : "Renewing Smite"
+    keywords    : [ "divine", "healing", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  WhirlwindSmite:
+    name        : "Whirlwind Smite"
+    keywords    : [ "divine", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  BloodiedRetribution:
+    name        : "Bloodied Retribution"
+    keywords    : [ "divine", "healing", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  BreakTheWall:
+    name        : "Break the Wall"
+    keywords    : [ "divine", "implement" ]
+
+  TrueNemesis:
+    name        : "True Nemesis"
+    keywords    : [ "divine", "implement" ]
+
+  AngelicIntercession:
+    name        : "Angelic Intercession"
+    type        : "daily"
+    keywords    : [ "divine", "teleportation" ]
+
+  DeathWard:
+    name        : "Death Ward"
+    type        : "daily"
+    keywords    : [ "divine", "healing" ]
+
+  EnervatingSmite:
+    name        : "Enervating Smite"
+    keywords    : [ "divine", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  FortifyingSmite:
+    name        : "Fortifying Smite"
+    keywords    : [ "divine", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  HandOfTheGods:
+    name        : "Hand of the Gods"
+    keywords    : [ "divine", "implement", "radiant" ]
+
+  TerrifyingSmite:
+    name        : "Terrifying Smite"
+    keywords    : [ "divine", "fear", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  CoronaOfBlindingRadiance:
+    name        : "Corona of Blinding Radiance"
+    keywords    : [ "divine", "radiant", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  CrusadersBoon:
+    name        : "Crusader's Boon"
+    keywords    : [ "divine", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  RighteousInferno:
+    name        : "Righteous Inferno"
+    keywords    : [ "divine", "fire", "implement", "zone" ]

@@ -215,3 +215,38 @@ module.exports =
       if Powers.collections.paladin[power]
         test.ok power in Classes.Paladin.powers.utility[10]
     test.done()
+
+  "level-13 prayers are accounted for": (test) ->
+    for power in [ "EntanglingSmite", "RadiantCharge", "RenewingSmite", "WhirlwindSmite" ]
+      test.ok Powers.collections.paladin[power], "`#{power}' is not defined"
+      if Powers.collections.paladin[power]
+        test.ok power in Classes.Paladin.powers.encounter[13]
+    test.done()
+
+  "level-15 prayers are accounted for": (test) ->
+    for power in [ "BloodiedRetribution", "BreakTheWall", "TrueNemesis" ]
+      test.ok Powers.collections.paladin[power], "`#{power}' is not defined"
+      if Powers.collections.paladin[power]
+        test.ok power in Classes.Paladin.powers.daily[15]
+    test.done()
+
+  "level-16 prayers are accounted for": (test) ->
+    for power in [ "AngelicIntercession", "DeathWard" ]
+      test.ok Powers.collections.paladin[power], "`#{power}' is not defined"
+      if Powers.collections.paladin[power]
+        test.ok power in Classes.Paladin.powers.utility[16]
+    test.done()
+
+  "level-17 prayers are accounted for": (test) ->
+    for power in [ "EnervatingSmite", "FortifyingSmite", "HandOfTheGods", "TerrifyingSmite" ]
+      test.ok Powers.collections.paladin[power], "`#{power}' is not defined"
+      if Powers.collections.paladin[power]
+        test.ok power in Classes.Paladin.powers.encounter[17]
+    test.done()
+
+  "level-19 prayers are accounted for": (test) ->
+    for power in [ "CoronaOfBlindingRadiance", "CrusadersBoon", "RighteousInferno" ]
+      test.ok Powers.collections.paladin[power], "`#{power}' is not defined"
+      if Powers.collections.paladin[power]
+        test.ok power in Classes.Paladin.powers.daily[19]
+    test.done()
