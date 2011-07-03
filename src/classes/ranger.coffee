@@ -29,7 +29,7 @@ module.exports = class Ranger
     npc.skills[npc.random.pick "dungeoneering", "nature"].trained = true
     npc.pendingSkills.push count: 4, list: Ranger.skills
 
-    style = @options.style ? npc.random.pick "Archer", "Two-Blade"
+    style = @options.style ? npc.random.pick("Archer", "Two-Blade")
     npc.feature "class", "#{style} Fighting Style"
 
     if style is "Archer"

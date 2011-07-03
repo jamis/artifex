@@ -367,3 +367,18 @@ module.exports =
     npc.equipment[0] = "glaive"
     test.ok not power.allowed()
     test.done()
+
+  "allowed() should understand feature requirements": (test) ->
+    npc = new NPC
+    power1 = new Power npc: npc, id: "FooTest", requires: { feature: { class: "Yellow" } }
+    power2 = new Power npc: npc, id: "FooTest", requires: { feature: { racial: "Hungry" } }
+
+    test.ok not power1.allowed()
+    test.ok not power2.allowed()
+
+    npc.feature "class", "Yellow"
+    test.ok power1.allowed()
+
+    npc.feature "racial", "Hungry"
+    test.ok power2.allowed()
+    test.done()

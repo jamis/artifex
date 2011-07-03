@@ -46,9 +46,18 @@ module.exports = class Power
       switch key
         when "trained" then return false unless @npc.skills[value].trained?
         when "weapon" then return false unless @equippedWeapon(value)
+        when "feature" then return false unless @hasFeatures(value)
         else throw new Error "unknown prerequisite: `#{key}'"
 
     true
+
+  hasFeatures: (features) ->
+    valid = true
+
+    valid &&= @npc.hasFeature "class", features.class if features.class?
+    valid &&= @npc.hasFeature "racial", features.racial if features.racial?
+
+    valid
 
   weaponMatches: (candidate, weapon) ->
     return true if weapon is candidate
