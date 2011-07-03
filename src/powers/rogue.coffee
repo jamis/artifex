@@ -307,3 +307,91 @@ module.exports =
     type        : "atWill"
     keywords    : [ "martial" ]
     requires    : { trained: "stealth" }
+
+  FoolsOpportunity:
+    name        : "Fool's Opportunity"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: { yes: "light blade", no: "ranged" } }
+
+  StunningStrike:
+    name        : "Stunning Strike"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: { yes: "light blade", no: "ranged" } }
+
+  TornadoStrike:
+    name        : "Tornado Strike"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: [ "crossbow", "light blade", "sling" ] }
+
+  UnbalancingAttack:
+    name        : "Unbalancing Attack"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: { yes: "light blade", no: "ranged" } }
+
+  BloodyPath:
+    name        : "Bloody Path"
+    keywords    : [ "martial" ]
+
+  GarroteGrip:
+    name        : "Garrote Grip"
+    keywords    : [ "martial", "reliable", "weapon" ]
+    requires    : { weapon: { yes: "light blade", no: "ranged" } }
+
+  SlayingStrike:
+    name        : "Slaying Strike"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: [ "crossbow", "light blade", "sling" ] }
+
+  FoilTheLock:
+    name        : "Foil the Lock"
+    type        : "daily"
+    keywords    : [ "martial" ]
+    requires    : { trained: "thievery" }
+
+  HideInPlainSight:
+    name        : "Hide in Plain Sight"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    requires    : { trained: "stealth" }
+
+  LeapingDodge:
+    name        : "Leaping Dodge"
+    type        : "encounter"
+    keywords    : [ "martial" ]
+    requires    : { trained: "athletics" }
+
+  RaiseTheStakes:
+    name        : "Raise the Stakes"
+    type        : "daily"
+    keywords    : [ "martial" ]
+    requires    : { trained: "bluff" }
+
+  DragonTailStrike:
+    name        : "Dragon Tail Strike"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: [ "crossbow", "light blade", "sling" ] }
+
+  HoundingStrike:
+    name        : "Hounding Strike"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: [ "crossbow", "light blade", "sling" ] }
+
+  StabAndGrab:
+    name        : "Stab and Grab"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: { yes: "light blade", no: "ranged" } }
+
+  FeintingFlurry:
+    name        : "Feinting Flurry"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: [ "crossbow", "light blade", "sling" ] }
+
+  FlyingFoe:
+    name        : "Flying Foe"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: { yes: "light blade", no: "ranged" } }
+
+  SnakesRetreat:
+    name        : "Snake's Retreat"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: [ "crossbow", "light blade", "sling" ] }

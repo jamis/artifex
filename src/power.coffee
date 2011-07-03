@@ -80,7 +80,7 @@ module.exports = class Power
         disallowed = weapon.no? and @weaponMatchesAny(candidate, weapon.no)
         return true if allowed and not disallowed
       else
-        return true if @weaponMatches candidate, weapon
+        return true if @weaponMatchesAny candidate, weapon
     false
 
   get: (name) ->

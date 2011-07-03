@@ -416,3 +416,108 @@ module.exports =
       type: [ expect: "atWill" ]
       keywords: [ expect: [ "martial" ] ]
       requires: [ expect: { trained: "stealth" } ]
+
+  "[FoolsOpportunity] should be defined":
+    Verify.testProperties "rogue", "FoolsOpportunity",
+      name: [ expect: "Fool's Opportunity" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: { yes: "light blade", no: "ranged" } } ]
+
+  "[StunningStrike] should be defined":
+    Verify.testProperties "rogue", "StunningStrike",
+      name: [ expect: "Stunning Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: { yes: "light blade", no: "ranged" } } ]
+
+  "[TornadoStrike] should be defined":
+    Verify.testProperties "rogue", "TornadoStrike",
+      name: [ expect: "Tornado Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: [ "crossbow", "light blade", "sling" ] } ]
+
+  "[UnbalancingAttack] should be defined":
+    Verify.testProperties "rogue", "UnbalancingAttack",
+      name: [ expect: "Unbalancing Attack" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: { yes: "light blade", no: "ranged" } } ]
+
+  "[BloodyPath] should be defined":
+    Verify.testProperties "rogue", "BloodyPath",
+      name: [ expect: "Bloody Path" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[GarroteGrip] should be defined":
+    Verify.testProperties "rogue", "GarroteGrip",
+      name: [ expect: "Garrote Grip" ]
+      keywords: [ expect: [ "martial", "reliable", "weapon" ] ]
+      requires: [ expect: { weapon: { yes: "light blade", no: "ranged" } } ]
+
+  "[SlayingStrike] should be defined":
+    Verify.testProperties "rogue", "SlayingStrike",
+      name: [ expect: "Slaying Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: [ "crossbow", "light blade", "sling" ] } ]
+
+  "[FoilTheLock] should be defined":
+    Verify.testProperties "rogue", "FoilTheLock",
+      name: [ expect: "Foil the Lock" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: { trained: "thievery" } ]
+
+  "[HideInPlainSight] should be defined":
+    Verify.testProperties "rogue", "HideInPlainSight",
+      name: [ expect: "Hide in Plain Sight" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: { trained: "stealth" } ]
+
+  "[LeapingDodge] should be defined":
+    Verify.testProperties "rogue", "LeapingDodge",
+      name: [ expect: "Leaping Dodge" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: { trained: "athletics" } ]
+
+  "[RaiseTheStakes] should be defined":
+    Verify.testProperties "rogue", "RaiseTheStakes",
+      name: [ expect: "Raise the Stakes" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: { trained: "bluff" } ]
+
+  "[DragonTailStrike] should be defined":
+    Verify.testProperties "rogue", "DragonTailStrike",
+      name: [ expect: "Dragon Tail Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: [ "crossbow", "light blade", "sling" ] } ]
+
+  "[HoundingStrike] should be defined":
+    Verify.testProperties "rogue", "HoundingStrike",
+      name: [ expect: "Hounding Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: [ "crossbow", "light blade", "sling" ] } ]
+
+  "[StabAndGrab] should be defined":
+    Verify.testProperties "rogue", "StabAndGrab",
+      name: [ expect: "Stab and Grab" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: { yes: "light blade", no: "ranged" } } ]
+
+  "[FeintingFlurry] should be defined":
+    Verify.testProperties "rogue", "FeintingFlurry",
+      name: [ expect: "Feinting Flurry" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: [ "crossbow", "light blade", "sling" ] } ]
+
+  "[FlyingFoe] should be defined":
+    Verify.testProperties "rogue", "FlyingFoe",
+      name: [ expect: "Flying Foe" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: { yes: "light blade", no: "ranged" } } ]
+
+  "[SnakesRetreat] should be defined":
+    Verify.testProperties "rogue", "SnakesRetreat",
+      name: [ expect: "Snake's Retreat" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: [ "crossbow", "light blade", "sling" ] } ]
