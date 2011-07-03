@@ -271,3 +271,97 @@ module.exports =
     name        : "Undaunted Stride"
     type        : "daily"
     keywords    : [ "martial", "stance" ]
+
+  ArmorSplinter:
+    name        : "Armor Splinter"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } }
+
+  KnockdownShot:
+    name        : "Knockdown Shot"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "ranged" }
+
+  NimbleDefense:
+    name        : "Nimble Defense"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } }
+
+  PinningStrike:
+    name        : "Pinning Strike"
+    keywords    : [ "martial", "weapon" ]
+
+  BladeCascade:
+    name        : "Blade Cascade"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } }
+
+  BleedingWounds:
+    name        : "Bleeding Wounds"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "ranged" }
+
+  ConfoundingArrows:
+    name        : "Confounding Arrows"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "ranged" }
+
+  StunningSteel:
+    name        : "Stunning Steel"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } }
+
+  EvadeTheBlow:
+    name        : "Evade the Blow"
+    type        : "daily"
+    keywords    : [ "martial" ]
+
+  Longstrider:
+    name        : "Longstrider"
+    type        : "daily"
+    keywords    : [ "martial", "stance" ]
+
+  MomentaryRespite:
+    name        : "Momentary Respite"
+    type        : "daily"
+    keywords    : [ "martial" ]
+
+  ArrowOfVengeance:
+    name        : "Arrow of Vengeance"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "ranged" }
+
+  CheetahsRake:
+    name        : "Cheetah's Rake"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } }
+
+  TripleShot:
+    name        : "Triple Shot"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "ranged" }
+
+  TwoWeaponEviscerate:
+    name        : "Two-Weapon Eviscerate"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } }
+
+  CruelCageOfSteel:
+    name        : "Cruel Cage of Steel"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } }
+
+  GreatRamArrow:
+    name        : "Great Ram Arrow"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "ranged" }
+
+  TwoInOneShot:
+    name        : "Two-in-One Shot"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "ranged" }
+
+  WoundingWhirlwind:
+    name        : "Wounding Whirlwind"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } }

@@ -445,3 +445,117 @@ module.exports =
       name: [ expect: "Undaunted Stride" ]
       type: [ expect: "daily" ]
       keywords: [ expect: [ "martial", "stance" ] ]
+
+  "[ArmorSplinter] should be defined":
+    Verify.testProperties "ranger", "ArmorSplinter",
+      name: [ expect: "Armor Splinter" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } } ]
+
+  "[KnockdownShot] should be defined":
+    Verify.testProperties "ranger", "KnockdownShot",
+      name: [ expect: "Knockdown Shot" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "ranged" } ]
+
+  "[NimbleDefense] should be defined":
+    Verify.testProperties "ranger", "NimbleDefense",
+      name: [ expect: "Nimble Defense" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } } ]
+
+  "[PinningStrike] should be defined":
+    Verify.testProperties "ranger", "PinningStrike",
+      name: [ expect: "Pinning Strike" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: undefined ]
+
+  "[BladeCascade] should be defined":
+    Verify.testProperties "ranger", "BladeCascade",
+      name: [ expect: "Blade Cascade" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } } ]
+
+  "[BleedingWounds] should be defined":
+    Verify.testProperties "ranger", "BleedingWounds",
+      name: [ expect: "Bleeding Wounds" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "ranged" } ]
+
+  "[ConfoundingArrows] should be defined":
+    Verify.testProperties "ranger", "ConfoundingArrows",
+      name: [ expect: "Confounding Arrows" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "ranged" } ]
+
+  "[StunningSteel] should be defined":
+    Verify.testProperties "ranger", "StunningSteel",
+      name: [ expect: "Stunning Steel" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } } ]
+
+  "[EvadeTheBlow] should be defined":
+    Verify.testProperties "ranger", "EvadeTheBlow",
+      name: [ expect: "Evade the Blow" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[Longstrider] should be defined":
+    Verify.testProperties "ranger", "Longstrider",
+      name: [ expect: "Longstrider" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial", "stance" ] ]
+
+  "[MomentaryRespite] should be defined":
+    Verify.testProperties "ranger", "MomentaryRespite",
+      name: [ expect: "Momentary Respite" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+
+  "[ArrowOfVengeance] should be defined":
+    Verify.testProperties "ranger", "ArrowOfVengeance",
+      name: [ expect: "Arrow of Vengeance" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "ranged" } ]
+
+  "[CheetahsRake] should be defined":
+    Verify.testProperties "ranger", "CheetahsRake",
+      name: [ expect: "Cheetah's Rake" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } } ]
+
+  "[TripleShot] should be defined":
+    Verify.testProperties "ranger", "TripleShot",
+      name: [ expect: "Triple Shot" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "ranged" } ]
+
+  "[TwoWeaponEviscerate] should be defined":
+    Verify.testProperties "ranger", "TwoWeaponEviscerate",
+      name: [ expect: "Two-Weapon Eviscerate" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } } ]
+
+  "[CruelCageOfSteel] should be defined":
+    Verify.testProperties "ranger", "CruelCageOfSteel",
+      name: [ expect: "Cruel Cage of Steel" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } } ]
+
+  "[GreatRamArrow] should be defined":
+    Verify.testProperties "ranger", "GreatRamArrow",
+      name: [ expect: "Great Ram Arrow" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "ranged" } ]
+
+  "[TwoInOneShot] should be defined":
+    Verify.testProperties "ranger", "TwoInOneShot",
+      name: [ expect: "Two-in-One Shot" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "ranged" } ]
+
+  "[WoundingWhirlwind] should be defined":
+    Verify.testProperties "ranger", "WoundingWhirlwind",
+      name: [ expect: "Wounding Whirlwind" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee", feature: { class: "Two-Blade Fighting Style" } } ]

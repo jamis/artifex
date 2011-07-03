@@ -188,3 +188,38 @@ module.exports =
       if Powers.collections.ranger[power]
         test.ok power in Classes.Ranger.powers.utility[10]
     test.done()
+
+  "level-13 exploits are accounted for": (test) ->
+    for power in [ "ArmorSplinter", "KnockdownShot", "NimbleDefense", "PinningStrike" ]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
+        test.ok power in Classes.Ranger.powers.encounter[13]
+    test.done()
+
+  "level-15 exploits are accounted for": (test) ->
+    for power in [ "BladeCascade", "BleedingWounds", "ConfoundingArrows", "StunningSteel" ]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
+        test.ok power in Classes.Ranger.powers.daily[15]
+    test.done()
+
+  "level-16 exploits are accounted for": (test) ->
+    for power in [ "EvadeTheBlow", "Longstrider", "MomentaryRespite" ]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
+        test.ok power in Classes.Ranger.powers.utility[16]
+    test.done()
+
+  "level-17 exploits are accounted for": (test) ->
+    for power in [ "ArrowOfVengeance", "CheetahsRake", "TripleShot", "TwoWeaponEviscerate" ]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
+        test.ok power in Classes.Ranger.powers.encounter[17]
+    test.done()
+
+  "level-19 exploits are accounted for": (test) ->
+    for power in [ "CruelCageOfSteel", "GreatRamArrow", "TwoInOneShot", "WoundingWhirlwind" ]
+      test.ok Powers.collections.ranger[power], "`#{power}' is not defined"
+      if Powers.collections.ranger[power]
+        test.ok power in Classes.Ranger.powers.daily[19]
+    test.done()

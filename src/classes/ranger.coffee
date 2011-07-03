@@ -55,16 +55,21 @@ Ranger.powers =
     1: [ "CarefulAttack", "HitAndRun", "NimbleStrike", "TwinStrike" ]
 
   encounter:
-    1: [ "DireWolverineStrike", "EvasiveStrike", "FoxsCunning", "TwoFangedStrike" ]
-    3: [ "CutAndRun", "DisruptiveStrike", "ShadowWaspStrike", "ThundertuskBoarStrike" ]
-    7: [ "ClawsOfTheGriffon", "HawksTalon", "SpikesOfTheManticore", "SweepingWhirlwind" ]
+    1 : [ "DireWolverineStrike", "EvasiveStrike", "FoxsCunning", "TwoFangedStrike" ]
+    3 : [ "CutAndRun", "DisruptiveStrike", "ShadowWaspStrike", "ThundertuskBoarStrike" ]
+    7 : [ "ClawsOfTheGriffon", "HawksTalon", "SpikesOfTheManticore", "SweepingWhirlwind" ]
+    13: [ "ArmorSplinter", "KnockdownShot", "NimbleDefense", "PinningStrike" ]
+    17: [ "ArrowOfVengeance", "CheetahsRake", "TripleShot", "TwoWeaponEviscerate" ]
 
   daily:
-    1: [ "HuntersBearTrap", "JawsOfTheWolf", "SplitTheTree", "SuddenStrike" ]
-    5: [ "ExcruciatingShot", "FrenziedSkirmish", "SplinteringShot", "TwoWolfPounce" ]
-    9: [ "AttacksOnTheRun", "CloseQuartersShot", "SprayOfArrows", "SwirlingLeavesOfSteel" ]
+    1 : [ "HuntersBearTrap", "JawsOfTheWolf", "SplitTheTree", "SuddenStrike" ]
+    5 : [ "ExcruciatingShot", "FrenziedSkirmish", "SplinteringShot", "TwoWolfPounce" ]
+    9 : [ "AttacksOnTheRun", "CloseQuartersShot", "SprayOfArrows", "SwirlingLeavesOfSteel" ]
+    15: [ "BladeCascade", "BleedingWounds", "ConfoundingArrows", "StunningSteel" ]
+    19: [ "CruelCageOfSteel", "GreatRamArrow", "TwoInOneShot", "WoundingWhirlwind" ]
 
   utility:
     2 : [ "CrucialAdvice", "UnbalancingParry", "YieldGround" ]
     6 : [ "EvadeAmbush", "SkilledCompanion", "WeaveThroughTheFray" ]
     10: [ "ExpeditiousStride", "OpenTheRange", "UndauntedStride" ]
+    16: [ "EvadeTheBlow", "Longstrider", "MomentaryRespite" ]
