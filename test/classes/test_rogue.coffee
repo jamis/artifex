@@ -200,3 +200,38 @@ module.exports =
       if Powers.collections.rogue[power]
         test.ok power in Classes.Rogue.powers.utility[10]
     test.done()
+
+  "level-13 exploits are accounted for": (test) ->
+    for power in [ "FoolsOpportunity", "StunningStrike", "TornadoStrike", "UnbalancingAttack" ]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
+        test.ok power in Classes.Rogue.powers.encounter[13]
+    test.done()
+
+  "level-15 exploits are accounted for": (test) ->
+    for power in [ "BloodyPath", "GarroteGrip", "SlayingStrike" ]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
+        test.ok power in Classes.Rogue.powers.daily[15]
+    test.done()
+
+  "level-16 exploits are accounted for": (test) ->
+    for power in [ "FoilTheLock", "HideInPlainSight", "LeapingDodge", "RaiseTheStakes" ]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
+        test.ok power in Classes.Rogue.powers.utility[16]
+    test.done()
+
+  "level-17 exploits are accounted for": (test) ->
+    for power in [ "DragonTailStrike", "HoundingStrike", "StabAndGrab" ]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
+        test.ok power in Classes.Rogue.powers.encounter[17]
+    test.done()
+
+  "level-19 exploits are accounted for": (test) ->
+    for power in [ "FeintingFlurry", "FlyingFoe", "SnakesRetreat" ]
+      test.ok Powers.collections.rogue[power], "`#{power}' is not defined"
+      if Powers.collections.rogue[power]
+        test.ok power in Classes.Rogue.powers.daily[19]
+    test.done()

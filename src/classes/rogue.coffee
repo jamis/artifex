@@ -61,16 +61,21 @@ Rogue.powers =
     1: [ "DeftStrike", "PiercingStrike", "RiposteStrike", "SlyFlourish" ]
 
   encounter:
-    1: [ "DazingStrike", "KingsCastle", "PositioningStrike", "TorturousStrike" ]
-    3: [ "BaitAndSwitch", "SetupStrike", "ToppleOver", "TrickstersBlade" ]
-    7: [ "CloudOfSteel", "ImperilingStrike", "RoguesLuck", "SandInTheEyes" ]
+    1 : [ "DazingStrike", "KingsCastle", "PositioningStrike", "TorturousStrike" ]
+    3 : [ "BaitAndSwitch", "SetupStrike", "ToppleOver", "TrickstersBlade" ]
+    7 : [ "CloudOfSteel", "ImperilingStrike", "RoguesLuck", "SandInTheEyes" ]
+    13: [ "FoolsOpportunity", "StunningStrike", "TornadoStrike", "UnbalancingAttack" ]
+    17: [ "DragonTailStrike", "HoundingStrike", "StabAndGrab" ]
 
   daily:
-    1: [ "BlindingBarrage", "EasyTarget", "TrickStrike" ]
-    5: [ "CleverRiposte", "DeepCut", "WalkingWounded" ]
-    9: [ "CrimsonEdge", "DeadlyPositioning", "Knockout" ]
+    1 : [ "BlindingBarrage", "EasyTarget", "TrickStrike" ]
+    5 : [ "CleverRiposte", "DeepCut", "WalkingWounded" ]
+    9 : [ "CrimsonEdge", "DeadlyPositioning", "Knockout" ]
+    15: [ "BloodyPath", "GarroteGrip", "SlayingStrike" ]
+    19: [ "FeintingFlurry", "FlyingFoe", "SnakesRetreat" ]
 
   utility:
     2 : [ "FleetingGhost", "GreatLeap", "MasterOfDeceit", "QuickFingers", "Tumble" ]
     6 : [ "Chameleon", "IgnobleEscape", "MobMentality", "NimbleClimb", "SlipperyMind" ]
     10: [ "CertainFreedom", "CloseQuarters", "DangerousTheft", "ShadowStride" ]
+    16: [ "FoilTheLock", "HideInPlainSight", "LeapingDodge", "RaiseTheStakes" ]
