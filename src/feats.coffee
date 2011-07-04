@@ -116,6 +116,9 @@ proficientWithAll = (weapons...) ->
 pact = (pact) ->
   (npc) -> npc.hasFeature "class", "#{pact} Pact"
 
+presence = (presence) ->
+  (npc) -> npc.hasFeature "class", "#{presence} Presence"
+
 module.exports = Feats =
   ActionSurge: new Feat
     name: "Action Surge"
@@ -453,6 +456,62 @@ module.exports = Feats =
     name: "Improved Initiative"
     grants:
       apply: (npc) -> npc.initiative.adjust "feat", +4
+
+  ImprovedMistyStep: new Feat
+    name: "Improved Misty Step"
+    requires:
+      int: 13
+      class: "warlock"
+      with: pact("Fey")
+
+  InspiredRecovery: new Feat
+    name: "Inspired Recovery"
+    requires:
+      class: "warlord"
+      with: presence("Inspiring")
+
+  IounsPoise: new Feat
+    name: "Ioun's Poise"
+    requires:
+      deity: "Ioun"
+      feature: { class: [ "Channel Divinity" ] }
+    grants:
+      power:
+        encounter: [ collection: "cleric", id: "IounsPoise" ]
+
+  JackOfAllTrades: new Feat
+    name: "Jack of All Trades"
+    requires: { int: 13 }
+    grants:
+      apply: (npc) ->
+        for name, skill of npc.skills
+          do (skill) ->
+            skill.adjust "feat", => if skill.trained then 0 else 2
+
+  KordsFavor: new Feat
+    name: "Kord's Favor"
+    requires:
+      deity: "Kord"
+      feature: { class: [ "Channel Divinity" ] }
+    grants:
+      power:
+        encounter: [ collection: "cleric", id: "KordsFavor" ]
+
+  LethalHunter: new Feat
+    name: "Lethal Hunter"
+    requires:
+      class: "ranger"
+      feature: { class: [ "Hunter's Quarry" ] }
+    grants:
+      apply: (npc) -> npc.quarryDie = 8
+
+  LightStep: new Feat
+    name: "Light Step"
+    requires: { race: "elf" }
+    grants:
+      apply: (npc) ->
+        npc.skills.acrobatics.adjust "feat", 1
+        npc.skills.stealth.adjust "feat", 1
 
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat

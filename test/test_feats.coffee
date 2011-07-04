@@ -11,6 +11,9 @@ equippedWith = (item) ->
 hasPact = (pact) ->
   (npc) -> npc.feature "class", "#{pact} Pact"
 
+hasPresence = (presence) ->
+  (npc) -> npc.feature "class", "#{presence} Presence"
+
 featDefined = (id, expectations) ->
   (test) ->
     feat = Feats[id]
@@ -533,6 +536,79 @@ module.exports =
         tests:
           "should grant +4 feat bonus to initiative": (npc) ->
             npc.initiative.has 4, "feat"
+
+  "[ImprovedMistyStep] should be defined":
+    featDefined "ImprovedMistyStep",
+      name: "Improved Misty Step"
+      allows: [ int: 13, class: "warlock", when: hasPact("Fey") ]
+      disallows: [
+        { int: 13, class: "warlock", when: hasPact("Star") },
+        { int: 12, class: "warlock", when: hasPact("Fey") },
+        { int: 13, class: "wizard", when: hasPact("Fey") } ]
+
+  "[InspiredRecovery] should be defined":
+    featDefined "InspiredRecovery",
+      name: "Inspired Recovery"
+      allows: [ class: "warlord", when: hasPresence("Inspiring") ]
+      disallows: [
+        { class: "warlord", when: hasPresence("Tactical") },
+        { class: "wizard", when: hasPresence("Inspiring") } ]
+
+  "[IounsPoise] should be defined":
+    featDefined "IounsPoise",
+      name: "Ioun's Poise"
+      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "Ioun" } ]
+      disallows: [
+        { feature: { class: ["Channel Divinity"] }, deity: "Pelor" },
+        { feature: { class: ["Hunter's Quarry"] }, deity: "Ioun" } ]
+      grants:
+        power:
+          encounter: [ "Channel Divinity: Ioun's Poise" ]
+
+  "[JackOfAllTrades] should be defined":
+    featDefined "JackOfAllTrades",
+      name: "Jack of All Trades"
+      allows: [ int: 13 ]
+      disallows: [ int: 12 ]
+      grants:
+        tests:
+          "should gain +2 feat bonus to untrained skills": (npc) ->
+            npc.skills.acrobatics.trained = true
+            npc.skills.acrobatics.score() is 5 and
+              npc.skills.diplomacy.score() is 2
+
+  "[KordsFavor] should be defined":
+    featDefined "KordsFavor",
+      name: "Kord's Favor"
+      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "Kord" } ]
+      disallows: [
+        { feature: { class: ["Channel Divinity"] }, deity: "Pelor" },
+        { feature: { class: ["Hunter's Quarry"] }, deity: "Kord" } ]
+      grants:
+        power:
+          encounter: [ "Channel Divinity: Kord's Favor" ]
+
+  "[LethalHunter] should be defined":
+    featDefined "LethalHunter",
+      name: "Lethal Hunter"
+      allows: [ class: "ranger", feature: { class: ["Hunter's Quarry"] } ]
+      disallows: [
+        { class: "ranger", feature: { class: ["Channel Divinity"] } },
+        { class: "wizard", feature: { class: ["Hunter's Quarry"] } } ]
+      grants:
+        tests:
+          "should change quarryDie to 8": (npc) -> npc.quarryDie is 8
+
+  "[LightStep] should be defined":
+    featDefined "LightStep",
+      name: "Light Step"
+      allows: [ race: "elf" ]
+      disallows: [ race: "dwarf" ]
+      grants:
+        tests:
+          "should have feat bonus to acrobatics and stealth": (npc) ->
+            npc.skills.acrobatics.has(1, "feat") and
+              npc.skills.stealth.has(1, "feat")
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",
