@@ -8,6 +8,9 @@ hasPower = (collection, id, category) ->
 equippedWith = (item) ->
   (npc) -> npc.equipment.push(item)
 
+hasPact = (pact) ->
+  (npc) -> npc.feature "class", "#{pact} Pact"
+
 featDefined = (id, expectations) ->
   (test) ->
     feat = Feats[id]
@@ -465,6 +468,71 @@ module.exports =
       name: "Halfling Agility"
       allows: [ race: "halfling" ]
       disallows: [ race: "dwarf" ]
+
+  "[HarmonyOfErathis] should be defined":
+    featDefined "HarmonyOfErathis",
+      name: "Harmony of Erathis"
+      allows: [ { feature: { class: ["Channel Divinity"] }, deity: "Erathis" } ]
+      disallows: [
+        { feature: { class: ["Channel Divinity"] }, deity: "Pelor" },
+        { feature: { class: ["Hunter's Quarry"] }, deity: "Erathis" } ]
+      grants:
+        power:
+          encounter: [ "Channel Divinity: Harmony of Erathis" ]
+
+  "[HealingHands] should be defined":
+    featDefined "HealingHands",
+      name: "Healing Hands"
+      allows: [ class: "paladin", when: hasPower("paladin", "LayOnHands", "encounter") ]
+      disallows: [
+        { class: "paladin" },
+        { class: "rogue", when: hasPower("paladin", "LayOnHands", "encounter") } ]
+
+  "[HellfireBlood] should be defined":
+    featDefined "HellfireBlood",
+      name: "Hellfire Blood"
+      allows: [ race: "tiefling" ]
+      disallows: [ race: "human" ]
+
+  "[HumanPerseverance] should be defined":
+    featDefined "HumanPerseverance",
+      name: "Human Perseverance"
+      allows: [ race: "human" ]
+      disallows: [ race: "dwarf" ]
+      grants:
+        tests:
+          "should grant +1 feat bonus to saving throws": (npc) ->
+            npc.defenses.save.has 1, "feat"
+
+  "[ImprovedDarkOnesBlessing] should be defined":
+    featDefined "ImprovedDarkOnesBlessing",
+      name: "Improved Dark One's Blessing"
+      allows: [ con: 15, class: "warlock", when: hasPact("Infernal") ]
+      disallows: [
+        { con: 15, class: "warlock", when: hasPact("Fey") },
+        { con: 14, class: "warlock", when: hasPact("Infernal") },
+        { con: 15, class: "wizard", when: hasPact("Infernal") } ]
+
+  "[ImprovedFateOfTheVoid] should be defined":
+    featDefined "ImprovedFateOfTheVoid",
+      name: "Improved Fate of the Void"
+      allows: [
+        { con: 13, cha: 12, class: "warlock", when: hasPact("Star") },
+        { con: 12, cha: 13, class: "warlock", when: hasPact("Star") } ]
+      disallows: [
+        { con: 13, cha: 12, class: "warlock", when: hasPact("Fey") },
+        { con: 12, cha: 13, class: "warlock", when: hasPact("Fey") },
+        { con: 12, cha: 12, class: "warlock", when: hasPact("Star") },
+        { con: 13, cha: 13, class: "wizard", when: hasPact("Star") } ]
+
+  "[ImprovedInitiative] should be defined":
+    featDefined "ImprovedInitiative",
+      name: "Improved Initiative"
+      allows: [ {} ]
+      grants:
+        tests:
+          "should grant +4 feat bonus to initiative": (npc) ->
+            npc.initiative.has 4, "feat"
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",

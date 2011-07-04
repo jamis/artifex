@@ -113,6 +113,9 @@ proficientWithAll = (weapons...) ->
       return false if weapon not in npc.proficiencies.weapons
     true
 
+pact = (pact) ->
+  (npc) -> npc.hasFeature "class", "#{pact} Pact"
+
 module.exports = Feats =
   ActionSurge: new Feat
     name: "Action Surge"
@@ -403,6 +406,53 @@ module.exports = Feats =
   HalflingAgility: new Feat
     name: "Halfling Agility"
     requires: { race: "halfling" }
+
+  HarmonyOfErathis: new Feat
+    name: "Harmony of Erathis"
+    requires:
+      deity: "Erathis"
+      feature: { class: [ "Channel Divinity" ] }
+    grants:
+      power:
+        encounter: [ collection: "cleric", id: "HarmonyOfErathis" ]
+
+  HealingHands: new Feat
+    name: "Healing Hands"
+    requires:
+      class: "paladin"
+      power: "LayOnHands"
+
+  HellfireBlood: new Feat
+    name: "Hellfire Blood"
+    requires:
+      race: "tiefling"
+
+  HumanPerseverance: new Feat
+    name: "Human Perseverance"
+    requires:
+      race: "human"
+    grants:
+      apply: (npc) -> npc.defenses.save.adjust "feat", +1
+
+  ImprovedDarkOnesBlessing: new Feat
+    name: "Improved Dark One's Blessing"
+    requires:
+      con: 15
+      class: "warlock"
+      with: pact("Infernal")
+
+  ImprovedFateOfTheVoid: new Feat
+    name: "Improved Fate of the Void"
+    requires:
+      class: "warlock"
+      with: (npc) ->
+        npc.hasFeature("class", "Star Pact") and
+          (npc.abilities.con.score() >= 13 or npc.abilities.cha.score() >= 13)
+
+  ImprovedInitiative: new Feat
+    name: "Improved Initiative"
+    grants:
+      apply: (npc) -> npc.initiative.adjust "feat", +4
 
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat

@@ -227,6 +227,7 @@
         $('#fort').html(npc.defenses.fort.score());
         $('#ref').html(npc.defenses.ref.score());
         $('#will').html(npc.defenses.will.score());
+        $('#save').html(signed(npc.defenses.save.score()));
 
         $('#hp').html(npc.hitPoints.score());
         $('#bloodied').html(Math.floor(npc.hitPoints.score()/2));
@@ -406,6 +407,7 @@
               <tr><th>Fort</th><td class="box" id="fort"></td></tr>
               <tr><th>Ref</th><td class="box" id="ref"></td></tr>
               <tr><th>Will</th><td class="box" id="will"></td></tr>
+              <tr><th>Save</th><td class="box" id="save"></td></tr>
             </table>
           </div>
 

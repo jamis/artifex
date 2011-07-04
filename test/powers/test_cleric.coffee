@@ -16,6 +16,11 @@ module.exports =
       name: [ expect: "Channel Divinity: Corellon's Grace" ]
       keywords: [ expect: [ "divine" ] ]
 
+  "[HarmonyOfErathis] should be defined":
+    Verify.testProperties "cleric", "HarmonyOfErathis",
+      name: [ expect: "Channel Divinity: Harmony of Erathis" ]
+      keywords: [ expect: [ "divine" ] ]
+
   "[HealingWord] should be defined":
     Verify.testProperties "cleric", "HealingWord",
       name: [ expect: "Healing Word" ]

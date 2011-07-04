@@ -37,6 +37,10 @@ module.exports =
     name        : "Channel Divinity: Corellon's Grace"
     keywords    : [ "divine" ]
 
+  HarmonyOfErathis:
+    name        : "Channel Divinity: Harmony of Erathis"
+    keywords    : [ "divine" ]
+
   LanceOfFaith:
     name        : "Lance of Faith"
     keywords    : [ "divine", "implement", "radiant" ]
