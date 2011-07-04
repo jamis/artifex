@@ -35,6 +35,8 @@ featDefined = (id, expectations) ->
             for category, list of value
               for item in list
                 npc.proficiencies[category].push(item)
+          when "weapon"
+            npc.equipment.push(value)
           when "when"
             value(npc)
           else throw new Error "unsupported configure attribute: `#{attribute}'"
@@ -418,6 +420,51 @@ module.exports =
             before = npc.powers.daily.length
             npc.advanceItem_Daily(npc)
             npc.powers.daily.length is before+3
+
+  "[FarShot] should be defined":
+    featDefined "FarShot",
+      name: "Far Shot"
+      allows: [
+        { dex: 13, weapon: "longbow" },
+        { dex: 13, weapon: "crossbow" } ]
+      disallows: [
+        { dex: 13, weapon: "longsword" },
+        { dex: 13, weapon: "shuriken" },
+        { dex: 12, weapon: "longbow" } ]
+
+  "[FarThrow] should be defined":
+    featDefined "FarThrow",
+      name: "Far Throw"
+      allows: [
+        { str: 13, weapon: "shuriken" },
+        { str: 13, weapon: "dagger" } ]
+      disallows: [
+        { str: 13, weapon: "longsword" },
+        { str: 12, weapon: "longbow" } ]
+
+  "[FastRunner] should be defined":
+    featDefined "FastRunner",
+      name: "Fast Runner"
+      allows: [ con: 13 ]
+      disallows: [ con: 12 ]
+
+  "[FerociousRebuke] should be defined":
+    featDefined "FerociousRebuke",
+      name: "Ferocious Rebuke"
+      allows: [ race: "tiefling" ]
+      disallows: [ race: "human" ]
+
+  "[GroupInsight] should be defined":
+    featDefined "GroupInsight",
+      name: "Group Insight"
+      allows: [ race: "half-elf" ]
+      disallows: [ race: "dwarf" ]
+
+  "[HalflingAgility] should be defined":
+    featDefined "HalflingAgility",
+      name: "Halfling Agility"
+      allows: [ race: "halfling" ]
+      disallows: [ race: "dwarf" ]
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",

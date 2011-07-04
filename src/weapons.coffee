@@ -10,11 +10,27 @@ module.exports = Weapons =
 
     false
 
+  isProjectile: (weapon) ->
+    return false unless Weapons.all[weapon]?
+    Weapons.category(weapon, "ranged") and not Weapons.property(weapon, "thrown")
+
+  isThrown: (weapon) ->
+    return false unless Weapons.all[weapon]?
+    Weapons.property(weapon, "thrown")
+
   category: (weapon, category) ->
+    return false unless Weapons.all[weapon]?
     Weapons.all[weapon].category.indexOf(category) >= 0
 
   group: (weapon, group) ->
+    return false unless Weapons.all[weapon]?
     Weapons.all[weapon].groups.indexOf(group) >= 0
+
+  property: (weapon, property) ->
+    return false unless Weapons.all[weapon]?
+    for value in Weapons.all[weapon].properties
+      return true if value.indexOf(property) >= 0
+    false
 
   inGroup: (group) ->
     list = []

@@ -54,6 +54,19 @@ class Feat
       when "power"
         return @processCombination(value, (id) ->
           npc.powers.firstThat (whence, power) -> power.id is id)
+      when "weapon"
+        for weapon in npc.equipment.weapons()
+          switch value
+            when "projectile"
+              return true if Weapons.isProjectile(weapon)
+            when "thrown"
+              return true if Weapons.isThrown(weapon)
+            when weapon
+              return true
+            else
+              return true if weapons.category(weapon, value)
+              return true if Weapons.group(weapon, value)
+        false
       when "with"
         value(npc)
       else throw new Error "unsupported property: `#{property}'"
@@ -362,6 +375,34 @@ module.exports = Feats =
             npc.powers.daily.push Powers.get(npc.class.name, id, npc: npc)
 
         npc.advanceItem_Daily = -> @selectPowersFor "daily", 3
+
+  FarShot: new Feat
+    name: "Far Shot"
+    requires:
+      dex: 13
+      weapon: "projectile"
+
+  FarThrow: new Feat
+    name: "Far Throw"
+    requires:
+      str: 13
+      weapon: "thrown"
+
+  FastRunner: new Feat
+    name: "Fast Runner"
+    requires: { con: 13 }
+
+  FerociousRebuke: new Feat
+    name: "Ferocious Rebuke"
+    requires: { race: "tiefling" }
+
+  GroupInsight: new Feat
+    name: "Group Insight"
+    requires: { race: "half-elf" }
+
+  HalflingAgility: new Feat
+    name: "Halfling Agility"
+    requires: { race: "halfling" }
 
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat
