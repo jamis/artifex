@@ -1,5 +1,6 @@
 Armor     = require './armor'
 Attribute = require './attribute'
+Languages = require './languages'
 Powers    = require './powers'
 Rituals   = require './rituals'
 Weapons   = require './weapons'
@@ -512,6 +513,26 @@ module.exports = Feats =
       apply: (npc) ->
         npc.skills.acrobatics.adjust "feat", 1
         npc.skills.stealth.adjust "feat", 1
+
+  Linguist: new Feat
+    name: "Linguist"
+    requires: { int: 13 }
+    multiple: true
+    grants:
+      apply: (npc) ->
+        langs = Languages.possible(npc)
+        for lang in npc.random.shuffle(langs...)[0...3]
+          npc.languages.push(lang)
+
+  LongJumper: new Feat
+    name: "Long Jumper"
+    requires: { trained: "athletics" }
+    grants:
+      apply: (npc) -> npc.skills.athletics.adjust "feat", +1
+
+  LostInTheCrowd: new Feat
+    name: "Lost in the Crowd"
+    requires: { race: "halfing" }
 
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat

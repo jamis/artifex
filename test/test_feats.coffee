@@ -52,6 +52,8 @@ featDefined = (id, expectations) ->
       switch name
         when "name"
           test.equal feat.name, value, "expected `#{id}' to be named `#{value}'"
+        when "multiple"
+          test.equal feat.multiple, value, "expected multiple to be `#{value}'"
         when "allows"
           for conditions in value
             test.ok feat.allows(configureNPC(conditions)), "`#{id}' should allow #{conditions}"
@@ -609,6 +611,33 @@ module.exports =
           "should have feat bonus to acrobatics and stealth": (npc) ->
             npc.skills.acrobatics.has(1, "feat") and
               npc.skills.stealth.has(1, "feat")
+
+  "[Linguist] should be defiend":
+    featDefined "Linguist",
+      name: "Linguist"
+      allows: [ int: 13 ]
+      disallows: [ int: 12 ]
+      multiple: true
+      grants:
+        tests:
+          "should have three more languages": (npc) ->
+            npc.languages.length is 3
+
+  "[LongJumper] should be defined":
+    featDefined "LongJumper",
+      name: "Long Jumper"
+      allows: [ trained: ["athletics"] ]
+      disallows: [ {} ]
+      grants:
+        tests:
+          "should have +1 athletics bonus": (npc) ->
+            npc.skills.athletics.has 1, "feat"
+
+  "[LostInTheCrowd] should be defined":
+    featDefined "LostInTheCrowd",
+      name: "Lost in the Crowd"
+      allows: [ race: "halfing" ]
+      disallows: [ race: "human" ]
 
   "[RitualCaster] should be defined":
     featDefined "RitualCaster",
