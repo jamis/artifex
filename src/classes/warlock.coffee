@@ -75,16 +75,21 @@ Warlock.powers =
     1: [ "DireRadiance", "EldritchBlast", "Eyebite", "HellishRebuke" ]
 
   encounter:
-    1: [ "DiabolicGrasp", "DreadfulWord", "VampiricEmbrace", "Witchfire" ]
-    3: [ "EldritchRain", "FieryBolt", "FrigidDarkness", "OtherwindStride" ]
-    7: [ "HowlOfDoom", "InfernalMoonCurse", "MireTheMind", "SignOfIllOmen" ]
+    1 : [ "DiabolicGrasp", "DreadfulWord", "VampiricEmbrace", "Witchfire" ]
+    3 : [ "EldritchRain", "FieryBolt", "FrigidDarkness", "OtherwindStride" ]
+    7 : [ "HowlOfDoom", "InfernalMoonCurse", "MireTheMind", "SignOfIllOmen" ]
+    13: [ "BewitchingWhispers", "ColdfireVortex", "Harrowstorm", "SoulFlaying" ]
+    17: [ "StrandOfFate", "ThirstingTendrils", "WarlocksBargain" ]
 
   daily:
-    1: [ "ArmorOfAgathys", "CurseOfTheDarkDream", "DreadStar", "FlamesOfPhlegethos" ]
-    5: [ "AvernianEruption", "CrownOfMadness", "CurseOfTheBloodyFangs", "HungerOfHadar" ]
-    9: [ "CurseOfTheBlackFrost", "IronSpikeOfDis", "SummonsOfKhirad", "ThiefOfFiveFates" ]
+    1 : [ "ArmorOfAgathys", "CurseOfTheDarkDream", "DreadStar", "FlamesOfPhlegethos" ]
+    5 : [ "AvernianEruption", "CrownOfMadness", "CurseOfTheBloodyFangs", "HungerOfHadar" ]
+    9 : [ "CurseOfTheBlackFrost", "IronSpikeOfDis", "SummonsOfKhirad", "ThiefOfFiveFates" ]
+    15: [ "CurseOfTheGoldenMist", "Fireswarm", "TendrilsOfThuban", "ThirstingMaw" ]
+    19: [ "DelusionsOfLoyalty", "MinionsOfMalbolge", "WrathOfAcamar" ]
 
   utility:
     2 : [ "BeguilingTongue", "EtherealStride", "FiendishResilience", "ShadowVeil" ]
     6 : [ "DarkOnesOwnLuck", "FeySwitch", "ShroudOfBlackSteel", "SpiderClimb" ]
     10: [ "AmbassadorImp", "ShadowForm", "ShieldingShades", "WarlocksLeap" ]
+    16: [ "CloakOfShadow", "EyeOfTheWarlock", "InfuriatingElusiveness" ]

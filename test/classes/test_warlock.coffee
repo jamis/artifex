@@ -249,3 +249,38 @@ module.exports =
       if Powers.collections.warlock[power]
         test.ok power in Classes.Warlock.powers.utility[10]
     test.done()
+
+  "level-13 spells are accounted for": (test) ->
+    for power in [ "BewitchingWhispers", "ColdfireVortex", "Harrowstorm", "SoulFlaying" ]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
+        test.ok power in Classes.Warlock.powers.encounter[13]
+    test.done()
+
+  "level-15 spells are accounted for": (test) ->
+    for power in [ "CurseOfTheGoldenMist", "Fireswarm", "TendrilsOfThuban", "ThirstingMaw" ]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
+        test.ok power in Classes.Warlock.powers.daily[15]
+    test.done()
+
+  "level-16 spells are accounted for": (test) ->
+    for power in [ "CloakOfShadow", "EyeOfTheWarlock", "InfuriatingElusiveness" ]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
+        test.ok power in Classes.Warlock.powers.utility[16]
+    test.done()
+
+  "level-17 spells are accounted for": (test) ->
+    for power in [ "StrandOfFate", "ThirstingTendrils", "WarlocksBargain" ]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
+        test.ok power in Classes.Warlock.powers.encounter[17]
+    test.done()
+
+  "level-19 spells are accounted for": (test) ->
+    for power in [ "DelusionsOfLoyalty", "MinionsOfMalbolge", "WrathOfAcamar" ]
+      test.ok Powers.collections.warlock[power], "`#{power}' is not defined"
+      if Powers.collections.warlock[power]
+        test.ok power in Classes.Warlock.powers.daily[19]
+    test.done()
