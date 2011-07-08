@@ -444,3 +444,91 @@ module.exports =
       name: [ expect: "Warlock's Leap" ],
       type: [ expect: "daily" ]
       keywords: [ expect: [ "arcane", "teleportation" ] ]
+
+  "[BewitchingWhispers] should be defined":
+    Verify.testProperties "warlock", "BewitchingWhispers",
+      name: [ expect: "Bewitching Whispers" ]
+      keywords: [ expect: [ "arcane", "charm", "implement" ] ]
+
+  "[ColdfireVortex] should be defined":
+    Verify.testProperties "warlock", "ColdfireVortex",
+      name: [ expect: "Coldfire Vortex" ]
+      keywords: [ expect: [ "arcane", "cold", "implement", "radiant" ] ]
+
+  "[Harrowstorm] should be defined":
+    Verify.testProperties "warlock", "Harrowstorm",
+      name: [ expect: "Harrowstorm" ]
+      keywords: [ expect: [ "arcane", "implement", "thunder" ] ]
+
+  "[SoulFlaying] should be defined":
+    Verify.testProperties "warlock", "SoulFlaying",
+      name: [ expect: "Soul Flaying" ]
+      keywords: [ expect: [ "arcane", "implement", "necrotic" ] ]
+
+  "[CurseOfTheGoldenMist] should be defined":
+    Verify.testProperties "warlock", "CurseOfTheGoldenMist",
+      name: [ expect: "Curse of the Golden Mist" ]
+      keywords: [ expect: [ "arcane", "charm", "implement" ] ]
+
+  "[Fireswarm] should be defined":
+    Verify.testProperties "warlock", "Fireswarm",
+      name: [ expect: "Fireswarm" ]
+      keywords: [ expect: [ "arcane", "fire", "implement", "poison" ] ]
+
+  "[TendrilsOfThuban] should be defined":
+    Verify.testProperties "warlock", "TendrilsOfThuban",
+      name: [ expect: "Tendrils of Thuban" ]
+      keywords: [ expect: [ "arcane", "cold", "implement", "zone" ] ]
+
+  "[ThirstingMaw] should be defined":
+    Verify.testProperties "warlock", "ThirstingMaw",
+      name: [ expect: "Thirsting Maw" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
+
+  "[CloakOfShadow] should be defined":
+    Verify.testProperties "warlock", "CloakOfShadow",
+      name: [ expect: "Cloak of Shadow" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[EyeOfTheWarlock] should be defined":
+    Verify.testProperties "warlock", "EyeOfTheWarlock",
+      name: [ expect: "Eye of the Warlock" ],
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[InfuriatingElusiveness] should be defined":
+    Verify.testProperties "warlock", "InfuriatingElusiveness",
+      name: [ expect: "Infuriating Elusiveness" ],
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane", "illusion", "teleportation" ] ]
+
+  "[StrandOfFate] should be defined":
+    Verify.testProperties "warlock", "StrandOfFate",
+      name: [ expect: "Strand of Fate" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
+
+  "[ThirstingTendrils] should be defined":
+    Verify.testProperties "warlock", "ThirstingTendrils",
+      name: [ expect: "Thirsting Tendrils" ]
+      keywords: [ expect: [ "arcane", "healing", "implement" ] ]
+
+  "[WarlocksBargain] should be defined":
+    Verify.testProperties "warlock", "WarlocksBargain",
+      name: [ expect: "Warlock's Bargain" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
+
+  "[DelusionsOfLoyalty] should be defined":
+    Verify.testProperties "warlock", "DelusionsOfLoyalty",
+      name: [ expect: "Delusions of Loyalty" ]
+      keywords: [ expect: [ "arcane", "charm", "implement" ] ]
+
+  "[MinionsOfMalbolge] should be defined":
+    Verify.testProperties "warlock", "MinionsOfMalbolge",
+      name: [ expect: "Minions of Malbolge" ]
+      keywords: [ expect: [ "arcane", "conjuration", "fire", "implement" ] ]
+
+  "[WrathOfAcamar] should be defined":
+    Verify.testProperties "warlock", "WrathOfAcamar",
+      name: [ expect: "Wrath of Acamar" ]
+      keywords: [ expect: [ "arcane", "implement", "necrotic", "teleportation" ] ]

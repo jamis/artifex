@@ -286,3 +286,74 @@ module.exports =
     name        : "Warlock's Leap"
     type        : "daily"
     keywords    : [ "arcane", "teleportation" ]
+
+  BewitchingWhispers:
+    name        : "Bewitching Whispers"
+    keywords    : [ "arcane", "charm", "implement" ]
+
+  ColdfireVortex:
+    name        : "Coldfire Vortex"
+    keywords    : [ "arcane", "cold", "implement", "radiant" ]
+
+  Harrowstorm:
+    name        : "Harrowstorm"
+    keywords    : [ "arcane", "implement", "thunder" ]
+
+  SoulFlaying:
+    name        : "Soul Flaying"
+    keywords    : [ "arcane", "implement", "necrotic" ]
+
+  CurseOfTheGoldenMist:
+    name        : "Curse of the Golden Mist"
+    keywords    : [ "arcane", "charm", "implement" ]
+
+  Fireswarm:
+    name        : "Fireswarm"
+    keywords    : [ "arcane", "fire", "implement", "poison" ]
+
+  TendrilsOfThuban:
+    name        : "Tendrils of Thuban"
+    keywords    : [ "arcane", "cold", "implement", "zone" ]
+
+  ThirstingMaw:
+    name        : "Thirsting Maw"
+    keywords    : [ "arcane", "implement" ]
+
+  CloakOfShadow:
+    name        : "Cloak of Shadow"
+    type        : "encounter"
+    keywords    : [ "arcane" ]
+
+  EyeOfTheWarlock:
+    name        : "Eye of the Warlock"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+
+  InfuriatingElusiveness:
+    name        : "Infuriating Elusiveness"
+    type        : "encounter"
+    keywords    : [ "arcane", "illusion", "teleportation" ]
+
+  StrandOfFate:
+    name        : "Strand of Fate"
+    keywords    : [ "arcane", "implement" ]
+
+  ThirstingTendrils:
+    name        : "Thirsting Tendrils"
+    keywords    : [ "arcane", "healing", "implement" ]
+
+  WarlocksBargain:
+    name        : "Warlock's Bargain"
+    keywords    : [ "arcane", "implement" ]
+
+  DelusionsOfLoyalty:
+    name        : "Delusions of Loyalty"
+    keywords    : [ "arcane", "charm", "implement" ]
+
+  MinionsOfMalbolge:
+    name        : "Minions of Malbolge"
+    keywords    : [ "arcane", "conjuration", "fire", "implement" ]
+
+  WrathOfAcamar:
+    name        : "Wrath of Acamar"
+    keywords    : [ "arcane", "implement", "necrotic", "teleportation" ]
