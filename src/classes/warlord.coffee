@@ -55,16 +55,21 @@ Warlord.powers =
     1: [ "CommandersStrike", "FuriousSmash", "VipersStrike", "WolfPackTactics" ]
 
   encounter:
-    1: [ "GuardingAttack", "HammerAndAnvil", "LeafOnTheWind", "WarlordsFavor" ]
-    3: [ "HoldTheLine", "InspiringWarCry", "SteelMonsoon", "WarlordsStrike" ]
-    7: [ "LionsRoar", "SunderArmor", "SurpriseAttack", "SurroundFoe" ]
+    1 : [ "GuardingAttack", "HammerAndAnvil", "LeafOnTheWind", "WarlordsFavor" ]
+    3 : [ "HoldTheLine", "InspiringWarCry", "SteelMonsoon", "WarlordsStrike" ]
+    7 : [ "LionsRoar", "SunderArmor", "SurpriseAttack", "SurroundFoe" ]
+    13: [ "BeatThemIntoTheGround", "BolsteringBlow", "DenyingSmite", "FuryOfTheSirocco" ]
+    17: [ "BattleOn", "HailOfSteel", "ThunderousFury", "WarlordsRush" ]
 
   daily:
-    1: [ "BastionOfDefense", "LeadTheAttack", "PinTheFoe", "WhiteRavenOnslaught" ]
-    5: [ "StandTheFallen", "TurningPoint", "VillainsNightmare" ]
-    9: [ "IronDragonCharge", "KnockThemDown", "WhiteRavenStrike" ]
+    1 : [ "BastionOfDefense", "LeadTheAttack", "PinTheFoe", "WhiteRavenOnslaught" ]
+    5 : [ "StandTheFallen", "TurningPoint", "VillainsNightmare" ]
+    9 : [ "IronDragonCharge", "KnockThemDown", "WhiteRavenStrike" ]
+    15: [ "MakeThemBleed", "RenewTheTroops", "WarlordsGambit" ]
+    19: [ "BreakTheTempo", "VictorySurge", "WindmillOfDoom" ]
 
   utility:
     2 : [ "AidTheInjured", "CrescendoOfViolence", "KnightsMove", "ShakeItOff" ]
     6 : [ "GuideTheCharge", "InspiringReaction", "QuickStep", "StandTough" ]
     10: [ "DefensiveRally", "EaseSuffering", "TacticalShift" ]
+    16: [ "HerosDefiance", "WarlordsBanner", "WhiteRavenFormation" ]

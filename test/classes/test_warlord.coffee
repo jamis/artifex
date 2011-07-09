@@ -183,3 +183,38 @@ module.exports =
       if Powers.collections.warlord[power]
         test.ok power in Classes.Warlord.powers.utility[10]
     test.done()
+
+  "level-13 exploits are accounted for": (test) ->
+    for power in [ "BeatThemIntoTheGround", "BolsteringBlow", "DenyingSmite", "FuryOfTheSirocco" ]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
+        test.ok power in Classes.Warlord.powers.encounter[13]
+    test.done()
+
+  "level-15 exploits are accounted for": (test) ->
+    for power in [ "MakeThemBleed", "RenewTheTroops", "WarlordsGambit" ]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
+        test.ok power in Classes.Warlord.powers.daily[15]
+    test.done()
+
+  "level-16 exploits are accounted for": (test) ->
+    for power in [ "HerosDefiance", "WarlordsBanner", "WhiteRavenFormation" ]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
+        test.ok power in Classes.Warlord.powers.utility[16]
+    test.done()
+
+  "level-17 exploits are accounted for": (test) ->
+    for power in [ "BattleOn", "HailOfSteel", "ThunderousFury", "WarlordsRush" ]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
+        test.ok power in Classes.Warlord.powers.encounter[17]
+    test.done()
+
+  "level-19 exploits are accounted for": (test) ->
+    for power in [ "BreakTheTempo", "VictorySurge", "WindmillOfDoom" ]
+      test.ok Powers.collections.warlord[power], "`#{power}' is not defined"
+      if Powers.collections.warlord[power]
+        test.ok power in Classes.Warlord.powers.daily[19]
+    test.done()

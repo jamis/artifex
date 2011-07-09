@@ -412,3 +412,108 @@ module.exports =
       effect: [
         { int_: 10, expect: "ally can shift 1 square" },
         { int_: 16, expect: "ally can shift 4 squares" } ]
+
+  "[BeatThemIntoTheGround] should be defined":
+    Verify.testProperties "warlord", "BeatThemIntoTheGround",
+      name: [ expect: "Beat Them Into the Ground" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[BolsteringBlow] should be defined":
+    Verify.testProperties "warlord", "BolsteringBlow",
+      name: [ expect: "Bolstering Blow" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[DenyingSmite] should be defined":
+    Verify.testProperties "warlord", "DenyingSmite",
+      name: [ expect: "Denying Smite" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[FuryOfTheSirocco] should be defined":
+    Verify.testProperties "warlord", "FuryOfTheSirocco",
+      name: [ expect: "Fury of the Sirocco" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[MakeThemBleed] should be defined":
+    Verify.testProperties "warlord", "MakeThemBleed",
+      name: [ expect: "Make Them Bleed" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[RenewTheTroops] should be defined":
+    Verify.testProperties "warlord", "RenewTheTroops",
+      name: [ expect: "Renew the Troops" ]
+      keywords: [ expect: [ "healing", "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[WarlordsGambit] should be defined":
+    Verify.testProperties "warlord", "WarlordsGambit",
+      name: [ expect: "Warlord's Gambit" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[HerosDefiance] should be defined":
+    Verify.testProperties "warlord", "HerosDefiance",
+      name: [ expect: "Hero's Defiance" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: undefined ]
+
+  "[WarlordsBanner] should be defined":
+    Verify.testProperties "warlord", "WarlordsBanner",
+      name: [ expect: "Warlord's Banner" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "healing", "martial" ] ]
+      requires: [ expect: undefined ]
+
+  "[WhiteRavenFormation] should be defined":
+    Verify.testProperties "warlord", "WhiteRavenFormation",
+      name: [ expect: "White Raven Formation" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "martial" ] ]
+      requires: [ expect: undefined ]
+
+  "[BattleOn] should be defined":
+    Verify.testProperties "warlord", "BattleOn",
+      name: [ expect: "Battle On" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[HailOfSteel] should be defined":
+    Verify.testProperties "warlord", "HailOfSteel",
+      name: [ expect: "Hail of Steel" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[ThunderousFury] should be defined":
+    Verify.testProperties "warlord", "ThunderousFury",
+      name: [ expect: "Thunderous Fury" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[WarlordsRush] should be defined":
+    Verify.testProperties "warlord", "WarlordsRush",
+      name: [ expect: "Warlord's Rush" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[BreakTheTempo] should be defined":
+    Verify.testProperties "warlord", "BreakTheTempo",
+      name: [ expect: "Break the Tempo" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[VictorySurge] should be defined":
+    Verify.testProperties "warlord", "VictorySurge",
+      name: [ expect: "Victory Surge" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]
+
+  "[WindmillOfDoom] should be defined":
+    Verify.testProperties "warlord", "WindmillOfDoom",
+      name: [ expect: "Windmill of Doom" ]
+      keywords: [ expect: [ "martial", "weapon" ] ]
+      requires: [ expect: { weapon: "melee" } ]

@@ -294,3 +294,88 @@ module.exports =
     _formulae   :
       distance: -> 1 + @intM()
       squares: -> @plural @distance(), "square", "squares"
+
+  BeatThemIntoTheGround:
+    name        : "Beat Them Into the Ground"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  BolsteringBlow:
+    name        : "Bolstering Blow"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  DenyingSmite:
+    name        : "Denying Smite"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  FuryOfTheSirocco:
+    name        : "Fury of the Sirocco"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  MakeThemBleed:
+    name        : "Make Them Bleed"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  RenewTheTroops:
+    name        : "Renew the Troops"
+    keywords    : [ "healing", "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  WarlordsGambit:
+    name        : "Warlord's Gambit"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  HerosDefiance:
+    name        : "Hero's Defiance"
+    type        : "daily"
+    keywords    : [ "martial" ]
+
+  WarlordsBanner:
+    name        : "Warlord's Banner"
+    type        : "encounter"
+    keywords    : [ "healing", "martial" ]
+
+  WhiteRavenFormation:
+    name        : "White Raven Formation"
+    type        : "daily"
+    keywords    : [ "martial" ]
+
+  BattleOn:
+    name        : "Battle On"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  HailOfSteel:
+    name        : "Hail of Steel"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  ThunderousFury:
+    name        : "Thunderous Fury"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  WarlordsRush:
+    name        : "Warlord's Rush"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  BreakTheTempo:
+    name        : "Break the Tempo"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  VictorySurge:
+    name        : "Victory Surge"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
+
+  WindmillOfDoom:
+    name        : "Windmill of Doom"
+    keywords    : [ "martial", "weapon" ]
+    requires    : { weapon: "melee" }
