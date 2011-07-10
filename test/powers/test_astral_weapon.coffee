@@ -1,7 +1,7 @@
 {Verify} = require '../helpers'
 
 module.exports =
-  "[FrontlineSurge] should be defined":
+  "[CarvingAPathOfLight] should be defined":
     Verify.testProperties "astralWeapon", "CarvingAPathOfLight",
       name: [ expect: "Carving a Path of Light" ]
       keywords: [ expect: [ "divine", "weapon" ] ]
