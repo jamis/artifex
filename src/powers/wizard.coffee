@@ -273,3 +273,91 @@ module.exports =
     keywords    : [ "arcane" ]
     effect      : "target gains resistance {resist} vs. chosen damage type"
     _formulae   : { resist: -> @npc.level + @intM() }
+
+  Frostburn:
+    name        : "Frostburn"
+    keywords    : [ "arcane", "cold", "fire", "implement" ]
+
+  MesmericHold:
+    name        : "Mesmeric Hold"
+    keywords    : [ "arcane", "charm", "implement", "psychic" ]
+
+  PrismaticBurst:
+    name        : "Prismatic Burst"
+    keywords    : [ "arcane", "implement", "radiant" ]
+
+  Thunderlance:
+    name        : "Thunderlance"
+    keywords    : [ "arcane", "implement", "thunder" ]
+
+  BigbysGraspingHands:
+    name        : "Bigby's Grasping Hands"
+    keywords    : [ "arcane", "conjuration", "force", "implement" ]
+
+  BlastOfCold:
+    name        : "Blast of Cold"
+    keywords    : [ "arcane", "cold", "implement" ]
+
+  OtilukesResilientSphere:
+    name        : "Otiluke's Resilient Sphere"
+    keywords    : [ "arcane", "conjuration", "force", "implement" ]
+
+  PrismaticBeams:
+    name        : "Prismatic Beams"
+    keywords    : [ "arcane", "fire", "implement", "poison" ]
+
+  WallOfIce:
+    name        : "Wall of Ice"
+    keywords    : [ "arcane", "cold", "conjuration", "implement" ]
+
+  Displacement:
+    name        : "Displacement"
+    type        : "encounter"
+    keywords    : [ "arcane", "illusion" ]
+
+  Fly:
+    name        : "Fly"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+
+  GreaterInvisibility:
+    name        : "Greater Invisibility"
+    type        : "daily"
+    keywords    : [ "arcane", "illusion" ]
+
+  Stoneskin:
+    name        : "Stoneskin"
+    type        : "daily"
+    keywords    : [ "arcane" ]
+
+  Combust:
+    name        : "Combust"
+    keywords    : [ "arcane", "fire", "implement" ]
+
+  CrushingTitansFist:
+    name        : "Crushing Titan's Fist"
+    keywords    : [ "arcane", "force", "implement" ]
+
+  ForceVolley:
+    name        : "Force Volley"
+    keywords    : [ "arcane", "force", "implement" ]
+
+  IceTomb:
+    name        : "Ice Tomb"
+    keywords    : [ "arcane", "cold", "implement" ]
+
+  AcidWave:
+    name        : "Acid Wave"
+    keywords    : [ "acid", "arcane", "implement" ]
+
+  Cloudkill:
+    name        : "Cloudkill"
+    keywords    : [ "arcane", "implement", "poison", "zone" ]
+
+  Disintegrate:
+    name        : "Disintegrate"
+    keywords    : [ "arcane", "implement" ]
+
+  EvardsBlackTentacles:
+    name        : "Evard's Black Tentacles"
+    keywords    : [ "arcane", "implement", "necrotic", "zone" ]

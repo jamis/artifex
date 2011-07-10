@@ -429,3 +429,112 @@ module.exports =
         { int_: 16, level: 1, expect: "target gains resistance 4 vs. chosen damage type" },
         { int_: 10, level: 10, expect: "target gains resistance 10 vs. chosen damage type" },
         { int_: 16, level: 10, expect: "target gains resistance 13 vs. chosen damage type" } ]
+
+  "[Frostburn] should be defined":
+    Verify.testProperties "wizard", "Frostburn",
+      name: [ expect: "Frostburn" ]
+      keywords: [ expect: [ "arcane", "cold", "fire", "implement" ] ]
+
+  "[MesmericHold] should be defined":
+    Verify.testProperties "wizard", "MesmericHold",
+      name: [ expect: "Mesmeric Hold" ]
+      keywords: [ expect: [ "arcane", "charm", "implement", "psychic" ] ]
+
+  "[PrismaticBurst] should be defined":
+    Verify.testProperties "wizard", "PrismaticBurst",
+      name: [ expect: "Prismatic Burst" ]
+      keywords: [ expect: [ "arcane", "implement", "radiant" ] ]
+
+  "[Thunderlance] should be defined":
+    Verify.testProperties "wizard", "Thunderlance",
+      name: [ expect: "Thunderlance" ]
+      keywords: [ expect: [ "arcane", "implement", "thunder" ] ]
+
+  "[BigbysGraspingHands] should be defined":
+    Verify.testProperties "wizard", "BigbysGraspingHands",
+      name: [ expect: "Bigby's Grasping Hands" ]
+      keywords: [ expect: [ "arcane", "conjuration", "force", "implement" ] ]
+
+  "[BlastOfCold] should be defined":
+    Verify.testProperties "wizard", "BlastOfCold",
+      name: [ expect: "Blast of Cold" ]
+      keywords: [ expect: [ "arcane", "cold", "implement" ] ]
+
+  "[OtilukesResilientSphere] should be defined":
+    Verify.testProperties "wizard", "OtilukesResilientSphere",
+      name: [ expect: "Otiluke's Resilient Sphere" ]
+      keywords: [ expect: [ "arcane", "conjuration", "force", "implement" ] ]
+
+  "[PrismaticBeams] should be defined":
+    Verify.testProperties "wizard", "PrismaticBeams",
+      name: [ expect: "Prismatic Beams" ]
+      keywords: [ expect: [ "arcane", "fire", "implement", "poison" ] ]
+
+  "[WallOfIce] should be defined":
+    Verify.testProperties "wizard", "WallOfIce",
+      name: [ expect: "Wall of Ice" ]
+      keywords: [ expect: [ "arcane", "cold", "conjuration", "implement" ] ]
+
+  "[Displacement] should be defined":
+    Verify.testProperties "wizard", "Displacement",
+      name: [ expect: "Displacement" ]
+      type: [ expect: "encounter" ]
+      keywords: [ expect: [ "arcane", "illusion" ] ]
+
+  "[Fly] should be defined":
+    Verify.testProperties "wizard", "Fly",
+      name: [ expect: "Fly" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[GreaterInvisibility] should be defined":
+    Verify.testProperties "wizard", "GreaterInvisibility",
+      name: [ expect: "Greater Invisibility" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane", "illusion" ] ]
+
+  "[Stoneskin] should be defined":
+    Verify.testProperties "wizard", "Stoneskin",
+      name: [ expect: "Stoneskin" ]
+      type: [ expect: "daily" ]
+      keywords: [ expect: [ "arcane" ] ]
+
+  "[Combust] should be defined":
+    Verify.testProperties "wizard", "Combust",
+      name: [ expect: "Combust" ]
+      keywords: [ expect: [ "arcane", "fire", "implement" ] ]
+
+  "[CrushingTitansFist] should be defined":
+    Verify.testProperties "wizard", "CrushingTitansFist",
+      name: [ expect: "Crushing Titan's Fist" ]
+      keywords: [ expect: [ "arcane", "force", "implement" ] ]
+
+  "[ForceVolley] should be defined":
+    Verify.testProperties "wizard", "ForceVolley",
+      name: [ expect: "Force Volley" ]
+      keywords: [ expect: [ "arcane", "force", "implement" ] ]
+
+  "[IceTomb] should be defined":
+    Verify.testProperties "wizard", "IceTomb",
+      name: [ expect: "Ice Tomb" ]
+      keywords: [ expect: [ "arcane", "cold", "implement" ] ]
+
+  "[AcidWave] should be defined":
+    Verify.testProperties "wizard", "AcidWave",
+      name: [ expect: "Acid Wave" ]
+      keywords: [ expect: [ "acid", "arcane", "implement" ] ]
+
+  "[Cloudkill] should be defined":
+    Verify.testProperties "wizard", "Cloudkill",
+      name: [ expect: "Cloudkill" ]
+      keywords: [ expect: [ "arcane", "implement", "poison", "zone" ] ]
+
+  "[Disintegrate] should be defined":
+    Verify.testProperties "wizard", "Disintegrate",
+      name: [ expect: "Disintegrate" ]
+      keywords: [ expect: [ "arcane", "implement" ] ]
+
+  "[EvardsBlackTentacles] should be defined":
+    Verify.testProperties "wizard", "EvardsBlackTentacles",
+      name: [ expect: "Evard's Black Tentacles" ]
+      keywords: [ expect: [ "arcane", "implement", "necrotic", "zone" ] ]

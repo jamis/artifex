@@ -269,3 +269,38 @@ module.exports =
       if Powers.collections.wizard[power]
         test.ok power in Classes.Wizard.powers.utility[10]
     test.done()
+
+  "level-13 spells are accounted for": (test) ->
+    for power in [ "Frostburn", "MesmericHold", "PrismaticBurst", "Thunderlance" ]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
+        test.ok power in Classes.Wizard.powers.encounter[13]
+    test.done()
+
+  "level-15 spells are accounted for": (test) ->
+    for power in [ "BigbysGraspingHands", "BlastOfCold", "OtilukesResilientSphere", "PrismaticBeams", "WallOfIce" ]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
+        test.ok power in Classes.Wizard.powers.daily[15]
+    test.done()
+
+  "level-16 spells are accounted for": (test) ->
+    for power in [ "Displacement", "Fly", "GreaterInvisibility", "Stoneskin" ]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
+        test.ok power in Classes.Wizard.powers.utility[16]
+    test.done()
+
+  "level-17 spells are accounted for": (test) ->
+    for power in [ "Combust", "CrushingTitansFist", "ForceVolley", "IceTomb" ]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
+        test.ok power in Classes.Wizard.powers.encounter[17]
+    test.done()
+
+  "level-19 spells are accounted for": (test) ->
+    for power in [ "AcidWave", "Cloudkill", "Disintegrate", "EvardsBlackTentacles" ]
+      test.ok Powers.collections.wizard[power], "`#{power}' is not defined"
+      if Powers.collections.wizard[power]
+        test.ok power in Classes.Wizard.powers.daily[19]
+    test.done()

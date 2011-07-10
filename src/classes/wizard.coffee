@@ -101,16 +101,21 @@ Wizard.powers =
     1: [ "CloudOfDaggers", "MagicMissile", "RayOfFrost", "ScorchingBurst", "Thunderwave" ]
 
   encounter:
-    1: [ "BurningHands", "ChillStrike", "ForceOrb", "IcyTerrain", "RayOfEnfeeblement" ]
-    3: [ "ColorSpray", "FireShroud", "IcyRays", "ShockSphere" ]
-    7: [ "FireBurst", "LightningBolt", "SpectralRam", "WintersWrath" ]
+    1 : [ "BurningHands", "ChillStrike", "ForceOrb", "IcyTerrain", "RayOfEnfeeblement" ]
+    3 : [ "ColorSpray", "FireShroud", "IcyRays", "ShockSphere" ]
+    7 : [ "FireBurst", "LightningBolt", "SpectralRam", "WintersWrath" ]
+    13: [ "Frostburn", "MesmericHold", "PrismaticBurst", "Thunderlance" ]
+    17: [ "Combust", "CrushingTitansFist", "ForceVolley", "IceTomb" ]
 
   daily:
-    1: [ "AcidArrow", "FlamingSphere", "FreezingCloud", "Sleep" ]
-    5: [ "BigbysIcyGrasp", "Fireball", "StinkingCloud", "Web" ]
-    9: [ "IceStorm", "LightningSerpent", "MordenkainensSword", "WallOfFire" ]
+    1 : [ "AcidArrow", "FlamingSphere", "FreezingCloud", "Sleep" ]
+    5 : [ "BigbysIcyGrasp", "Fireball", "StinkingCloud", "Web" ]
+    9 : [ "IceStorm", "LightningSerpent", "MordenkainensSword", "WallOfFire" ]
+    15: [ "BigbysGraspingHands", "BlastOfCold", "OtilukesResilientSphere", "PrismaticBeams", "WallOfIce" ]
+    19: [ "AcidWave", "Cloudkill", "Disintegrate", "EvardsBlackTentacles" ]
 
   utility:
     2 : [ "ExpeditiousRetreat", "FeatherFall", "Jump", "Shield" ]
     6 : [ "DimensionDoor", "DisguiseSelf", "DispelMagic", "Invisibility", "Levitate", "WallOfFog" ]
     10: [ "ArcaneGate", "Blur", "MirrorImage", "Resistance" ]
+    16: [ "Displacement", "Fly", "GreaterInvisibility", "Stoneskin" ]
