@@ -185,10 +185,10 @@
         $('#ops').show();
 
         var NPC = require('npc');
-        var Classes = require('classes');
-        var npc = new NPC({class: Classes.Rogue});
+        var npc = new NPC;
         npc.generate();
-        while(npc.level < 20) npc.advance();
+        var targetLevel = npc.random.d(20);
+        while(npc.level < targetLevel) npc.advance();
 
         $('#name').html(npc.name);
         $('#level').html(npc.level);
