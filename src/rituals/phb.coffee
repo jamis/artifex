@@ -190,6 +190,94 @@ module.exports =
       category : "exploration"
       source   : "phb"
 
+  12:
+    "Drawmij's Instant Summons":
+      name     : "Drawmij's Instant Summons"
+      keySkills: [ "arcana" ]
+      category : "travel"
+      source   : "phb"
+    "Hallucinatory Creature":
+      name     : "Hallucinatory Creature"
+      keySkills: [ "arcana" ]
+      category : "deception"
+      source   : "phb"
+    "Passwall":
+      name     : "Passwall"
+      keySkills: [ "arcana" ]
+      category : "exploration"
+      source   : "phb"
+    "Shadow Walk":
+      name     : "Shadow Walk"
+      keySkills: [ "arcana" ]
+      category : "exploration"
+      source   : "phb"
+
+  14:
+    "Eye of Warning":
+      name     : "Eye of Warning"
+      keySkills: [ "arcana" ]
+      category : "warding"
+      source   : "phb"
+    "View Location":
+      name     : "View Location"
+      keySkills: [ "arcana" ]
+      category : "scrying"
+      source   : "phb"
+
+  16:
+    "Consult Oracle":
+      name     : "Consult Oracle"
+      keySkills: [ "religion" ]
+      category : "divination"
+      source   : "phb"
+
+  18:
+    "Planar Portal":
+      name     : "Planar Portal"
+      keySkills: [ "arcana" ]
+      category : "travel"
+      source   : "phb"
+    "View Object":
+      name     : "View Object"
+      keySkills: [ "arcana" ]
+      category : "scrying"
+      source   : "phb"
+
+  20:
+    "Forbiddance":
+      name     : "Forbiddance"
+      keySkills: [ "arcana" ]
+      category : "warding"
+      source   : "phb"
+
+  22:
+    "Loremaster's Bargain":
+      name     : "Loremaster's Bargain"
+      keySkills: [ "religion" ]
+      category : "divination"
+      source   : "phb"
+
+  24:
+    "Observe Creature":
+      name     : "Observe Creature"
+      keySkills: [ "arcana" ]
+      category : "scrying"
+      source   : "phb"
+
+  26:
+    "Voice of Fate":
+      name     : "Voice of Fate"
+      keySkills: [ "religion" ]
+      category : "divination"
+      source   : "phb"
+
+  28:
+    "True Portal":
+      name     : "True Portal"
+      keySkills: [ "arcana" ]
+      category : "travel"
+      source   : "phb"
+
   each: (level, callback) ->
     if this[level]?
       for key, value of this[level]

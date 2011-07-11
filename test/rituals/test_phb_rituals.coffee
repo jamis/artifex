@@ -164,3 +164,59 @@ module.exports =
   "Detect Object should be present": (test) ->
     checkRitual test, 10, "Detect Object", ["arcana"], "exploration", "phb"
     test.done()
+
+  "Drawmij's Instant Summons should be present": (test) ->
+    checkRitual test, 12, "Drawmij's Instant Summons", ["arcana"], "travel", "phb"
+    test.done()
+
+  "Hallucinatory Creature should be present": (test) ->
+    checkRitual test, 12, "Hallucinatory Creature", ["arcana"], "deception", "phb"
+    test.done()
+
+  "Passwall should be present": (test) ->
+    checkRitual test, 12, "Passwall", ["arcana"], "exploration", "phb"
+    test.done()
+
+  "Shadow Walk should be present": (test) ->
+    checkRitual test, 12, "Shadow Walk", ["arcana"], "exploration", "phb"
+    test.done()
+
+  "Eye of Warning should be present": (test) ->
+    checkRitual test, 14, "Eye of Warning", ["arcana"], "warding", "phb"
+    test.done()
+
+  "View Location should be present": (test) ->
+    checkRitual test, 14, "View Location", ["arcana"], "scrying", "phb"
+    test.done()
+
+  "Consult Oracle should be present": (test) ->
+    checkRitual test, 16, "Consult Oracle", ["religion"], "divination", "phb"
+    test.done()
+
+  "Planar Portal should be present": (test) ->
+    checkRitual test, 18, "Planar Portal", ["arcana"], "travel", "phb"
+    test.done()
+
+  "View Object should be present": (test) ->
+    checkRitual test, 18, "View Object", ["arcana"], "scrying", "phb"
+    test.done()
+
+  "Forbiddance should be present": (test) ->
+    checkRitual test, 20, "Forbiddance", ["arcana"], "warding", "phb"
+    test.done()
+
+  "Loremaster's Bargain should be present": (test) ->
+    checkRitual test, 22, "Loremaster's Bargain", ["religion"], "divination", "phb"
+    test.done()
+
+  "Observe Creature should be present": (test) ->
+    checkRitual test, 24, "Observe Creature", ["arcana"], "scrying", "phb"
+    test.done()
+
+  "Voice of Fate should be present": (test) ->
+    checkRitual test, 26, "Voice of Fate", ["religion"], "divination", "phb"
+    test.done()
+
+  "True Portal should be present": (test) ->
+    checkRitual test, 28, "True Portal", ["arcana"], "travel", "phb"
+    test.done()
