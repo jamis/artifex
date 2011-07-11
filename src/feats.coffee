@@ -532,7 +532,7 @@ module.exports = Feats =
 
   LostInTheCrowd: new Feat
     name: "Lost in the Crowd"
-    requires: { race: "halfing" }
+    requires: { race: "halfling" }
 
   # FIXME: taking RitualCaster ought to grant an initial ritual or two
   RitualCaster: new Feat

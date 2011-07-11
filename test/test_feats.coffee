@@ -636,7 +636,7 @@ module.exports =
   "[LostInTheCrowd] should be defined":
     featDefined "LostInTheCrowd",
       name: "Lost in the Crowd"
-      allows: [ race: "halfing" ]
+      allows: [ race: "halfling" ]
       disallows: [ race: "human" ]
 
   "[RitualCaster] should be defined":
